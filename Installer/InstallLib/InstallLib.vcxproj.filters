@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{e97027b1-3032-49a5-a3a9-cc4046fd5161}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b2502424-203c-494f-a57d-717608edabb4}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{5d9f4679-988c-42cd-b45b-9b6da53f0a59}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InstallLib.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="File.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallLib.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageDescriptor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstallLib-Debug.vgdbsettings" />
+    <None Include="InstallLib-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

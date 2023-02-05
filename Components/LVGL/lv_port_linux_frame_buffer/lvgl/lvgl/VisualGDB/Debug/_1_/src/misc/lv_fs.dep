@@ -1,0 +1,108 @@
+VisualGDB/Debug/_1_/src/misc/lv_fs.o: \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_fs.c \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_fs.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timesize.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/typesizes.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/time64.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h \
+ ../../lv_conf.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdbool.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_log.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_types.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_mem.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/locale_t.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/__locale_t.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_ll.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_gc.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_mem.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_timer.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\hal\lv_hal_tick.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_types.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_cache.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_decoder.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_buf.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_color.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_area.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_types.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_draw_mask.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\core\lv_obj_pos.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_area.h
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_fs.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timesize.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/typesizes.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/time64.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h:
+../../lv_conf.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdbool.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_log.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_types.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_mem.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/locale_t.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/__locale_t.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_ll.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_gc.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_mem.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_timer.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\hal\lv_hal_tick.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/misc/lv_types.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_cache.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_decoder.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_buf.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_color.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_area.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_types.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_draw_mask.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\core\lv_obj_pos.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_area.h:

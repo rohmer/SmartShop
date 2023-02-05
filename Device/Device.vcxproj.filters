@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{2ef5e4ee-91a4-44d5-adba-54ff984f5063}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{add1d384-f065-45aa-8542-f3a63af8e0b0}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{60d1336a-f416-4950-8b38-128545282f1f}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DeviceBase.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceConfig.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceManager.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="GPIODevice.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="I2CDevice.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DeviceBase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceConfig.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceConfigItem.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceEnums.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPIODevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPIOPinDef.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="I2CDevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Device-Debug.vgdbsettings" />
+    <None Include="Device-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

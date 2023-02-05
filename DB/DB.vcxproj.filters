@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{a477bd56-42b6-4094-ae72-d085278a983c}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{3a6984cb-df4f-4d5c-a701-3a796d4417d6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{7a967ca1-deef-4beb-84cf-a7b8888c6373}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DB.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DB.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBSwitchData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBEventData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBVectorData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBIntData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBColorData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBFloatData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBStringData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBBinaryData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBDeviceConfig.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBDeviceConfigItem.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DB-Debug.vgdbsettings" />
+    <None Include="DB-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

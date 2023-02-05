@@ -1,0 +1,42 @@
+VisualGDB/Debug/_1_/indev/XPT2046.o: \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/XPT2046.c \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/XPT2046.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h \
+ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timesize.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/typesizes.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/time64.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
+C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/XPT2046.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h:
+c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timesize.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/typesizes.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/time64.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h:

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{29aab3ba-7df7-4071-b8c7-405116de9425}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{d7c114ad-fcda-433f-94b5-a01319ac3941}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{14ed86b7-7fa4-4f3d-97f9-ff57e71e6b58}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\Images">
+      <UniqueIdentifier>{0fa37af1-682c-4c15-b891-08df2bd2cdbb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WindowManager.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\noWifi.c">
+      <Filter>Source files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\Wifi1.c">
+      <Filter>Source files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\Wifi2.c">
+      <Filter>Source files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\Wifi3.c">
+      <Filter>Source files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\Wifi4.c">
+      <Filter>Source files\Images</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UI-Debug.vgdbsettings" />
+    <None Include="UI-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

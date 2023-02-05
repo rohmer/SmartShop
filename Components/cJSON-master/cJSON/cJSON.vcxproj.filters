@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{a88eb3ad-ec93-4dc1-bbff-b4a7de0a1c01}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{37b68f6d-6bd3-475e-a489-55048c40588f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{68bb645f-c273-447d-94b8-c5ec3619b784}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\cJSON">
+      <UniqueIdentifier>{aa39ad70-45e3-4f6d-a70c-2eebcf1e5c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\cJSON\.visualgdb">
+      <UniqueIdentifier>{aeab4e40-53ed-40ad-bc69-d41b1d9e9095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\cJSON\.visualgdb\CodeDB">
+      <UniqueIdentifier>{0ca38948-f057-4354-8cc5-0a2e47277803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\cJSON\.visualgdb\CodeDB\cJSON-Debug-VisualGDB">
+      <UniqueIdentifier>{d76195b1-53e1-4284-8eab-5193765dba3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\fuzzing">
+      <UniqueIdentifier>{91f8204e-a395-46bf-b0b1-f58f265da2d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\library_config">
+      <UniqueIdentifier>{a54320ab-402b-4cb7-8ea1-24f3412f4925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests">
+      <UniqueIdentifier>{a7bf9910-cc8e-497f-be88-13d9a70c8ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity">
+      <UniqueIdentifier>{daf1e72f-0bfa-40a9-b4b7-ef68a6bbb1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\docs">
+      <UniqueIdentifier>{d594ea55-8813-42cf-b252-e80e28bba2f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples">
+      <UniqueIdentifier>{e45e4b26-6809-4865-916a-6809c34cb14f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_1">
+      <UniqueIdentifier>{168b319b-6d65-41a3-9a36-874acfa2ee98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_1\src">
+      <UniqueIdentifier>{239a0dce-5624-43d1-a469-a6cc48a4e49b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_1\test">
+      <UniqueIdentifier>{08b59ff8-ec79-4d5b-87d2-bc19b5decd99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_1\test\test_runners">
+      <UniqueIdentifier>{fb18b0ca-9062-4b8b-95bb-5ae7c58488dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_2">
+      <UniqueIdentifier>{e87a3921-296a-47ed-8a48-0e85c0627cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_2\src">
+      <UniqueIdentifier>{2dd54319-de6f-4621-9ffe-23fbaa8b1f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_2\test">
+      <UniqueIdentifier>{06340794-7e93-4b05-8c48-5acd65dc176d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_2\test\test_runners">
+      <UniqueIdentifier>{8aeaf387-f806-4d27-80a8-54d7ffc389bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_3">
+      <UniqueIdentifier>{b7ef9314-80a0-4201-a70f-ac9c911c9583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_3\helper">
+      <UniqueIdentifier>{0dbb9688-1b70-4150-a41e-e60bbb3148ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_3\src">
+      <UniqueIdentifier>{078431ba-55ca-49f4-b905-112f7934cc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\examples\example_3\test">
+      <UniqueIdentifier>{221318e7-a85c-4085-8830-762dcaf6fe75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras">
+      <UniqueIdentifier>{b4d76fab-68c9-45dd-bbb3-fa8490da4943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras\eclipse">
+      <UniqueIdentifier>{2ca5ae5c-6f4f-4820-b28a-1932bca37445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras\fixture">
+      <UniqueIdentifier>{b06278ec-9b37-4ad9-996a-feeece0896dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras\fixture\src">
+      <UniqueIdentifier>{a0ec2d72-7c81-483b-9a97-1a92e19357b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras\fixture\test">
+      <UniqueIdentifier>{f8a8792e-b35b-416e-8704-974ff176406a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\extras\fixture\test\main">
+      <UniqueIdentifier>{d4ca2069-f3f0-46c6-ad66-7495f7b973cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\src">
+      <UniqueIdentifier>{5b519909-cc51-48d7-96e0-ab9e2c811942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\test">
+      <UniqueIdentifier>{e75ec678-7c2a-45e2-9eb0-0cb31adafb37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\test\expectdata">
+      <UniqueIdentifier>{06b2755f-bde9-4ca1-8aa8-5d9d304a91dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\test\testdata">
+      <UniqueIdentifier>{3065de53-7231-4474-b36f-c6db53391a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\tests\unity\test\tests">
+      <UniqueIdentifier>{f84ed017-8ede-41e1-8840-f3fc414efe52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\cJSON">
+      <UniqueIdentifier>{49490c70-ec99-40f7-8610-9556c4ab564a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\cJSON\.visualgdb">
+      <UniqueIdentifier>{1b8dea2a-e8c2-4c68-9df3-3f79d3f7b0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\cJSON\.visualgdb\CodeDB">
+      <UniqueIdentifier>{1f007866-f403-42f9-a396-e57b18415ba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\cJSON\.visualgdb\CodeDB\cJSON-Debug-VisualGDB">
+      <UniqueIdentifier>{e1a4cbf9-74e2-466d-adc1-b6d3433f5f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\fuzzing">
+      <UniqueIdentifier>{dfe0ed3a-5c05-4dd1-a2f6-f2e14c044557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\library_config">
+      <UniqueIdentifier>{21e53bb3-0038-41d4-a5f7-cc414f68f9d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests">
+      <UniqueIdentifier>{b880dd74-3d5c-4aac-a95f-d0cb1070414e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity">
+      <UniqueIdentifier>{9ee9698b-b75a-487e-bc86-620353700f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\docs">
+      <UniqueIdentifier>{970b2df0-47db-4001-845d-1dec695feb8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples">
+      <UniqueIdentifier>{388d4135-1d8c-4460-bbd7-45270432a43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_1">
+      <UniqueIdentifier>{193c7e68-86c7-4ef8-ae95-235abec7848b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_1\src">
+      <UniqueIdentifier>{428c5fc5-b856-4b55-b3c9-2539ad94ba98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_1\test">
+      <UniqueIdentifier>{d9f7e930-2455-45ce-a08f-67b221746aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_1\test\test_runners">
+      <UniqueIdentifier>{a43bfa53-4438-49d1-8665-910693d9147a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_2">
+      <UniqueIdentifier>{568c1ae6-384c-4576-b589-d3a1d2cd8ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_2\src">
+      <UniqueIdentifier>{62a373de-8de3-4d63-bfee-a53bdec13e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_2\test">
+      <UniqueIdentifier>{f579fd02-11e5-4099-8200-67f4bd18e439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_2\test\test_runners">
+      <UniqueIdentifier>{ad1b9279-3aa8-455b-91e9-c6ee21e74c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_3">
+      <UniqueIdentifier>{d82211e9-bcc5-4ca1-b4f4-1e638f57747d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_3\helper">
+      <UniqueIdentifier>{baec963c-1eb2-4806-b306-2ebb93931d1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_3\src">
+      <UniqueIdentifier>{bc6aba61-fcba-4fa3-b467-0bf68c5aa19e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\examples\example_3\test">
+      <UniqueIdentifier>{d54eb8ed-0128-4ec7-b941-e19ade6ea7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras">
+      <UniqueIdentifier>{f8cc521b-f37e-4fc7-bc7e-696e0980e545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras\eclipse">
+      <UniqueIdentifier>{396fd4a2-fd62-40ef-aa30-7a1da22440ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras\fixture">
+      <UniqueIdentifier>{4e5e34aa-15db-4007-94f6-2b062a09f148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras\fixture\src">
+      <UniqueIdentifier>{a17a46fc-7770-4fc8-be9b-41cf5a51746a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras\fixture\test">
+      <UniqueIdentifier>{b1e1ed32-f7cb-4c5a-9834-ddd5e0e9c77b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\extras\fixture\test\main">
+      <UniqueIdentifier>{4fa64a34-2f97-4a85-9d91-2af3d50ae819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\src">
+      <UniqueIdentifier>{a919d921-f9a9-4225-a43b-746b65e4e009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\test">
+      <UniqueIdentifier>{d5e08d5f-043e-4a24-8a67-a9b639683a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\test\expectdata">
+      <UniqueIdentifier>{80fdc41f-611e-4021-99a8-e8e9be2190b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\test\testdata">
+      <UniqueIdentifier>{49ab6b01-8d33-48e2-958c-72fb1eb1f589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\tests\unity\test\tests">
+      <UniqueIdentifier>{740bfd0e-3216-41e1-bbdf-431b1f94888b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\cJSON.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cJSON_Utils.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <None Include="..\CMakeLists.txt">
+      <Filter>Source files</Filter>
+    </None>
+    <None Include="..\Makefile">
+      <Filter>Source files</Filter>
+    </None>
+    <ClCompile Include="..\test.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <None Include=".visualgdb\CodeDB\cJSON-Debug-VisualGDB\PreambleTimestamp.txt">
+      <Filter>Source files\cJSON\.visualgdb\CodeDB\cJSON-Debug-VisualGDB</Filter>
+    </None>
+    <ClCompile Include="..\fuzzing\afl.c">
+      <Filter>Source files\fuzzing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuzzing\cjson_read_fuzzer.c">
+      <Filter>Source files\fuzzing</Filter>
+    </ClCompile>
+    <None Include="..\fuzzing\CMakeLists.txt">
+      <Filter>Source files\fuzzing</Filter>
+    </None>
+    <ClCompile Include="..\fuzzing\fuzz_main.c">
+      <Filter>Source files\fuzzing</Filter>
+    </ClCompile>
+    <None Include="..\library_config\uninstall.cmake">
+      <Filter>Source files\library_config</Filter>
+    </None>
+    <ClCompile Include="..\tests\cjson_add.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <None Include="..\tests\CMakeLists.txt">
+      <Filter>Source files\tests</Filter>
+    </None>
+    <ClCompile Include="..\tests\compare_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\json_patch_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\minify_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\misc_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\misc_utils_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\old_utils_tests.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_array.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_examples.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_hex4.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_number.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_object.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_string.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_value.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\parse_with_opts.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\print_array.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\print_number.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\print_object.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\print_string.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\print_value.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\readme_examples.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity_setup.c">
+      <Filter>Source files\tests</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\docs\license.txt">
+      <Filter>Source files\tests\unity\docs</Filter>
+    </None>
+    <None Include="..\tests\unity\examples\example_1\makefile">
+      <Filter>Source files\tests\unity\examples\example_1</Filter>
+    </None>
+    <None Include="..\tests\unity\examples\example_1\readme.txt">
+      <Filter>Source files\tests\unity\examples\example_1</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\examples\example_1\src\ProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_1\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_1\src\ProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_1\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_1\test\TestProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_1\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_1\test\TestProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_1\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_1\test\test_runners\TestProductionCode2_Runner.c">
+      <Filter>Source files\tests\unity\examples\example_1\test\test_runners</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_1\test\test_runners\TestProductionCode_Runner.c">
+      <Filter>Source files\tests\unity\examples\example_1\test\test_runners</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\examples\example_2\makefile">
+      <Filter>Source files\tests\unity\examples\example_2</Filter>
+    </None>
+    <None Include="..\tests\unity\examples\example_2\readme.txt">
+      <Filter>Source files\tests\unity\examples\example_2</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\examples\example_2\src\ProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\src\ProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\test\TestProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_2\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\test\TestProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_2\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\test\test_runners\all_tests.c">
+      <Filter>Source files\tests\unity\examples\example_2\test\test_runners</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\test\test_runners\TestProductionCode2_Runner.c">
+      <Filter>Source files\tests\unity\examples\example_2\test\test_runners</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_2\test\test_runners\TestProductionCode_Runner.c">
+      <Filter>Source files\tests\unity\examples\example_2\test\test_runners</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\examples\example_3\readme.txt">
+      <Filter>Source files\tests\unity\examples\example_3</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\examples\example_3\helper\UnityHelper.c">
+      <Filter>Source files\tests\unity\examples\example_3\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_3\src\ProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_3\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_3\src\ProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_3\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_3\test\TestProductionCode.c">
+      <Filter>Source files\tests\unity\examples\example_3\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\examples\example_3\test\TestProductionCode2.c">
+      <Filter>Source files\tests\unity\examples\example_3\test</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\extras\eclipse\error_parsers.txt">
+      <Filter>Source files\tests\unity\extras\eclipse</Filter>
+    </None>
+    <None Include="..\tests\unity\extras\fixture\readme.txt">
+      <Filter>Source files\tests\unity\extras\fixture</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\extras\fixture\src\unity_fixture.c">
+      <Filter>Source files\tests\unity\extras\fixture\src</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\extras\fixture\test\Makefile">
+      <Filter>Source files\tests\unity\extras\fixture\test</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\extras\fixture\test\template_fixture_tests.c">
+      <Filter>Source files\tests\unity\extras\fixture\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\extras\fixture\test\unity_fixture_Test.c">
+      <Filter>Source files\tests\unity\extras\fixture\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\extras\fixture\test\unity_fixture_TestRunner.c">
+      <Filter>Source files\tests\unity\extras\fixture\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\extras\fixture\test\unity_output_Spy.c">
+      <Filter>Source files\tests\unity\extras\fixture\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\extras\fixture\test\main\AllTests.c">
+      <Filter>Source files\tests\unity\extras\fixture\test\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\src\unity.c">
+      <Filter>Source files\tests\unity\src</Filter>
+    </ClCompile>
+    <None Include="..\tests\unity\test\Makefile">
+      <Filter>Source files\tests\unity\test</Filter>
+    </None>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_cmd.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_def.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_head1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_cmd.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_def.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_head1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_new1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_new2.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_param.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_run1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_run2.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_mock_yaml.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_new1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_new2.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_param.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_run1.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_run2.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\expectdata\testsample_yaml.c">
+      <Filter>Source files\tests\unity\test\expectdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\testdata\testRunnerGenerator.c">
+      <Filter>Source files\tests\unity\test\testdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\testdata\testRunnerGeneratorSmall.c">
+      <Filter>Source files\tests\unity\test\testdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\testdata\testRunnerGeneratorWithMocks.c">
+      <Filter>Source files\tests\unity\test\testdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\tests\testparameterized.c">
+      <Filter>Source files\tests\unity\test\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\unity\test\tests\testunity.c">
+      <Filter>Source files\tests\unity\test\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="..\cJSON.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cJSON_Utils.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\common.h">
+      <Filter>Header files\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\unity_config.h">
+      <Filter>Header files\tests\unity\examples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_1\src\ProductionCode.h">
+      <Filter>Header files\tests\unity\examples\example_1\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_1\src\ProductionCode2.h">
+      <Filter>Header files\tests\unity\examples\example_1\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_2\src\ProductionCode.h">
+      <Filter>Header files\tests\unity\examples\example_2\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_2\src\ProductionCode2.h">
+      <Filter>Header files\tests\unity\examples\example_2\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_3\helper\UnityHelper.h">
+      <Filter>Header files\tests\unity\examples\example_3\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_3\src\ProductionCode.h">
+      <Filter>Header files\tests\unity\examples\example_3\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\examples\example_3\src\ProductionCode2.h">
+      <Filter>Header files\tests\unity\examples\example_3\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\extras\fixture\src\unity_fixture.h">
+      <Filter>Header files\tests\unity\extras\fixture\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\extras\fixture\src\unity_fixture_internals.h">
+      <Filter>Header files\tests\unity\extras\fixture\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\extras\fixture\src\unity_fixture_malloc_overrides.h">
+      <Filter>Header files\tests\unity\extras\fixture\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\extras\fixture\test\unity_output_Spy.h">
+      <Filter>Header files\tests\unity\extras\fixture\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\src\unity.h">
+      <Filter>Header files\tests\unity\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\src\unity_internals.h">
+      <Filter>Header files\tests\unity\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\expectdata\testsample_head1.h">
+      <Filter>Header files\tests\unity\test\expectdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\expectdata\testsample_mock_head1.h">
+      <Filter>Header files\tests\unity\test\expectdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\testdata\CException.h">
+      <Filter>Header files\tests\unity\test\testdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\testdata\cmock.h">
+      <Filter>Header files\tests\unity\test\testdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\testdata\Defs.h">
+      <Filter>Header files\tests\unity\test\testdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\unity\test\testdata\mockMock.h">
+      <Filter>Header files\tests\unity\test\testdata</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

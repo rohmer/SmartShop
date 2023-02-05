@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{2AFF492E-7F85-44D9-A0CC-414C90D2CC69}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../Components/spdlog-1.x/include/spdlog;../DB;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/pistache-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <SupportExceptions>true</SupportExceptions>
+      <SupportRTTI>true</SupportRTTI>
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DeviceBase.cpp" />
+    <ClCompile Include="DeviceConfig.cpp" />
+    <ClCompile Include="DeviceManager.cpp" />
+    <ClCompile Include="GPIODevice.cpp" />
+    <ClCompile Include="I2CDevice.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DeviceBase.h" />
+    <ClInclude Include="DeviceConfig.h" />
+    <ClInclude Include="DeviceConfigItem.h" />
+    <ClInclude Include="DeviceEnums.h" />
+    <ClInclude Include="DeviceManager.h" />
+    <ClInclude Include="GPIODevice.h" />
+    <ClInclude Include="GPIOPinDef.h" />
+    <ClInclude Include="I2CDevice.h" />
+    <ClInclude Include="Sensor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Device-Debug.vgdbsettings" />
+    <None Include="Device-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
+      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
+      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
+      <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
+      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
+      <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

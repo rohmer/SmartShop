@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{55d8ee3c-b35d-48bb-90fd-40fef946ea8e}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{a4afc352-b9b9-41c1-8f90-1cbf7a81cad8}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{873ff68e-741d-48c5-972b-d75547054fae}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ColorData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SensorEvent.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryData.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ColorData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorDataBase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorEvent.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryData.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SensorEvent-Debug.vgdbsettings" />
+    <None Include="SensorEvent-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

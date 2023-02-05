@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>crypto;dl;ssl;sqlite3;atomic;freetype;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="EventEndpoint.cpp" />
+    <ClCompile Include="LogEndpoint.cpp" />
+    <ClCompile Include="RegisterEndpoint.cpp" />
+    <ClCompile Include="Server.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Server-Debug.vgdbsettings" />
+    <None Include="Server-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EventEndpoint.h" />
+    <ClInclude Include="LogEndpoint.h" />
+    <ClInclude Include="RegisterEndpoint.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="Settings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
+      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
+      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\libarchive-master\libarchive\libarchive\libarchive.vcxproj">
+      <Project>{732856a6-b443-4e9c-95fd-acbfec916881}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
+      <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\libwpa\libwpa.vcxproj">
+      <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
+      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\md5-master\MD5\MD5.vcxproj">
+      <Project>{9500ad59-5d75-4d02-82f6-8948b7788191}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
+      <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\pistache-master\Pistache\Pistache.vcxproj">
+      <Project>{ea67de9a-fd1e-48bf-8e47-7ac9c1b92337}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\Device.vcxproj">
+      <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\DeviceTests\DeviceTests.vcxproj">
+      <Project>{c30af8a4-71a5-4f34-aaf7-2ab8c88ccb07}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\PCA9685Device\PCA9685Device.vcxproj">
+      <Project>{46e51758-271d-4e3e-b941-c52d6e8c8037}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\PM25AQISensor\PM25AQISensor.vcxproj">
+      <Project>{2b13300e-d1e3-4412-9725-92cafe0c91cb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\SwitchDevice\SwitchDevice.vcxproj">
+      <Project>{b8076e54-54f4-4ba3-b0f3-e810e8884012}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Installer\AddFileToPkg\AddFileToPkg.vcxproj">
+      <Project>{c50f957d-66a9-4d4e-9212-06037cdf227c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Installer\CreatePkg\CreatePkg.vcxproj">
+      <Project>{76e7792e-92e3-4d53-9b67-6b57f90d560c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Installer\GenInstall\GenInstall.vcxproj">
+      <Project>{b36b94d5-df68-417a-8d41-6c3ddf81b9c0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Installer\InstallLib\InstallLib.vcxproj">
+      <Project>{bcf8ca05-423d-4f70-a11a-311d09fdfe5c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NetworkTools\NetworkTests\NetworkTests.vcxproj">
+      <Project>{247d34e3-00a1-43dc-9302-dfa4ed44ba50}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NetworkTools\NetworkTools.vcxproj">
+      <Project>{6ac720e3-988c-48c5-bdb6-093bf8ceaa7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\RESTServer\RESTServer.vcxproj">
+      <Project>{9a686d10-8a01-45fc-9fee-d819530a4de9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
+      <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\UI.vcxproj">
+      <Project>{efb7f748-eef2-449b-b678-6455e8c8d991}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ZeroConf\ZeroConf.vcxproj">
+      <Project>{d6d294f0-b266-4b74-8e55-c7abef25896c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

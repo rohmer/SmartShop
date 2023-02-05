@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{EFB7F748-EEF2-449B-B678-6455E8C8D991}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../Components/LVGL/lv_port_linux_frame_buffer;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB../Components/rapidjson-master/include/rapidjson/msinttypes;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <SupportExceptions>true</SupportExceptions>
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="UI-Debug.vgdbsettings" />
+    <None Include="UI-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\libwpa\libwpa.vcxproj">
+      <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
+      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NetworkTools\NetworkTools.vcxproj">
+      <Project>{6ac720e3-988c-48c5-bdb6-093bf8ceaa7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="UIWidget\UIWidget.vcxproj">
+      <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="WindowManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Images\noWifi.c" />
+    <ClCompile Include="Images\Wifi1.c" />
+    <ClCompile Include="Images\Wifi2.c" />
+    <ClCompile Include="Images\Wifi3.c" />
+    <ClCompile Include="Images\Wifi4.c" />
+    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="WindowManager.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

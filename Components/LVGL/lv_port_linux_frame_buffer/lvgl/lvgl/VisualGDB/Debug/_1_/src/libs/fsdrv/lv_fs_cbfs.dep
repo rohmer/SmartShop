@@ -1,0 +1,4 @@
+VisualGDB/Debug/_1_/src/libs/fsdrv/lv_fs_cbfs.o: \
+ C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/fsdrv/lv_fs_cbfs.c \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
