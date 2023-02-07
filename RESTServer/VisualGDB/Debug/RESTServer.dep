@@ -413,6 +413,7 @@ VisualGDB/Debug/RESTServer.o: RESTServer.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h \
  ../Components/spdlog-1.x/include/spdlog/sinks/sink.h \
  ../Components/spdlog-1.x/include/spdlog/formatter.h \
@@ -869,6 +870,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/linux/falloc.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h:
 ../Components/spdlog-1.x/include/spdlog/sinks/sink.h:
 ../Components/spdlog-1.x/include/spdlog/formatter.h:

@@ -1,5 +1,5 @@
 VisualGDB/Debug/_1_/cJSON_Utils.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/cJSON-master/cJSON_Utils.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cJSON-master/cJSON_Utils.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/ctype.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h \
@@ -73,8 +73,8 @@ VisualGDB/Debug/_1_/cJSON_Utils.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/mathcalls-helper-functions.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/mathcalls.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/float.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/cJSON-master/cJSON_Utils.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/cJSON-master/cJSON.h
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cJSON-master/cJSON_Utils.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cJSON-master/cJSON.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/ctype.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h:
@@ -148,5 +148,5 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/mathcalls-helper-functions.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/mathcalls.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/float.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/cJSON-master/cJSON_Utils.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/cJSON-master/cJSON.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cJSON-master/cJSON_Utils.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cJSON-master/cJSON.h:

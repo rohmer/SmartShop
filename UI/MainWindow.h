@@ -23,4 +23,5 @@ private:
 	static int wifiUpdateTimer;
 	lv_timer_t *updateTimer;
 	
+	lv_obj_t *tabView, *nodeTab, *eventTab; 
 };

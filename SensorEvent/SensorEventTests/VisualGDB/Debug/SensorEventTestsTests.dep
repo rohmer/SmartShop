@@ -178,6 +178,88 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ostream.tcc \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/istream.tcc \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/sstream.tcc \
+ ../../DB/../DB/DB.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iostream \
+ ../../DB/../DB/../Logger/LogMsg.h ../../DB/../DB/../Logger/LogLevel.h \
+ ../../DB/../DB/DBEventData.h ../../DB/../DB/DBSwitchData.h \
+ ../../DB/../DB/DBVectorData.h ../../DB/../DB/DBColorData.h \
+ ../../DB/../DB/DBIntData.h ../../DB/../DB/DBStringData.h \
+ ../../DB/../DB/DBFloatData.h ../../DB/../DB/DBBinaryData.h \
+ ../../DB/../DB/DBDeviceConfig.h ../../DB/../DB/DBDeviceConfigItem.h \
+ ../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/memory \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_uninitialized.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tempbuf.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_raw_storage_iter.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ranges_uninitialized.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/concurrence.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uses_allocator.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_ptr.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/utility \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_relops.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tuple \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/array \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/invoke.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_base.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/allocated_ptr.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/refwrap.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/aligned_buffer.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_atomic.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_base.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_lockfree_defines.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/backward/auto_ptr.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_memory_defs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/execution_defs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/vector \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_vector.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_bvector.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/vector.tcc \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/optional \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/enable_special_members.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/locale \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ctime \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/time_members.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/messages_members.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/libintl.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/codecvt.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.tcc \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_conv.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/codecvt \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstring \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/functional \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_function.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_map \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable_policy.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/limits \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/node_handle.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_map.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/erase_if.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_algo.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/algorithmfwd.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_heap.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uniform_int_dist.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/stdlib.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/algorithm \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_algorithm_defs.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iterator \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stream_iterator.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/typeindex \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/map \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tree.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_map.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multimap.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/atomic \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/set \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h \
  ../SensorEvent.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/unistd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/posix_opt.h \
@@ -186,75 +268,23 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/getopt_posix.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/getopt_core.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/unistd_ext.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/vector \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_uninitialized.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_vector.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_bvector.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/vector.tcc \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/atomic \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_base.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_lockfree_defines.h \
  ../../Components/pistache-master/include/pistache/client.h \
  ../../Components/pistache-master/include/pistache/async.h \
  ../../Components/pistache-master/include/pistache/typeid.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/functional \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tuple \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/utility \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_relops.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/array \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uses_allocator.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/invoke.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/refwrap.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_function.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_map \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/aligned_buffer.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable_policy.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/limits \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/node_handle.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/optional \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/enable_special_members.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_map.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/erase_if.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_algo.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/algorithmfwd.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_heap.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tempbuf.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uniform_int_dist.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/condition_variable \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/chrono \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ratio \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ctime \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/parse_numbers.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_mutex.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_lock.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/concurrence.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_ptr.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_base.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/allocated_ptr.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/memory \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_raw_storage_iter.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ranges_uninitialized.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_atomic.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/backward/auto_ptr.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_memory_defs.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/execution_defs.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/mutex \
  ../../Components/pistache-master/include/pistache/http.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/algorithm \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_algorithm_defs.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/timerfd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timerfd.h \
  ../../Components/pistache-master/include/pistache/cookie.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/list \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_list.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/list.tcc \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/map \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tree.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_map.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multimap.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_set \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_set.h \
  ../../Components/pistache-master/include/pistache/http_defs.h \
@@ -288,9 +318,6 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tr1/poly_laguerre.tcc \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tr1/riemann_zeta.tcc \
  ../../Components/pistache-master/include/pistache/net.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstring \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/netdb.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/netinet/in.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/socket.h \
@@ -319,7 +346,6 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  ../../Components/pistache-master/include/pistache/stream.h \
  ../../Components/pistache-master/include/pistache/os.h \
  ../../Components/pistache-master/include/pistache/common.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iostream \
  ../../Components/pistache-master/include/pistache/config.h \
  ../../Components/pistache-master/include/pistache/flags.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/climits \
@@ -358,20 +384,10 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  ../../Components/spdlog-1.x/include/spdlog/details/null_mutex.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/fmt.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/core.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iterator \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stream_iterator.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/core.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format-inl.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstdarg \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/locale \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/time_members.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/messages_members.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/libintl.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/codecvt.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.tcc \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_conv.h \
  ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format.h \
  ../../Components/spdlog-1.x/include/spdlog/common-inl.h \
  ../../Components/spdlog-1.x/include/spdlog/details/log_msg.h \
@@ -395,6 +411,7 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h \
  ../../Components/spdlog-1.x/include/spdlog/sinks/sink.h \
  ../../Components/spdlog-1.x/include/spdlog/formatter.h \
@@ -421,43 +438,27 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  ../../Components/spdlog-1.x/include/spdlog/details/console_globals.h \
  ../../Components/spdlog-1.x/include/spdlog/sinks/ansicolor_sink-inl.h \
  ../../Components/spdlog-1.x/include/spdlog/sinks/rotating_file_sink-inl.h \
- ../../Logger/DBSink.h ../../Logger/LogMsg.h ../../Logger/LogLevel.h \
- ../../Logger/../DB/DB.h ../../Logger/../DB/DBEventData.h \
- ../../Logger/../DB/DBSwitchData.h ../../Logger/../DB/DBVectorData.h \
- ../../Logger/../DB/DBColorData.h ../../Logger/../DB/DBIntData.h \
- ../../Logger/../DB/DBStringData.h ../../Logger/../DB/DBFloatData.h \
- ../../Logger/../DB/DBBinaryData.h ../../Logger/../DB/DBDeviceConfig.h \
- ../../Logger/../DB/DBDeviceConfigItem.h \
- ../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
- c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/codecvt \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/stdlib.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/typeindex \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/set \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h \
- ../SensorDataBase.h \
+ ../../Logger/DBSink.h ../SensorDataBase.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/cjson/cJSON.h \
  ../SwitchData.h ../VectorData.h ../ColorData.h ../IntData.h \
  ../FloatData.h ../StringData.h ../BinaryData.h \
  ../../Components/cpp-base64-master/base64.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdio.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
@@ -637,6 +638,94 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ostream:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ostream.tcc:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/istream.tcc:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/sstream.tcc:
+../../DB/../DB/DB.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iostream:
+../../DB/../DB/../Logger/LogMsg.h:
+../../DB/../DB/../Logger/LogLevel.h:
+../../DB/../DB/DBEventData.h:
+../../DB/../DB/DBSwitchData.h:
+../../DB/../DB/DBVectorData.h:
+../../DB/../DB/DBColorData.h:
+../../DB/../DB/DBIntData.h:
+../../DB/../DB/DBStringData.h:
+../../DB/../DB/DBFloatData.h:
+../../DB/../DB/DBBinaryData.h:
+../../DB/../DB/DBDeviceConfig.h:
+../../DB/../DB/DBDeviceConfigItem.h:
+../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/memory:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_uninitialized.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tempbuf.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_raw_storage_iter.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ranges_uninitialized.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/concurrence.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uses_allocator.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_ptr.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/utility:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_relops.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tuple:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/array:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/invoke.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_base.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/allocated_ptr.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/refwrap.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/aligned_buffer.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_atomic.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_base.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_lockfree_defines.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/backward/auto_ptr.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_memory_defs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/execution_defs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/vector:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_vector.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_bvector.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/vector.tcc:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/optional:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/enable_special_members.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/locale:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ctime:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/time_members.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/messages_members.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/libintl.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/codecvt.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.tcc:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_conv.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/codecvt:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstring:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/functional:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_function.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_map:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable_policy.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/limits:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/node_handle.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_map.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/erase_if.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_algo.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/algorithmfwd.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_heap.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uniform_int_dist.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/stdlib.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/algorithm:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_algorithm_defs.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iterator:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stream_iterator.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/typeindex:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/map:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tree.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_map.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multimap.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/atomic:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/set:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h:
 ../SensorEvent.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/unistd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/posix_opt.h:
@@ -645,75 +734,23 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/getopt_posix.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/getopt_core.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/unistd_ext.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/vector:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_uninitialized.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_vector.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_bvector.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/vector.tcc:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/atomic:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_base.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/atomic_lockfree_defines.h:
 ../../Components/pistache-master/include/pistache/client.h:
 ../../Components/pistache-master/include/pistache/async.h:
 ../../Components/pistache-master/include/pistache/typeid.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/functional:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tuple:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/utility:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_relops.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/array:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uses_allocator.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/invoke.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/refwrap.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_function.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_map:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/aligned_buffer.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/hashtable_policy.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/limits:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/node_handle.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/optional:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/enable_special_members.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_map.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/erase_if.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_algo.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/algorithmfwd.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_heap.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tempbuf.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/uniform_int_dist.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/condition_variable:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/chrono:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ratio:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ctime:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/parse_numbers.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/std_mutex.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_lock.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/ext/concurrence.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unique_ptr.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_base.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/allocated_ptr.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/memory:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_raw_storage_iter.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/ranges_uninitialized.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/shared_ptr_atomic.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/backward/auto_ptr.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_memory_defs.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/execution_defs.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/mutex:
 ../../Components/pistache-master/include/pistache/http.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/algorithm:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/glue_algorithm_defs.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/timerfd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/timerfd.h:
 ../../Components/pistache-master/include/pistache/cookie.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/list:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_list.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/list.tcc:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/map:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_tree.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_map.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multimap.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/unordered_set:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/unordered_set.h:
 ../../Components/pistache-master/include/pistache/http_defs.h:
@@ -747,9 +784,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tr1/poly_hermite.tcc:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tr1/poly_laguerre.tcc:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/tr1/riemann_zeta.tcc:
 ../../Components/pistache-master/include/pistache/net.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstring:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/netdb.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/netinet/in.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/socket.h:
@@ -778,7 +812,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 ../../Components/pistache-master/include/pistache/stream.h:
 ../../Components/pistache-master/include/pistache/os.h:
 ../../Components/pistache-master/include/pistache/common.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iostream:
 ../../Components/pistache-master/include/pistache/config.h:
 ../../Components/pistache-master/include/pistache/flags.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/climits:
@@ -817,20 +850,10 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/deque.tcc:
 ../../Components/spdlog-1.x/include/spdlog/details/null_mutex.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/fmt.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/core.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iterator:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stream_iterator.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/core.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format-inl.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstdarg:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/locale:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/time_members.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/messages_members.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/libintl.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/codecvt.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_facets_nonio.tcc:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/locale_conv.h:
 ../../Components/spdlog-1.x/include/spdlog/fmt/bundled/format.h:
 ../../Components/spdlog-1.x/include/spdlog/common-inl.h:
 ../../Components/spdlog-1.x/include/spdlog/details/log_msg.h:
@@ -854,6 +877,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/linux/falloc.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h:
 ../../Components/spdlog-1.x/include/spdlog/sinks/sink.h:
 ../../Components/spdlog-1.x/include/spdlog/formatter.h:
@@ -881,28 +905,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 ../../Components/spdlog-1.x/include/spdlog/sinks/ansicolor_sink-inl.h:
 ../../Components/spdlog-1.x/include/spdlog/sinks/rotating_file_sink-inl.h:
 ../../Logger/DBSink.h:
-../../Logger/LogMsg.h:
-../../Logger/LogLevel.h:
-../../Logger/../DB/DB.h:
-../../Logger/../DB/DBEventData.h:
-../../Logger/../DB/DBSwitchData.h:
-../../Logger/../DB/DBVectorData.h:
-../../Logger/../DB/DBColorData.h:
-../../Logger/../DB/DBIntData.h:
-../../Logger/../DB/DBStringData.h:
-../../Logger/../DB/DBFloatData.h:
-../../Logger/../DB/DBBinaryData.h:
-../../Logger/../DB/DBDeviceConfig.h:
-../../Logger/../DB/DBDeviceConfigItem.h:
-../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
-c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/codecvt:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/stdlib.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/typeindex:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/set:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h:
 ../SensorDataBase.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/cjson/cJSON.h:
 ../SwitchData.h:
@@ -913,19 +915,19 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/cjson/cJSON.h:
 ../StringData.h:
 ../BinaryData.h:
 ../../Components/cpp-base64-master/base64.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h:

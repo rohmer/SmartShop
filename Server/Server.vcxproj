@@ -98,6 +98,9 @@
     <ProjectReference Include="..\Components\pistache-master\Pistache\Pistache.vcxproj">
       <Project>{ea67de9a-fd1e-48bf-8e47-7ac9c1b92337}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
+      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
@@ -143,8 +146,17 @@
     <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
       <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\SwitchClient\SwitchClient.vcxproj">
+      <Project>{45f92464-5dd0-43e2-b6ff-3a71a4b5c6ac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\StatusWidget\StatusWidget.vcxproj">
+      <Project>{d4f10799-0fcf-41e5-9412-b414144a88e7}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\UI\UI.vcxproj">
       <Project>{efb7f748-eef2-449b-b678-6455e8c8d991}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\UIWidget\UIWidget.vcxproj">
+      <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ZeroConf\ZeroConf.vcxproj">
       <Project>{d6d294f0-b266-4b74-8e55-c7abef25896c}</Project>

@@ -1,7 +1,7 @@
 VisualGDB/Debug/_1_/base64.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/cpp-base64-master/base64.cpp \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cpp-base64-master/base64.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/cpp-base64-master/base64.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cpp-base64-master/base64.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/string \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h \
@@ -163,7 +163,7 @@ VisualGDB/Debug/_1_/base64.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/limits \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/stdexcept
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/cpp-base64-master/base64.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/cpp-base64-master/base64.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/string:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h:

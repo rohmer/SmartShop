@@ -1,17 +1,20 @@
 VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
  WindowManager.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/filesystem \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/fs_fwd.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/system_error \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/dlfcn.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h \
+ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/dlfcn.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/filesystem \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/fs_fwd.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/system_error \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/cpu_defines.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/pstl_config.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/error_constants.h \
@@ -32,7 +35,6 @@ VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/floatn.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/floatn-common.h \
- c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdarg.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/wint_t.h \
@@ -266,7 +268,7 @@ VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_color.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_assert.h \
@@ -452,7 +454,7 @@ VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/lv_ime_pinyin.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/lv_file_explorer.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\lvgl.h \
+ ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/lv_barcode.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/bmp/lv_bmp.h \
@@ -596,6 +598,7 @@ VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h \
+ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h \
  ../Components/spdlog-1.x/include/spdlog/sinks/sink.h \
  ../Components/spdlog-1.x/include/spdlog/formatter.h \
@@ -648,20 +651,24 @@ VisualGDB/Debug/WindowManager.o: WindowManager.cpp \
  ../Components/libwpa/wpa_cli_oper/wpa_cli_oper.h \
  ../Components/libwpa/wpa_cli_oper/smartlist.h \
  ../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant/libwpa_cli_wrapper.h \
- ../Components/libwpa/wpa_cli_oper/smartlist.h UIWidget/UIWidget.h
+ ../Components/libwpa/wpa_cli_oper/smartlist.h UIWidget/UIWidget.h \
+ dlclass.hpp dlclass.cpp
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 WindowManager.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/filesystem:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/fs_fwd.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/system_error:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/dlfcn.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/cdefs.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wordsize.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/long-double.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/gnu/stubs-hard.h:
+c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/dlfcn.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/filesystem:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/fs_fwd.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/system_error:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/c++config.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/os_defines.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/cpu_defines.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/pstl/pstl_config.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\10/bits/error_constants.h:
@@ -682,7 +689,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/wchar.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/floatn.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/floatn-common.h:
-c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stddef.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdarg.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/wint_t.h:
@@ -916,7 +922,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/inttypes.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_color.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_assert.h:
@@ -1102,7 +1108,7 @@ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/lv_ime_pinyin.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/lv_file_explorer.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\lvgl.h:
+../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/lv_barcode.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/bmp/lv_bmp.h:
@@ -1246,6 +1252,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h:
+c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h:
 ../Components/spdlog-1.x/include/spdlog/sinks/sink.h:
 ../Components/spdlog-1.x/include/spdlog/formatter.h:
@@ -1309,3 +1316,5 @@ MainWindow.h:
 ../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant/libwpa_cli_wrapper.h:
 ../Components/libwpa/wpa_cli_oper/smartlist.h:
 UIWidget/UIWidget.h:
+dlclass.hpp:
+dlclass.cpp:

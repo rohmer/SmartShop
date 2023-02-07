@@ -35,6 +35,9 @@ MainWindow::MainWindow()
 	updateTimer = lv_timer_create(MainWindow::updateWinTask, 100, NULL);
 	lv_timer_set_repeat_count(updateTimer, -1);
 	
+	tabView = lv_tabview_create(lv_win_get_content(windowObj), LV_DIR_TOP, lv_area_get_size(&lv_win_get_content(windowObj)->coords));
+	nodeTab = lv_tabview_add_tab(windowObj, "Nodes");
+	eventTab = lv_tabview_add_tab(windowObj, "Events");
 }
 
 void MainWindow::updateWinTask(lv_timer_t *timer)

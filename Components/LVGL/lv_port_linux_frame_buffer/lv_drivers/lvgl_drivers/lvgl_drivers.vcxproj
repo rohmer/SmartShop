@@ -85,6 +85,7 @@
     <ClCompile Include="..\win_drv.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\lv_drv_conf.h" />
     <ClInclude Include="..\display\drm.h" />
     <ClInclude Include="..\display\fbdev.h" />
     <ClInclude Include="..\display\GC9A01.h" />

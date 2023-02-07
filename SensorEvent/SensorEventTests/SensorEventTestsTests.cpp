@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <sstream>
+#include "../DB/DB.h"
 #include "SensorEvent.h"
 #include <cjson/cJSON.h>
 #include <CppUTest/CommandLineTestRunner.h>
@@ -246,3 +247,55 @@ TEST(StringTests, FromJSON)
 	STRCMP_EQUAL(name.c_str(), "testVal");
 	STRCMP_EQUAL(id.GetValue().c_str(), "abc123");
 }
+
+TEST_GROUP(DBTests)
+{
+};
+
+TEST(DBTests, IntTest)
+{
+	DB::GetInstance("SmartShop.db");
+	IntData id("IntData", 1234L);
+	id.StoreToDB(1);
+}
+
+TEST(DBTests, StrTest)
+{
+	DB::GetInstance("SmartShop.db");
+	StringData sd("StringData", "Test");
+	sd.StoreToDB(2);
+}
+
+TEST(DBTests, FloatTest)
+{
+	DB::GetInstance("SmartShop.db");
+	FloatData fd("FloatData", 0.123f);
+	fd.StoreToDB(3);
+}
+
+TEST(DBTests, ColorTest)
+{
+	DB::GetInstance("SmartShop.db");
+	ColorData cd(1.0f, 1.0f, 1.0f, 1.0f);
+	cd.StoreToDB(4);
+}
+
+TEST(DBTests, SwitchTest)
+{
+	DB::GetInstance("SmartShop.db");
+	SwitchData sd(1, true);
+	sd.StoreToDB(5);
+}
+
+TEST(DBTests, VectorTest)
+{
+	DB::GetInstance("SmartShop.db");
+	VectorData vd(1.0f,
+		1.0f,
+		1.0f,
+		1.0f,
+		1.0f,
+		1.0f);
+	vd.StoreToDB(6);
+}
+

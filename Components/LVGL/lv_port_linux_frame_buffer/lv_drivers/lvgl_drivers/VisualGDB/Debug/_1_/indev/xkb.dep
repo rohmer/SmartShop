@@ -1,9 +1,9 @@
 VisualGDB/Debug/_1_/indev/xkb.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.h \
+ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h \
+ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
@@ -21,9 +21,9 @@ VisualGDB/Debug/_1_/indev/xkb.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/indev/xkb.h:
+c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_drv_conf.h:
+c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv_conf.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:

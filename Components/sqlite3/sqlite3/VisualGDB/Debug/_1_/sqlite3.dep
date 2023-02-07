@@ -1,5 +1,5 @@
 VisualGDB/Debug/_1_/sqlite3.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/sqlite3/sqlite3.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/sqlite3/sqlite3.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdarg.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \

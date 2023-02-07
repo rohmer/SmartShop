@@ -47,6 +47,8 @@ void WindowManager::Init()
 	
 	runner = new std::thread([this]{tickThread(); });
 	
+	LoadWidgets();
+	
 	mainWindow = new MainWindow();
 }
 
@@ -97,11 +99,44 @@ void WindowManager::WidgetCallback(lv_event_t *event)
 
 void WindowManager::LoadWidgets()
 {
-	for (const auto& entry : std::filesystem::directory_iterator("./UI"))
+	std::filesystem::path cwd = std::filesystem::current_path();
+	std::filesystem::path uiPath = cwd;
+	uiPath /= "UI";
+	
+	for (const std::filesystem::directory_entry& entry : std::filesystem::directory_iterator(uiPath))
 	{
 		if (entry.is_regular_file())
 		{
-			
+			std::filesystem::path p = entry.path();
+			if (p.extension().string() == ".so" && p.filename().string()!="UIWidget.so")
+			{
+				std::stringstream ss;
+				ss << "Attempting to load: " << p.string();
+				log->LogI(ss.str());
+				
+				try
+				{
+					auto dlWidget = new DLClass<UIWidget>(p.string());
+					std::shared_ptr<UIWidget> widget = dlWidget->make_obj();
+					sWidgets wdata;
+					wdata.dataPoints = widget->GetSensorInputs();
+					wdata.isMaximized = false;
+					wdata.widget = widget;
+					wdata.Name = widget->GetName();
+					widgets[widget->GetID()] = wdata;
+					for (std::vector<std::string>::iterator it = widget->GetSensorInputs().begin();
+						it != widget->GetSensorInputs().end();
+						++it)
+					{
+						if (widgetBySource.find(*it) == widgetBySource.end())
+							widgetBySource[*it] = std::vector<std::shared_ptr<UIWidget>>();
+						widgetBySource[*it].push_back(widget);
+					}
+				}
+				catch (std::exception &)
+				{
+				}
+			}
 		}
 	}
 }

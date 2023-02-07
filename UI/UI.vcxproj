@@ -81,6 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dlclass.hpp" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="WindowManager.h" />

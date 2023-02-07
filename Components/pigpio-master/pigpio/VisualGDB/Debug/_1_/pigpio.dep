@@ -1,5 +1,5 @@
 VisualGDB/Debug/_1_/pigpio.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/pigpio.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/pigpio.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdio.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
@@ -190,9 +190,9 @@ VisualGDB/Debug/_1_/pigpio.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/in.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/fnmatch.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/glob.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/pigpio.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/command.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/custom.cext
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/pigpio.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/command.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/custom.cext
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdio.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
@@ -383,6 +383,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/netinet/in.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/in.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/fnmatch.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/glob.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/pigpio.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/command.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/pigpio-master/custom.cext:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/pigpio.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/command.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/pigpio-master/custom.cext:

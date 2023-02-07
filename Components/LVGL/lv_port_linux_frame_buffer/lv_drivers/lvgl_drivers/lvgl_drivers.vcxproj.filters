@@ -14,4 +14,164 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\display\drm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\fbdev.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\GC9A01.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\ILI9341.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\R61581.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\SHARP_MIP.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\SSD1963.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\ST7565.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\UC1610.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gtkdrv\gtkdrv.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\AD_touch.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\evdev.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\FT5406EE8.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\libinput.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\xkb.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\XPT2046.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdl\sdl.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdl\sdl_common.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sdl\sdl_gpu.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wayland\wayland.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\win_drv.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\display\drm.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\fbdev.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\GC9A01.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\ILI9341.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\monitor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\R61581.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\SHARP_MIP.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\SSD1963.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\ST7565.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\UC1610.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gtkdrv\gtkdrv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\AD_touch.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\evdev.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\FT5406EE8.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\keyboard.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\libinput_drv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\mouse.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\mousewheel.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\xkb.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\XPT2046.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lv_drv_conf_template.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdl\sdl.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdl\sdl_common.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sdl\sdl_gpu.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wayland\wayland.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win32drv\win32drv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win_drv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lv_drv_conf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lvgl_drivers-Debug.vgdbsettings" />
+    <None Include="lvgl_drivers-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+    <Text Include="..\wayland\CMakeLists.txt" />
+    <Text Include=".visualgdb\CodeDB\lvgl_drivers-Debug-VisualGDB\PreambleTimestamp.txt" />
+  </ItemGroup>
 </Project>

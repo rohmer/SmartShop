@@ -269,11 +269,11 @@ VisualGDB/Debug/DeviceTestsTests.o: DeviceTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h \
  ../DeviceConfigItem.h ../DeviceEnums.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include-fixed/limits.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include-fixed/syslimits.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/limits.h \
@@ -283,17 +283,17 @@ VisualGDB/Debug/DeviceTestsTests.o: DeviceTestsTests.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/posix2_lim.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/xopen_lim.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/uio_lim.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h \
- C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h \
+ C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdio.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
@@ -572,11 +572,11 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_set.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/stl_multiset.h:
 ../DeviceConfigItem.h:
 ../DeviceEnums.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineTestRunner.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestHarness.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestConfig.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CppUTestGeneratedConfig.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/StandardCLibrary.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include-fixed/limits.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include-fixed/syslimits.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/limits.h:
@@ -586,14 +586,14 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/linux/limits.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/posix2_lim.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/xopen_lim.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/uio_lim.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h:
-C\:/Users/rohme/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/Utest.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/SimpleString.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/UtestMacros.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestResult.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFailure.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestPlugin.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakWarningPlugin.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/MemoryLeakDetectorNewMacros.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestOutput.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/CommandLineArguments.h:
+C\:/Users/RonOhmer/AppData/Local/VisualGDB/TestFrameworks/com.sysprogs.unittest.CppUTest/include/CppUTest/TestFilter.h:

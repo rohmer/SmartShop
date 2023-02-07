@@ -98,6 +98,7 @@ private:
 	
 public:
 	static DB *GetInstance(std::string path = "");
+	~DB();
 	
 	std::shared_ptr<Storage> GetStorage()
 	{

@@ -9,10 +9,10 @@
 class UIWidget
 {
 public:
-    UIWidget(std::vector<std::string> sensorInput);
-    
-    UIWidget(std::string sensorInput);
-
+    UIWidget(std::vector<std::string> sensorInput, std::string Name);  
+    UIWidget(std::string sensorInput, std::string Name);
+	virtual ~UIWidget() = default;
+	
     bool ValidForInput(std::string sensor);
 
     virtual void Init()
@@ -29,10 +29,24 @@ public:
         return id;
     }
 
+	std::vector<std::string> GetSensorInputs()
+	{
+		return sensorInputs;
+	}
+	
+	std::string GetName()
+	{
+		return name;
+	}
+	
+	typedef UIWidget * create_t();
+	typedef void destroy_t(UIWidget *);
+	
 protected:
     std::vector<std::string> sensorInputs;
-    
+	lv_obj_t *baseObject;
 private:
     int id;
+	std::string name;
 	
 };

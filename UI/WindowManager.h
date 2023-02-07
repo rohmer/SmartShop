@@ -1,5 +1,6 @@
 #pragma once
 
+#include <dlfcn.h>
 #include <filesystem>
 #include <map>
 #include <string>
@@ -14,6 +15,7 @@
 #include "Settings.h"
 #include "MainWindow.h"
 #include "UIWidget/UIWidget.h"
+#include "dlclass.hpp"
 
 class WindowManager
 {
@@ -49,10 +51,12 @@ private:
 	struct sWidgets
 	{
 	public:
-		UIWidget *widget;
+		std::shared_ptr<UIWidget> widget;
 		bool isMaximized = false;
 		std::vector<std::string> dataPoints;
+		std::string Name;
 	};
 	
 	std::map<int, sWidgets> widgets;
+	std::map<std::string, std::vector<std::shared_ptr<UIWidget>>> widgetBySource; // 1 - source name, vector (2) list of widget objects
 };

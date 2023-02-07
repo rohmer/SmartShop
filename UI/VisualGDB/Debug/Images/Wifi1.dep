@@ -49,7 +49,7 @@ VisualGDB/Debug/Images/Wifi1.o: Images/Wifi1.c \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_color.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_assert.h \
@@ -235,7 +235,7 @@ VisualGDB/Debug/Images/Wifi1.o: Images/Wifi1.c \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/lv_ime_pinyin.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/lv_file_explorer.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\lvgl.h \
+ ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/lv_barcode.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/../../../lvgl.h \
  ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/bmp/lv_bmp.h \
@@ -325,7 +325,7 @@ c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdarg.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_color.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/hal/../draw/../misc/lv_assert.h:
@@ -511,7 +511,7 @@ c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lv
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/lv_ime_pinyin.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/ime/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/lv_file_explorer.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\lvgl.h:
+../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/others/file_explorer/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/lv_barcode.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/barcode/../../../lvgl.h:
 ../Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/libs/bmp/lv_bmp.h:
