@@ -123,15 +123,7 @@ void WindowManager::LoadWidgets()
 					wdata.isMaximized = false;
 					wdata.widget = widget;
 					wdata.Name = widget->GetName();
-					widgets[widget->GetID()] = wdata;
-					for (std::vector<std::string>::iterator it = widget->GetSensorInputs().begin();
-						it != widget->GetSensorInputs().end();
-						++it)
-					{
-						if (widgetBySource.find(*it) == widgetBySource.end())
-							widgetBySource[*it] = std::vector<std::shared_ptr<UIWidget>>();
-						widgetBySource[*it].push_back(widget);
-					}
+					widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));					
 				}
 				catch (std::exception &)
 				{

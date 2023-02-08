@@ -58,5 +58,4 @@ private:
 	};
 	
 	std::map<int, sWidgets> widgets;
-	std::map<std::string, std::vector<std::shared_ptr<UIWidget>>> widgetBySource; // 1 - source name, vector (2) list of widget objects
 };

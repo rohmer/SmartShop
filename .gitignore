@@ -287,3 +287,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 *.dep
+*.alldeps
+*.log
+*.dat
