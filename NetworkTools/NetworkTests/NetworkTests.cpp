@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 	WifiConfig *config = new WifiConfig();
 	
 	config->flag = 1;
-	strcpy(config->password, "cocoabeans");
-	strcpy(config->ssid, "PoohAlt");
+	strcpy(config->password, "pw");
+	strcpy(config->ssid, "ssid");
 	if (connect_wifi(config) < 0)
 	{
 		

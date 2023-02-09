@@ -297,3 +297,5 @@ ModelManifest.xml
 *.000
 *.alldeps
 *.dep
+VisualGDB/Debug/GenInstall
+*.alldeps

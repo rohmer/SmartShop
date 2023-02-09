@@ -155,4 +155,50 @@ bool InstallLib::InstallPackage(std::string PackageFile)
 	tmpDir /= mktemp("XXXXXX");
 	std::filesystem::create_directory(tmpDir);
 	bool res = unzipPackage(PackageFile, tmpDir);
+	if (!res)
+	{
+		std::filesystem::remove_all(tmpDir);
+		return false;
+	}
+	
+	std::filesystem::path jsonFile(tmpDir);
+	jsonFile /= "package.json";
+	if (!std::filesystem::exists(jsonFile))
+	{
+		std::filesystem::remove_all(tmpDir);
+		return false;
+	}
+	
+	std::fstream istream("package.json");
+	std::stringstream pjson;
+	std::string line;
+	while (getline(istream, line))
+	{
+		pjson << line << "\n";
+	}
+		
+	
+	PackageDescriptor desc;
+	try
+	{
+		cJSON *json = cJSON_Parse(pjson.str().c_str());
+		desc = PackageDescriptor::FromJSON(json);
+	}
+	catch (const std::exception&e)
+	{
+		std::cout << "Failed to parse package.json, " << e.what() << "\n\n";
+		std::filesystem::remove_all(tmpDir);
+		return false;
+	}
+	
+	// Next step is to validate that this is a good install for this machine
+	// 1. Right installation medium for the device
+	// 2. It is a newer version
+	
+	// Then we will exec a shell script that will
+	// 1. Shut down the service
+	// 2. Copy the files over to the service dir
+	// 3. Restart the service
+	// 4. Clean up install detritus
+	
 }

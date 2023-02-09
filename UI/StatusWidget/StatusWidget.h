@@ -21,7 +21,7 @@ public:
 	
 	void Init() override;
 	
-	void Draw(lv_obj_t* parent, uint16_t width, uint16_t height, uint16_t x, uint16_t y) override;
+	void Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y) override;
 
 private:
 	void createObjects(lv_obj_t *parent);
