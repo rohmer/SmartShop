@@ -186,6 +186,7 @@ VisualGDB/Debug/StringData.o: StringData.cpp \
  ../DB/DBSwitchData.h ../DB/DBVectorData.h ../DB/DBColorData.h \
  ../DB/DBIntData.h ../DB/DBStringData.h ../DB/DBFloatData.h \
  ../DB/DBBinaryData.h ../DB/DBDeviceConfig.h ../DB/DBDeviceConfigItem.h \
+ ../DB/DBInstall.h \
  ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef \
@@ -456,6 +457,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/sstream.tcc:
 ../DB/DBBinaryData.h:
 ../DB/DBDeviceConfig.h:
 ../DB/DBDeviceConfigItem.h:
+../DB/DBInstall.h:
 ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef:

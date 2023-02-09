@@ -24,4 +24,9 @@ class InstallLib
 public:
 	static bool CreateInstallPkg(std::string PackageDesc, PackageDescriptor packageDesc, std::string packageOutput);
 	
+	static bool InstallPackage(std::string PackageFile);
+
+private:
+	static bool unzipPackage(std::string PackageFile, std::string tmpDir);
+	static int copy_data(struct archive *ar, struct archive *aw);
 };

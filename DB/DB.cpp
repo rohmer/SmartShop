@@ -7,11 +7,6 @@ DB::DB(std::string path) :
 {
 }
 
-DB::~DB()
-{
-	if (instance)
-		delete(instance);
-}
 DB *DB::GetInstance(std::string path)
 {
 	if (instance == NULL)

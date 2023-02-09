@@ -15,6 +15,7 @@
 #include "DBBinaryData.h"
 #include "DBDeviceConfig.h"
 #include "DBDeviceConfigItem.h"
+#include "DBInstall.h"
 #include "DB.h"
 #include <sqlite_orm.h>
 
@@ -87,7 +88,18 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("dataType", &DBDeviceConfigItem::DataType),
 			make_column("deviceName", &DBDeviceConfigItem::Name),
 			make_column("value", &DBDeviceConfigItem::Value),
-			make_column("ro", &DBDeviceConfigItem::ReadOnly))			
+			make_column("ro", &DBDeviceConfigItem::ReadOnly)),
+		make_table("Software",
+			make_column("id", &DBInstall::ID, primary_key().autoincrement()),
+			make_column("software", &DBInstall::softwareType),
+			make_column("major",&DBInstall::major),
+			make_column("minor",&DBInstall::minor),
+			make_column("build",&DBInstall::buildNum)),
+		make_table("Files",
+			make_column("id", &DBInstallFile::ID, primary_key().autoincrement()),
+			make_column("softwareID", &DBInstallFile::softwareID),
+			make_column("file", &DBInstallFile::file),
+			make_column("checksum", &DBInstallFile::checksum))
 		);
 }
 	
@@ -98,7 +110,6 @@ private:
 	
 public:
 	static DB *GetInstance(std::string path = "");
-	~DB();
 	
 	std::shared_ptr<Storage> GetStorage()
 	{

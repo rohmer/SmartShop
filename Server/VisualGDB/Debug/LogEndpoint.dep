@@ -447,7 +447,7 @@ VisualGDB/Debug/LogEndpoint.o: LogEndpoint.cpp \
  ../Logger/../DB/DBColorData.h ../Logger/../DB/DBIntData.h \
  ../Logger/../DB/DBStringData.h ../Logger/../DB/DBFloatData.h \
  ../Logger/../DB/DBBinaryData.h ../Logger/../DB/DBDeviceConfig.h \
- ../Logger/../DB/DBDeviceConfigItem.h \
+ ../Logger/../DB/DBDeviceConfigItem.h ../Logger/../DB/DBInstall.h \
  ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h \
@@ -913,6 +913,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 ../Logger/../DB/DBBinaryData.h:
 ../Logger/../DB/DBDeviceConfig.h:
 ../Logger/../DB/DBDeviceConfigItem.h:
+../Logger/../DB/DBInstall.h:
 ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h:

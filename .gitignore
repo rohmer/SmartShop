@@ -290,3 +290,10 @@ ModelManifest.xml
 *.alldeps
 *.log
 *.dat
+*.lck
+*.000
+*.001
+*.lck
+*.000
+*.alldeps
+*.dep

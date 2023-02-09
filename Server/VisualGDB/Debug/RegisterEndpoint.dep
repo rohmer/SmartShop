@@ -387,7 +387,7 @@ VisualGDB/Debug/RegisterEndpoint.o: RegisterEndpoint.cpp \
  ../Device/../DB/DBColorData.h ../Device/../DB/DBIntData.h \
  ../Device/../DB/DBStringData.h ../Device/../DB/DBFloatData.h \
  ../Device/../DB/DBBinaryData.h ../Device/../DB/DBDeviceConfig.h \
- ../Device/../DB/DBDeviceConfigItem.h \
+ ../Device/../DB/DBDeviceConfigItem.h ../Device/../DB/DBInstall.h \
  ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h \
@@ -855,6 +855,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/cjson/cJSON.h:
 ../Device/../DB/DBBinaryData.h:
 ../Device/../DB/DBDeviceConfig.h:
 ../Device/../DB/DBDeviceConfigItem.h:
+../Device/../DB/DBInstall.h:
 ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h:

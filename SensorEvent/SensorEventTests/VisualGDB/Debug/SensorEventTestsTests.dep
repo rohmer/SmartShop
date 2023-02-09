@@ -186,6 +186,7 @@ VisualGDB/Debug/SensorEventTestsTests.o: SensorEventTestsTests.cpp \
  ../../DB/../DB/DBIntData.h ../../DB/../DB/DBStringData.h \
  ../../DB/../DB/DBFloatData.h ../../DB/../DB/DBBinaryData.h \
  ../../DB/../DB/DBDeviceConfig.h ../../DB/../DB/DBDeviceConfigItem.h \
+ ../../DB/../DB/DBInstall.h \
  ../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef \
@@ -652,6 +653,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/iostream:
 ../../DB/../DB/DBBinaryData.h:
 ../../DB/../DB/DBDeviceConfig.h:
 ../../DB/../DB/DBDeviceConfigItem.h:
+../../DB/../DB/DBInstall.h:
 ../../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/cstddef:

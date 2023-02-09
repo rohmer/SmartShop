@@ -367,6 +367,7 @@ VisualGDB/Debug/Server.o: Server.cpp \
  ../Logger/../DB/DBIntData.h ../Logger/../DB/DBStringData.h \
  ../Logger/../DB/DBFloatData.h ../Logger/../DB/DBBinaryData.h \
  ../Logger/../DB/DBDeviceConfig.h ../Logger/../DB/DBDeviceConfigItem.h \
+ ../Logger/../DB/DBInstall.h \
  ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h \
@@ -1144,6 +1145,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\10/bits/sstream.tcc:
 ../Logger/../DB/DBBinaryData.h:
 ../Logger/../DB/DBDeviceConfig.h:
 ../Logger/../DB/DBDeviceConfigItem.h:
+../Logger/../DB/DBInstall.h:
 ../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/iso646.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/sqlite3.h:
