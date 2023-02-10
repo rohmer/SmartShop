@@ -17,8 +17,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DB", "DB\DB.vcxproj", "{C79
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SwitchClient", "SwitchClient\SwitchClient.vcxproj", "{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pigpio", "Components\pigpio-master\pigpio\pigpio.vcxproj", "{979F690B-674F-4D69-99BE-A8B2AF3DF50E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SensorEvent", "SensorEvent\SensorEvent.vcxproj", "{F53CF66A-B8C2-49EA-B3B2-A702E4A11384}"
@@ -85,6 +83,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UIWidget", "UI\UIWidget\UIW
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StatusWidget", "UI\StatusWidget\StatusWidget.vcxproj", "{D4F10799-0FCF-41E5-9412-B414144A88E7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeWidget", "UI\NodeWidget\NodeWidget.vcxproj", "{3D2B641D-932D-4D6C-B892-0F28B33B3703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -141,14 +141,6 @@ Global
 		{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.Release|VisualGDB.Build.0 = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
-		{45F92464-5DD0-43E2-B6FF-3A71A4B5C6AC}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -373,6 +365,14 @@ Global
 		{D4F10799-0FCF-41E5-9412-B414144A88E7}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{D4F10799-0FCF-41E5-9412-B414144A88E7}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{D4F10799-0FCF-41E5-9412-B414144A88E7}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -407,6 +407,7 @@ Global
 		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 		{4DA90025-D2CF-4F3E-8731-1EACBF8374C6} = {2E3451D1-F988-428F-BF85-85D932BC141C}
 		{D4F10799-0FCF-41E5-9412-B414144A88E7} = {2E3451D1-F988-428F-BF85-85D932BC141C}
+		{3D2B641D-932D-4D6C-B892-0F28B33B3703} = {2E3451D1-F988-428F-BF85-85D932BC141C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

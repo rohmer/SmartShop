@@ -60,10 +60,7 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
-    <None Include="..\CMakeLists.txt" />
-    <None Include="..\LICENCE.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="..\..\lv_conf.h" />
     <ClCompile Include="..\src\core\lv_disp.c" />
     <ClCompile Include="..\src\core\lv_event.c" />
     <ClCompile Include="..\src\core\lv_group.c" />
@@ -261,7 +258,6 @@
     <ClCompile Include="..\src\widgets\textarea\lv_textarea.c" />
     <ClCompile Include="..\src\widgets\tileview\lv_tileview.c" />
     <ClCompile Include="..\src\widgets\win\lv_win.c" />
-    <ClInclude Include="..\..\lv_conf.h" />
     <ClInclude Include="..\src\lvgl.h" />
     <ClInclude Include="..\src\lv_api_map.h" />
     <ClInclude Include="..\src\lv_conf_internal.h" />

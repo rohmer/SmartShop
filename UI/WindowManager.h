@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <thread>
+#include <unistd.h>
 
 #include <lvgl.h>
 #include <display/fbdev.h>
@@ -27,9 +28,10 @@ public:
 	bool LoadFont(std::string fontName, uint8_t fontSize, std::string filename);
 	lv_font_t* GetFont(std::string fontName, uint8_t fontSize);
 	
-	static void WidgetCallback(lv_event_t *event);
 	void LoadWidgets();
 
+	void WidgetClick(int widgetID);
+	
 private:
 	WindowManager();
 	static WindowManager *instance;

@@ -91,12 +91,6 @@ lv_font_t* WindowManager::GetFont(std::string fontName, uint8_t fontSize)
 	return loadedFonts[ftDesc];
 }
 
-void WindowManager::WidgetCallback(lv_event_t *event)
-{
-	int id=(int)event->user_data;
-
-}
-
 void WindowManager::LoadWidgets()
 {
 	std::filesystem::path cwd = std::filesystem::current_path();
@@ -123,12 +117,35 @@ void WindowManager::LoadWidgets()
 					wdata.isMaximized = false;
 					wdata.widget = widget;
 					wdata.Name = widget->GetName();
-					widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));					
+					//widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));					
 				}
 				catch (std::exception &)
 				{
 				}
 			}
 		}
+	}
+}
+
+void WindowManager::WidgetClick(int WidgetID)
+{
+	if (widgets.find(WidgetID) == widgets.end())
+	{
+		// This is really odd, a widget id we havent seen got called 
+		std::stringstream ss;
+		ss << "Received callback from widget id: " << WidgetID << " which is not registered to the WindowManager";
+		log->LogW(ss.str());
+		return;
+	}
+	
+	if (widgets[WidgetID].isMaximized)
+	{
+		widgets[WidgetID].isMaximized = false;
+		// Redraw it minimized
+	}
+	else
+	{
+		widgets[WidgetID].isMaximized = true;
+		// Redraw it maximized
 	}
 }

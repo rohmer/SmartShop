@@ -109,14 +109,7 @@ VisualGDB/Debug/_1_/src/widgets/animimg/lv_animimg.o: \
  c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\core\lv_group.h \
  c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_ll.h \
  c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_draw.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_decoder.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_txt.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_log.h \
- c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_anim.h
+ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_draw.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
 C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/widgets/animimg/lv_animimg.h:
 c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\widgets\img\lv_img.h:
@@ -227,10 +220,3 @@ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_fram
 c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_ll.h:
 c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h:
 c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_draw.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\draw\lv_img_decoder.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_assert.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_fs.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_txt.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_math.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_log.h:
-c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\misc\lv_anim.h:

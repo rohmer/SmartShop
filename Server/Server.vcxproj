@@ -146,9 +146,6 @@
     <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
       <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\SwitchClient\SwitchClient.vcxproj">
-      <Project>{45f92464-5dd0-43e2-b6ff-3a71a4b5c6ac}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\UI\StatusWidget\StatusWidget.vcxproj">
       <Project>{d4f10799-0fcf-41e5-9412-b414144a88e7}</Project>
     </ProjectReference>

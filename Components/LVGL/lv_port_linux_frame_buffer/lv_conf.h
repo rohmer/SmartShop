@@ -32,7 +32,7 @@
 #define LV_USE_BUILTIN_MALLOC 1
 #if LV_USE_BUILTIN_MALLOC
     /*Size of the memory available for `lv_malloc()` in bytes (>= 2kB)*/
-    #define LV_MEM_SIZE (128U * 1024U)          /*[bytes]*/
+    #define LV_MEM_SIZE (128U * 1024U*32U)          /*[bytes]*/
 
     /*Size of the memory expand for `lv_malloc()` in bytes*/
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -459,7 +459,7 @@
 
 /*Documentation of the widgets: https://docs.lvgl.io/latest/en/html/widgets/index.html*/
 
-#define LV_USE_ANIMIMG    1
+#define LV_USE_ANIMIMG    0
 
 #define LV_USE_ARC        1
 

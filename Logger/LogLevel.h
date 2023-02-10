@@ -2,7 +2,7 @@
 
 enum ELogLevel
 {
-	INFO,
-	WARN,
-	CRITICAL
+	INFO=0,
+	WARN=1,
+	CRITICAL=2
 };

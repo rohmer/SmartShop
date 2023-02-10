@@ -44,7 +44,7 @@ public:
 	
 protected:
     std::vector<std::string> sensorInputs;
-	lv_obj_t *baseObject;
+	lv_obj_t *baseObject, *minButton, *minBtnTxt;
 private:
     int id;
 	std::string name;

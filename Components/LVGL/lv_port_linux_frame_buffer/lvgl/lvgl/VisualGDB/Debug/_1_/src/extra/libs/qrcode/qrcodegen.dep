@@ -1,5 +1,5 @@
 VisualGDB/Debug/_1_/src/extra/libs/qrcode/qrcodegen.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/assert.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/features.h \
@@ -54,7 +54,7 @@ VisualGDB/Debug/_1_/src/extra/libs/qrcode/qrcodegen.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/locale_t.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/__locale_t.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdbool.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h \
@@ -114,7 +114,7 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/string.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/locale_t.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/types/__locale_t.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/strings.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/libs/qrcode/qrcodegen.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdbool.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h:

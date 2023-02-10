@@ -1,8 +1,8 @@
 VisualGDB/Debug/_1_/src/extra/others/fragment/lv_fragment_manager.o: \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment_manager.c \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment_manager.c \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h \
- C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
+ C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment.h \
+ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h \
  c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h \
@@ -19,10 +19,11 @@ VisualGDB/Debug/_1_/src/extra/others/fragment/lv_fragment_manager.o: \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h \
- c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h
+ c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h \
+ ../../lv_conf.h
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdc-predef.h:
-C\:/Users/rohme/OneDrive/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
+C\:/Users/RonOhmer/Documents/GitHub/SmartShop/Components/LVGL/lv_port_linux_frame_buffer/lvgl/src/extra/others/fragment/lv_fragment.h:
+c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_internal.h:
 c\:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\10\include/stdint.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/stdint.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/libc-header-start.h:
@@ -39,4 +40,5 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/wchar.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-intn.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/stdint-uintn.h:
-c\:\users\rohme\onedrive\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h:
+c\:\users\ronohmer\documents\github\smartshop\components\lvgl\lv_port_linux_frame_buffer\lvgl\src\lv_conf_kconfig.h:
+../../lv_conf.h:

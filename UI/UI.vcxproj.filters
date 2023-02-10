@@ -41,9 +41,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WindowManager.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="MainWindow.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -52,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="dlclass.hpp">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Resource files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
