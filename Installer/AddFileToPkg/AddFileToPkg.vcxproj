@@ -62,9 +62,6 @@
     <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
       <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\libarchive-master\libarchive\libarchive\libarchive.vcxproj">
-      <Project>{732856a6-b443-4e9c-95fd-acbfec916881}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\Components\md5-master\MD5\MD5.vcxproj">
       <Project>{9500ad59-5d75-4d02-82f6-8948b7788191}</Project>
     </ProjectReference>

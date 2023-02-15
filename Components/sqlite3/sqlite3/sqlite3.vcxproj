@@ -40,12 +40,12 @@
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
       <AdditionalIncludeDirectories>;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;HAVE_STDIO_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_INTTYPES_H=1;HAVE_STRINGS_H=1;DHAVE_SYS_TYPES_H=1;HAVE_UNISTD_H=1;STDC_HEADERS=1;HAVE_DLFCN_H=1;;HAVE_FDATASYNC=1;HAVE_USLEEP=1;HAVE_LOCALTIME_R=1;HAVE_GMTIME_R=1;HAVE_DECL_STRERROR_R=1;HAVE_STRERROR_R=1;HAVE_POSIX_FALLOCATE=1;HAVE_ZLIB_H=1;_REENTRANT=1;SQLITE_THREADSAFE=1;SQLITE_ENABLE_FTS4;SQLITE_ENABLE_FTS5;SQLITE_ENABLE_RTREE;SQLITE_ENABLE_GEOPOLY;SQLITE_HAVE_ZLIB;HAVE_STDINT_H=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;HAVE_STDIO_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_INTTYPES_H=1;HAVE_STRINGS_H=1;DHAVE_SYS_TYPES_H=1;HAVE_UNISTD_H=1;STDC_HEADERS=1;HAVE_DLFCN_H=1;HAVE_FDATASYNC=1;HAVE_USLEEP=1;HAVE_LOCALTIME_R=1;HAVE_GMTIME_R=1;HAVE_DECL_STRERROR_R=1;HAVE_STRERROR_R=1;HAVE_POSIX_FALLOCATE=1;HAVE_ZLIB_H=1;_REENTRANT=1;SQLITE_THREADSAFE=1;SQLITE_ENABLE_FTS4;SQLITE_ENABLE_FTS5;SQLITE_ENABLE_RTREE;SQLITE_ENABLE_GEOPOLY;SQLITE_HAVE_ZLIB;HAVE_STDINT_H=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>dl;pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
     </Link>
   </ItemDefinitionGroup>

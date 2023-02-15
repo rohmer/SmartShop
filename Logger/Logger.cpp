@@ -10,7 +10,7 @@ Logger::Logger()
 	logPtr->sinks().push_back(rolling);
 }
 
-void Logger::Init(bool isServer)
+void Logger::Init(bool isServer, spdlog::level::level_enum logLevel)
 {
 	if (isServer)
 	{
@@ -18,6 +18,10 @@ void Logger::Init(bool isServer)
 		sink->set_level(spdlog::level::warn);
 		logPtr->sinks().push_back(sink);	
 	}
+	
+	
+	for (int i = 0; i < logPtr->sinks().size(); i++)
+		logPtr->sinks()[i].get()->set_level(logLevel);
 }
 
 Logger *Logger::GetInstance()

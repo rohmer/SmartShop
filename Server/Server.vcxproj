@@ -44,7 +44,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>crypto;dl;ssl;sqlite3;atomic;freetype;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>crypto;dl;ssl;sqlite3;atomic;freetype;pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -73,9 +73,6 @@
     </ProjectReference>
     <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
       <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\libarchive-master\libarchive\libarchive\libarchive.vcxproj">
-      <Project>{732856a6-b443-4e9c-95fd-acbfec916881}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
       <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>

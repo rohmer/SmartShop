@@ -20,7 +20,7 @@ public:
 	
 	void Log(ELogLevel severity, std::string msg);
 	
-	void Init(bool isServer = false);
+	void Init(bool isServer = false, spdlog::level::level_enum logLevel = spdlog::level::warn);
 private:
 	Logger();
 	static Logger *instance;

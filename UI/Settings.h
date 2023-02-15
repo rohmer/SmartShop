@@ -1,5 +1,5 @@
 #pragma once
 
-#define WIDTH 800
-#define HEIGHT 480
+#define WIDTH 1024
+#define HEIGHT 600
 #define DISP_BUF_SIZE 256*1024

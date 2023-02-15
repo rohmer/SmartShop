@@ -66,6 +66,9 @@
     <ClCompile Include="Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Components\pistache-master\Pistache\Pistache.vcxproj">
+      <Project>{ea67de9a-fd1e-48bf-8e47-7ac9c1b92337}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

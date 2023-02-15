@@ -23,4 +23,9 @@
     <None Include="UIWidget-Debug.vgdbsettings" />
     <None Include="UIWidget-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UIWidget.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

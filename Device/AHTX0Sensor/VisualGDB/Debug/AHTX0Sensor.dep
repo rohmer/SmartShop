@@ -394,7 +394,6 @@ VisualGDB/Debug/AHTX0Sensor.o: AHTX0Sensor.cpp \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h \
- c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h \
  c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h \
  ../../Components/spdlog-1.x/include/spdlog/details/backtracer.h \
  ../../Components/spdlog-1.x/include/spdlog/details/log_msg_buffer.h \
@@ -843,7 +842,6 @@ c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include/linux/falloc.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/sys/syscall.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-eabi.h:
-c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/asm/unistd-common.h:
 c\:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf/bits/syscall.h:
 ../../Components/spdlog-1.x/include/spdlog/details/backtracer.h:
 ../../Components/spdlog-1.x/include/spdlog/details/log_msg_buffer.h:
