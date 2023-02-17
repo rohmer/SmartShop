@@ -25,11 +25,9 @@ MainWindow::MainWindow()
 #else
 	lv_label_set_text(appTitle, "SmartShop Server");
 #endif
-	
 	timeString = lv_label_create(lv_win_get_header(windowObj));
 	
 	wifiStrIcon=lv_img_create(lv_win_get_header(windowObj));
-	
 	wifiNetworkLabel = lv_label_create(lv_win_get_header(windowObj));
 	
 	updateTimer = lv_timer_create(MainWindow::updateWinTask, 100, NULL);

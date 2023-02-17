@@ -19,6 +19,6 @@ class LogEndpoint
 public:
 	LogEndpoint()
 	{};
-	static Pistache::Rest::Route::Result  ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response);
+	static void ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response);
 
 };

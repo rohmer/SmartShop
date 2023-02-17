@@ -7,7 +7,7 @@
 *.alldeps
 CodeDB/
 GlobalFileTable.*
-
+.visualgdb/
 
 # User-specific files
 *.suo
@@ -245,5 +245,3 @@ ModelManifest.xml
 
 # Paket dependency manager
 .paket/paket.exe
-
-

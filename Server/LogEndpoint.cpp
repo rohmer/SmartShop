@@ -1,6 +1,6 @@
 #include "LogEndpoint.h"
 
-Pistache::Rest::Route::Result  LogEndpoint::ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response)
+void LogEndpoint::ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response)
 {
 	std::string body = request.body();
 	
@@ -13,7 +13,6 @@ Pistache::Rest::Route::Result  LogEndpoint::ExecLogEndpoint(const Rest::Request 
 	{
 		Logger::GetInstance()->LogW("Error parsing log message");
 		response.send(Http::Code::Not_Acceptable);
-		return Rest::Route::Result::Failure;
 	}
 	
 	LogMsg logmsg;
@@ -29,5 +28,4 @@ Pistache::Rest::Route::Result  LogEndpoint::ExecLogEndpoint(const Rest::Request 
 		logmsg.Timestamp = time(NULL);
 	DB::GetInstance()->GetStorage()->insert(logmsg);
 	response.send(Http::Code::Ok);
-	return Rest::Route::Result::Ok;
 }

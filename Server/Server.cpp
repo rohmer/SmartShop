@@ -7,10 +7,15 @@ Server::Server()
 	log->Init();
 	
 	restServer = new RESTServer(8080);
-	restServer->RegisterEndpoint("/log", RESTServer::POST, LogEndpoint::ExecLogEndpoint);
+	
+	Pistache::Rest::Routes::Post(restServer->GetRouter(), 
+		"/log", 
+		Pistache::Rest::Routes::bind(LogEndpoint::ExecLogEndpoint));
+	
+	/*restServer->RegisterEndpoint("/log", RESTServer::POST, LogEndpoint::ExecLogEndpoint);
 	restServer->RegisterEndpoint("/register", RESTServer::POST, RegisterEndpoint::ExecRegisterEndpoint);
 	restServer->RegisterEndpoint("/event", RESTServer::POST, EventEndpoint::ExecEventEndpoint);
-
+*/
 	Capabilities caps;
 	caps.AddCap(Capabilities::CAP_SERVER);
 #ifdef USE_UI

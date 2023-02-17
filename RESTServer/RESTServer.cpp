@@ -7,38 +7,17 @@ RESTServer::RESTServer(unsigned int port)
 	auto opts = Pistache::Http::Endpoint::options()
                         .threads(static_cast<int>(4));
 	httpEndpoint->init(opts);
+	
+	Pistache::Rest::Routes::Get(router, "/hello", Pistache::Rest::Routes::bind(&RESTServer::hello));
 	httpEndpoint->setHandler(router.handler());
 	
 	log = Logger::GetInstance();
 	log->LogI("RESTServer Created");
 }
 
-void RESTServer::RegisterEndpoint(std::string path, 
-	eRestMethod method, 
-	std::function<Pistache::Rest::Route::Result(Pistache::Rest::Request,Pistache::Http::ResponseWriter)> restMethod)
+void RESTServer::hello(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) 
 {
-	switch (method)
-	{
-	case DELETE:
-		Pistache::Rest::Routes::Delete(router, path, restMethod);
-		break;
-	case GET:
-		Pistache::Rest::Routes::Get(router, path, restMethod);
-		break;
-	case PATCH:
-		Pistache::Rest::Routes::Patch(router, path, restMethod);
-		break;
-	case POST:
-		Pistache::Rest::Routes::Post(router, path, restMethod);
-		break;
-	case PUT:
-		Pistache::Rest::Routes::Put(router, path, restMethod);
-		break;
-	}
-	
-	std::stringstream ss;
-	ss << "Registered route: " << path << " as type: " << method;
-	log->LogI(ss.str());
+	response.send(Pistache::Http::Code::Ok, "world!");
 }
 
 void RESTServer::Start()

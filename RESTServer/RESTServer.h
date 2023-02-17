@@ -24,12 +24,13 @@ public:
 	};
 	
 	RESTServer(unsigned int port);
-	void RegisterEndpoint(std::string path, 
-		eRestMethod method, 
-		std::function<Pistache::Rest::Route::Result(Pistache::Rest::Request, Pistache::Http::ResponseWriter)>);
 	void Start();
 	void Shutdown();
-	
+	Pistache::Rest::Router GetRouter()
+	{
+		return router;
+	}
+
 private:
 	std::shared_ptr<Pistache::Http::Endpoint> httpEndpoint;
 	Logger *log;
