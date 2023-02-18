@@ -4,12 +4,10 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
-
-#include <pistache/endpoint.h>
-#include <pistache/http.h>
-#include <pistache/router.h>
+#include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
 
 #include "../Logger/Logger.h"
+
 
 class RESTServer
 {
@@ -26,15 +24,9 @@ public:
 	RESTServer(unsigned int port);
 	void Start();
 	void Shutdown();
-	Pistache::Rest::Router GetRouter()
-	{
-		return router;
-	}
 	
-	void InitHandler();
 	
 private:
-	std::shared_ptr<Pistache::Http::Endpoint> httpEndpoint;
-	Logger *log;
-	Pistache::Rest::Router router;
+	httpserver::webserver ws;
+
 };

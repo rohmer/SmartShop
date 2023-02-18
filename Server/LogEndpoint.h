@@ -3,22 +3,17 @@
 #include <string>
 #include <algorithm>
 
-#include <pistache/endpoint.h>
-#include <pistache/http.h>
-#include <pistache/router.h>
 #include <cjson/cJSON.h>
+#include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
 
 #include "Logger.h"
 #include "LogMsg.h"
 #include "DB.h"
 
-using namespace Pistache;
 
-class LogEndpoint
+class LogEndpoint : public httpserver::http_resource
 {
 public:
-	LogEndpoint()
-	{};
-	void ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response);
+	std::shared_ptr<httpserver::http_response> render_POST(const httpserver::http_request&);
 
 };

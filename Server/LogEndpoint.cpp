@@ -1,6 +1,6 @@
 #include "LogEndpoint.h"
 
-void LogEndpoint::ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response)
+std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpserver::http_request &);
 {
 	std::string body = request.body();
 	
