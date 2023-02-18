@@ -85,6 +85,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeWidget", "UI\NodeWidget
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{34C2FA0E-FF32-4016-8048-A1B0925D6596}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{38B73E6C-3319-4D46-92BD-DF438413BFF6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmicrohttpd", "Components\WebServer\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj", "{E450FD90-29D3-4BBA-8378-0AA2A3008635}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhttpserver", "Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj", "{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -373,6 +379,22 @@ Global
 		{34C2FA0E-FF32-4016-8048-A1B0925D6596}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{34C2FA0E-FF32-4016-8048-A1B0925D6596}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{34C2FA0E-FF32-4016-8048-A1B0925D6596}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -407,6 +429,9 @@ Global
 		{4DA90025-D2CF-4F3E-8731-1EACBF8374C6} = {2E3451D1-F988-428F-BF85-85D932BC141C}
 		{D4F10799-0FCF-41E5-9412-B414144A88E7} = {2E3451D1-F988-428F-BF85-85D932BC141C}
 		{3D2B641D-932D-4D6C-B892-0F28B33B3703} = {2E3451D1-F988-428F-BF85-85D932BC141C}
+		{38B73E6C-3319-4D46-92BD-DF438413BFF6} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
+		{E450FD90-29D3-4BBA-8378-0AA2A3008635} = {38B73E6C-3319-4D46-92BD-DF438413BFF6}
+		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374} = {38B73E6C-3319-4D46-92BD-DF438413BFF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

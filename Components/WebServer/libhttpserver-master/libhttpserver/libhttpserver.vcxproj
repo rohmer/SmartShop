@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../src;../../libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;HAVE_CONFIG_H=1;USE_FASTOPEN=1;HTTPSERVER_COMPILATION;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="libhttpserver-Debug.vgdbsettings" />
+    <None Include="libhttpserver-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\basic_auth_fail_response.cpp" />
+    <ClCompile Include="..\src\deferred_response.cpp" />
+    <ClCompile Include="..\src\details\http_endpoint.cpp" />
+    <ClCompile Include="..\src\digest_auth_fail_response.cpp" />
+    <ClCompile Include="..\src\file_info.cpp" />
+    <ClCompile Include="..\src\file_response.cpp" />
+    <ClCompile Include="..\src\http_request.cpp" />
+    <ClCompile Include="..\src\http_resource.cpp" />
+    <ClCompile Include="..\src\http_response.cpp" />
+    <ClCompile Include="..\src\http_utils.cpp" />
+    <ClCompile Include="..\src\string_response.cpp" />
+    <ClCompile Include="..\src\string_utilities.cpp" />
+    <ClCompile Include="..\src\webserver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\gettext.h" />
+    <ClInclude Include="..\src\httpserver.hpp" />
+    <ClInclude Include="..\src\httpserver\basic_auth_fail_response.hpp" />
+    <ClInclude Include="..\src\httpserver\create_webserver.hpp" />
+    <ClInclude Include="..\src\httpserver\deferred_response.hpp" />
+    <ClInclude Include="..\src\httpserver\details\http_endpoint.hpp" />
+    <ClInclude Include="..\src\httpserver\details\modded_request.hpp" />
+    <ClInclude Include="..\src\httpserver\digest_auth_fail_response.hpp" />
+    <ClInclude Include="..\src\httpserver\file_info.hpp" />
+    <ClInclude Include="..\src\httpserver\file_response.hpp" />
+    <ClInclude Include="..\src\httpserver\http_request.hpp" />
+    <ClInclude Include="..\src\httpserver\http_resource.hpp" />
+    <ClInclude Include="..\src\httpserver\http_response.hpp" />
+    <ClInclude Include="..\src\httpserver\http_utils.hpp" />
+    <ClInclude Include="..\src\httpserver\string_response.hpp" />
+    <ClInclude Include="..\src\httpserver\string_utilities.hpp" />
+    <ClInclude Include="..\src\httpserver\webserver.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
+      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

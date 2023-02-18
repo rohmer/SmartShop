@@ -10,7 +10,7 @@ Server::Server()
 	
 	Pistache::Rest::Routes::Post(restServer->GetRouter(), 
 		"/log", 
-		Pistache::Rest::Routes::bind(LogEndpoint::ExecLogEndpoint));
+		Pistache::Rest::Routes::bind(&LogEndpoint::ExecLogEndpoint));
 	
 	/*restServer->RegisterEndpoint("/log", RESTServer::POST, LogEndpoint::ExecLogEndpoint);
 	restServer->RegisterEndpoint("/register", RESTServer::POST, RegisterEndpoint::ExecRegisterEndpoint);

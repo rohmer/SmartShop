@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{E450FD90-29D3-4BBA-8378-0AA2A3008635}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../src/include;..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="libmicrohttpd-Debug.vgdbsettings" />
+    <None Include="libmicrohttpd-Release.vgdbsettings" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\lib\action_continue.c" />
+    <ClCompile Include="..\src\lib\action_from_response.c" />
+    <ClCompile Include="..\src\lib\action_parse_post.c" />
+    <ClCompile Include="..\src\lib\action_process_upload.c" />
+    <ClCompile Include="..\src\lib\action_suspend.c" />
+    <ClCompile Include="..\src\lib\connection_add.c" />
+    <ClCompile Include="..\src\lib\connection_call_handlers.c" />
+    <ClCompile Include="..\src\lib\connection_cleanup.c" />
+    <ClCompile Include="..\src\lib\connection_close.c" />
+    <ClCompile Include="..\src\lib\connection_finish_forward.c" />
+    <ClCompile Include="..\src\lib\connection_info.c" />
+    <ClCompile Include="..\src\lib\connection_options.c" />
+    <ClCompile Include="..\src\lib\connection_update_last_activity.c" />
+    <ClCompile Include="..\src\lib\daemon_close_all_connections.c" />
+    <ClCompile Include="..\src\lib\daemon_create.c" />
+    <ClCompile Include="..\src\lib\daemon_destroy.c" />
+    <ClCompile Include="..\src\lib\daemon_epoll.c" />
+    <ClCompile Include="..\src\lib\daemon_get_timeout.c" />
+    <ClCompile Include="..\src\lib\daemon_info.c" />
+    <ClCompile Include="..\src\lib\daemon_ip_limit.c" />
+    <ClCompile Include="..\src\lib\daemon_options.c" />
+    <ClCompile Include="..\src\lib\daemon_poll.c" />
+    <ClCompile Include="..\src\lib\daemon_quiesce.c" />
+    <ClCompile Include="..\src\lib\daemon_run.c" />
+    <ClCompile Include="..\src\lib\daemon_select.c" />
+    <ClCompile Include="..\src\lib\daemon_start.c" />
+    <ClCompile Include="..\src\lib\init.c" />
+    <ClCompile Include="..\src\lib\internal.c" />
+    <ClCompile Include="..\src\lib\memorypool.c" />
+    <ClCompile Include="..\src\lib\mhd_compat.c" />
+    <ClCompile Include="..\src\lib\mhd_itc.c" />
+    <ClCompile Include="..\src\lib\mhd_mono_clock.c" />
+    <ClCompile Include="..\src\lib\mhd_sockets.c" />
+    <ClCompile Include="..\src\lib\mhd_str.c" />
+    <ClCompile Include="..\src\lib\mhd_threads.c" />
+    <ClCompile Include="..\src\lib\panic.c" />
+    <ClCompile Include="..\src\lib\reason_phrase.c" />
+    <ClCompile Include="..\src\lib\request.c" />
+    <ClCompile Include="..\src\lib\request_info.c" />
+    <ClCompile Include="..\src\lib\request_resume.c" />
+    <ClCompile Include="..\src\lib\response.c" />
+    <ClCompile Include="..\src\lib\response_for_upgrade.c" />
+    <ClCompile Include="..\src\lib\response_from_buffer.c" />
+    <ClCompile Include="..\src\lib\response_from_callback.c" />
+    <ClCompile Include="..\src\lib\response_from_fd.c" />
+    <ClCompile Include="..\src\lib\response_options.c" />
+    <ClCompile Include="..\src\lib\sysfdsetsize.c" />
+    <ClCompile Include="..\src\lib\tsearch.c" />
+    <ClCompile Include="..\src\lib\upgrade_process.c" />
+    <ClCompile Include="..\src\lib\version.c" />
+    <ClInclude Include="..\src\include\autoinit_funcs.h" />
+    <ClInclude Include="..\src\include\mhd_options.h" />
+    <ClInclude Include="..\src\include\microhttpd.h" />
+    <ClInclude Include="..\src\include\microhttpd2.h" />
+    <ClInclude Include="..\src\include\microhttpd_tls.h" />
+    <ClInclude Include="..\src\include\microhttpd_ws.h" />
+    <ClInclude Include="..\src\include\platform.h" />
+    <ClInclude Include="..\src\lib\connection_add.h" />
+    <ClInclude Include="..\src\lib\connection_call_handlers.h" />
+    <ClInclude Include="..\src\lib\connection_cleanup.h" />
+    <ClInclude Include="..\src\lib\connection_close.h" />
+    <ClInclude Include="..\src\lib\connection_finish_forward.h" />
+    <ClInclude Include="..\src\lib\connection_update_last_activity.h" />
+    <ClInclude Include="..\src\lib\daemon_close_all_connections.h" />
+    <ClInclude Include="..\src\lib\daemon_epoll.h" />
+    <ClInclude Include="..\src\lib\daemon_ip_limit.h" />
+    <ClInclude Include="..\src\lib\daemon_poll.h" />
+    <ClInclude Include="..\src\lib\daemon_select.h" />
+    <ClInclude Include="..\src\lib\init.h" />
+    <ClInclude Include="..\src\lib\internal.h" />
+    <ClInclude Include="..\src\lib\memorypool.h" />
+    <ClInclude Include="..\src\lib\mhd_assert.h" />
+    <ClInclude Include="..\src\lib\mhd_byteorder.h" />
+    <ClInclude Include="..\src\lib\mhd_compat.h" />
+    <ClInclude Include="..\src\lib\mhd_itc.h" />
+    <ClInclude Include="..\src\lib\mhd_itc_types.h" />
+    <ClInclude Include="..\src\lib\mhd_limits.h" />
+    <ClInclude Include="..\src\lib\mhd_locks.h" />
+    <ClInclude Include="..\src\lib\mhd_mono_clock.h" />
+    <ClInclude Include="..\src\lib\mhd_sockets.h" />
+    <ClInclude Include="..\src\lib\mhd_str.h" />
+    <ClInclude Include="..\src\lib\mhd_threads.h" />
+    <ClInclude Include="..\src\lib\request_resume.h" />
+    <ClInclude Include="..\src\lib\sysfdsetsize.h" />
+    <ClInclude Include="..\src\lib\tsearch.h" />
+    <ClInclude Include="..\src\lib\upgrade_process.h" />
+    <ClInclude Include="..\src\microhttpd\base64.h" />
+    <ClInclude Include="..\src\microhttpd\connection.h" />
+    <ClInclude Include="..\src\microhttpd\connection_https.h" />
+    <ClInclude Include="..\src\microhttpd\internal.h" />
+    <ClInclude Include="..\src\microhttpd\md5.h" />
+    <ClInclude Include="..\src\microhttpd\memorypool.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_align.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_assert.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_bithelpers.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_byteorder.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_compat.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_itc.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_itc_types.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_limits.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_locks.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_mono_clock.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_send.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_sockets.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_str.h" />
+    <ClInclude Include="..\src\microhttpd\mhd_threads.h" />
+    <ClInclude Include="..\src\microhttpd\response.h" />
+    <ClInclude Include="..\src\microhttpd\sha1.h" />
+    <ClInclude Include="..\src\microhttpd\sha256.h" />
+    <ClInclude Include="..\src\microhttpd\sysfdsetsize.h" />
+    <ClInclude Include="..\src\microhttpd\test_helpers.h" />
+    <ClInclude Include="..\src\microhttpd\tsearch.h" />
+    <ClInclude Include="..\src\microhttpd_ws\sha1.h" />
+    <ClInclude Include="..\src\testcurl\gauger.h" />
+    <ClInclude Include="..\src\testcurl\mhd_has_in_name.h" />
+    <ClInclude Include="..\src\testcurl\https\tls_test_common.h" />
+    <ClInclude Include="..\src\testcurl\https\tls_test_keys.h" />
+  </ItemGroup>
+</Project>

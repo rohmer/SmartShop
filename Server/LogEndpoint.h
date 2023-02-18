@@ -19,6 +19,6 @@ class LogEndpoint
 public:
 	LogEndpoint()
 	{};
-	static void ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response);
+	void ExecLogEndpoint(const Rest::Request &request, Http::ResponseWriter response);
 
 };

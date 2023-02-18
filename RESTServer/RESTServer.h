@@ -30,7 +30,9 @@ public:
 	{
 		return router;
 	}
-
+	
+	void InitHandler();
+	
 private:
 	std::shared_ptr<Pistache::Http::Endpoint> httpEndpoint;
 	Logger *log;

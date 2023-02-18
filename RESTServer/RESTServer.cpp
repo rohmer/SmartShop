@@ -8,16 +8,13 @@ RESTServer::RESTServer(unsigned int port)
                         .threads(static_cast<int>(4));
 	httpEndpoint->init(opts);
 	
-	Pistache::Rest::Routes::Get(router, "/hello", Pistache::Rest::Routes::bind(&RESTServer::hello));
-	httpEndpoint->setHandler(router.handler());
-	
 	log = Logger::GetInstance();
 	log->LogI("RESTServer Created");
 }
 
-void RESTServer::hello(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) 
+void RESTServer::InitHandler()
 {
-	response.send(Pistache::Http::Code::Ok, "world!");
+	httpEndpoint->setHandler(router.handler());
 }
 
 void RESTServer::Start()
