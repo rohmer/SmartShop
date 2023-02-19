@@ -45,9 +45,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>microhttpd;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -94,11 +94,6 @@
     <ClInclude Include="..\src\httpserver\string_response.hpp" />
     <ClInclude Include="..\src\httpserver\string_utilities.hpp" />
     <ClInclude Include="..\src\httpserver\webserver.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
-      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

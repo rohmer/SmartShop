@@ -40,14 +40,14 @@
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
       <AdditionalIncludeDirectories>../src/include;..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;HAVE_CONFIG_H=1;BUILD_MHD_LIB=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -115,6 +115,30 @@
     <ClCompile Include="..\src\lib\tsearch.c" />
     <ClCompile Include="..\src\lib\upgrade_process.c" />
     <ClCompile Include="..\src\lib\version.c" />
+    <ClCompile Include="..\src\microhttpd\base64.c" />
+    <ClCompile Include="..\src\microhttpd\basicauth.c" />
+    <ClCompile Include="..\src\microhttpd\connection.c" />
+    <ClCompile Include="..\src\microhttpd\connection_https.c" />
+    <ClCompile Include="..\src\microhttpd\daemon.c" />
+    <ClCompile Include="..\src\microhttpd\digestauth.c" />
+    <ClCompile Include="..\src\microhttpd\internal.c" />
+    <ClCompile Include="..\src\microhttpd\md5.c" />
+    <ClCompile Include="..\src\microhttpd\memorypool.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_compat.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_itc.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_mono_clock.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_send.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_sockets.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_str.c" />
+    <ClCompile Include="..\src\microhttpd\mhd_threads.c" />
+    <ClCompile Include="..\src\microhttpd\postprocessor.c" />
+    <ClCompile Include="..\src\microhttpd\reason_phrase.c" />
+    <ClCompile Include="..\src\microhttpd\response.c" />
+    <ClCompile Include="..\src\microhttpd\sha1.c" />
+    <ClCompile Include="..\src\microhttpd\sha256.c" />
+    <ClCompile Include="..\src\microhttpd\sysfdsetsize.c" />
+    <ClCompile Include="..\src\microhttpd\tsearch.c" />
+    <ClInclude Include="..\MHD_config.h" />
     <ClInclude Include="..\src\include\autoinit_funcs.h" />
     <ClInclude Include="..\src\include\mhd_options.h" />
     <ClInclude Include="..\src\include\microhttpd.h" />

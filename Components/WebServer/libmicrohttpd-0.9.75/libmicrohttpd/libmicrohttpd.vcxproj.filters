@@ -63,87 +63,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\examples\authorization_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\benchmark.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\benchmark_https.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\chunked_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\demo.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\demo_https.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\digest_auth_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\dual_stack_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\fileserver_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\fileserver_example_dirs.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\fileserver_example_external_select.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\https_fileserver_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\http_chunked_compression.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\http_compression.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\minimal_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\minimal_example_comet.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\minimal_example_empty.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\minimal_example_empty_tls.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\msgs_i18n.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\post_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\querystring_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\refuse_post_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\suspend_resume_epoll.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\timeout.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\upgrade_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\websocket_chatserver_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\examples\websocket_threaded_example.c">
-      <Filter>Source files\examples</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\lib\action_continue.c">
       <Filter>Source files\lib</Filter>
     </ClCompile>
@@ -293,318 +212,6 @@
     </ClCompile>
     <ClCompile Include="..\src\lib\version.c">
       <Filter>Source files\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\base64.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\basicauth.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\connection.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\connection_https.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\daemon.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\digestauth.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\internal.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\md5.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\memorypool.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_compat.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_itc.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_mono_clock.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_send.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_sockets.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_str.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\mhd_threads.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\postprocessor.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\reason_phrase.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\response.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\sha1.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\sha256.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\sysfdsetsize.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_client_put_stop.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_daemon.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_http_reasons.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_md5.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_options.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_postprocessor.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_postprocessor_amp.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_postprocessor_large.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_postprocessor_md.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_response_entries.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_sha1.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_sha256.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_shutdown_select.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_start_stop.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_str.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_str_token.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_str_tokens_remove.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_str_token_remove.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_upgrade.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\test_upgrade_large.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd\tsearch.c">
-      <Filter>Source files\microhttpd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd_ws\mhd_websocket.c">
-      <Filter>Source files\microhttpd_ws</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd_ws\sha1.c">
-      <Filter>Source files\microhttpd_ws</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\microhttpd_ws\test_websocket.c">
-      <Filter>Source files\microhttpd_ws</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\perf_get.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\perf_get_concurrent.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_add_conn.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_callback.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_concurrent_stop.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_delete.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_digestauth.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_digestauth_sha256.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_digestauth_with_arguments.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_chunked.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_close_keep_alive.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_iovec.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_response_cleanup.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_sendfile.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_get_wait.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_iplimit.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_large_put.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_long_header.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_parse_cookies.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_patch.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_post.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_postform.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_post_loop.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_process_arguments.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_process_headers.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_put.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_put_chunked.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_quiesce.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_quiesce_stream.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_termination.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_timeout.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_toolarge.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_tricky.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\test_urlparse.c">
-      <Filter>Source files\testcurl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\curl_version_check.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_empty_response.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_get.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_get_iovec.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_get_parallel.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_get_parallel_threads.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_get_select.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_multi_daemon.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_session_info.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_sni.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_https_time_out.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_tls_authentication.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\test_tls_options.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testcurl\https\tls_test_common.c">
-      <Filter>Source files\testcurl\https</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\socat.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_get.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_get_chunked.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_long_header.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_post.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_post_form.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_put.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_put_chunked.c">
-      <Filter>Source files\testzzuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\testzzuf\test_put_large.c">
-      <Filter>Source files\testzzuf</Filter>
     </ClCompile>
     <ClInclude Include="..\src\include\autoinit_funcs.h">
       <Filter>Header files\include</Filter>
@@ -806,6 +413,84 @@
     </ClInclude>
     <ClInclude Include="..\src\testcurl\https\tls_test_keys.h">
       <Filter>Header files\testcurl\https</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\microhttpd\base64.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\basicauth.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\connection.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\connection_https.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\daemon.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\digestauth.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\internal.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\md5.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\memorypool.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_compat.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_itc.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_mono_clock.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_send.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_sockets.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_str.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\mhd_threads.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\postprocessor.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\reason_phrase.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\response.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\sha1.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\sha256.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\sysfdsetsize.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\microhttpd\tsearch.c">
+      <Filter>Source files\microhttpd</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libmicrohttpd-Debug.vgdbsettings" />
+    <None Include="libmicrohttpd-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MHD_config.h">
+      <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/pistache-master/include;../Components/spdlog-1.x/include;../Components/spdlog-1.x/include/spdlog;../Components/sqlite_orm-master/include/sqlite_orm;../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/pistache-master/include;../Components/spdlog-1.x/include;../Components/spdlog-1.x/include/spdlog;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />

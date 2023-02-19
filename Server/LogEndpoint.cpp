@@ -1,8 +1,8 @@
 #include "LogEndpoint.h"
 
-std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpserver::http_request &);
-{
-	std::string body = request.body();
+std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpserver::http_request &request)
+{	
+	std::string body(request.get_content());
 	
 	cJSON *doc;
 	try
@@ -12,7 +12,7 @@ std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpse
 	catch (const std::exception&)
 	{
 		Logger::GetInstance()->LogW("Error parsing log message");
-		response.send(Http::Code::Not_Acceptable);
+		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("Error parsing log message", 406, "text/plain"));
 	}
 	
 	LogMsg logmsg;
@@ -27,5 +27,5 @@ std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpse
 	else
 		logmsg.Timestamp = time(NULL);
 	DB::GetInstance()->GetStorage()->insert(logmsg);
-	response.send(Http::Code::Ok);
+	return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200, "text/plain"));
 }

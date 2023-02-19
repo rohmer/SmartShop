@@ -6,6 +6,12 @@ RESTServer::RESTServer(unsigned int port) :
 
 	log = Logger::GetInstance();
 	log->LogI("RESTServer Created");
+	
+}
+
+void RESTServer::RegisterResource(std::string path, httpserver::http_resource *resource)
+{
+	ws.register_resource(path, resource);	
 }
 
 void RESTServer::Start()

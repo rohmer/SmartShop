@@ -36,16 +36,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>crypto;dl;ssl;sqlite3;atomic;freetype;pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -97,6 +97,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
       <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
+      <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
