@@ -3,9 +3,8 @@
 #include <string>
 #include <algorithm>
 
-#include <pistache/endpoint.h>
-#include <pistache/http.h>
-#include <pistache/router.h>
+#include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
+
 #include <cjson/cJSON.h>
 
 #include "Logger.h"
@@ -17,8 +16,5 @@ using namespace Pistache;
 class EventEndpoint
 {
 public:
-	EventEndpoint()
-	{};
-	static Pistache::Rest::Route::Result  ExecEventEndpoint(const Rest::Request& request, Http::ResponseWriter response);
-
+	std::shared_ptr<httpserver::http_response> render_POST(const httpserver::http_request &request);
 };

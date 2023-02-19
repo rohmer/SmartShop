@@ -3,9 +3,7 @@
 #include <string>
 #include <algorithm>
 
-#include <pistache/endpoint.h>
-#include <pistache/http.h>
-#include <pistache/router.h>
+#include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
 #include <cjson/cjson.h>
 
 #include "../Device/DeviceConfig.h"
@@ -13,14 +11,11 @@
 #include "LogMsg.h"
 #include "DB.h"
 
-using namespace Pistache;
 
-class RegisterEndpoint
+class RegisterEndpoint : public httpserver::http_resource
 {
-public:
-	RegisterEndpoint()
-	{}
-	static Pistache::Rest::Route::Result  ExecRegisterEndpoint(const Rest::Request& request, Http::ResponseWriter response);
+public:	
+	std::shared_ptr<httpserver::http_response> render_POST(const httpserver::http_request &request);
 
 
 };

@@ -77,6 +77,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("value", &DBBinaryData::Data)),
 		make_table("DeviceConfig",
 			make_column("id", &DBDeviceConfig::ID, primary_key().autoincrement()),
+			make_column("devID", &DBDeviceConfig::DeviceID),
 			make_column("hostname", &DBDeviceConfig::Hostname),
 			make_column("deviceName", &DBDeviceConfig::DeviceName),
 			make_column("deviceDesc", &DBDeviceConfig::DeviceDescription),

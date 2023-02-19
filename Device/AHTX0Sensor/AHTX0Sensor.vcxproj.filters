@@ -14,4 +14,21 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AHTX0Sensor.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AHTX0Sensor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AHTX0Sensor-Debug.vgdbsettings" />
+    <None Include="AHTX0Sensor-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
 
 #include <cjson/cJSON.h>
 #include "../DB/DB.h"
+#include "CPUInfo.h"
 #include "DeviceConfigItem.h"
 #include "DeviceEnums.h"
 #include "DBDeviceConfig.h"
@@ -14,7 +15,7 @@
 class DeviceConfig
 {
 public:	
-	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="");
+	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="", std::string devID="");
 	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname="");
 	DeviceConfig();
 	
@@ -40,7 +41,7 @@ public:
 	
 protected:
 	std::vector<DeviceConfigItem> items;	
-	std::string name, desc;
+	std::string name, desc, deviceID;
 	eDeviceBus bus;
 	eDeviceType deviceType;
 	std::string hostname;

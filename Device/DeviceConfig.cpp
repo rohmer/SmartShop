@@ -4,12 +4,18 @@ DeviceConfig::DeviceConfig()
 {
 }
 
-DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname)
+DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname, std::string devID)
 	: name(DeviceName)
 	, desc(DeviceDescription)
 	, bus(DeviceBus)
 	, deviceType(DeviceType)
+	, deviceID(devID)
 {
+	if (devID.size() == 0)
+	{
+		devID = CPUInfo::GetCPUID();
+	}
+
 	if (hostname.size() == 0)
 	{
 		char chost[1024];
@@ -111,6 +117,7 @@ cJSON *DeviceConfig::ToJSON()
 	cJSON_AddItemToObject(obj, "bus", cJSON_CreateNumber(bus));
 	cJSON_AddItemToObject(obj, "type", cJSON_CreateNumber(deviceType));
 	cJSON_AddItemToObject(obj, "host", cJSON_CreateString(hostname.c_str()));
+	cJSON_AddItemToObject(obj, "devid", cJSON_CreateString(deviceID.c_str()));
 	cJSON *arr = cJSON_CreateArray();
 	for (std::vector<DeviceConfigItem>::iterator it = items.begin(); it != items.end(); it++)
 		cJSON_AddItemToArray(arr, it->ToJSON());
@@ -121,7 +128,7 @@ cJSON *DeviceConfig::ToJSON()
 
 DeviceConfig DeviceConfig::FromJSON(cJSON* obj)
 {
-	std::string name, desc, hostname;
+	std::string name, desc, hostname, devid;
 	eDeviceBus bus;
 	eDeviceType dType;
 	if (cJSON_HasObjectItem(obj, "name"))
@@ -145,7 +152,12 @@ DeviceConfig DeviceConfig::FromJSON(cJSON* obj)
 		hostname = cJSON_GetObjectItem(obj, "host")->valuestring;
 	}
 
-	DeviceConfig ret(name, desc, bus, dType,hostname);
+	if (cJSON_HasObjectItem(obj, "devid"))
+	{
+		devid = cJSON_GetObjectItem(obj, "devid")->valuestring;
+	}
+
+	DeviceConfig ret(name, desc, bus, dType,hostname,devid);
 	if (cJSON_HasObjectItem(obj, "config"))
 	{
 		cJSON *arr = cJSON_GetObjectItem(obj, "config");
@@ -193,6 +205,7 @@ bool DeviceConfig::ToDB()
 		dbdc.DeviceName = name;
 		dbdc.DeviceType = (int)deviceType;
 		dbdc.Hostname = hostname;
+		dbdc.DeviceID = deviceID;
 		
 		if (update)
 		{
@@ -213,6 +226,7 @@ bool DeviceConfig::ToDB()
 			item.Name = it->GetName();
 			item.ReadOnly = it->IsReadOnly();
 			item.Value = it->GetStringVal();
+			item.DeviceID = it->GetStringVal();
 			item.ID = -1;
 			int v = DB::GetInstance()->GetStorage()->insert<DBDeviceConfigItem>(item);
 		}

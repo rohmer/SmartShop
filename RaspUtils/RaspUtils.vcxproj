@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{9A686D10-8A01-45FC-9FEE-D819530A4DE9}</ProjectGuid>
+    <ProjectGuid>{20DED119-980D-4E0E-8E87-339BEBAC35E2}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -38,38 +38,23 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/pistache-master/include;../Components/spdlog-1.x/include;../Components/spdlog-1.x/include/spdlog;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions />
-      <CLanguageStandard />
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <SupportExceptions>true</SupportExceptions>
     </ClCompile>
-    <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>httpserver;microhttpd;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript />
-      <AdditionalOptions />
-    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RESTServer.cpp" />
+    <None Include="RaspUtils-Debug.vgdbsettings" />
+    <None Include="RaspUtils-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RESTServer.h" />
+    <ClInclude Include="CPUInfo.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="RESTServer-Debug.vgdbsettings" />
-    <None Include="RESTServer-Release.vgdbsettings" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DB\DB.vcxproj">
-      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.vcxproj">
-      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
-    </ProjectReference>
+    <ClCompile Include="CPUInfo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

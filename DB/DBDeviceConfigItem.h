@@ -5,8 +5,8 @@
 class DBDeviceConfigItem
 {
 public:
-    unsigned int ID, DeviceID;
-    std::string Name, Value;
+    unsigned int ID;
+    std::string Name, Value, DeviceID;
     bool ReadOnly;
     unsigned int DataType;
 };

@@ -1,17 +1,24 @@
 #include "Server.h"
 
+#include "CPUInfo.h"
+
 Server::Server()
 {
+	std::string cpuID = CPUInfo::GetCPUID();
+	int cpuCount = CPUInfo::GetCPUCount();
+	
 	DB::GetInstance("SmartShop.db");
 	log = Logger::GetInstance();
 	log->Init();
 	
 	restServer = new RESTServer(8080);
-		
-	/*restServer->RegisterEndpoint("/log", RESTServer::POST, LogEndpoint::ExecLogEndpoint);
-	restServer->RegisterEndpoint("/register", RESTServer::POST, RegisterEndpoint::ExecRegisterEndpoint);
-	restServer->RegisterEndpoint("/event", RESTServer::POST, EventEndpoint::ExecEventEndpoint);
-*/
+	LogEndpoint *logEndpoint = new LogEndpoint();
+	RegisterEndpoint *registerEP = new RegisterEndpoint();
+	EventEndpoint *eventEP = new EventEndpoint();
+	restServer->RegisterResource("/log", (httpserver::http_resource *)logEndpoint);
+	restServer->RegisterResource("/register", (httpserver::http_resource *)registerEP);
+	restServer->RegisterResource("/event", (httpserver::http_resource *)eventEP);
+	
 	Capabilities caps;
 	caps.AddCap(Capabilities::CAP_SERVER);
 #ifdef USE_UI

@@ -1,8 +1,8 @@
 #include "EventEndpoint.h"
 
-Pistache::Rest::Route::Result  EventEndpoint::ExecEventEndpoint(const Rest::Request &request, Http::ResponseWriter response)
+std::shared_ptr<httpserver::http_response> EventEndpoint::render_POST(const httpserver::http_request &request)
 {
-	std::string body = request.body();
+	std::string body(request.get_content());
 	
 	cJSON *doc;
 	try
@@ -12,22 +12,19 @@ Pistache::Rest::Route::Result  EventEndpoint::ExecEventEndpoint(const Rest::Requ
 	catch (const std::exception&)
 	{
 		Logger::GetInstance()->LogW("Error parsing event message");
-		response.send(Http::Code::Not_Acceptable);
-		return Rest::Route::Result::Failure;
+		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("Error parsing event message", 406, "text/plain"));				
 	}
 	
 	try
 	{
 		SensorEvent se = SensorEvent::FromJSON(doc);
 		se.StoreToDB();
-		response.send(Http::Code::Ok);
-		return Rest::Route::Result::Ok;
+		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200, "text/plain"));			
 	}
 	catch (const std::exception&e)
 	{
 		Logger::GetInstance()->LogW("Error parsing event message");
-		response.send(Http::Code::Not_Acceptable);
-		return Rest::Route::Result::Failure;
+		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("Error parsing event message", 406, "text/plain"));				
 	}
 	
 }

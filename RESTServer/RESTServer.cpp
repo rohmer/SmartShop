@@ -16,10 +16,10 @@ void RESTServer::RegisterResource(std::string path, httpserver::http_resource *r
 
 void RESTServer::Start()
 {
-	
+	ws.start(false);
 }
 
 void RESTServer::Shutdown()
 {
-
+	ws.stop();
 }

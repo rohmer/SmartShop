@@ -112,12 +112,15 @@ void WindowManager::LoadWidgets()
 				{
 					auto dlWidget = new DLClass<UIWidget>(p.string());
 					std::shared_ptr<UIWidget> widget = dlWidget->make_obj();
-					sWidgets wdata;
-					wdata.dataPoints = widget->GetSensorInputs();
-					wdata.isMaximized = false;
-					wdata.widget = widget;
-					wdata.Name = widget->GetName();
-					//widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));					
+					if (widget != NULL)
+					{
+						sWidgets wdata;
+						wdata.dataPoints = widget->GetSensorInputs();
+						wdata.isMaximized = false;
+						wdata.widget = widget;
+						wdata.Name = widget->GetName();
+						widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));
+					}
 				}
 				catch (std::exception &)
 				{
