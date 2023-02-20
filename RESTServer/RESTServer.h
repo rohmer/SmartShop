@@ -7,7 +7,7 @@
 #include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
 
 #include "../Logger/Logger.h"
-
+#include "../RaspUtils/CPUInfo.h"
 
 class RESTServer
 {

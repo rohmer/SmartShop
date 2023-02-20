@@ -192,29 +192,7 @@ bool SensorEvent::SendToServer(std::string serverResource)
 		Logger::GetInstance()->LogW("Failed to serialize event");
 		return false;
 	}
-	using namespace Pistache;
-	{	
-		Http::Experimental::Client client;
-
-		auto opts = Http::Experimental::Client::options().threads(1).maxConnectionsPerHost(8);
-		client.init(opts);
-		
-		auto resp = client.post(serverResource).body(cJSON_Print(evt)).send();
-		resp.then(
-			[&](Http::Response response)
-		{
-			if (response.code() == Http::Code::Ok)
-			{
-				client.shutdown();
-				cJSON_Delete(evt);
-				return true;
-			}
-		},
-		[&](std::exception_ptr exec)
-		{			
-			Logger::GetInstance()->LogC("Exception sending event");
-		});
-	}
+	
 	return false;
 	
 }

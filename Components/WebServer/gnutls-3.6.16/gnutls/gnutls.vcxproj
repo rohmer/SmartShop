@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{C353401D-367A-4822-B07F-B01B7975849C}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>=/usr/include/valgrind;../src/gl;../src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;HAVE_CONFIG_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="gnutls-Debug.vgdbsettings" />
+    <None Include="gnutls-Release.vgdbsettings" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\serv.c" />
+    <ClCompile Include="..\src\socket.c" />
+    <ClCompile Include="..\src\srptool.c" />
+    <ClCompile Include="..\src\systemkey.c" />
+    <ClCompile Include="..\src\tests.c" />
+    <ClCompile Include="..\src\tpmtool.c" />
+    <ClCompile Include="..\src\udp-serv.c" />
+    <ClCompile Include="..\src\gl\alloca.c" />
+    <ClCompile Include="..\src\gl\bind.c" />
+    <ClCompile Include="..\src\gl\cloexec.c" />
+    <ClCompile Include="..\src\gl\close.c" />
+    <ClCompile Include="..\src\gl\connect.c" />
+    <ClCompile Include="..\src\gl\dup2.c" />
+    <ClCompile Include="..\src\gl\explicit_bzero.c" />
+    <ClCompile Include="..\src\gl\fcntl.c" />
+    <ClCompile Include="..\src\gl\fd-hook.c" />
+    <ClCompile Include="..\src\gl\float.c" />
+    <ClCompile Include="..\src\gl\fopen.c" />
+    <ClCompile Include="..\src\gl\fseek.c" />
+    <ClCompile Include="..\src\gl\fseeko.c" />
+    <ClCompile Include="..\src\gl\fstat.c" />
+    <ClCompile Include="..\src\gl\ftell.c" />
+    <ClCompile Include="..\src\gl\ftello.c" />
+    <ClCompile Include="..\src\gl\gai_strerror.c" />
+    <ClCompile Include="..\src\gl\getaddrinfo.c" />
+    <ClCompile Include="..\src\gl\getdelim.c" />
+    <ClCompile Include="..\src\gl\getdtablesize.c" />
+    <ClCompile Include="..\src\gl\getline.c" />
+    <ClCompile Include="..\src\gl\getpass.c" />
+    <ClCompile Include="..\src\gl\getpeername.c" />
+    <ClCompile Include="..\src\gl\gettime.c" />
+    <ClCompile Include="..\src\gl\gettimeofday.c" />
+    <ClCompile Include="..\src\gl\inet_ntop.c" />
+    <ClCompile Include="..\src\gl\inet_pton.c" />
+    <ClCompile Include="..\src\gl\itold.c" />
+    <ClCompile Include="..\src\gl\listen.c" />
+    <ClCompile Include="..\src\gl\localtime-buffer.c" />
+    <ClCompile Include="..\src\gl\lseek.c" />
+    <ClCompile Include="..\src\gl\malloc.c" />
+    <ClCompile Include="..\src\gl\malloca.c" />
+    <ClCompile Include="..\src\gl\memchr.c" />
+    <ClCompile Include="..\src\gl\mktime.c" />
+    <ClCompile Include="..\src\gl\msvc-inval.c" />
+    <ClCompile Include="..\src\gl\msvc-nothrow.c" />
+    <ClCompile Include="..\src\gl\nstrftime.c" />
+    <ClCompile Include="..\src\gl\open.c" />
+    <ClCompile Include="..\src\gl\parse-datetime.c" />
+    <ClCompile Include="..\src\gl\printf-args.c" />
+    <ClCompile Include="..\src\gl\printf-parse.c" />
+    <ClCompile Include="..\src\gl\progname.c" />
+    <ClCompile Include="..\src\gl\read-file.c" />
+    <ClCompile Include="..\src\gl\realloc.c" />
+    <ClCompile Include="..\src\gl\recv.c" />
+    <ClCompile Include="..\src\gl\recvfrom.c" />
+    <ClCompile Include="..\src\gl\select.c" />
+    <ClCompile Include="..\src\gl\send.c" />
+    <ClCompile Include="..\src\gl\sendto.c" />
+    <ClCompile Include="..\src\gl\setenv.c" />
+    <ClCompile Include="..\src\gl\setsockopt.c" />
+    <ClCompile Include="..\src\gl\shutdown.c" />
+    <ClCompile Include="..\src\gl\snprintf.c" />
+    <ClCompile Include="..\src\gl\socket.c" />
+    <ClCompile Include="..\src\gl\sockets.c" />
+    <ClCompile Include="..\src\gl\stat-time.c" />
+    <ClCompile Include="..\src\gl\stat-w32.c" />
+    <ClCompile Include="..\src\gl\stat.c" />
+    <ClCompile Include="..\src\gl\strdup.c" />
+    <ClCompile Include="..\src\gl\sys_socket.c" />
+    <ClCompile Include="..\src\gl\timegm.c" />
+    <ClCompile Include="..\src\gl\timespec.c" />
+    <ClCompile Include="..\src\gl\time_r.c" />
+    <ClCompile Include="..\src\gl\time_rz.c" />
+    <ClCompile Include="..\src\gl\tzset.c" />
+    <ClCompile Include="..\src\gl\unistd.c" />
+    <ClCompile Include="..\src\gl\unsetenv.c" />
+    <ClCompile Include="..\src\gl\vasnprintf.c" />
+    <ClCompile Include="..\src\gl\xsize.c" />
+    <ClCompile Include="..\src\libopts\alias.c" />
+    <ClCompile Include="..\src\libopts\ao-strs.c" />
+    <ClCompile Include="..\src\libopts\autoopts.c" />
+    <ClCompile Include="..\src\libopts\boolean.c" />
+    <ClCompile Include="..\src\libopts\check.c" />
+    <ClCompile Include="..\src\libopts\configfile.c" />
+    <ClCompile Include="..\src\libopts\cook.c" />
+    <ClCompile Include="..\src\libopts\enum.c" />
+    <ClCompile Include="..\src\libopts\env.c" />
+    <ClCompile Include="..\src\libopts\file.c" />
+    <ClCompile Include="..\src\libopts\find.c" />
+    <ClCompile Include="..\src\libopts\genshell.c" />
+    <ClCompile Include="..\src\libopts\init.c" />
+    <ClCompile Include="..\src\libopts\libopts.c" />
+    <ClCompile Include="..\src\libopts\load.c" />
+    <ClCompile Include="..\src\libopts\makeshell.c" />
+    <ClCompile Include="..\src\libopts\nested.c" />
+    <ClCompile Include="..\src\libopts\numeric.c" />
+    <ClCompile Include="..\src\libopts\option-value-type.c" />
+    <ClCompile Include="..\src\libopts\option-xat-attribute.c" />
+    <ClCompile Include="..\src\libopts\parse-duration.c" />
+    <ClCompile Include="..\src\libopts\pgusage.c" />
+    <ClCompile Include="..\src\libopts\putshell.c" />
+    <ClCompile Include="..\src\libopts\reset.c" />
+    <ClCompile Include="..\src\libopts\restore.c" />
+    <ClCompile Include="..\src\libopts\save-flags.c" />
+    <ClCompile Include="..\src\libopts\save.c" />
+    <ClCompile Include="..\src\libopts\sort.c" />
+    <ClCompile Include="..\src\libopts\stack.c" />
+    <ClCompile Include="..\src\libopts\streqvcmp.c" />
+    <ClCompile Include="..\src\libopts\text_mmap.c" />
+    <ClCompile Include="..\src\libopts\time.c" />
+    <ClCompile Include="..\src\libopts\tokenize.c" />
+    <ClCompile Include="..\src\libopts\usage.c" />
+    <ClCompile Include="..\src\libopts\version.c" />
+    <ClCompile Include="..\src\libopts\compat\pathfind.c" />
+    <ClCompile Include="..\src\libopts\compat\snprintf.c" />
+    <ClCompile Include="..\src\libopts\compat\strchr.c" />
+    <ClCompile Include="..\src\libopts\compat\strdup.c" />
+    <ClInclude Include="..\src\benchmark.h" />
+    <ClInclude Include="..\src\certtool-cfg.h" />
+    <ClInclude Include="..\src\certtool-common.h" />
+    <ClInclude Include="..\src\common.h" />
+    <ClInclude Include="..\src\inline_cmds.h" />
+    <ClInclude Include="..\src\list.h" />
+    <ClInclude Include="..\src\mech-list.h" />
+    <ClInclude Include="..\src\ocsptool-common.h" />
+    <ClInclude Include="..\src\p11tool.h" />
+    <ClInclude Include="..\src\socket.h" />
+    <ClInclude Include="..\src\tests.h" />
+    <ClInclude Include="..\src\udp-serv.h" />
+    <ClInclude Include="..\src\gl\alloca.in.h" />
+    <ClInclude Include="..\src\gl\arg-nonnull.h" />
+    <ClInclude Include="..\src\gl\arpa_inet.in.h" />
+    <ClInclude Include="..\src\gl\attribute.h" />
+    <ClInclude Include="..\src\gl\c++defs.h" />
+    <ClInclude Include="..\src\gl\c-ctype.h" />
+    <ClInclude Include="..\src\gl\cdefs.h" />
+    <ClInclude Include="..\src\gl\cloexec.h" />
+    <ClInclude Include="..\src\gl\errno.in.h" />
+    <ClInclude Include="..\src\gl\fcntl.in.h" />
+    <ClInclude Include="..\src\gl\fd-hook.h" />
+    <ClInclude Include="..\src\gl\filename.h" />
+    <ClInclude Include="..\src\gl\flexmember.h" />
+    <ClInclude Include="..\src\gl\float+.h" />
+    <ClInclude Include="..\src\gl\float.in.h" />
+    <ClInclude Include="..\src\gl\getpass.h" />
+    <ClInclude Include="..\src\gl\gettext.h" />
+    <ClInclude Include="..\src\gl\intprops.h" />
+    <ClInclude Include="..\src\gl\inttypes.in.h" />
+    <ClInclude Include="..\src\gl\libc-config.h" />
+    <ClInclude Include="..\src\gl\limits.in.h" />
+    <ClInclude Include="..\src\gl\localtime-buffer.h" />
+    <ClInclude Include="..\src\gl\malloca.h" />
+    <ClInclude Include="..\src\gl\minmax.h" />
+    <ClInclude Include="..\src\gl\mktime-internal.h" />
+    <ClInclude Include="..\src\gl\msvc-inval.h" />
+    <ClInclude Include="..\src\gl\msvc-nothrow.h" />
+    <ClInclude Include="..\src\gl\netdb.in.h" />
+    <ClInclude Include="..\src\gl\netinet_in.in.h" />
+    <ClInclude Include="..\src\gl\parse-datetime-gen.h" />
+    <ClInclude Include="..\src\gl\parse-datetime.h" />
+    <ClInclude Include="..\src\gl\pathmax.h" />
+    <ClInclude Include="..\src\gl\printf-args.h" />
+    <ClInclude Include="..\src\gl\printf-parse.h" />
+    <ClInclude Include="..\src\gl\progname.h" />
+    <ClInclude Include="..\src\gl\read-file.h" />
+    <ClInclude Include="..\src\gl\signal.in.h" />
+    <ClInclude Include="..\src\gl\size_max.h" />
+    <ClInclude Include="..\src\gl\sockets.h" />
+    <ClInclude Include="..\src\gl\stat-time.h" />
+    <ClInclude Include="..\src\gl\stat-w32.h" />
+    <ClInclude Include="..\src\gl\stdalign.in.h" />
+    <ClInclude Include="..\src\gl\stdbool.in.h" />
+    <ClInclude Include="..\src\gl\stddef.in.h" />
+    <ClInclude Include="..\src\gl\stdint.in.h" />
+    <ClInclude Include="..\src\gl\stdio-impl.h" />
+    <ClInclude Include="..\src\gl\stdio.in.h" />
+    <ClInclude Include="..\src\gl\stdlib.in.h" />
+    <ClInclude Include="..\src\gl\strftime.h" />
+    <ClInclude Include="..\src\gl\string.in.h" />
+    <ClInclude Include="..\src\gl\sys_select.in.h" />
+    <ClInclude Include="..\src\gl\sys_socket.in.h" />
+    <ClInclude Include="..\src\gl\sys_stat.in.h" />
+    <ClInclude Include="..\src\gl\sys_time.in.h" />
+    <ClInclude Include="..\src\gl\sys_types.in.h" />
+    <ClInclude Include="..\src\gl\sys_uio.in.h" />
+    <ClInclude Include="..\src\gl\time-internal.h" />
+    <ClInclude Include="..\src\gl\time.in.h" />
+    <ClInclude Include="..\src\gl\timespec.h" />
+    <ClInclude Include="..\src\gl\unistd.in.h" />
+    <ClInclude Include="..\src\gl\vasnprintf.h" />
+    <ClInclude Include="..\src\gl\verify.h" />
+    <ClInclude Include="..\src\gl\w32sock.h" />
+    <ClInclude Include="..\src\gl\warn-on-use.h" />
+    <ClInclude Include="..\src\gl\wchar.in.h" />
+    <ClInclude Include="..\src\gl\xalloc-oversized.h" />
+    <ClInclude Include="..\src\gl\xsize.h" />
+    <ClInclude Include="..\src\gl\_Noreturn.h" />
+    <ClInclude Include="..\src\libopts\ag-char-map.h" />
+    <ClInclude Include="..\src\libopts\ao-strs.h" />
+    <ClInclude Include="..\src\libopts\autoopts.h" />
+    <ClInclude Include="..\src\libopts\genshell.h" />
+    <ClInclude Include="..\src\libopts\gettext.h" />
+    <ClInclude Include="..\src\libopts\intprops.h" />
+    <ClInclude Include="..\src\libopts\option-value-type.h" />
+    <ClInclude Include="..\src\libopts\option-xat-attribute.h" />
+    <ClInclude Include="..\src\libopts\parse-duration.h" />
+    <ClInclude Include="..\src\libopts\proto.h" />
+    <ClInclude Include="..\src\libopts\save-flags.h" />
+    <ClInclude Include="..\src\libopts\stdnoreturn.in.h" />
+    <ClInclude Include="..\src\libopts\autoopts\options.h" />
+    <ClInclude Include="..\src\libopts\autoopts\project.h" />
+    <ClInclude Include="..\src\libopts\autoopts\usage-txt.h" />
+    <ClInclude Include="..\src\libopts\compat\compat.h" />
+    <ClInclude Include="..\src\libopts\compat\windows-config.h" />
+    <ClInclude Include="..\src\libopts\compat\_Noreturn.h" />
+  </ItemGroup>
+</Project>

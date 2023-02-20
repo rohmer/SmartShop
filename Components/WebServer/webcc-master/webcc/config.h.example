@@ -1,0 +1,12 @@
+#ifndef WEBCC_CONFIG_H_
+#define WEBCC_CONFIG_H_
+
+// Compile configurations.
+
+// 0:VERB, 1:INFO, 2:USER, 3:WARN, 4:ERRO, >=5:NONE
+#define WEBCC_LOG_LEVEL 2
+
+// Set 1/0 to enable/disable GZIP compression.
+#define WEBCC_ENABLE_GZIP 0
+
+#endif  // WEBCC_CONFIG_H_

@@ -29,6 +29,9 @@ std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpse
 		logmsg.Timestamp = cJSON_GetObjectItem(doc, "time")->valueint;
 	else
 		logmsg.Timestamp = time(NULL);
+	if (cJSON_HasObjectItem(doc, "hostid"))
+		logmsg.HostID = cJSON_GetObjectItem(doc, "hostid")->valuestring;
+	
 	DB::GetInstance()->GetStorage()->insert(logmsg);
 	return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200, "text/plain"));
 }

@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include "LogMsg.h"
 #include "../DB/DB.h"
+#include "../RaspUtils/CPUInfo.h"
 
 template<typename Mutex>
 	class DBSink : public spdlog::sinks::base_sink <Mutex>
@@ -13,6 +14,7 @@ template<typename Mutex>
 	protected:
 		void sink_it_(const spdlog::details::log_msg &msg) override
 		{
+			std::string hostID = CPUInfo::GetCPUID();
 			char hostname[1024];
 			gethostname(hostname, 1024);
 			std::string host(hostname);
@@ -22,7 +24,7 @@ template<typename Mutex>
 			spdlog::sinks::base_sink<Mutex>::formatter_->format(msg, formatted);
 			logMsg.Message = fmt::to_string(formatted);
 			logMsg.Timestamp = time(NULL);
-			
+			logMsg.HostID = hostID;
 			ELogLevel level;
 			switch (msg.level)
 			{

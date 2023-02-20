@@ -1,7 +1,7 @@
 #include "RESTServer.h"
 
 RESTServer::RESTServer(unsigned int port) :
-	ws(httpserver::create_webserver(port).max_connections(8))
+	ws(httpserver::create_webserver(port).max_connections(CPUInfo::GetCPUCount()*4))
 {
 
 	log = Logger::GetInstance();

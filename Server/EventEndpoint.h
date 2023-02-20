@@ -11,7 +11,6 @@
 #include "../SensorEvent/SensorEvent.h"
 #include "DB.h"
 
-using namespace Pistache;
 
 class EventEndpoint
 {

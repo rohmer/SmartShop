@@ -31,6 +31,9 @@
     <ClInclude Include="DBSink.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="JSONSync.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp">

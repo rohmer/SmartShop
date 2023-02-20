@@ -38,16 +38,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../DB;../Components/sqlite_orm-master/include/sqlite_orm;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../DB;../Components/sqlite_orm-master/include/sqlite_orm;../Components/WebServer/cpr-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>sqlite3;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DBSink.h" />
+    <ClInclude Include="JSONSync.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevel.h" />
     <ClInclude Include="LogMsg.h" />
@@ -66,11 +67,11 @@
     <ClCompile Include="Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\pistache-master\Pistache\Pistache.vcxproj">
-      <Project>{ea67de9a-fd1e-48bf-8e47-7ac9c1b92337}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -59,11 +59,11 @@
     <ProjectReference Include="..\..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
       <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\pistache-master\Pistache\Pistache.vcxproj">
-      <Project>{ea67de9a-fd1e-48bf-8e47-7ac9c1b92337}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SensorEvent.vcxproj">
       <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>

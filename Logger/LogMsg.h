@@ -13,4 +13,5 @@ public:
 	int Severity;
 	std::string Message;
 	time_t Timestamp;
+	std::string HostID;
 };

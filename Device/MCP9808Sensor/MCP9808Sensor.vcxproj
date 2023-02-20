@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../../../../../Code/SmartShop/Components/spdlog-1.x/include;../../../../../../Code/SmartShop/Components/sqlite_orm-master/include/sqlite_orm;../../../../../../Code/SmartShop/Components/cpp-base64-master;../../../../../../Code/SmartShop/Components/spdlog-1.x/include/spdlog;../../../../../../Code/SmartShop/DB;../../DB;../../Components/pistache-master/include;../../Components/pistache-master/include/pistache;../../Components/spdlog-1.x/include;../../Components/spdlog-1.x/include/spdlog;../../Components/sqlite_orm-master/include/sqlite_orm;../../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../../Code/SmartShop/Components/spdlog-1.x/include;../../../../../../Code/SmartShop/Components/sqlite_orm-master/include/sqlite_orm;../../../../../../Code/SmartShop/Components/cpp-base64-master;../../../../../../Code/SmartShop/Components/spdlog-1.x/include/spdlog;../../../../../../Code/SmartShop/DB;../../DB;../../Components/pistache-master/include;../../Components/pistache-master/include/pistache;../../Components/spdlog-1.x/include;../../Components/spdlog-1.x/include/spdlog;../../Components/sqlite_orm-master/include/sqlite_orm;../../RaspUtils;../../Components/cpp-base64-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />

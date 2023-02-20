@@ -26,6 +26,7 @@ inline auto initCoreStorage(const std::string &path)
 		make_table("Log",
 			make_column("id", &LogMsg::ID, primary_key().autoincrement()),
 			make_column("time", &LogMsg::Timestamp),
+			make_column("hostID", &LogMsg::HostID),
 			make_column("msg", &LogMsg::Message),
 			make_column("severity", &LogMsg::Severity),
 			make_column("host", &LogMsg::Host)),

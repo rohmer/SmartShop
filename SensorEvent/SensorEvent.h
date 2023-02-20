@@ -4,9 +4,6 @@
 #include <unistd.h>
 #include <vector>
 #include <atomic>
-#include <pistache/client.h>
-#include <pistache/http.h>
-#include <pistache/net.h>
 #include "Logger.h"
 #include "DB.h"
 #include "SensorDataBase.h"

@@ -332,8 +332,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="libmicrohttpd-Debug.vgdbsettings" />
     <None Include="libmicrohttpd-Release.vgdbsettings" />
+    <None Include="libmicrohttpd-Debug.vgdbsettings">
+      <Filter>Resource files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MHD_config.h">
