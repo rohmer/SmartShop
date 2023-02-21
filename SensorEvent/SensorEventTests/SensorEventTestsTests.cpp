@@ -319,4 +319,5 @@ TEST(FullEvent, SingleDataPoint)
 	}
 	
 	SensorEvent se2 = SensorEvent::FromJSON(se.ToJSON());
+
 }
