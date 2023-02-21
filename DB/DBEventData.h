@@ -9,4 +9,5 @@ public:
 	std::string SensorName;
 	std::string Hostname;
 	unsigned long EventTime;
+	std::string HostID;
 };

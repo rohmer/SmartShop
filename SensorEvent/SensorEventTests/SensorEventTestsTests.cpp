@@ -299,3 +299,24 @@ TEST(DBTests, VectorTest)
 	vd.StoreToDB(6);
 }
 
+TEST_GROUP(FullEvent)
+{
+};
+
+TEST(FullEvent, SingleDataPoint)
+{
+	SensorEvent se("TestSensor");
+	ColorData cd(1.0f, 1.0f, 1.0f, 1.0f);
+	se.AddEventData(cd);
+	
+	std::stringstream ss;
+	ss << (cJSON_Print(se.ToJSON()));
+	std::string json = ss.str();
+	
+	if (json.size() == 0)
+	{
+		FAIL("JSON was not serialized");
+	}
+	
+	SensorEvent se2 = SensorEvent::FromJSON(se.ToJSON());
+}

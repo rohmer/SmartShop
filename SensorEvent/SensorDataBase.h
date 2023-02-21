@@ -25,9 +25,7 @@ public:
 	}
 	
 	virtual cJSON *ToJSON()
-	{
-		return NULL;
-	}
+	{};
 	
 	virtual void StoreToDB(unsigned long eventID) 
 	{

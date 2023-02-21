@@ -34,6 +34,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("id", &DBEventData::ID, primary_key().autoincrement()),
 			make_column("sensorName", &DBEventData::SensorName),
 			make_column("host", &DBEventData::Hostname),
+			make_column("hostID", &DBEventData::HostID),
 			make_column("time", &DBEventData::EventTime)),
 		make_table("SwitchData",
 			make_column("id", &DBSwitchData::ID,primary_key().autoincrement()),

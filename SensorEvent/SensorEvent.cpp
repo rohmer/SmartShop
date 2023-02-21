@@ -1,6 +1,6 @@
 #include "SensorEvent.h"
 
-SensorEvent::SensorEvent(std::string sensorName, std::string hostname, time_t eventTime) :
+SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::string hostID, time_t eventTime) :
 	sensorName(sensorName)
 {
 	if (hostname.size() == 0)
@@ -14,6 +14,15 @@ SensorEvent::SensorEvent(std::string sensorName, std::string hostname, time_t ev
 	{
 		this->hostname = hostname;
 	}
+	if (hostID.size() == 0)
+	{
+		this->hostID = CPUInfo::GetCPUID();
+	}
+	else
+	{
+		this->hostID = hostID;
+	}
+	
 	
 	if (eventTime == 0)
 		this->eventTime = time(NULL);
@@ -23,40 +32,40 @@ SensorEvent::SensorEvent(std::string sensorName, std::string hostname, time_t ev
 
 void SensorEvent::AddEventData(BinaryData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
 }
 
 void SensorEvent::AddEventData(ColorData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
 }
 
 void SensorEvent::AddEventData(FloatData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
 }
 
 void SensorEvent::AddEventData(IntData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
 }
 
 void SensorEvent::AddEventData(StringData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
 }
 
 void SensorEvent::AddEventData(SwitchData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
 }
 
 void SensorEvent::AddEventData(VectorData sensorEvent)
 {
-	sensorData.push_back((SensorDataBase)sensorEvent);
+	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
 }
 
-std::vector<SensorDataBase> SensorEvent::GetEventData()
+std::vector<std::shared_ptr<SensorDataBase>> SensorEvent::GetEventData()
 {
 	return sensorData;
 }
@@ -67,12 +76,12 @@ cJSON *SensorEvent::ToJSON()
 	cJSON_AddItemToObject(evt, "sensorName", cJSON_CreateString(sensorName.c_str()));
 	cJSON_AddItemToObject(evt, "time", cJSON_CreateNumber(eventTime));
 	cJSON_AddItemToObject(evt, "host", cJSON_CreateString(hostname.c_str()));
-	
+	cJSON_AddItemToObject(evt, "hostid", cJSON_CreateString(hostID.c_str()));
 	cJSON *events = cJSON_CreateArray();
 	
-	for (std::vector<SensorDataBase>::iterator it = sensorData.begin(); it != sensorData.end(); it++)
+	for (std::vector<std::shared_ptr<SensorDataBase>>::iterator it = sensorData.begin(); it != sensorData.end(); it++)
 	{
-		cJSON_AddItemToArray(events, it->ToJSON());
+		cJSON_AddItemToArray(events, it->get()->ToJSON());
 	}
 	
 	cJSON_AddItemToObject(evt, "events", events);
@@ -82,7 +91,7 @@ cJSON *SensorEvent::ToJSON()
 
 SensorEvent SensorEvent::FromJSON(cJSON *json)
 {
-	std::string name, host;
+	std::string name, host, hostid;
 	time_t eventTime;
 	
 	if (cJSON_HasObjectItem(json, "sensorName"))
@@ -97,8 +106,12 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 	{
 		host = cJSON_GetObjectItem(json, "host")->valuestring;
 	}
+	if (cJSON_HasObjectItem(json, "hostid"))
+	{
+		hostid = cJSON_GetObjectItem(json, "hostid")->valuestring;
+	}
 	
-	SensorEvent evt(name, host, eventTime);
+	SensorEvent evt(name, host, hostid,eventTime);
 	
 	if (cJSON_HasObjectItem(json, "events"))
 	{
@@ -167,13 +180,14 @@ void SensorEvent::StoreToDB()
 	evt.Hostname = hostname;
 	evt.SensorName = sensorName;
 	evt.EventTime = eventTime;
+	evt.HostID = hostID;
 	
 	unsigned long eventID = DB::GetInstance()->GetStorage()->insert(evt);
-	for (std::vector<SensorDataBase>::iterator it = sensorData.begin(); it != sensorData.end(); ++it)
+	for (std::vector<std::shared_ptr<SensorDataBase>>::iterator it = sensorData.begin(); it != sensorData.end(); ++it)
 	{
 		try
 		{
-			it->StoreToDB(eventID);
+			it->get()->StoreToDB(eventID);
 		}
 		catch (const std::exception &e)
 		{
