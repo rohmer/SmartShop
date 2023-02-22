@@ -30,42 +30,47 @@ SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::stri
 		this->eventTime = eventTime;
 }
 
-void SensorEvent::AddEventData(BinaryData sensorEvent)
+SensorEvent::~SensorEvent()
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
+	for (int i = 0; i < sensorData.size(); i++)
+		delete(sensorData[i]);
+}
+void SensorEvent::AddEventData(BinaryData *sensorEvent)
+{
+	sensorData.push_back(sensorEvent);
 }
 
-void SensorEvent::AddEventData(ColorData sensorEvent)
+void SensorEvent::AddEventData(ColorData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
+	sensorData.push_back(sensorEvent);
 }
 
-void SensorEvent::AddEventData(FloatData sensorEvent)
+void SensorEvent::AddEventData(FloatData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
+	sensorData.push_back(sensorEvent) ;
 }
 
-void SensorEvent::AddEventData(IntData sensorEvent)
+void SensorEvent::AddEventData(IntData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent)) ;
+	sensorData.push_back(sensorEvent);
 }
 
-void SensorEvent::AddEventData(StringData sensorEvent)
+void SensorEvent::AddEventData(StringData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
+	sensorData.push_back(sensorEvent);
 }
 
-void SensorEvent::AddEventData(SwitchData sensorEvent)
+void SensorEvent::AddEventData(SwitchData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
+	sensorData.push_back(sensorEvent);
 }
 
-void SensorEvent::AddEventData(VectorData sensorEvent)
+void SensorEvent::AddEventData(VectorData *sensorEvent)
 {
-	sensorData.push_back(std::shared_ptr<SensorDataBase>(&sensorEvent));
+	sensorData.push_back(sensorEvent);
 }
 
-std::vector<std::shared_ptr<SensorDataBase>> SensorEvent::GetEventData()
+std::vector<SensorDataBase *> SensorEvent::GetEventData()
 {
 	return sensorData;
 }
@@ -79,9 +84,9 @@ cJSON *SensorEvent::ToJSON()
 	cJSON_AddItemToObject(evt, "hostid", cJSON_CreateString(hostID.c_str()));
 	cJSON *events = cJSON_CreateArray();
 	
-	for (std::vector<std::shared_ptr<SensorDataBase>>::iterator it = sensorData.begin(); it != sensorData.end(); it++)
+	for (int i=0; i<sensorData.size(); i++)
 	{
-		cJSON_AddItemToArray(events, it->get()->ToJSON());
+		cJSON_AddItemToArray(events, sensorData[i]->ToJSON());
 	}
 	
 	cJSON_AddItemToObject(evt, "events", events);
@@ -119,50 +124,51 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 		cJSON *event;
 		cJSON_ArrayForEach(event, events)
 		{
+			std::string jsonStr(cJSON_Print(event));
 			if (cJSON_HasObjectItem(event, "type"))
 			{
-				eSensorDataTypes dt = (eSensorDataTypes)cJSON_GetObjectItem(json, "type")->valueint;
+				eSensorDataTypes dt = (eSensorDataTypes)(cJSON_GetObjectItem(event, "type")->valueint);
 				switch (dt)
 				{
 				case SWITCH:			
 					{
-					SwitchData sdb = SwitchData::FromJSON(event);
+					SwitchData* sdb = SwitchData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case VECTOR:
 					{
-						VectorData sdb = VectorData::FromJSON(event);
+						VectorData* sdb = VectorData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case COLOR:
 					{
-						ColorData sdb = ColorData::FromJSON(event);
+						ColorData *sdb = ColorData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case INTEGER:
 					{
-						IntData sdb = IntData::FromJSON(event);
+						IntData *sdb = IntData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case FLOAT:
 					{
-						FloatData sdb = FloatData::FromJSON(event);
+						FloatData *sdb = FloatData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case STRING:
 					{
-						StringData sdb = StringData::FromJSON(event);
+						StringData *sdb = StringData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case BINARY:
 					{
-						BinaryData sdb = BinaryData::FromJSON(event);
+						BinaryData *sdb = BinaryData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
@@ -183,11 +189,11 @@ void SensorEvent::StoreToDB()
 	evt.HostID = hostID;
 	
 	unsigned long eventID = DB::GetInstance()->GetStorage()->insert(evt);
-	for (std::vector<std::shared_ptr<SensorDataBase>>::iterator it = sensorData.begin(); it != sensorData.end(); ++it)
+	for (int i=0; i<sensorData.size(); i++)
 	{
 		try
 		{
-			it->get()->StoreToDB(eventID);
+			sensorData[i]->StoreToDB(eventID);
 		}
 		catch (const std::exception &e)
 		{

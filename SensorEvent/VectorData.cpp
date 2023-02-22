@@ -32,7 +32,7 @@ cJSON *VectorData::ToJSON()
 	return ret;
 }	
 
-VectorData VectorData::FromJSON(cJSON *json)
+VectorData *VectorData::FromJSON(cJSON *json)
 {
 	float jX = 0, jY = 0, jZ = 0, jRoll = 0, jPitch = 0, jHeading = 0;
 	if (cJSON_HasObjectItem(json, "x"))
@@ -60,7 +60,7 @@ VectorData VectorData::FromJSON(cJSON *json)
 		jHeading = cJSON_GetObjectItem(json, "heading")->valuedouble;
 	}
 	
-	return VectorData(jX, jY, jZ, jRoll, jHeading, jPitch);
+	return new VectorData(jX, jY, jZ, jRoll, jHeading, jPitch);
 }
 
 void VectorData::StoreToDB(unsigned long eventID)

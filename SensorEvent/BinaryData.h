@@ -12,7 +12,7 @@ public:
 	BinaryData(std::string Name, std::string Data);
 	
 	cJSON *ToJSON() override;
-	static BinaryData FromJSON(cJSON *json);
+	static BinaryData *FromJSON(cJSON *json);
 	
 	std::string GetName()
 	{

@@ -10,7 +10,7 @@ public:
 	FloatData(std::string Name, float Value);
 	
 	cJSON *ToJSON() override;
-	static FloatData FromJSON(cJSON *json);
+	static FloatData *FromJSON(cJSON *json);
 	
 	void SetName(std::string value)
 	{

@@ -16,7 +16,7 @@ cJSON *FloatData::ToJSON()
 	return ret;
 }
 
-FloatData FloatData::FromJSON(cJSON *json)
+FloatData *FloatData::FromJSON(cJSON *json)
 {
 	std::string name = "";
 	float value = 0;
@@ -29,7 +29,7 @@ FloatData FloatData::FromJSON(cJSON *json)
 	{
 		value = (float)cJSON_GetObjectItem(json, "value")->valuedouble;
 	}
-	return FloatData(name, value);
+	return new FloatData(name, value);
 }
 
 void FloatData::StoreToDB(unsigned long eventID)

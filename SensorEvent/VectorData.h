@@ -14,7 +14,7 @@ public:
 		float Pitch=0);
 	
 	cJSON *ToJSON() override;
-	static VectorData FromJSON(cJSON *JSON);
+	static VectorData *FromJSON(cJSON *JSON);
 
 	float GetX()
 	{

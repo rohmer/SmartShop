@@ -21,17 +21,18 @@ class SensorEvent
 {
 public:
 	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID="", time_t eventTime=0);
-
-	void AddEventData(BinaryData sensorData);
-	void AddEventData(ColorData sensorData);
-	void AddEventData(FloatData sensorData);
-	void AddEventData(IntData  sensorData);
-	void AddEventData(StringData sensorData);
-	void AddEventData(SwitchData sensorData);
-	void AddEventData(VectorData sensorData);
+	~SensorEvent();
+	
+	void AddEventData(BinaryData *sensorData);
+	void AddEventData(ColorData *sensorData);
+	void AddEventData(FloatData *sensorData);
+	void AddEventData(IntData  *sensorData);
+	void AddEventData(StringData *sensorData);
+	void AddEventData(SwitchData *sensorData);
+	void AddEventData(VectorData *sensorData);
 	
 	
-	std::vector<std::shared_ptr<SensorDataBase>> GetEventData() ;
+	std::vector<SensorDataBase*> GetEventData() ;
 	
 	cJSON *ToJSON();
 	
@@ -60,6 +61,6 @@ public:
 private:
 	std::string hostname, sensorName, hostID;
 	time_t eventTime;
-	std::vector<std::shared_ptr<SensorDataBase>> sensorData;
+	std::vector<SensorDataBase *> sensorData;
 };
 

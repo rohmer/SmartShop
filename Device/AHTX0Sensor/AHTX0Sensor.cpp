@@ -92,9 +92,9 @@ std::vector<SensorEvent> AHTX0Sensor::PollSensor()
 	float tF = tC * 1.8f + 32.0f;
 	
 	SensorEvent se(name);
-	se.AddEventData(FloatData("RelativeHumidity", humidity));
-	se.AddEventData(FloatData("TempC", tC));
-	se.AddEventData(FloatData("TempF", tF));
+	se.AddEventData(new FloatData("RelativeHumidity", humidity));
+	se.AddEventData(new FloatData("TempC", tC));
+	se.AddEventData(new FloatData("TempF", tF));
 	ret.push_back(se);
 	return ret;
 	

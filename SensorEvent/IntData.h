@@ -10,7 +10,7 @@ public:
 	IntData(std::string Name, long Value);
 	
 	cJSON *ToJSON() override;
-	static IntData FromJSON(cJSON *json);
+	static IntData *FromJSON(cJSON *json);
 	
 	void SetName(std::string value)
 	{

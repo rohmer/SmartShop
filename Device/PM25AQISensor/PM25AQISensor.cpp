@@ -33,18 +33,18 @@ std::vector<SensorEvent> PM25AQISensor::PollSensor()
 	}
 	
 	SensorEvent se1 = SensorEvent("PM25AQI");
-	se1.AddEventData(IntData("PM10Standard", buffer_u16[1]));
-	se1.AddEventData(IntData("PM25Standard", buffer_u16[2]));
-	se1.AddEventData(IntData("PM100Standard", buffer_u16[3]));
-	se1.AddEventData(IntData("PM10Env", buffer_u16[4]));
-	se1.AddEventData(IntData("PM25Env", buffer_u16[5]));
-	se1.AddEventData(IntData("PM100Env", buffer_u16[6]));
-	se1.AddEventData(IntData("Particles03", buffer_u16[7]));
-	se1.AddEventData(IntData("Particles05", buffer_u16[8]));
-	se1.AddEventData(IntData("Particles10", buffer_u16[9]));
-	se1.AddEventData(IntData("Particles25", buffer_u16[10]));
-	se1.AddEventData(IntData("Particles50", buffer_u16[11]));
-	se1.AddEventData(IntData("Particles100", buffer_u16[12]));
+	se1.AddEventData(new IntData("PM10Standard", buffer_u16[1]));
+	se1.AddEventData(new IntData("PM25Standard", buffer_u16[2]));
+	se1.AddEventData(new IntData("PM100Standard", buffer_u16[3]));
+	se1.AddEventData(new IntData("PM10Env", buffer_u16[4]));
+	se1.AddEventData(new IntData("PM25Env", buffer_u16[5]));
+	se1.AddEventData(new IntData("PM100Env", buffer_u16[6]));
+	se1.AddEventData(new IntData("Particles03", buffer_u16[7]));
+	se1.AddEventData(new IntData("Particles05", buffer_u16[8]));
+	se1.AddEventData(new IntData("Particles10", buffer_u16[9]));
+	se1.AddEventData(new IntData("Particles25", buffer_u16[10]));
+	se1.AddEventData(new IntData("Particles50", buffer_u16[11]));
+	se1.AddEventData(new IntData("Particles100", buffer_u16[12]));
 	
 	if (sum != buffer_u16[14])
 	{

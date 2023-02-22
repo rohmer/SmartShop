@@ -9,7 +9,7 @@ public:
 	SwitchData(uint switchID, bool value);
 	
 	cJSON *ToJSON() override;
-	static SwitchData FromJSON(cJSON *JSON);
+	static SwitchData *FromJSON(cJSON *JSON);
 	
 	void SetValue(bool val);
 	void SetSwitchID(uint switchID);

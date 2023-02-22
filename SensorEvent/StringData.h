@@ -10,7 +10,7 @@ public:
 	StringData(std::string Name, std::string Value);
 	
 	cJSON *ToJSON() override;
-	static StringData FromJSON(cJSON *json);
+	static StringData *FromJSON(cJSON *json);
 	
 	void SetName(std::string value)
 	{
