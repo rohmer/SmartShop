@@ -12,12 +12,31 @@ Server::Server()
 	log->Init();
 	
 	restServer = new RESTServer(8080);
-	LogEndpoint *logEndpoint = new LogEndpoint();
-	RegisterEndpoint *registerEP = new RegisterEndpoint();
-	EventEndpoint *eventEP = new EventEndpoint();
-	restServer->RegisterResource("/log", (httpserver::http_resource *)logEndpoint);
-	restServer->RegisterResource("/register", (httpserver::http_resource *)registerEP);
-	restServer->RegisterResource("/event", (httpserver::http_resource *)eventEP);
+	try
+	{
+		logEndpoint = new LogEndpoint();
+		registerEP = new RegisterEndpoint();
+		eventEP = new EventEndpoint();
+		if (!restServer->RegisterResource("/event", (httpserver::http_resource *)eventEP))
+			log->LogC("Could not register event resource");
+		else
+			log->LogI("Registered /event");
+		if (!restServer->RegisterResource("/log", (httpserver::http_resource *)logEndpoint))
+			log->LogC("Could not register log resource");
+		else
+			log->LogI("Registered /log");
+		if (!restServer->RegisterResource("/register", (httpserver::http_resource *)registerEP))
+			log->LogC("Could not register event resource");
+		else
+			log->LogI("Registered /register");
+	}
+	catch (std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error setting up RESTServer, err: " << e.what();
+		log->LogC(ss.str());
+	}
+	
 	
 	Capabilities caps;
 	caps.AddCap(Capabilities::CAP_SERVER);

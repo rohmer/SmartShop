@@ -63,6 +63,7 @@ public:
 		return dataType;
 	}
 	
+	
 protected:
 	eSensorDataTypes dataType;
 };

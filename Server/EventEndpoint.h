@@ -12,8 +12,9 @@
 #include "DB.h"
 
 
-class EventEndpoint
+class EventEndpoint : public httpserver::http_resource
 {
 public:
 	std::shared_ptr<httpserver::http_response> render_POST(const httpserver::http_request &request);
+	std::shared_ptr<httpserver::http_response> render_GET(const httpserver::http_request &request);
 };

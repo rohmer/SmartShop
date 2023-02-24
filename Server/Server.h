@@ -22,4 +22,7 @@ private:
 	Logger *log;
 	RESTServer *restServer;
 	DeviceManager *deviceManager;
+	LogEndpoint *logEndpoint;
+	RegisterEndpoint *registerEP;
+	EventEndpoint *eventEP;
 };

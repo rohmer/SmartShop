@@ -20,6 +20,9 @@
 class SensorEvent
 {
 public:
+	SensorEvent()
+	{
+	}
 	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID="", time_t eventTime=0);
 	~SensorEvent();
 	
@@ -39,6 +42,9 @@ public:
 	static SensorEvent FromJSON(cJSON *json);
 	
 	void StoreToDB();
+	
+	static SensorEvent GetFromDB(unsigned int eventID);
+	
 	bool SendToServer(std::string serverResource);
 
 	std::string GetHostname()
@@ -57,6 +63,9 @@ public:
 	{
 		return eventTime;
 	}
+	
+	void GetSensorData(unsigned int EventID);
+
 	
 private:
 	std::string hostname, sensorName, hostID;

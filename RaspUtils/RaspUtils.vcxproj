@@ -52,9 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPUInfo.h" />
+    <ClInclude Include="JSON.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPUInfo.cpp" />
+    <ClCompile Include="JSON.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
+      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

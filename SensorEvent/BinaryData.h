@@ -36,6 +36,7 @@ public:
 	
 	void StoreToDB(unsigned long eventID) override;
 	
+	
 private:
 	std::string name, data;
 };

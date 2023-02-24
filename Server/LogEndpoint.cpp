@@ -32,7 +32,17 @@ std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpse
 	if (cJSON_HasObjectItem(doc, "hostid"))
 		logmsg.HostID = cJSON_GetObjectItem(doc, "hostid")->valuestring;
 	
-	DB::GetInstance()->GetStorage()->insert(logmsg);
+	try
+	{
+		DB::GetInstance()->GetStorage()->insert(logmsg);	
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error inserting into DB, " << e.what();
+		Logger::GetInstance()->LogC(ss.str());
+		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response(ss.str(), 500));
+	}
 	return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200, "text/plain"));
 }
 

@@ -3,6 +3,7 @@
 #include "../DB/DB.h"
 #include "SensorEvent.h"
 #include <cjson/cJSON.h>
+#include "JSON.h"
 #include <CppUTest/CommandLineTestRunner.h>
 TEST_GROUP(SwitchTests)
 {
@@ -314,22 +315,50 @@ TEST(FullEvent, SingleDataPoint)
 	
 	cJSON *j = se.ToJSON();
 	
-	std::stringstream ss;
-	char *foo= cJSON_Print(j);
-	std::string json = foo;;
-	free(foo);
+	std::string json = JSON::Print(j);
+	
 	if (json.size() == 0)
 	{
 		FAIL("JSON was not serialized");
 	}
 	
-	cJSON *seJson = se.ToJSON();
-	SensorEvent se2 = SensorEvent::FromJSON(seJson);
-	cJSON_Delete(seJson);
+	SensorEvent se2 = SensorEvent::FromJSON(j);
+	cJSON_Delete(j);
 	STRCMP_EQUAL(se.GetHostname().c_str(), se2.GetHostname().c_str());
 	STRCMP_EQUAL(se.GetHostID().c_str(), se2.GetHostID().c_str());
 	for (int i = 0; i < se.GetEventData().size(); i++)
 	{
 		CHECK_EQUAL(se.GetEventData()[i]->GetDataType(), se2.GetEventData()[i]->GetDataType());
+		ColorData *cd = (ColorData*)se.GetEventData()[i];
+		ColorData *cd2 = (ColorData*)se2.GetEventData()[i];
+		CHECK_EQUAL(cd->GetAlpha(), cd2->GetAlpha());
+		CHECK_EQUAL(cd->GetBlue(), cd2->GetBlue());
+		CHECK_EQUAL(cd->GetGreen(), cd2->GetGreen());
+		CHECK_EQUAL(cd->GetRed(), cd2->GetRed());
 	}
+}
+
+TEST(FullEvent, MultipleDataPoints)
+{
+	SensorEvent se("TestEvent");
+	se.AddEventData(new ColorData(1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(new SwitchData(3, true));
+	se.AddEventData(new VectorData(1, 2, 3, 4, 5, 6));
+	cJSON *j = se.ToJSON();
+	
+	std::string json = JSON::Print(j);
+	
+	std::cout << json;
+	if (json.size() == 0)
+	{
+		FAIL("JSON was not serialized");
+	}
+	
+	
+	SensorEvent se2 = SensorEvent::FromJSON(j);
+	cJSON_Delete(j);
+	STRCMP_EQUAL(se.GetHostname().c_str(), se2.GetHostname().c_str());
+	STRCMP_EQUAL(se.GetHostID().c_str(), se2.GetHostID().c_str());
+	
+	CHECK_EQUAL(se.GetEventData().size(), se2.GetEventData().size());
 }

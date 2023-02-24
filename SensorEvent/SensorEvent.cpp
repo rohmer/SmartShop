@@ -180,6 +180,17 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 	return evt;
 }
 
+SensorEvent SensorEvent::GetFromDB(unsigned int eventID)
+{
+	using namespace sqlite_orm;
+	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(where(c(&DBEventData::ID) == eventID));
+	if (evts.size() == 0)
+		return SensorEvent();
+	SensorEvent se(evts[0].SensorName, evts[0].Hostname, evts[0].HostID, evts[0].EventTime);
+	se.GetSensorData(eventID);
+	return se;
+}
+
 void SensorEvent::StoreToDB()
 {
 	DBEventData evt;
@@ -216,3 +227,52 @@ bool SensorEvent::SendToServer(std::string serverResource)
 	return false;
 	
 }
+
+void SensorEvent::GetSensorData(unsigned int eventID)
+{
+	// TODO: I really dont like how this is
+	using namespace sqlite_orm;
+	std::vector<DBBinaryData> binDat=DB::GetInstance()->GetStorage()->get_all<DBBinaryData>(where(c(&DBBinaryData::EventID) == eventID));
+	for (std::vector<DBBinaryData>::iterator it = binDat.begin(); it != binDat.end(); ++it)
+	{
+		BinaryData *bd = new BinaryData(it->Name, it->Data);
+		AddEventData(bd);
+	}
+	std::vector<DBColorData> colDat= DB::GetInstance()->GetStorage()->get_all<DBColorData>(where(c(&DBColorData::EventID) == eventID));
+	for (std::vector<DBColorData>::iterator it = colDat.begin(); it != colDat.end(); ++it)
+	{
+		ColorData*cd = new ColorData(it->Red,it->Green,it->Blue,it->Alpha);
+		AddEventData(cd);
+	}
+	std::vector<DBFloatData> floatDat = DB::GetInstance()->GetStorage()->get_all<DBFloatData>(where(c(&DBFloatData::EventID) == eventID));
+	for (std::vector<DBFloatData>::iterator it = floatDat.begin(); it != floatDat.end(); ++it)
+	{
+		FloatData *fd = new FloatData(it->Name, it->Value);
+		AddEventData(fd);
+	}
+	std::vector<DBIntData> intDat = DB::GetInstance()->GetStorage()->get_all<DBIntData>(where(c(&DBIntData::EventID) == eventID));
+	for (std::vector<DBIntData>::iterator it = intDat.begin(); it != intDat.end(); ++it)
+	{
+		IntData *id=new IntData(it->Name, it->Value);
+		AddEventData(id);
+	}
+	std::vector<DBStringData> strDat = DB::GetInstance()->GetStorage()->get_all<DBStringData>(where(c(&DBStringData::EventID) == eventID));
+	for (std::vector<DBStringData>::iterator it = strDat.begin(); it != strDat.end(); ++it)
+	{
+		StringData *sd = new StringData(it->Name,it->Value);
+		AddEventData(sd);
+	}
+	std::vector<DBSwitchData> swDat = DB::GetInstance()->GetStorage()->get_all<DBSwitchData>(where(c(&DBSwitchData::EventID) == eventID));
+	for (std::vector<DBSwitchData>::iterator it = swDat.begin(); it != swDat.end(); ++it)
+	{
+		SwitchData *sd = new SwitchData(it->SwitchID, it->Value);
+		AddEventData(sd);
+	}
+	std::vector<DBVectorData> vecDat = DB::GetInstance()->GetStorage()->get_all<DBVectorData>(where(c(&DBVectorData::EventID) == eventID));
+	for (std::vector<DBVectorData>::iterator it = vecDat.begin(); it != vecDat.end(); ++it)
+	{
+		VectorData *vd = new VectorData(it->X, it->Y, it->Z, it->Roll, it->Heading, it->Pitch);
+		AddEventData(vd);
+	}
+}
+

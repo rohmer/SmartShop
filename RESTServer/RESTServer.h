@@ -25,9 +25,9 @@ public:
 	void Start();
 	void Shutdown();
 	
-	void RegisterResource(std::string path, httpserver::http_resource *resource);
+	bool RegisterResource(std::string path, httpserver::http_resource *resource);
 	
 private:
-	httpserver::webserver ws;
+	httpserver::webserver *ws;
 	Logger *log;
 };

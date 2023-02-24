@@ -40,3 +40,4 @@ void BinaryData::StoreToDB(unsigned long eventID)
 	dbo.Name = name;
 	DB::GetInstance()->GetStorage()->insert(dbo);
 }
+
