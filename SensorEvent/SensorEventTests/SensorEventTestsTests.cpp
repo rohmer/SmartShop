@@ -303,6 +303,15 @@ TEST(DBTests, VectorTest)
 	vd.StoreToDB(6);
 }
 
+TEST(DBTests, EventTestStore)
+{
+	SensorEvent se("TestEvent");
+	se.AddEventData(new ColorData(1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(new SwitchData(3, true));
+	se.AddEventData(new VectorData(1, 2, 3, 4, 5, 6));
+	se.StoreToDB();
+}
+
 TEST_GROUP(FullEvent)
 {
 };
