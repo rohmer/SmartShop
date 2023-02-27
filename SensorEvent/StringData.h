@@ -9,7 +9,7 @@ class StringData : public SensorDataBase
 public:	
 	StringData(std::string Name, std::string Value);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static StringData FromJSON(cJSON *json);
 	
 	void SetName(std::string value)

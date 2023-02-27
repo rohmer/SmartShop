@@ -8,7 +8,7 @@ class SwitchData : public SensorDataBase
 public:
 	SwitchData(uint switchID, bool value);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static SwitchData FromJSON(cJSON *JSON);
 	
 	void SetValue(bool val);

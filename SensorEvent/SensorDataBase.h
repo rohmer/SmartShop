@@ -24,12 +24,6 @@ public:
 		this->dataType = dataType;
 	}
 	
-	virtual cJSON *ToJSON()
-	{
-		return NULL;
-	};
-	
-	
 	eSensorDataTypes GetDataType(cJSON *json)
 	{
 		if (cJSON_HasObjectItem(json,"type"))

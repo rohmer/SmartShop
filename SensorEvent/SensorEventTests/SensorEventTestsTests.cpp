@@ -1,3 +1,4 @@
+#include <filesystem>
 #include <stdio.h>
 #include <sstream>
 #include "../DB/DB.h"
@@ -308,6 +309,38 @@ TEST(DBTests, EventTestStore)
 	se.AddEventData(SwitchData(3, true));
 	se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
 	se.StoreToDB();
+}
+
+TEST(DBTests, GetEventsFromDB)
+{
+	using namespace sqlite_orm;
+	
+	DB::GetInstance("Test.db");
+	for (int i = 0; i < 10; i++)
+	{
+		std::stringstream eventName;
+		eventName << "TestEvent" << i;
+		SensorEvent se(eventName.str());
+		se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
+		se.AddEventData(SwitchData(3, true));
+		se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
+		se.StoreToDB();		
+	}
+	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(sqlite_orm::limit(25));
+	
+	cJSON *doc = cJSON_CreateObject();
+	cJSON *evtMsgs = cJSON_CreateArray();
+	for (std::vector<DBEventData>::iterator it = evts.begin();
+		it != evts.end();
+		++it)
+	{
+		SensorEvent evt = SensorEvent::GetFromDB(it->ID);
+		cJSON_AddItemToArray(evtMsgs, evt.ToJSON());
+	}
+	cJSON_AddItemToObject(doc, "events", evtMsgs);
+	std::string msgRet = cJSON_Print(doc);
+	cJSON_Delete(evtMsgs);
+	std::filesystem::remove("Test.db");
 }
 
 TEST_GROUP(FullEvent)

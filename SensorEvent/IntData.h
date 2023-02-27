@@ -9,7 +9,7 @@ class IntData : public SensorDataBase
 public:
 	IntData(std::string Name, long Value);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static IntData FromJSON(cJSON *json);
 	
 	void SetName(std::string value)

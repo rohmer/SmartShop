@@ -11,7 +11,7 @@ class BinaryData : public SensorDataBase
 public:	
 	BinaryData(std::string Name, std::string Data);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static BinaryData FromJSON(cJSON *json);
 	
 	std::string GetName()

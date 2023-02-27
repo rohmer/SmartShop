@@ -357,8 +357,5 @@ void SensorEvent::StoreToDB()
 
 SensorEvent::~SensorEvent()
 {	
-	for (int i = 0; i < sensorData.size(); i++)
-		if (sensorData[i] != NULL)
-			delete(sensorData[i]);
 	sensorData.clear();
 }

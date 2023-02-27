@@ -10,6 +10,13 @@ Logger::Logger()
 	logPtr->sinks().push_back(rolling);
 }
 
+Logger::~Logger()
+{
+	logPtr->flush();
+	if (instance)
+		delete(instance);
+}
+
 void Logger::Init(bool isServer, spdlog::level::level_enum logLevel)
 {
 	if (isServer)
@@ -39,6 +46,7 @@ void Logger::Log(ELogLevel Severity, std::string msg)
 	if (Severity == ELogLevel::WARN)
 		level = spdlog::level::warn;
 	logPtr->log(level, msg);
+	logPtr->flush();
 }
 
 void Logger::LogI(std::string msg)

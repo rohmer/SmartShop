@@ -7,6 +7,10 @@ DB::DB(std::string path) :
 {
 }
 
+DB::~DB()
+{
+	storage->commit();
+}
 DB *DB::GetInstance(std::string path)
 {
 	if (instance == NULL)
@@ -31,5 +35,6 @@ void DB::init()
 		std::cerr << "Exception Syncing Schema: " << e.what() << "\n\n\n";
 		return;
 	}
+	storage->open_forever();
 	initialized = true;
 }

@@ -13,7 +13,7 @@ public:
 		float Heading=0, 
 		float Pitch=0);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static VectorData FromJSON(cJSON *JSON);
 
 	float GetX()

@@ -112,7 +112,8 @@ private:
 	using Storage = decltype(initCoreStorage(""));
 	
 public:
-	static DB *GetInstance(std::string path = "");
+	static DB *GetInstance(std::string path = "SmartShop.db");
+	~DB();
 	
 	std::shared_ptr<Storage> GetStorage()
 	{

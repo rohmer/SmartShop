@@ -9,7 +9,7 @@ class FloatData : public SensorDataBase
 public:
 	FloatData(std::string Name, float Value);
 	
-	cJSON *ToJSON() override;
+	cJSON *ToJSON();
 	static FloatData FromJSON(cJSON *json);
 	
 	void SetName(std::string value)

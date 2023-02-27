@@ -16,6 +16,7 @@ class Logger
 {
 public:
 	static Logger *GetInstance();
+	~Logger();
 	void LogW(std::string msg);
 	void LogI(std::string msg);
 	void LogC(std::string msg);
