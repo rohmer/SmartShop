@@ -16,37 +16,15 @@
 #include "BinaryData.h"
 #include "../RaspUtils/CPUInfo.h"
 
-
 class SensorEvent
 {
 public:
 	SensorEvent()
 	{
 	}
-	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID="", time_t eventTime=0);
+	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID = "", time_t eventTime = 0);
 	~SensorEvent();
 	
-	void AddEventData(BinaryData *sensorData);
-	void AddEventData(ColorData *sensorData);
-	void AddEventData(FloatData *sensorData);
-	void AddEventData(IntData  *sensorData);
-	void AddEventData(StringData *sensorData);
-	void AddEventData(SwitchData *sensorData);
-	void AddEventData(VectorData *sensorData);
-	
-	
-	std::vector<SensorDataBase*> GetEventData() ;
-	
-	cJSON *ToJSON();
-	
-	static SensorEvent FromJSON(cJSON *json);
-	
-	void StoreToDB();
-	
-	static SensorEvent GetFromDB(unsigned int eventID);
-	
-	bool SendToServer(std::string serverResource);
-
 	std::string GetHostname()
 	{
 		return hostname;
@@ -64,12 +42,34 @@ public:
 		return eventTime;
 	}
 	
-	void GetSensorData(unsigned int EventID);
+	std::vector<SensorDataBase*> GetEventData() 
+	{
+		std::vector<SensorDataBase*> ret;
+		for (int i = 0; i < sensorData.size(); i++)
+		{
+			SensorDataBase *ptr = sensorData[i];
+			ret.push_back(ptr);
+		}
+		return ret;
+	}
+	
+	void StoreToDB();
 
+	static SensorEvent GetFromDB(unsigned int eventID);	
+	cJSON *ToJSON();
+
+	static SensorEvent FromJSON(cJSON *json);
+	
+	void AddEventData(BinaryData sensorEvent);
+	void AddEventData(ColorData sensorEvent);
+	void AddEventData(FloatData sensorEvent);
+	void AddEventData(IntData sensorEvent);
+	void AddEventData(StringData sensorEvent);
+	void AddEventData(SwitchData sensorEvent);
+	void AddEventData(VectorData sensorEvent);
 	
 private:
 	std::string hostname, sensorName, hostID;
 	time_t eventTime;
-	std::vector<SensorDataBase *> sensorData;
+	std::vector<SensorDataBase*> sensorData;
 };
-

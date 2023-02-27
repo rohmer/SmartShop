@@ -17,7 +17,7 @@ cJSON *BinaryData::ToJSON()
 	return ret;
 }
 
-BinaryData *BinaryData::FromJSON(cJSON *json)
+BinaryData BinaryData::FromJSON(cJSON *json)
 {
 	std::string name, data;
 	if (cJSON_HasObjectItem(json, "name"))
@@ -29,7 +29,7 @@ BinaryData *BinaryData::FromJSON(cJSON *json)
 		std::string tmp = cJSON_GetObjectItem(json, "data")->valuestring;
 		data = base64_decode(tmp, true);
 	}
-	return new BinaryData(name, data);
+	return BinaryData(name, data);
 }
 
 void BinaryData::StoreToDB(unsigned long eventID)

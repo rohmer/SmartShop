@@ -6,11 +6,11 @@
 
 class StringData : public SensorDataBase
 {
-public:
+public:	
 	StringData(std::string Name, std::string Value);
 	
 	cJSON *ToJSON() override;
-	static StringData *FromJSON(cJSON *json);
+	static StringData FromJSON(cJSON *json);
 	
 	void SetName(std::string value)
 	{
@@ -29,7 +29,7 @@ public:
 	{
 		return value;
 	}
-	void StoreToDB(unsigned long eventID) override;
+	void StoreToDB(unsigned long eventID);
 	
 private:
 	std::string name;

@@ -1,7 +1,7 @@
 #include "SensorEvent.h"
 
-SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::string hostID, time_t eventTime) :
-	sensorName(sensorName)
+SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::string hostID, time_t eventTime)
+	: sensorName(sensorName)
 {
 	if (hostname.size() == 0)
 	{
@@ -30,49 +30,39 @@ SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::stri
 		this->eventTime = eventTime;
 }
 
-SensorEvent::~SensorEvent()
+void SensorEvent::AddEventData(BinaryData sensorEvent)
 {
-	for (int i = 0; i < sensorData.size(); i++)
-		delete(sensorData[i]);
-}
-void SensorEvent::AddEventData(BinaryData *sensorEvent)
-{
-	sensorData.push_back(sensorEvent);
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(ColorData *sensorEvent)
+void SensorEvent::AddEventData(ColorData sensorEvent)
 {
-	sensorData.push_back(sensorEvent);
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(FloatData *sensorEvent)
+void SensorEvent::AddEventData(FloatData sensorEvent)
 {
-	sensorData.push_back(sensorEvent) ;
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(IntData *sensorEvent)
+void SensorEvent::AddEventData(IntData sensorEvent)
 {
-	sensorData.push_back(sensorEvent);
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(StringData *sensorEvent)
+void SensorEvent::AddEventData(StringData sensorEvent)
 {
-	sensorData.push_back(sensorEvent);
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(SwitchData *sensorEvent)
+void SensorEvent::AddEventData(SwitchData sensorEvent)
 {
-	sensorData.push_back(sensorEvent);
+	sensorData.push_back(&sensorEvent);
 }
 
-void SensorEvent::AddEventData(VectorData *sensorEvent)
+void SensorEvent::AddEventData(VectorData sensorEvent) 
 {
-	sensorData.push_back(sensorEvent);
-}
-
-std::vector<SensorDataBase *> SensorEvent::GetEventData()
-{
-	return sensorData;
+	sensorData.push_back(&sensorEvent);
 }
 
 cJSON *SensorEvent::ToJSON()
@@ -84,9 +74,53 @@ cJSON *SensorEvent::ToJSON()
 	cJSON_AddItemToObject(evt, "hostid", cJSON_CreateString(hostID.c_str()));
 	cJSON *events = cJSON_CreateArray();
 	
-	for (int i=0; i<sensorData.size(); i++)
+	for (int i = 0; i < sensorData.size(); i++)
 	{
-		cJSON_AddItemToArray(events, sensorData[i]->ToJSON());
+		switch (sensorData[i]->GetDataType())
+		{
+		case eSensorDataTypes::SWITCH:
+			{
+				SwitchData *sdb = (SwitchData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::VECTOR:
+			{
+				VectorData *sdb = (VectorData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::COLOR:
+			{
+				ColorData *sdb = (ColorData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::INTEGER:
+			{
+				IntData *sdb = (IntData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::FLOAT:
+			{
+				FloatData *sdb = (FloatData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::STRING:
+			{
+				StringData *sdb = (StringData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		case eSensorDataTypes::BINARY:
+			{
+				BinaryData *sdb = (BinaryData*)sensorData[i];
+				cJSON_AddItemToArray(events, sdb->ToJSON());
+				break;
+			}
+		}		
 	}
 	
 	cJSON_AddItemToObject(evt, "events", events);
@@ -107,7 +141,7 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 	{
 		eventTime = cJSON_GetObjectItem(json, "time")->valueint;
 	}
-	if (cJSON_HasObjectItem(json,"host"))
+	if (cJSON_HasObjectItem(json, "host"))
 	{
 		host = cJSON_GetObjectItem(json, "host")->valuestring;
 	}
@@ -116,7 +150,7 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 		hostid = cJSON_GetObjectItem(json, "hostid")->valuestring;
 	}
 	
-	SensorEvent evt(name, host, hostid,eventTime);
+	SensorEvent evt(name, host, hostid, eventTime);
 	
 	if (cJSON_HasObjectItem(json, "events"))
 	{
@@ -132,43 +166,43 @@ SensorEvent SensorEvent::FromJSON(cJSON *json)
 				{
 				case SWITCH:			
 					{
-					SwitchData* sdb = SwitchData::FromJSON(event);
+						SwitchData sdb = SwitchData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case VECTOR:
 					{
-						VectorData* sdb = VectorData::FromJSON(event);
+						VectorData sdb = VectorData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case COLOR:
 					{
-						ColorData *sdb = ColorData::FromJSON(event);
+						ColorData sdb = ColorData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case INTEGER:
 					{
-						IntData *sdb = IntData::FromJSON(event);
+						IntData sdb = IntData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case FLOAT:
 					{
-						FloatData *sdb = FloatData::FromJSON(event);
+						FloatData sdb = FloatData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case STRING:
 					{
-						StringData *sdb = StringData::FromJSON(event);
+						StringData sdb = StringData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
 				case BINARY:
 					{
-						BinaryData *sdb = BinaryData::FromJSON(event);
+						BinaryData sdb = BinaryData::FromJSON(event);
 						evt.AddEventData(sdb);
 						break;
 					}
@@ -187,7 +221,49 @@ SensorEvent SensorEvent::GetFromDB(unsigned int eventID)
 	if (evts.size() == 0)
 		return SensorEvent();
 	SensorEvent se(evts[0].SensorName, evts[0].Hostname, evts[0].HostID, evts[0].EventTime);
-	se.GetSensorData(eventID);
+
+	std::vector<DBBinaryData> binDat = DB::GetInstance()->GetStorage()->get_all<DBBinaryData>(where(c(&DBBinaryData::EventID) == eventID));
+	for (std::vector<DBBinaryData>::iterator it = binDat.begin(); it != binDat.end(); ++it)
+	{
+		BinaryData bd = BinaryData(it->Name, it->Data);
+		se.AddEventData(bd);
+	}
+	std::vector<DBColorData> colDat = DB::GetInstance()->GetStorage()->get_all<DBColorData>(where(c(&DBColorData::EventID) == eventID));
+	for (std::vector<DBColorData>::iterator it = colDat.begin(); it != colDat.end(); ++it)
+	{
+		ColorData cd = ColorData(it->Red, it->Green, it->Blue, it->Alpha);
+		se.AddEventData(cd);
+	}
+	std::vector<DBFloatData> floatDat = DB::GetInstance()->GetStorage()->get_all<DBFloatData>(where(c(&DBFloatData::EventID) == eventID));
+	for (std::vector<DBFloatData>::iterator it = floatDat.begin(); it != floatDat.end(); ++it)
+	{
+		FloatData fd = FloatData(it->Name, it->Value);
+		se.AddEventData(fd);
+	}
+	std::vector<DBIntData> intDat = DB::GetInstance()->GetStorage()->get_all<DBIntData>(where(c(&DBIntData::EventID) == eventID));
+	for (std::vector<DBIntData>::iterator it = intDat.begin(); it != intDat.end(); ++it)
+	{
+		IntData id = IntData(it->Name, it->Value);
+		se.AddEventData(id);
+	}
+	std::vector<DBStringData> strDat = DB::GetInstance()->GetStorage()->get_all<DBStringData>(where(c(&DBStringData::EventID) == eventID));
+	for (std::vector<DBStringData>::iterator it = strDat.begin(); it != strDat.end(); ++it)
+	{
+		StringData sd = StringData(it->Name, it->Value);
+		se.AddEventData(sd);
+	}
+	std::vector<DBSwitchData> swDat = DB::GetInstance()->GetStorage()->get_all<DBSwitchData>(where(c(&DBSwitchData::EventID) == eventID));
+	for (std::vector<DBSwitchData>::iterator it = swDat.begin(); it != swDat.end(); ++it)
+	{
+		SwitchData sd = SwitchData(it->SwitchID, it->Value);
+		se.AddEventData(sd);
+	}
+	std::vector<DBVectorData> vecDat = DB::GetInstance()->GetStorage()->get_all<DBVectorData>(where(c(&DBVectorData::EventID) == eventID));
+	for (std::vector<DBVectorData>::iterator it = vecDat.begin(); it != vecDat.end(); ++it)
+	{
+		VectorData vd =VectorData(it->X, it->Y, it->Z, it->Roll, it->Heading, it->Pitch);
+		se.AddEventData(vd);
+	}
 	return se;
 }
 
@@ -199,12 +275,67 @@ void SensorEvent::StoreToDB()
 	evt.EventTime = eventTime;
 	evt.HostID = hostID;
 	
-	unsigned long eventID = DB::GetInstance()->GetStorage()->insert(evt);
-	for (int i=0; i<sensorData.size(); i++)
+	try
+	{
+		evt.ID = DB::GetInstance()->GetStorage()->insert(evt);	
+	}
+	catch (const std::exception&e)
+	{
+		std::stringstream ss;
+		ss << "Failed to store event: " << e.what();
+		std::string msg = ss.str();
+		Logger::GetInstance()->LogC(msg);
+	}
+	
+	for (int i = 0; i < sensorData.size(); i++)
 	{
 		try
-		{
-			sensorData[i]->StoreToDB(eventID);
+		{			
+			switch (sensorData[i]->GetDataType())
+			{
+			case eSensorDataTypes::SWITCH:
+				{
+					SwitchData *sdb = (SwitchData*)sensorData[i];
+					sdb->StoreToDB(evt.ID);
+					break;
+				}
+			case eSensorDataTypes::VECTOR:
+				{
+					VectorData *sdb = (VectorData*)sensorData[i];
+					sdb->StoreToDB(evt.ID);
+					break;
+				}
+			case eSensorDataTypes::COLOR:
+				{
+					ColorData *sdb = (ColorData*)sensorData[i];
+					sdb->StoreToDB(evt.ID);
+					break;
+				}
+			case eSensorDataTypes::INTEGER:
+				{
+					IntData *sdb = (IntData*)sensorData[i];
+					sdb->StoreToDB(evt.ID);
+					break;
+				}
+			case eSensorDataTypes::FLOAT:
+				{
+					FloatData *sdb = (FloatData*)sensorData[i];
+					sdb->StoreToDB(evt.ID); 
+					break;
+				}
+			case eSensorDataTypes::STRING:
+				{
+					StringData *sdb = (StringData*)sensorData[i];
+					sdb->StoreToDB(evt.ID); 
+					break;
+				}
+			case eSensorDataTypes::BINARY:
+				{
+					BinaryData *sdb = (BinaryData*)sensorData[i];
+					sdb->StoreToDB(evt.ID);
+					break;
+				}
+			}					
 		}
 		catch (const std::exception &e)
 		{
@@ -215,64 +346,7 @@ void SensorEvent::StoreToDB()
 	}
 }
 
-bool SensorEvent::SendToServer(std::string serverResource)
-{
-	cJSON *evt = ToJSON();
-	if (evt == NULL)
-	{
-		Logger::GetInstance()->LogW("Failed to serialize event");
-		return false;
-	}
-	
-	return false;
-	
+SensorEvent::~SensorEvent()
+{	
+	sensorData.clear();
 }
-
-void SensorEvent::GetSensorData(unsigned int eventID)
-{
-	// TODO: I really dont like how this is
-	using namespace sqlite_orm;
-	std::vector<DBBinaryData> binDat=DB::GetInstance()->GetStorage()->get_all<DBBinaryData>(where(c(&DBBinaryData::EventID) == eventID));
-	for (std::vector<DBBinaryData>::iterator it = binDat.begin(); it != binDat.end(); ++it)
-	{
-		BinaryData *bd = new BinaryData(it->Name, it->Data);
-		AddEventData(bd);
-	}
-	std::vector<DBColorData> colDat= DB::GetInstance()->GetStorage()->get_all<DBColorData>(where(c(&DBColorData::EventID) == eventID));
-	for (std::vector<DBColorData>::iterator it = colDat.begin(); it != colDat.end(); ++it)
-	{
-		ColorData*cd = new ColorData(it->Red,it->Green,it->Blue,it->Alpha);
-		AddEventData(cd);
-	}
-	std::vector<DBFloatData> floatDat = DB::GetInstance()->GetStorage()->get_all<DBFloatData>(where(c(&DBFloatData::EventID) == eventID));
-	for (std::vector<DBFloatData>::iterator it = floatDat.begin(); it != floatDat.end(); ++it)
-	{
-		FloatData *fd = new FloatData(it->Name, it->Value);
-		AddEventData(fd);
-	}
-	std::vector<DBIntData> intDat = DB::GetInstance()->GetStorage()->get_all<DBIntData>(where(c(&DBIntData::EventID) == eventID));
-	for (std::vector<DBIntData>::iterator it = intDat.begin(); it != intDat.end(); ++it)
-	{
-		IntData *id=new IntData(it->Name, it->Value);
-		AddEventData(id);
-	}
-	std::vector<DBStringData> strDat = DB::GetInstance()->GetStorage()->get_all<DBStringData>(where(c(&DBStringData::EventID) == eventID));
-	for (std::vector<DBStringData>::iterator it = strDat.begin(); it != strDat.end(); ++it)
-	{
-		StringData *sd = new StringData(it->Name,it->Value);
-		AddEventData(sd);
-	}
-	std::vector<DBSwitchData> swDat = DB::GetInstance()->GetStorage()->get_all<DBSwitchData>(where(c(&DBSwitchData::EventID) == eventID));
-	for (std::vector<DBSwitchData>::iterator it = swDat.begin(); it != swDat.end(); ++it)
-	{
-		SwitchData *sd = new SwitchData(it->SwitchID, it->Value);
-		AddEventData(sd);
-	}
-	std::vector<DBVectorData> vecDat = DB::GetInstance()->GetStorage()->get_all<DBVectorData>(where(c(&DBVectorData::EventID) == eventID));
-	for (std::vector<DBVectorData>::iterator it = vecDat.begin(); it != vecDat.end(); ++it)
-	{
-		VectorData *vd = new VectorData(it->X, it->Y, it->Z, it->Roll, it->Heading, it->Pitch);
-		AddEventData(vd);
-	}
-}
-

@@ -25,7 +25,7 @@ cJSON *ColorData::ToJSON()
 	return ret;
 }
 
-ColorData *ColorData::FromJSON(cJSON *json)
+ColorData ColorData::FromJSON(cJSON *json)
 {
 	float red=0, green=0, blue=0, alpha=0;
 	if (cJSON_HasObjectItem(json, "r"))
@@ -44,7 +44,7 @@ ColorData *ColorData::FromJSON(cJSON *json)
 	{
 		alpha = cJSON_GetObjectItem(json, "a")->valuedouble;
 	}
-	return new ColorData(red, green, blue, alpha);
+	return ColorData(red, green, blue, alpha);
 }
 
 void ColorData::StoreToDB(unsigned long eventID)

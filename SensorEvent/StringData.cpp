@@ -16,7 +16,7 @@ cJSON *StringData::ToJSON()
 	return ret;
 }
 
-StringData *StringData::FromJSON(cJSON *json)
+StringData StringData::FromJSON(cJSON *json)
 {
 	std::string name = "";
 	std::string value = "";
@@ -29,7 +29,7 @@ StringData *StringData::FromJSON(cJSON *json)
 	{
 		value = cJSON_GetObjectItem(json, "value")->valuestring;
 	}
-	return new StringData(name, value);
+	return StringData(name, value);
 }
 
 void StringData::StoreToDB(unsigned long eventID)

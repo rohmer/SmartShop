@@ -9,14 +9,14 @@ public:
 	SwitchData(uint switchID, bool value);
 	
 	cJSON *ToJSON() override;
-	static SwitchData *FromJSON(cJSON *JSON);
+	static SwitchData FromJSON(cJSON *JSON);
 	
 	void SetValue(bool val);
 	void SetSwitchID(uint switchID);
 	
 	bool GetValue();
 	uint GetSwitchID();
-	void StoreToDB(unsigned long eventID) override;
+	void StoreToDB(unsigned long eventID);
 	
 private:
 	uint id;

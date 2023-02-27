@@ -37,7 +37,6 @@ TEST(DeviceConfig, Create2)
 	
 }
 
-// TODO for Saturday, Create serialization/deserialzation tests for DeviceConfigs
 TEST(DeviceConfig, Serialize)
 {
 	std::vector<DeviceConfigItem> items;

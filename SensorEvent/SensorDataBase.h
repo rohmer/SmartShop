@@ -25,11 +25,10 @@ public:
 	}
 	
 	virtual cJSON *ToJSON()
-	{};
-	
-	virtual void StoreToDB(unsigned long eventID) 
 	{
-	}
+		return NULL;
+	};
+	
 	
 	eSensorDataTypes GetDataType(cJSON *json)
 	{

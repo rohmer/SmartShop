@@ -14,7 +14,7 @@ public:
 		float Pitch=0);
 	
 	cJSON *ToJSON() override;
-	static VectorData *FromJSON(cJSON *JSON);
+	static VectorData FromJSON(cJSON *JSON);
 
 	float GetX()
 	{
@@ -65,7 +65,7 @@ public:
 	{
 		pitch = val;
 	}
-	void StoreToDB(unsigned long eventID) override;
+	void StoreToDB(unsigned long eventID);
 	
 private:
 	float x, y, z, roll, heading, pitch;

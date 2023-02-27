@@ -9,7 +9,7 @@ class ColorData : public SensorDataBase
 public:
 	ColorData(float R = 0, float G = 0, float B = 0, float A = 0);
 	cJSON *ToJSON() override;
-	static ColorData *FromJSON(cJSON *JSON);
+	static ColorData FromJSON(cJSON *JSON);
 	
 	float GetRed()
 	{
@@ -43,7 +43,7 @@ public:
 	{
 		a = value;
 	}
-	void StoreToDB(unsigned long eventID) override;
+	void StoreToDB(unsigned long eventID);
 	
 private:
 	float r, g, b, a;

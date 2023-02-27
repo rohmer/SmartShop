@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-	//MemoryLeakWarningPlugin::turnOffNewDeleteOverloads();
+	MemoryLeakWarningPlugin::turnOffNewDeleteOverloads();
 	CommandLineTestRunner::RunAllTests(argc, argv);
 	return 0;
 }

@@ -36,11 +36,10 @@ TEST(SwitchTests, FromJSON)
 	std::stringstream json;
 	json << "{\"id\":0,\"type\":" << eSensorDataTypes::SWITCH << ",\"value\": true}";
 	doc=cJSON_Parse(json.str().c_str());
-	SwitchData *sd = SwitchData::FromJSON(doc);
-	CHECK(sd->GetSwitchID() == 0);
-	CHECK(sd->GetValue() == true);
-	CHECK(sd->GetDataType() == eSensorDataTypes::SWITCH);
-	delete(sd);
+	SwitchData sd = SwitchData::FromJSON(doc);
+	CHECK(sd.GetSwitchID() == 0);
+	CHECK(sd.GetValue() == true);
+	CHECK(sd.GetDataType() == eSensorDataTypes::SWITCH);	
 }
 
 TEST_GROUP(VectorTests)
@@ -84,16 +83,15 @@ TEST(VectorTests, FromJSON)
 	
 	
 	cJSON *json = cJSON_Parse(ss.str().c_str());
-	VectorData *vd = VectorData::FromJSON(json);
+	VectorData vd = VectorData::FromJSON(json);
 	
-	CHECK(vd->GetX() == 1);
-	CHECK(vd->GetY() == 2);
-	CHECK(vd->GetZ() == 3);
-	CHECK(vd->GetRoll() == 4);
-	CHECK(vd->GetHeading() == 5);
-	CHECK(vd->GetPitch() == 6);
-	CHECK(vd->GetDataType() == eSensorDataTypes::VECTOR);
-	delete(vd);
+	CHECK(vd.GetX() == 1);
+	CHECK(vd.GetY() == 2);
+	CHECK(vd.GetZ() == 3);
+	CHECK(vd.GetRoll() == 4);
+	CHECK(vd.GetHeading() == 5);
+	CHECK(vd.GetPitch() == 6);
+	CHECK(vd.GetDataType() == eSensorDataTypes::VECTOR);	
 }
 
 TEST_GROUP(ColorTests)
@@ -128,13 +126,13 @@ TEST(ColorTests, FromJSON)
 	std::stringstream ss;
 	ss << "{\"type\":" << eSensorDataTypes::COLOR << ",\"r\": 1,\"g\": 2,\"b\": 3,\"a\": 4 }";
 	cJSON *json = cJSON_Parse(ss.str().c_str());
-	ColorData *cd = ColorData::FromJSON(json);
-	CHECK(cd->GetRed() == 1);
-	CHECK(cd->GetGreen() == 2);
-	CHECK(cd->GetBlue() == 3);
-	CHECK(cd->GetAlpha() == 4);
-	CHECK(cd->GetDataType() == eSensorDataTypes::COLOR);
-	delete(cd);
+	ColorData cd = ColorData::FromJSON(json);
+	CHECK(cd.GetRed() == 1);
+	CHECK(cd.GetGreen() == 2);
+	CHECK(cd.GetBlue() == 3);
+	CHECK(cd.GetAlpha() == 4);
+	CHECK(cd.GetDataType() == eSensorDataTypes::COLOR);
+	
 }
 
 TEST_GROUP(IntTests)
@@ -167,11 +165,11 @@ TEST(IntTests, FromJSON)
 	std::stringstream ss;
 	ss << "{\"type\":" << eSensorDataTypes::INTEGER << ",\"name\": \"testVal\", \"value\": 42 }";
 	cJSON *json = cJSON_Parse(ss.str().c_str());
-	IntData *id = IntData::FromJSON(json);
-	CHECK(id->GetDataType() == eSensorDataTypes::INTEGER);
-	std::string name = id->GetName();
+	IntData id = IntData::FromJSON(json);
+	CHECK(id.GetDataType() == eSensorDataTypes::INTEGER);
+	std::string name = id.GetName();
 	STRCMP_EQUAL(name.c_str(),"testVal");
-	CHECK(id->GetValue() == 42);
+	CHECK(id.GetValue() == 42);
 }
 
 TEST_GROUP(FloatTests)
@@ -205,11 +203,11 @@ TEST(FloatTests, FromJSON)
 	std::stringstream ss;
 	ss << "{\"type\":" << eSensorDataTypes::FLOAT << ",\"name\": \"testVal\", \"value\": 42.24 }";
 	cJSON *json = cJSON_Parse(ss.str().c_str());
-	FloatData *id = FloatData::FromJSON(json);
-	CHECK(id->GetDataType() == eSensorDataTypes::FLOAT);
-	std::string name = id->GetName();
+	FloatData id = FloatData::FromJSON(json);
+	CHECK(id.GetDataType() == eSensorDataTypes::FLOAT);
+	std::string name = id.GetName();
 	STRCMP_EQUAL(name.c_str(), "testVal");
-	CHECK(abs(id->GetValue() - 42.24f) < 0.00001f);
+	CHECK(abs(id.GetValue() - 42.24f) < 0.00001f);
 }
 
 TEST_GROUP(StringTests)
@@ -245,11 +243,11 @@ TEST(StringTests, FromJSON)
 	std::stringstream ss;
 	ss << "{\"type\":" << eSensorDataTypes::FLOAT << ",\"name\": \"testVal\", \"value\": \"abc123\" }";
 	cJSON *json = cJSON_Parse(ss.str().c_str());
-	StringData *id = StringData::FromJSON(json);
-	CHECK(id->GetDataType() == eSensorDataTypes::STRING);
-	std::string name = id->GetName();
+	StringData id = StringData::FromJSON(json);
+	CHECK(id.GetDataType() == eSensorDataTypes::STRING);
+	std::string name = id.GetName();
 	STRCMP_EQUAL(name.c_str(), "testVal");
-	STRCMP_EQUAL(id->GetValue().c_str(), "abc123");
+	STRCMP_EQUAL(id.GetValue().c_str(), "abc123");
 }
 
 TEST_GROUP(DBTests)
@@ -306,9 +304,9 @@ TEST(DBTests, VectorTest)
 TEST(DBTests, EventTestStore)
 {
 	SensorEvent se("TestEvent");
-	se.AddEventData(new ColorData(1.0, 1.0, 1.0, 1.0));
-	se.AddEventData(new SwitchData(3, true));
-	se.AddEventData(new VectorData(1, 2, 3, 4, 5, 6));
+	se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(SwitchData(3, true));
+	se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
 	se.StoreToDB();
 }
 
@@ -319,7 +317,7 @@ TEST_GROUP(FullEvent)
 TEST(FullEvent, SingleDataPoint)
 {
 	SensorEvent se("TestSensor");
-	ColorData *cd=new ColorData(1.0f, 1.0f, 1.0f, 1.0f);
+	ColorData cd=ColorData(1.0f, 1.0f, 1.0f, 1.0f);
 	se.AddEventData(cd);
 	
 	cJSON *j = se.ToJSON();
@@ -337,7 +335,7 @@ TEST(FullEvent, SingleDataPoint)
 	STRCMP_EQUAL(se.GetHostID().c_str(), se2.GetHostID().c_str());
 	for (int i = 0; i < se.GetEventData().size(); i++)
 	{
-		CHECK_EQUAL(se.GetEventData()[i]->GetDataType(), se2.GetEventData()[i]->GetDataType());
+		CHECK_EQUAL(se.GetEventData()[i]->GetDataType(), se2.GetEventData()[i]->GetDataType());		
 		ColorData *cd = (ColorData*)se.GetEventData()[i];
 		ColorData *cd2 = (ColorData*)se2.GetEventData()[i];
 		CHECK_EQUAL(cd->GetAlpha(), cd2->GetAlpha());
@@ -350,9 +348,9 @@ TEST(FullEvent, SingleDataPoint)
 TEST(FullEvent, MultipleDataPoints)
 {
 	SensorEvent se("TestEvent");
-	se.AddEventData(new ColorData(1.0, 1.0, 1.0, 1.0));
-	se.AddEventData(new SwitchData(3, true));
-	se.AddEventData(new VectorData(1, 2, 3, 4, 5, 6));
+	se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(SwitchData(3, true));
+	se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
 	cJSON *j = se.ToJSON();
 	
 	std::string json = JSON::Print(j);

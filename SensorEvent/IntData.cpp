@@ -16,7 +16,7 @@ cJSON *IntData::ToJSON()
 	return ret;
 }
 
-IntData *IntData::FromJSON(cJSON *json)
+IntData IntData::FromJSON(cJSON *json)
 {
 	std::string name = "";
 	int value = 0;
@@ -29,7 +29,7 @@ IntData *IntData::FromJSON(cJSON *json)
 	{
 		value = cJSON_GetObjectItem(json, "value")->valueint;
 	}
-	return new IntData(name, value);
+	return IntData(name, value);
 }
 
 void IntData::StoreToDB(unsigned long eventID)

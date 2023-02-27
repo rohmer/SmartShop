@@ -40,7 +40,7 @@ cJSON *SwitchData::ToJSON()
 	return ret;
 }
 
-SwitchData *SwitchData::FromJSON(cJSON *doc)
+SwitchData SwitchData::FromJSON(cJSON *doc)
 {
 	unsigned int id;
 	bool value = false;
@@ -54,7 +54,7 @@ SwitchData *SwitchData::FromJSON(cJSON *doc)
 		value = cJSON_GetObjectItem(doc, "value")->valueint;
 	}
 	
-	return new SwitchData(id, value);
+	return SwitchData(id, value);
 }
 
 void SwitchData::StoreToDB(unsigned long eventID)

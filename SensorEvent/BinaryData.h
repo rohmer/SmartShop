@@ -8,11 +8,11 @@
 
 class BinaryData : public SensorDataBase
 {
-public:
+public:	
 	BinaryData(std::string Name, std::string Data);
 	
 	cJSON *ToJSON() override;
-	static BinaryData *FromJSON(cJSON *json);
+	static BinaryData FromJSON(cJSON *json);
 	
 	std::string GetName()
 	{
@@ -34,7 +34,7 @@ public:
 		this->data = value;
 	}
 	
-	void StoreToDB(unsigned long eventID) override;
+	void StoreToDB(unsigned long eventID);
 	
 	
 private:
