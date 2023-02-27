@@ -51,8 +51,8 @@ std::vector<SensorEvent> MCP9808Sensor::PollSensor()
 		tempF = tempF * 9.0 / 5.0 + 32;
 	}
 	
-	evt.AddEventData(new FloatData("TempF", tempF));
-	evt.AddEventData(new FloatData("TempC", tempC));
+	evt.AddEventData(FloatData("TempF", tempF));
+	evt.AddEventData(FloatData("TempC", tempC));
 	
 	ret.push_back(evt);
 	return ret;

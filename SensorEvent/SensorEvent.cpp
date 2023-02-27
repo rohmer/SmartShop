@@ -32,37 +32,46 @@ SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::stri
 
 void SensorEvent::AddEventData(BinaryData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	
+	sensorData.push_back(new BinaryData(sensorEvent.GetName(),sensorEvent.GetData()));
 }
 
 void SensorEvent::AddEventData(ColorData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new ColorData(sensorEvent.GetRed(), sensorEvent.GetGreen(),sensorEvent.GetBlue(),sensorEvent.GetAlpha()));
 }
 
 void SensorEvent::AddEventData(FloatData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new FloatData(sensorEvent.GetName(),sensorEvent.GetValue()));
 }
 
 void SensorEvent::AddEventData(IntData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new IntData(sensorEvent.GetName(),sensorEvent.GetValue()));
 }
 
 void SensorEvent::AddEventData(StringData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new StringData(sensorEvent.GetName(),sensorEvent.GetValue()));
 }
 
 void SensorEvent::AddEventData(SwitchData sensorEvent)
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new SwitchData(sensorEvent.GetSwitchID(), sensorEvent.GetValue()));
 }
 
 void SensorEvent::AddEventData(VectorData sensorEvent) 
 {
-	sensorData.push_back(&sensorEvent);
+	sensorData.push_back(new VectorData(
+		sensorEvent.GetX(),
+		sensorEvent.GetY(),
+		sensorEvent.GetZ(),
+		sensorEvent.GetRoll(),
+		sensorEvent.GetPitch(),
+		sensorEvent.GetHeading()
+		)
+	);
 }
 
 cJSON *SensorEvent::ToJSON()
@@ -274,7 +283,7 @@ void SensorEvent::StoreToDB()
 	evt.SensorName = sensorName;
 	evt.EventTime = eventTime;
 	evt.HostID = hostID;
-	
+	evt.ID = -1;
 	try
 	{
 		evt.ID = DB::GetInstance()->GetStorage()->insert(evt);	
@@ -348,5 +357,8 @@ void SensorEvent::StoreToDB()
 
 SensorEvent::~SensorEvent()
 {	
+	for (int i = 0; i < sensorData.size(); i++)
+		if (sensorData[i] != NULL)
+			delete(sensorData[i]);
 	sensorData.clear();
 }

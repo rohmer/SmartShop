@@ -49,7 +49,7 @@ std::shared_ptr<httpserver::http_response> EventEndpoint::render_GET(const https
 			SensorEvent evt = SensorEvent::GetFromDB(it->ID);
 			cJSON_AddItemToArray(evtMsgs, evt.ToJSON());
 		}
-		cJSON_AddItemToObject(doc, "msgs", evtMsgs);
+		cJSON_AddItemToObject(doc, "events", evtMsgs);
 		std::string msgRet = cJSON_Print(doc);
 		cJSON_Delete(evtMsgs);
 		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response(msgRet, 200, "text/plain"));			
