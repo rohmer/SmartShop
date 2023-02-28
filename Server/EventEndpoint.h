@@ -10,6 +10,7 @@
 #include "Logger.h"
 #include "../SensorEvent/SensorEvent.h"
 #include "DB.h"
+#include "../NodeAuth/NodeAuth.h"
 
 
 class EventEndpoint : public httpserver::http_resource

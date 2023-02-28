@@ -10,7 +10,7 @@
 
 class MCP9808Sensor : public I2CDevice, public Sensor
 {
-	MCP9808Sensor(DeviceConfig deviceConfig,
+	MCP9808Sensor(
 		std::string Name="MCP9808", 
 		std::string Description="MCP9808 Temperature",
 		unsigned int PollingInterval=300,

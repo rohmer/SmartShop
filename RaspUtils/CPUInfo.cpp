@@ -3,6 +3,19 @@
 std::string CPUInfo::cpuID = "";
 int CPUInfo::cpuCount = -1;
 EPIType CPUInfo::piType = EPIType::CLEAR;
+std::string CPUInfo::hostname = "";
+
+std::string CPUInfo::GetHostname()
+{
+	if (hostname.length() == 0)
+	{
+		char hostn[1024];
+		gethostname(hostn, 1024);
+		std::string host(hostn);
+		hostname = host;
+	}	
+	return hostname;
+}
 
 std::string CPUInfo::GetCPUID()
 {
@@ -51,7 +64,11 @@ void CPUInfo::parseCPUInfo()
 		
 		if (strcasecmp("Serial", key) == 0)
 		{
-			cpuID = value;			
+			cpuID = value;	
+			std::transform(cpuID.begin(),
+				cpuID.end(),
+				cpuID.begin(),
+				[](unsigned char c){ return std::toupper(c); });
 		}
 		if (strcasecmp("processor", key) == 0)
 			procCount++;

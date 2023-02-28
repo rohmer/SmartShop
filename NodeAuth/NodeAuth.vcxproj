@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}</ProjectGuid>
+    <ProjectGuid>{84EDD844-855D-4AF2-A301-03AC9028CD97}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -39,7 +39,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../RaspUtils;../Device;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/sqlite_orm-master/include/sqlite_orm;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -58,18 +58,16 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
-      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
-      <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
-      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
-    </ProjectReference>
+    <ClCompile Include="NodeAuth.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NodeAuth.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NodeAuth-Debug.vgdbsettings" />
+    <None Include="NodeAuth-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
       <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
     </ProjectReference>
@@ -79,21 +77,9 @@
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Device\Device.vcxproj">
-      <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\RaspUtils\RaspUtils.vcxproj">
-      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="HostRegistration.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="HostRegistration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

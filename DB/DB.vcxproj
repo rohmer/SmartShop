@@ -59,6 +59,7 @@
     <ClInclude Include="DBBinaryData.h" />
     <ClInclude Include="DBColorData.h" />
     <ClInclude Include="DB.h" />
+    <ClInclude Include="DBDevice.h" />
     <ClInclude Include="DBDeviceConfig.h" />
     <ClInclude Include="DBDeviceConfigItem.h" />
     <ClInclude Include="DBEventData.h" />

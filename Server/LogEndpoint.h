@@ -6,9 +6,9 @@
 #include <date.h>
 #include <cjson/cJSON.h>
 #include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
-
 #include "Logger.h"
 #include "LogMsg.h"
+#include "../NodeAuth/NodeAuth.h"
 #include "DB.h"
 
 

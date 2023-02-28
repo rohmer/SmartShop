@@ -16,6 +16,7 @@
 #include "DBDeviceConfig.h"
 #include "DBDeviceConfigItem.h"
 #include "DBInstall.h"
+#include "DBDevice.h"
 #include "DB.h"
 #include <sqlite_orm.h>
 
@@ -102,7 +103,13 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("id", &DBInstallFile::ID, primary_key().autoincrement()),
 			make_column("softwareID", &DBInstallFile::softwareID),
 			make_column("file", &DBInstallFile::file),
-			make_column("checksum", &DBInstallFile::checksum))
+			make_column("checksum", &DBInstallFile::checksum)),
+		make_table("Devices",
+			make_column("cpuid", &DBDevice::CPUID,primary_key()),
+			make_column("hostname", &DBDevice::Hostname),
+			make_column("cpuCount", &DBDevice::CPUCount),
+			make_column("deviceType", &DBDevice::DeviceType),
+			make_column("auth", &DBDevice::isAuth))
 		);
 }
 	
@@ -123,6 +130,15 @@ public:
 			initialized = true;
 		}
 		return storage;
+	}
+	
+	bool NodeAuthorized(std::string cpuID)
+	{
+		using namespace sqlite_orm;
+		std::vector<DBDevice> dbd = storage->get_all<DBDevice>(where(c(&DBDevice::CPUID) == cpuID));
+		if (dbd.size() == 0)
+			return false;
+		return dbd[0].isAuth;
 	}
 private:
 	DB(std::string path = "");

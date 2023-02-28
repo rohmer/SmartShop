@@ -2,6 +2,10 @@
 
 std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpserver::http_request &request)
 {	
+	if (!NodeAuth::IsNodeAuthorized(request))
+	{
+		return std::shared_ptr<httpserver::basic_auth_fail_response>(new httpserver::basic_auth_fail_response("FAIL"));
+	}
 	std::string body(request.get_content());
 	std::stringstream ss;
 	ss << "POST from: " << request.get_requestor();
@@ -48,6 +52,10 @@ std::shared_ptr<httpserver::http_response> LogEndpoint::render_POST(const httpse
 
 std::shared_ptr<httpserver::http_response> LogEndpoint::render_GET(const httpserver::http_request &request)
 {		
+	if (!NodeAuth::IsNodeAuthorized(request))
+	{
+		return std::shared_ptr<httpserver::basic_auth_fail_response>(new httpserver::basic_auth_fail_response("FAIL"));
+	}
 	std::stringstream ss;
 	ss << "GET from: " << request.get_requestor();
 	Logger::GetInstance()->LogI(ss.str());

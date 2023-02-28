@@ -26,7 +26,6 @@ void Logger::Init(bool isServer, spdlog::level::level_enum logLevel)
 		logPtr->sinks().push_back(sink);	
 	}
 	
-	
 	for (int i = 0; i < logPtr->sinks().size(); i++)
 		logPtr->sinks()[i].get()->set_level(logLevel);
 }

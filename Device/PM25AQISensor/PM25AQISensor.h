@@ -10,7 +10,7 @@
 class PM25AQISensor : public I2CDevice, public Sensor
 {
 public:
-    PM25AQISensor(DeviceConfig deviceConfig,
+    PM25AQISensor(
 		std::string Name = "PM25AQI", 
 		std::string Description = "PM25AQI i2c air quality sensor", 
 		unsigned int PollingInterval = 20, 

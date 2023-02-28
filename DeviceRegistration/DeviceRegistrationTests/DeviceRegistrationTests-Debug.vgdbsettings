@@ -30,8 +30,12 @@
         <Revision>1</Revision>
       </Version>
     </ToolchainID>
-    <ProjectFile>DeviceRegistration.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <ProjectFile>DeviceRegistrationTests.vcxproj</ProjectFile>
+    <RemoteBuildEnvironment>
+      <Records />
+      <EnvironmentSetupFiles />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
     <BuildAsRoot>false</BuildAsRoot>
   </Build>
@@ -67,20 +71,21 @@
     </CodeAnalyzerSettings>
   </CodeSense>
   <Configurations />
+  <CommonSettingsFile>DeviceRegistrationTests.vgdbsettings</CommonSettingsFile>
   <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
       <Features>
         <DisableAutoDetection>false</DisableAutoDetection>
-        <UseFrameParameter>false</UseFrameParameter>
-        <SimpleValuesFlagSupported>false</SimpleValuesFlagSupported>
-        <ListLocalsSupported>false</ListLocalsSupported>
-        <ByteLevelMemoryCommandsAvailable>false</ByteLevelMemoryCommandsAvailable>
-        <ThreadInfoSupported>false</ThreadInfoSupported>
-        <PendingBreakpointsSupported>false</PendingBreakpointsSupported>
-        <SupportTargetCommand>false</SupportTargetCommand>
-        <ReliableBreakpointNotifications>false</ReliableBreakpointNotifications>
+        <UseFrameParameter>true</UseFrameParameter>
+        <SimpleValuesFlagSupported>true</SimpleValuesFlagSupported>
+        <ListLocalsSupported>true</ListLocalsSupported>
+        <ByteLevelMemoryCommandsAvailable>true</ByteLevelMemoryCommandsAvailable>
+        <ThreadInfoSupported>true</ThreadInfoSupported>
+        <PendingBreakpointsSupported>true</PendingBreakpointsSupported>
+        <SupportTargetCommand>true</SupportTargetCommand>
+        <ReliableBreakpointNotifications>true</ReliableBreakpointNotifications>
       </Features>
       <EnableSmartStepping>false</EnableSmartStepping>
       <FilterSpuriousStoppedNotifications>false</FilterSpuriousStoppedNotifications>
@@ -92,7 +97,7 @@
       <UseRelativePathsOnly>false</UseRelativePathsOnly>
       <ExitAction>None</ExitAction>
       <DisableDisassembly>false</DisableDisassembly>
-      <ExamineMemoryWithXCommand>false</ExamineMemoryWithXCommand>
+      <ExamineMemoryWithXCommand>true</ExamineMemoryWithXCommand>
       <StepIntoNewInstanceEntry>main</StepIntoNewInstanceEntry>
       <ExamineRegistersInRawFormat>true</ExamineRegistersInRawFormat>
       <DisableSignals>false</DisableSignals>
@@ -107,7 +112,8 @@
     <LaunchGDBSettings xsi:type="GDBLaunchParametersNewInstance">
       <DebuggedProgram>$(TargetPath)</DebuggedProgram>
       <GDBServerPort>2000</GDBServerPort>
-      <ProgramArguments />
+      <ProgramArguments>"TEST(HostReigstration, BasicCreation)"</ProgramArguments>
+      <ProgramEnvironment>|SYSPROGS_TEST_REPORTING_PIPE=/tmp/81b1ac13-b942-4e81-bb47-910f73442ea7</ProgramEnvironment>
       <ArgumentEscapingMode>Auto</ArgumentEscapingMode>
     </LaunchGDBSettings>
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>
@@ -117,6 +123,7 @@
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
     <RunGDBUnderSudo>true</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>
+    <LdLibraryPath>/tmp</LdLibraryPath>
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>
     <SuppressTTYCreation>false</SuppressTTYCreation>

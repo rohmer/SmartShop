@@ -4,7 +4,9 @@ PCA9685Device::PCA9685Device(std::string Name, std::string Description, eI2CBus 
 	: I2CDevice(Name, Description, eDeviceType::GENERIC, I2CAddr, I2CBus),
 	log(Logger::GetInstance()),
 	oscillator_freq(FREQUENCY_OSCILLATOR)
-{	
+{
+	config.AddConfigItem(DeviceConfigItem("I2C BUS", (int)I2CBus,true));
+	config.AddConfigItem(DeviceConfigItem("Frequency", FREQUENCY_OSCILLATOR,true));
 }
 
 void PCA9685Device::SetOscillatorFreq(uint32_t Frequency)

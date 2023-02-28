@@ -7,11 +7,11 @@ class Sensor
 {
 public:
 	
-	Sensor(uint16_t PollingIntervalInSeconds, DeviceConfig &deviceConfig)
-		: deviceConfig(deviceConfig)
+	Sensor(uint16_t PollingIntervalInSeconds)
 	{
 		SetPollingInterval(PollingIntervalInSeconds);
 	}
+	
 	
 	virtual std::vector<SensorEvent> PollSensor()
 	{

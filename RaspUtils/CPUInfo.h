@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+#include <cctype>
 #include <string>
 #include <fstream>
 #include <ctype.h>
@@ -8,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 enum EPIType
 {
@@ -31,10 +34,12 @@ public:
 	static std::string GetCPUID();
 	static int GetCPUCount();
 	static EPIType GetPIBoardType();
+	static std::string GetHostname();
 	
 private:
+	static std::string hostname;
 	static void parseCPUInfo();
-	static void parseModelInfo(std:string revInfo);
+	static void parseModelInfo(std::string revInfo);
 	
 	static std::string cpuID;
 	static char *trimWhiteSpace(char *string);

@@ -18,12 +18,7 @@ std::shared_ptr<httpserver::http_response> RegisterEndpoint::render_POST(const h
 	
 	try
 	{
-		DeviceConfig dc = DeviceConfig::FromJSON(doc);
-		if (dc.GetName().size() > 0 && dc.GetHostname().size()> 0)
-		{
-			if (!dc.ToDB())
-				Logger::GetInstance()->LogW("Failed to store config in DB");
-		}
+		//TODO Parse registration
 	}
 	catch (const std::exception&)
 	{

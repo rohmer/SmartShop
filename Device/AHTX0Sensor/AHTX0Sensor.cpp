@@ -1,15 +1,16 @@
 #include "AHTX0Sensor.h"
 
-AHTX0Sensor::AHTX0Sensor(DeviceConfig deviceConfig,
+AHTX0Sensor::AHTX0Sensor(
 	std::string Name,
 	std::string Description,
 	unsigned int PollingInterval,
 	eI2CBus I2CBus,
 	unsigned short I2CAddress) :
 	I2CDevice(Name,Description,eDeviceType::SENSOR,I2CAddress,I2CBus),
-	Sensor(PollingInterval, deviceConfig)
+	Sensor(PollingInterval)
 {
-	
+	deviceConfig.AddConfigItem(DeviceConfigItem("I2C Bus", (int)I2CBus, true));
+	deviceConfig.AddConfigItem(DeviceConfigItem("I2C Address", (int)I2CAddress, true));
 }
 
 bool AHTX0Sensor::init()

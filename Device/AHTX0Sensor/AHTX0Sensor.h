@@ -11,7 +11,7 @@
 class AHTX0Sensor : public I2CDevice, public Sensor
 {
 public:
-	AHTX0Sensor(DeviceConfig deviceConfig,
+	AHTX0Sensor(
 		std::string Name="AHTX0Sensor", 
 		std::string Description="AHT10/20 Temperature/Humidity Sensor",
 		unsigned int PollingInterval=300,

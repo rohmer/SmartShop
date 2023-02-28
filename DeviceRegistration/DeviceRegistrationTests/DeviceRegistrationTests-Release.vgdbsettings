@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <VisualGDBProjectSettings2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ConfigurationName>Debug</ConfigurationName>
+  <ConfigurationName>Release</ConfigurationName>
   <Project xsi:type="com.visualgdb.project.linux">
     <CustomSourceDirectories>
       <Directories />
@@ -30,7 +30,7 @@
         <Revision>1</Revision>
       </Version>
     </ToolchainID>
-    <ProjectFile>DeviceRegistration.vcxproj</ProjectFile>
+    <ProjectFile>DeviceRegistrationTests.vcxproj</ProjectFile>
     <ParallelJobCount>0</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
     <BuildAsRoot>false</BuildAsRoot>
@@ -53,7 +53,6 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
-  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
@@ -66,8 +65,7 @@
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
-  <Configurations />
-  <ProgramArgumentsSuggestions />
+  <CommonSettingsFile>DeviceRegistrationTests.vgdbsettings</CommonSettingsFile>
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
@@ -112,10 +110,10 @@
     </LaunchGDBSettings>
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>
     <SuppressArgumentVariablesCheck>false</SuppressArgumentVariablesCheck>
-    <DeploymentTargetPath>/tmp/$(TargetFileName)</DeploymentTargetPath>
+    <DeploymentTargetPath>/tmp/UI/$(TargetFileName)</DeploymentTargetPath>
     <X11WindowMode>Local</X11WindowMode>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
-    <RunGDBUnderSudo>true</RunGDBUnderSudo>
+    <RunGDBUnderSudo>false</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>

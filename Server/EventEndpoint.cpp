@@ -2,6 +2,10 @@
 
 std::shared_ptr<httpserver::http_response> EventEndpoint::render_POST(const httpserver::http_request &request)
 {
+	if (!NodeAuth::IsNodeAuthorized(request))
+	{
+		return std::shared_ptr<httpserver::basic_auth_fail_response>(new httpserver::basic_auth_fail_response("FAIL"));
+	}
 	std::string body(request.get_content());
 	
 	cJSON *doc;
@@ -32,6 +36,10 @@ std::shared_ptr<httpserver::http_response> EventEndpoint::render_POST(const http
 
 std::shared_ptr<httpserver::http_response> EventEndpoint::render_GET(const httpserver::http_request &request)
 {		
+	if (!NodeAuth::IsNodeAuthorized(request))
+	{
+		return std::shared_ptr<httpserver::basic_auth_fail_response>(new httpserver::basic_auth_fail_response("FAIL"));
+	}
 	std::stringstream ss;
 	ss << "GET from: " << request.get_requestor();
 	Logger::GetInstance()->LogI(ss.str());

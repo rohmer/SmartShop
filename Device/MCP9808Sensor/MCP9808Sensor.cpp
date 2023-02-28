@@ -1,14 +1,16 @@
 #include "MCP9808Sensor.h"
 
-MCP9808Sensor::MCP9808Sensor(DeviceConfig deviceConfig,
+MCP9808Sensor::MCP9808Sensor(
 	std::string Name, 
 	std::string Description,
 	unsigned int PollingInterval,
 	eI2CBus I2CBus,
 	unsigned short I2CAddress)
 	: I2CDevice(Name, Description, eDeviceType::SENSOR, I2CAddress, I2CBus)
-	, Sensor(PollingInterval, deviceConfig)
+	, Sensor(PollingInterval)
 {
+	deviceConfig.AddConfigItem(DeviceConfigItem("I2C Bus", (int)I2CBus, true));
+	deviceConfig.AddConfigItem(DeviceConfigItem("I2C Address", (int)I2CAddress, true));
 }
 
 uint8_t MCP9808Sensor::GetResolution()
