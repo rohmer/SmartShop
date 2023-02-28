@@ -93,6 +93,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RaspUtils", "RaspUtils\Rasp
 EndProject
 Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "PicoClient", "PicoClient\PicoClient.vgdbproj", "{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceRegistration", "DeviceRegistration\DeviceRegistration.vcxproj", "{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -405,6 +407,14 @@ Global
 		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.RelWithDebInfo|VisualGDB.ActiveCfg = RelWithDebInfo|VisualGDB
 		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.RelWithDebInfo|VisualGDB.Build.0 = RelWithDebInfo|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

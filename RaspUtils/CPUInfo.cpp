@@ -2,6 +2,8 @@
 
 std::string CPUInfo::cpuID = "";
 int CPUInfo::cpuCount = -1;
+EPIType CPUInfo::piType = EPIType::CLEAR;
+
 std::string CPUInfo::GetCPUID()
 {
 	if (cpuID.size() > 0)
@@ -15,6 +17,13 @@ int CPUInfo::GetCPUCount()
 	if (cpuCount == -1)
 		parseCPUInfo();
 	return cpuCount;
+}
+
+EPIType CPUInfo::GetPIBoardType()
+{
+	if (piType == EPIType::CLEAR)
+		parseCPUInfo();
+	return piType;
 }
 
 void CPUInfo::parseCPUInfo()
@@ -46,9 +55,78 @@ void CPUInfo::parseCPUInfo()
 		}
 		if (strcasecmp("processor", key) == 0)
 			procCount++;
+		if (strcasecmp("Revision", key) == 0)
+			parseModelInfo(value);
+			
 	}
 	fclose(fp);
 	cpuCount = procCount;
+}
+
+void CPUInfo::parseModelInfo(std::string revInfo)
+{
+	if (revInfo.compare("900021")==0 || revInfo.compare("900032")==0)
+	{
+		piType = EPIType::PI_1;		
+	}
+	if (revInfo.compare("9000c1") == 0)
+	{
+		piType = EPIType::PI_ZERO;		
+	}
+	if (revInfo.compare("9020e0") == 0)
+	{
+		piType = EPIType::PI_3;		
+	}
+	if (revInfo.compare("900061") == 0)
+	{
+		piType = EPIType::PI_CM1;		
+	}
+	if (revInfo.compare("a01040") == 0 || revInfo.compare("a01041") == 0 || revInfo.compare("a21041") == 0)
+	{
+		piType = EPIType::PI_2;		
+	}	
+	if (revInfo.compare("a02082") == 0 || 
+		revInfo.compare("a020d3") == 0 ||
+		revInfo.compare("a22082") == 0 ||
+		revInfo.compare("a32082") == 0 ||
+		revInfo.compare("a32082") == 0 ||
+		revInfo.compare("a32082") == 0)
+	{
+		piType = EPIType::PI_3;
+	}
+	if (revInfo.compare("a020a0") == 0 || revInfo.compare("a220a0") == 0 || revInfo.compare("a02100") == 0)
+	{
+		piType = EPIType::PI_CM3;		
+	}
+	if (revInfo.compare("a03111") == 0 || 
+		revInfo.compare("b03111") == 0 ||
+		revInfo.compare("b03112") == 0 ||
+		revInfo.compare("b03114") == 0 ||
+		revInfo.compare("b03115") == 0 ||
+		revInfo.compare("c03111") == 0 ||
+		revInfo.compare("c03112") == 0 ||
+		revInfo.compare("c03114") == 0 ||
+		revInfo.compare("c03115") == 0 ||
+		revInfo.compare("d03114") == 0 ||
+		revInfo.compare("d03115") == 0)
+	{
+		piType = EPIType::PI_4;
+	}
+	
+	if (revInfo.compare("c03130") == 0)
+	{
+		piType = EPIType::PI_400;		
+	}
+	if (revInfo.compare("a03140") == 0 || 
+		revInfo.compare("b03140") == 0 ||
+		revInfo.compare("c03140") == 0 ||
+		revInfo.compare("d03140") == 0)
+	{
+		piType = EPIType::PI_CM4;
+	}
+	
+	if (piType == EPIType::CLEAR)
+		piType = EPIType::PI_UNKNOWN;
 }
 
 char *CPUInfo::trimWhiteSpace(char *string)

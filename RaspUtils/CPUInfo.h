@@ -9,15 +9,35 @@
 #include <stdlib.h>
 #include <string.h>
 
+enum EPIType
+{
+	PI_1,
+	PI_2,
+	PI_CM1,
+	PI_3,
+	PI_CM3,
+	PI_ZERO,
+	PI_ZERO_2,
+	PI_4,
+	PI_CM4,
+	PI_400,
+	PI_UNKNOWN,
+	CLEAR
+};
+
 class CPUInfo
 {
 public:
 	static std::string GetCPUID();
 	static int GetCPUCount();
+	static EPIType GetPIBoardType();
 	
 private:
 	static void parseCPUInfo();
+	static void parseModelInfo(std:string revInfo);
+	
 	static std::string cpuID;
 	static char *trimWhiteSpace(char *string);
 	static int cpuCount;
+	static EPIType piType;
 };

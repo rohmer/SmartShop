@@ -54,7 +54,8 @@ Server::Server()
 
 int main(int argc, char *argv[])
 {
-Server *server = new Server();
+
+	Server *server = new Server();
 #ifdef USE_UI
 	WindowManager *wm = WindowManager::GetInstance();
 #endif 
