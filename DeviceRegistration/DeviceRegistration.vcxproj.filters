@@ -18,9 +18,24 @@
     <ClInclude Include="HostRegistration.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="RegClient.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistrationEndpoint.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="RestClient.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HostRegistration.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegClient.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistrationEndpoint.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

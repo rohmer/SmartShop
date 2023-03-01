@@ -9,6 +9,16 @@
 class HostRegistration
 {
 public:
+	struct sDevice
+	{
+	public:
+		eDeviceBus deviceBus;
+		eDeviceType deviceType;
+		std::string deviceName;
+		std::string deviceDescription;
+		DeviceConfig deviceConfig;
+	};
+	
 	HostRegistration();
 	void AddDevice(DeviceBase *device);
 	
@@ -34,6 +44,10 @@ public:
 		return cpuCount;
 	}
 	
+	std::vector<sDevice> GetDevices()
+	{
+		return devices;
+	}
 private:
 	HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount);
 	
@@ -42,15 +56,6 @@ private:
 	EPIType deviceType;
 	uint cpuCount;
 	
-	struct sDevice
-	{
-	public:
-		eDeviceBus deviceBus;
-		eDeviceType deviceType;
-		std::string deviceName;
-		std::string deviceDescription;
-		DeviceConfig deviceConfig;
-	};
 	std::vector<sDevice> devices;
 	
 	cJSON *deviceToJSON(sDevice device);

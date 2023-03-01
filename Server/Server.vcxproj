@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/date-master/include/date;../RaspUtils;../Components/cpp-base64-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/date-master/include/date;../RaspUtils;../Components/cpp-base64-master;../Device;../LogEndpoint;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -44,17 +44,14 @@
       <SupportExceptions>true</SupportExceptions>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>=/usr/lib/arm-linux-gnueabihf;=/usr/local/lib/arm-linux-gnueabihf;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EventEndpoint.cpp" />
-    <ClCompile Include="LogEndpoint.cpp" />
-    <ClCompile Include="RegisterEndpoint.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +59,6 @@
     <None Include="Server-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EventEndpoint.h" />
-    <ClInclude Include="LogEndpoint.h" />
-    <ClInclude Include="RegisterEndpoint.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="Settings.h" />
   </ItemGroup>
@@ -90,6 +84,9 @@
     <ProjectReference Include="..\Components\md5-master\MD5\MD5.vcxproj">
       <Project>{9500ad59-5d75-4d02-82f6-8948b7788191}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
+      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
       <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
     </ProjectReference>
@@ -101,6 +98,9 @@
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceRegistration\DeviceRegistration.vcxproj">
+      <Project>{38ce80f5-298b-4ee9-91bb-7fd5081f44ff}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
@@ -117,6 +117,9 @@
     <ProjectReference Include="..\Device\SwitchDevice\SwitchDevice.vcxproj">
       <Project>{b8076e54-54f4-4ba3-b0f3-e810e8884012}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\EventEndpoint\EventEndpoint.vcxproj">
+      <Project>{9d0cb1e3-6ca1-4202-92c5-73a55dd70651}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Installer\AddFileToPkg\AddFileToPkg.vcxproj">
       <Project>{c50f957d-66a9-4d4e-9212-06037cdf227c}</Project>
     </ProjectReference>
@@ -128,6 +131,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Installer\InstallLib\InstallLib.vcxproj">
       <Project>{bcf8ca05-423d-4f70-a11a-311d09fdfe5c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LogEndpoint\LogEndpoint.vcxproj">
+      <Project>{0b364821-3fb8-4f19-9d0b-68d7f384c65a}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>

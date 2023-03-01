@@ -15,8 +15,9 @@ Server::Server()
 	try
 	{
 		logEndpoint = new LogEndpoint();
-		registerEP = new RegisterEndpoint();
+		registerEP = new RegistrationEndpoint();
 		eventEP = new EventEndpoint();
+		
 		if (!restServer->RegisterResource("/event", (httpserver::http_resource *)eventEP))
 			log->LogC("Could not register event resource");
 		else
@@ -29,6 +30,7 @@ Server::Server()
 			log->LogC("Could not register event resource");
 		else
 			log->LogI("Registered /register");
+		
 	}
 	catch (std::exception &e)
 	{

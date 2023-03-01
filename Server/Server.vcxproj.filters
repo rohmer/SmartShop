@@ -18,15 +18,6 @@
     <ClCompile Include="Server.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="LogEndpoint.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="RegisterEndpoint.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventEndpoint.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Server-Debug.vgdbsettings" />
@@ -37,15 +28,6 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="LogEndpoint.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="RegisterEndpoint.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventEndpoint.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

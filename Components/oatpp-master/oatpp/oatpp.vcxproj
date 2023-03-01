@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{5D3C6F40-8C2F-450F-839F-99206E669162}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="oatpp-Debug.vgdbsettings" />
+    <None Include="oatpp-Release.vgdbsettings" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\oatpp\algorithm\CRC.cpp" />
+    <ClCompile Include="..\src\oatpp\core\IODefinitions.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\ConditionVariable.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\Coroutine.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\CoroutineWaitList.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\Error.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\Executor.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\Lock.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\Processor.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_common.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_epoll.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_kqueue.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_stub.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOWorker.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\TimerWorker.cpp" />
+    <ClCompile Include="..\src\oatpp\core\async\worker\Worker.cpp" />
+    <ClCompile Include="..\src\oatpp\core\base\CommandLineArguments.cpp" />
+    <ClCompile Include="..\src\oatpp\core\base\Countable.cpp" />
+    <ClCompile Include="..\src\oatpp\core\base\Environment.cpp" />
+    <ClCompile Include="..\src\oatpp\core\concurrency\SpinLock.cpp" />
+    <ClCompile Include="..\src\oatpp\core\concurrency\Thread.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\Bundle.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\buffer\FIFOBuffer.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\buffer\IOBuffer.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\buffer\Processor.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\ObjectMapper.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\TypeResolver.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Any.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Enum.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\List.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Object.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\PairList.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Primitive.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Type.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\UnorderedMap.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\UnorderedSet.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Vector.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\resource\File.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\resource\InMemoryData.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\resource\TemporaryFile.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\share\MemoryLabel.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\share\StringTemplate.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\stream\BufferStream.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\stream\FIFOStream.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\stream\FileStream.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\stream\Stream.cpp" />
+    <ClCompile Include="..\src\oatpp\core\data\stream\StreamBufferedProxy.cpp" />
+    <ClCompile Include="..\src\oatpp\core\parser\Caret.cpp" />
+    <ClCompile Include="..\src\oatpp\core\parser\ParsingError.cpp" />
+    <ClCompile Include="..\src\oatpp\core\utils\Binary.cpp" />
+    <ClCompile Include="..\src\oatpp\core\utils\ConversionUtils.cpp" />
+    <ClCompile Include="..\src\oatpp\core\utils\Random.cpp" />
+    <ClCompile Include="..\src\oatpp\core\utils\String.cpp" />
+    <ClCompile Include="..\src\oatpp\encoding\Base64.cpp" />
+    <ClCompile Include="..\src\oatpp\encoding\Hex.cpp" />
+    <ClCompile Include="..\src\oatpp\encoding\Unicode.cpp" />
+    <ClCompile Include="..\src\oatpp\encoding\Url.cpp" />
+    <ClCompile Include="..\src\oatpp\network\Address.cpp" />
+    <ClCompile Include="..\src\oatpp\network\ConnectionPool.cpp" />
+    <ClCompile Include="..\src\oatpp\network\ConnectionProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\network\ConnectionProviderSwitch.cpp" />
+    <ClCompile Include="..\src\oatpp\network\Server.cpp" />
+    <ClCompile Include="..\src\oatpp\network\Url.cpp" />
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionInactivityChecker.cpp" />
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionMaxAgeChecker.cpp" />
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionMonitor.cpp" />
+    <ClCompile Include="..\src\oatpp\network\tcp\Connection.cpp" />
+    <ClCompile Include="..\src\oatpp\network\tcp\client\ConnectionProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\network\tcp\server\ConnectionProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\network\virtual_\Interface.cpp" />
+    <ClCompile Include="..\src\oatpp\network\virtual_\Pipe.cpp" />
+    <ClCompile Include="..\src\oatpp\network\virtual_\Socket.cpp" />
+    <ClCompile Include="..\src\oatpp\network\virtual_\client\ConnectionProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\network\virtual_\server\ConnectionProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\orm\DbClient.cpp" />
+    <ClCompile Include="..\src\oatpp\orm\Executor.cpp" />
+    <ClCompile Include="..\src\oatpp\orm\QueryResult.cpp" />
+    <ClCompile Include="..\src\oatpp\orm\SchemaMigration.cpp" />
+    <ClCompile Include="..\src\oatpp\orm\Transaction.cpp" />
+    <ClCompile Include="..\src\oatpp\parser\json\Beautifier.cpp" />
+    <ClCompile Include="..\src\oatpp\parser\json\Utils.cpp" />
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\Deserializer.cpp" />
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\ObjectMapper.cpp" />
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\Serializer.cpp" />
+    <ClCompile Include="..\src\oatpp\web\client\ApiClient.cpp" />
+    <ClCompile Include="..\src\oatpp\web\client\HttpRequestExecutor.cpp" />
+    <ClCompile Include="..\src\oatpp\web\client\RequestExecutor.cpp" />
+    <ClCompile Include="..\src\oatpp\web\client\RetryPolicy.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\FileProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\InMemoryDataProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Multipart.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Part.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\PartList.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\PartReader.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Reader.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\StatefulParser.cpp" />
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\TemporaryFileProvider.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\CommunicationError.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\Http.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\encoding\Chunked.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\encoding\ProviderCollection.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\BodyDecoder.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\Request.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\RequestHeadersReader.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\Response.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\ResponseHeadersReader.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\SimpleBodyDecoder.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Body.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\BufferBody.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\MultipartBody.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Request.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Response.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\ResponseFactory.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\StreamingBody.cpp" />
+    <ClCompile Include="..\src\oatpp\web\protocol\http\utils\CommunicationUtils.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\AsyncHttpConnectionHandler.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\HttpConnectionHandler.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\HttpProcessor.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\HttpRouter.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\api\ApiController.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\api\Endpoint.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\handler\AuthorizationHandler.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\handler\ErrorHandler.cpp" />
+    <ClCompile Include="..\src\oatpp\web\server\interceptor\AllowCorsGlobal.cpp" />
+    <ClCompile Include="..\src\oatpp\web\url\mapping\Pattern.cpp" />
+    <ClInclude Include="..\src\oatpp\algorithm\CRC.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\ApiClient_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\ApiClient_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\ApiController_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\ApiController_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\DbClient_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\DbClient_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\DTO_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\DTO_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\auth_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\auth_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\base_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\base_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\bundle_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\bundle_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\cors_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\cors_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\dto\base_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\dto\base_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\dto\enum_define.hpp" />
+    <ClInclude Include="..\src\oatpp\codegen\dto\enum_undef.hpp" />
+    <ClInclude Include="..\src\oatpp\core\IODefinitions.hpp" />
+    <ClInclude Include="..\src\oatpp\core\Types.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\ConditionVariable.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\Coroutine.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\CoroutineWaitList.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\Error.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\Executor.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\Lock.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\Processor.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\utils\FastQueue.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\worker\IOEventWorker.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\worker\IOWorker.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\worker\TimerWorker.hpp" />
+    <ClInclude Include="..\src\oatpp\core\async\worker\Worker.hpp" />
+    <ClInclude Include="..\src\oatpp\core\base\CommandLineArguments.hpp" />
+    <ClInclude Include="..\src\oatpp\core\base\Config.hpp" />
+    <ClInclude Include="..\src\oatpp\core\base\Countable.hpp" />
+    <ClInclude Include="..\src\oatpp\core\base\Environment.hpp" />
+    <ClInclude Include="..\src\oatpp\core\base\ObjectHandle.hpp" />
+    <ClInclude Include="..\src\oatpp\core\concurrency\SpinLock.hpp" />
+    <ClInclude Include="..\src\oatpp\core\concurrency\Thread.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\Bundle.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\buffer\FIFOBuffer.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\buffer\IOBuffer.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\buffer\Processor.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\ObjectMapper.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\TypeResolver.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Any.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Collection.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Enum.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\List.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Map.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Object.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\PairList.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Primitive.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Type.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\UnorderedMap.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\UnorderedSet.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Vector.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\resource\File.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\resource\InMemoryData.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\resource\Resource.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\resource\TemporaryFile.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\share\LazyStringMap.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\share\MemoryLabel.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\share\StringTemplate.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\stream\BufferStream.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\stream\FIFOStream.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\stream\FileStream.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\stream\Stream.hpp" />
+    <ClInclude Include="..\src\oatpp\core\data\stream\StreamBufferedProxy.hpp" />
+    <ClInclude Include="..\src\oatpp\core\macro\basic.hpp" />
+    <ClInclude Include="..\src\oatpp\core\macro\codegen.hpp" />
+    <ClInclude Include="..\src\oatpp\core\macro\component.hpp" />
+    <ClInclude Include="..\src\oatpp\core\parser\Caret.hpp" />
+    <ClInclude Include="..\src\oatpp\core\parser\ParsingError.hpp" />
+    <ClInclude Include="..\src\oatpp\core\provider\Invalidator.hpp" />
+    <ClInclude Include="..\src\oatpp\core\provider\Pool.hpp" />
+    <ClInclude Include="..\src\oatpp\core\provider\Provider.hpp" />
+    <ClInclude Include="..\src\oatpp\core\utils\Binary.hpp" />
+    <ClInclude Include="..\src\oatpp\core\utils\ConversionUtils.hpp" />
+    <ClInclude Include="..\src\oatpp\core\utils\Random.hpp" />
+    <ClInclude Include="..\src\oatpp\core\utils\String.hpp" />
+    <ClInclude Include="..\src\oatpp\encoding\Base64.hpp" />
+    <ClInclude Include="..\src\oatpp\encoding\Hex.hpp" />
+    <ClInclude Include="..\src\oatpp\encoding\Unicode.hpp" />
+    <ClInclude Include="..\src\oatpp\encoding\Url.hpp" />
+    <ClInclude Include="..\src\oatpp\network\Address.hpp" />
+    <ClInclude Include="..\src\oatpp\network\ConnectionHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\network\ConnectionPool.hpp" />
+    <ClInclude Include="..\src\oatpp\network\ConnectionProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\network\ConnectionProviderSwitch.hpp" />
+    <ClInclude Include="..\src\oatpp\network\Server.hpp" />
+    <ClInclude Include="..\src\oatpp\network\Url.hpp" />
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionInactivityChecker.hpp" />
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionMaxAgeChecker.hpp" />
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionMonitor.hpp" />
+    <ClInclude Include="..\src\oatpp\network\monitor\MetricsChecker.hpp" />
+    <ClInclude Include="..\src\oatpp\network\monitor\StatCollector.hpp" />
+    <ClInclude Include="..\src\oatpp\network\tcp\Connection.hpp" />
+    <ClInclude Include="..\src\oatpp\network\tcp\client\ConnectionProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\network\tcp\server\ConnectionProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\network\virtual_\Interface.hpp" />
+    <ClInclude Include="..\src\oatpp\network\virtual_\Pipe.hpp" />
+    <ClInclude Include="..\src\oatpp\network\virtual_\Socket.hpp" />
+    <ClInclude Include="..\src\oatpp\network\virtual_\client\ConnectionProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\network\virtual_\server\ConnectionProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\Connection.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\DbClient.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\Executor.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\QueryResult.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\SchemaMigration.hpp" />
+    <ClInclude Include="..\src\oatpp\orm\Transaction.hpp" />
+    <ClInclude Include="..\src\oatpp\parser\json\Beautifier.hpp" />
+    <ClInclude Include="..\src\oatpp\parser\json\Utils.hpp" />
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\Deserializer.hpp" />
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\ObjectMapper.hpp" />
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\Serializer.hpp" />
+    <ClInclude Include="..\src\oatpp\web\client\ApiClient.hpp" />
+    <ClInclude Include="..\src\oatpp\web\client\HttpRequestExecutor.hpp" />
+    <ClInclude Include="..\src\oatpp\web\client\RequestExecutor.hpp" />
+    <ClInclude Include="..\src\oatpp\web\client\RetryPolicy.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\FileProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\InMemoryDataProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Multipart.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Part.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\PartList.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\PartReader.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Reader.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\StatefulParser.hpp" />
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\TemporaryFileProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\CommunicationError.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\Http.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\Chunked.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\EncoderProvider.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\ProviderCollection.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\BodyDecoder.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\Request.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\RequestHeadersReader.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\Response.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\ResponseHeadersReader.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\SimpleBodyDecoder.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Body.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\BufferBody.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\MultipartBody.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Request.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Response.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\ResponseFactory.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\StreamingBody.hpp" />
+    <ClInclude Include="..\src\oatpp\web\protocol\http\utils\CommunicationUtils.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\AsyncHttpConnectionHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\HttpConnectionHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\HttpProcessor.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\HttpRequestHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\HttpRouter.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\api\ApiController.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\api\Endpoint.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\handler\AuthorizationHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\handler\ErrorHandler.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\AllowCorsGlobal.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\RequestInterceptor.hpp" />
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\ResponseInterceptor.hpp" />
+    <ClInclude Include="..\src\oatpp\web\url\mapping\Pattern.hpp" />
+    <ClInclude Include="..\src\oatpp\web\url\mapping\Router.hpp" />
+  </ItemGroup>
+</Project>

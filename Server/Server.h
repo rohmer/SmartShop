@@ -3,13 +3,13 @@
 #include "Logger.h"
 #include "../RESTServer/RESTServer.h"
 #include "LogEndpoint.h"
-#include "RegisterEndpoint.h"
 #include "../UI/WindowManager.h"
 #include "../Device/DeviceManager.h"
-#include "EventEndpoint.h"
+#include "../EventEndpoint/EventEndpoint.h"
 #include "../ZeroConf/ZeroConf.h"
 #include "../ZeroConf/Capabilities.h"
 #include "Settings.h"
+#include "../DeviceRegistration/RegistrationEndpoint.h"
 
 class Server
 {
@@ -23,6 +23,7 @@ private:
 	RESTServer *restServer;
 	DeviceManager *deviceManager;
 	LogEndpoint *logEndpoint;
-	RegisterEndpoint *registerEP;
+	RegistrationEndpoint *registerEP;
 	EventEndpoint *eventEP;
+	
 };

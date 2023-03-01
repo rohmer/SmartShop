@@ -1,0 +1,1189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{cd3b952a-3113-4c1c-92ae-c2cc53c93da1}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{68f0730e-04bb-4e1a-b5c5-11d02558fefe}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{f9c4faf0-54ce-4263-a244-325054243782}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\algorithm">
+      <UniqueIdentifier>{4b33eea1-f043-49d0-9a67-788c14683883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\codegen">
+      <UniqueIdentifier>{56ae3cb6-a5c2-4ede-85f1-706469cf5597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\codegen\api_controller">
+      <UniqueIdentifier>{60d5f19f-c249-4727-bc5d-e8fd90388c30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\codegen\dto">
+      <UniqueIdentifier>{65e83aca-ea4a-4d89-8166-230048df19c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core">
+      <UniqueIdentifier>{a8b39cd0-e4a9-428b-b546-84cc0485654a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\async">
+      <UniqueIdentifier>{37b9c6f5-c6d2-46e0-8dd5-03cf196702a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\async\utils">
+      <UniqueIdentifier>{a4f46548-35b1-4ef4-83e5-10554873219e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\async\worker">
+      <UniqueIdentifier>{d3134ec0-b298-40db-8062-682377a71e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\base">
+      <UniqueIdentifier>{82ea643d-acb4-48c9-94d6-e2cb1028f76b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\concurrency">
+      <UniqueIdentifier>{715807b2-da29-46f8-a4c2-95a15ee1a0f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data">
+      <UniqueIdentifier>{c323ac1c-80d1-4885-9294-1bc0f34107ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\buffer">
+      <UniqueIdentifier>{d6445f35-942a-4926-8d0c-59634b83c306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\mapping">
+      <UniqueIdentifier>{55582ac8-ffbb-43fc-a247-bc9d8ec90263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\mapping\type">
+      <UniqueIdentifier>{508dc81c-da49-4828-b2f1-3a92cedf90d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\resource">
+      <UniqueIdentifier>{03907bd7-dda5-477d-8ff5-d9bcca3fb8a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\share">
+      <UniqueIdentifier>{887b4109-9914-463d-ad70-cbbaf4f7e6c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\data\stream">
+      <UniqueIdentifier>{26149474-06ac-4ca3-8b44-5057c57ab218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\macro">
+      <UniqueIdentifier>{1b025783-fcc1-4885-a80f-6ee7a7fce685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\parser">
+      <UniqueIdentifier>{065ae3c3-cc42-4f53-99fb-769cc61a60cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\provider">
+      <UniqueIdentifier>{28bb3abd-5852-458e-bb49-b815e83db170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core\utils">
+      <UniqueIdentifier>{bad0534c-7a6a-4e51-bf26-ff6e1b7d492f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\encoding">
+      <UniqueIdentifier>{41663435-a141-4ca5-9cc6-69a9959d58df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network">
+      <UniqueIdentifier>{24332949-0b15-4192-9b1a-631d9eab3355}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\monitor">
+      <UniqueIdentifier>{53205d35-1bbe-409a-8d88-21d890036251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\tcp">
+      <UniqueIdentifier>{dbcb41d0-c73b-46c4-8257-90ab8b1753fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\tcp\client">
+      <UniqueIdentifier>{404926e1-fc00-49aa-9ac6-96d4d552edc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\tcp\server">
+      <UniqueIdentifier>{4837aea0-51e3-457b-86e8-a61197436f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\virtual_">
+      <UniqueIdentifier>{850f35d5-d70e-4fa9-8b62-9a97269a4ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\virtual_\client">
+      <UniqueIdentifier>{b027d544-b234-47ed-9bef-76f8c010e847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\network\virtual_\server">
+      <UniqueIdentifier>{e81cb45c-f793-419d-b718-3524494defa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\orm">
+      <UniqueIdentifier>{4df98cc5-95ee-42a2-8d05-2a72fb3fa129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\parser">
+      <UniqueIdentifier>{2d70d42b-9112-4b2e-a414-4ee3eaf5b695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\parser\json">
+      <UniqueIdentifier>{a944af0c-1f23-4a1b-aaa2-0026781b02fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\parser\json\mapping">
+      <UniqueIdentifier>{d8b13b6d-13f6-4c7c-b337-ff438403ad9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web">
+      <UniqueIdentifier>{82b2d28c-8ca3-44c1-8b8a-4cecf8e17fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\client">
+      <UniqueIdentifier>{ad380045-6902-48f8-ba27-e94adaa5280e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\mime">
+      <UniqueIdentifier>{5380dbd8-4198-466e-addb-eba042b15e1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\mime\multipart">
+      <UniqueIdentifier>{624e0836-5acd-4b60-8907-c5ce3b30fec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol">
+      <UniqueIdentifier>{00ba2fc4-18b7-41cc-8f74-471e9e0a58a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol\http">
+      <UniqueIdentifier>{83040e66-aa1b-4f7b-81d1-0ac04078ef19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol\http\encoding">
+      <UniqueIdentifier>{01c7eb5d-20f0-4acb-ab33-e211ce4f4aea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol\http\incoming">
+      <UniqueIdentifier>{9884c0f9-191f-49a1-8749-7f924ce9e62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol\http\outgoing">
+      <UniqueIdentifier>{b59ed51f-5054-46dc-893c-58276f98e92a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\protocol\http\utils">
+      <UniqueIdentifier>{e2904896-4d52-4f72-86b2-7e8288e8a52c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\server">
+      <UniqueIdentifier>{d3e48c69-961b-45e0-bf58-143aa2980352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\server\api">
+      <UniqueIdentifier>{18ef77c2-b8f1-435f-b167-e71e9b7a3d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\server\handler">
+      <UniqueIdentifier>{295971af-2609-4f15-a903-d4ec1806b03e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\server\interceptor">
+      <UniqueIdentifier>{41cad993-0686-4e46-b57e-0906ff1a6026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\url">
+      <UniqueIdentifier>{af1b4375-9b55-4e35-ab05-437d07d4e4d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\web\url\mapping">
+      <UniqueIdentifier>{7b0a1d76-cd4c-4ea2-b04d-152c4ee26673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\algorithm">
+      <UniqueIdentifier>{bfa4d339-6f67-489b-b1f8-bb1f378d7ed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\codegen">
+      <UniqueIdentifier>{6358728a-606d-4b26-a8b9-5fd9d90797c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\codegen\api_controller">
+      <UniqueIdentifier>{6d68c30a-159d-46fb-9653-d206f58d4baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\codegen\dto">
+      <UniqueIdentifier>{96684d77-5135-4604-8714-bb2c58a1efe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core">
+      <UniqueIdentifier>{0aeccfbd-942e-4dde-b7f3-b964d1f2d7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\async">
+      <UniqueIdentifier>{0ff43b0a-dbb2-448b-a0d2-a9b8cd312dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\async\utils">
+      <UniqueIdentifier>{429aca31-71c6-4b33-9a32-d7b624bd1ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\async\worker">
+      <UniqueIdentifier>{9769f5ea-966d-46aa-8776-a5bfed0c24b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\base">
+      <UniqueIdentifier>{f10ed488-7f31-4a01-8353-f4f993f0da36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\concurrency">
+      <UniqueIdentifier>{d5509f22-75b2-40e3-aa1d-6c93ada15059}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data">
+      <UniqueIdentifier>{c1fa99ae-d96a-471b-897e-42b7269d16af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\buffer">
+      <UniqueIdentifier>{9f48d0af-5507-4ed7-a679-1477b205c8d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\mapping">
+      <UniqueIdentifier>{5d2db0fd-9286-4dbb-b534-57a2527a488d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\mapping\type">
+      <UniqueIdentifier>{2e5e1ccc-99a4-44a0-a633-0ea1ae63443e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\resource">
+      <UniqueIdentifier>{a549398b-93e8-4c39-b809-a3828ed3dd69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\share">
+      <UniqueIdentifier>{a5b10057-1831-41ac-a878-17d4af5873fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\data\stream">
+      <UniqueIdentifier>{d019877c-16ea-4e52-a93e-90cc623dd0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\macro">
+      <UniqueIdentifier>{1ec48607-df00-4c75-996c-1d9560369935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\parser">
+      <UniqueIdentifier>{e51cedcd-ab7c-4791-8bf7-c436ac7806a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\provider">
+      <UniqueIdentifier>{48d88aa2-3e4a-4cb9-ac7f-02b1e05f1a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core\utils">
+      <UniqueIdentifier>{93ab2f3f-8ed4-4d56-8b3a-c8a026fa917d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\encoding">
+      <UniqueIdentifier>{be737700-447f-4a75-ab5a-5bf48a1a7dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network">
+      <UniqueIdentifier>{5026e345-d296-4edb-bb18-ccdc04c2c07c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\monitor">
+      <UniqueIdentifier>{79c5dab0-c368-414b-9fef-cb8ab7e17c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\tcp">
+      <UniqueIdentifier>{f123ac71-ca3c-4826-9c6c-933eaac9163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\tcp\client">
+      <UniqueIdentifier>{15941c5e-71dc-4c9a-aac0-1e3969787418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\tcp\server">
+      <UniqueIdentifier>{4ca3ccf3-3289-4f8c-9668-0a7e5c6865bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\virtual_">
+      <UniqueIdentifier>{baa4d085-9bf6-488a-9f5c-d459e87f0a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\virtual_\client">
+      <UniqueIdentifier>{09d52de7-0b9d-40e6-914b-184e7fdd40fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\network\virtual_\server">
+      <UniqueIdentifier>{3e51784f-e3a1-4367-a267-1c138b1cfb2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\orm">
+      <UniqueIdentifier>{26ef0d44-8d08-4393-98d6-52b0e18a7d6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\parser">
+      <UniqueIdentifier>{58da49db-f373-4fc4-a5e9-71e0f5fad703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\parser\json">
+      <UniqueIdentifier>{5d318e07-505b-403a-aa5f-35e6ee5ec3d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\parser\json\mapping">
+      <UniqueIdentifier>{7bb5c461-16f6-4769-9048-9484c61b7f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web">
+      <UniqueIdentifier>{724a16a5-0e59-438a-891e-b9409a7fd6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\client">
+      <UniqueIdentifier>{3707d0d2-148b-43d8-a30f-250ae33b2dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\mime">
+      <UniqueIdentifier>{b4d40c1c-b4de-4476-84fb-647d6ea24169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\mime\multipart">
+      <UniqueIdentifier>{294b21d7-1a52-427f-bb22-5a6cc7d8bc02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol">
+      <UniqueIdentifier>{d792454f-e7e7-4c4d-be79-43d287cb69e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol\http">
+      <UniqueIdentifier>{81beb2ab-d0a8-4d5e-9570-b070780da2fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol\http\encoding">
+      <UniqueIdentifier>{85cacf0f-657d-420c-8a9c-96cfc5ff06d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol\http\incoming">
+      <UniqueIdentifier>{2f0cae11-86fc-4465-af47-82fcd9c85ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol\http\outgoing">
+      <UniqueIdentifier>{ca2de4b4-3a9e-4730-94a5-a97847c223e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\protocol\http\utils">
+      <UniqueIdentifier>{c891927f-15a3-4bba-bead-9c29f4f17776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\server">
+      <UniqueIdentifier>{02d2dc62-4ff8-4915-8341-e3992519107b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\server\api">
+      <UniqueIdentifier>{6e7260b2-2fc7-4f02-86f5-3e8359861a23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\server\handler">
+      <UniqueIdentifier>{3fd0c292-cedd-4290-a5ac-0a20fd33174c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\server\interceptor">
+      <UniqueIdentifier>{1ac85562-fdb0-4c8a-9e6b-f5ad3dcc147a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\url">
+      <UniqueIdentifier>{52174363-9684-42f4-a1f0-5b283056773f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\web\url\mapping">
+      <UniqueIdentifier>{0be02261-d292-41e1-a9dc-c6202e0b67d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\oatpp\algorithm\CRC.cpp">
+      <Filter>Source files\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\IODefinitions.cpp">
+      <Filter>Source files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\ConditionVariable.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\Coroutine.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\CoroutineWaitList.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\Error.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\Executor.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\Lock.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\Processor.cpp">
+      <Filter>Source files\core\async</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_common.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_epoll.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_kqueue.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOEventWorker_stub.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\IOWorker.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\TimerWorker.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\async\worker\Worker.cpp">
+      <Filter>Source files\core\async\worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\base\CommandLineArguments.cpp">
+      <Filter>Source files\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\base\Countable.cpp">
+      <Filter>Source files\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\base\Environment.cpp">
+      <Filter>Source files\core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\concurrency\SpinLock.cpp">
+      <Filter>Source files\core\concurrency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\concurrency\Thread.cpp">
+      <Filter>Source files\core\concurrency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\Bundle.cpp">
+      <Filter>Source files\core\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\buffer\FIFOBuffer.cpp">
+      <Filter>Source files\core\data\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\buffer\IOBuffer.cpp">
+      <Filter>Source files\core\data\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\buffer\Processor.cpp">
+      <Filter>Source files\core\data\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\ObjectMapper.cpp">
+      <Filter>Source files\core\data\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\TypeResolver.cpp">
+      <Filter>Source files\core\data\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Any.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Enum.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\List.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Object.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\PairList.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Primitive.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Type.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\UnorderedMap.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\UnorderedSet.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\mapping\type\Vector.cpp">
+      <Filter>Source files\core\data\mapping\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\resource\File.cpp">
+      <Filter>Source files\core\data\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\resource\InMemoryData.cpp">
+      <Filter>Source files\core\data\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\resource\TemporaryFile.cpp">
+      <Filter>Source files\core\data\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\share\MemoryLabel.cpp">
+      <Filter>Source files\core\data\share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\share\StringTemplate.cpp">
+      <Filter>Source files\core\data\share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\stream\BufferStream.cpp">
+      <Filter>Source files\core\data\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\stream\FIFOStream.cpp">
+      <Filter>Source files\core\data\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\stream\FileStream.cpp">
+      <Filter>Source files\core\data\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\stream\Stream.cpp">
+      <Filter>Source files\core\data\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\data\stream\StreamBufferedProxy.cpp">
+      <Filter>Source files\core\data\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\parser\Caret.cpp">
+      <Filter>Source files\core\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\parser\ParsingError.cpp">
+      <Filter>Source files\core\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\utils\Binary.cpp">
+      <Filter>Source files\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\utils\ConversionUtils.cpp">
+      <Filter>Source files\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\utils\Random.cpp">
+      <Filter>Source files\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\core\utils\String.cpp">
+      <Filter>Source files\core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\encoding\Base64.cpp">
+      <Filter>Source files\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\encoding\Hex.cpp">
+      <Filter>Source files\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\encoding\Unicode.cpp">
+      <Filter>Source files\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\encoding\Url.cpp">
+      <Filter>Source files\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\Address.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\ConnectionPool.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\ConnectionProvider.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\ConnectionProviderSwitch.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\Server.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\Url.cpp">
+      <Filter>Source files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionInactivityChecker.cpp">
+      <Filter>Source files\network\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionMaxAgeChecker.cpp">
+      <Filter>Source files\network\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\monitor\ConnectionMonitor.cpp">
+      <Filter>Source files\network\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\tcp\Connection.cpp">
+      <Filter>Source files\network\tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\tcp\client\ConnectionProvider.cpp">
+      <Filter>Source files\network\tcp\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\tcp\server\ConnectionProvider.cpp">
+      <Filter>Source files\network\tcp\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\virtual_\Interface.cpp">
+      <Filter>Source files\network\virtual_</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\virtual_\Pipe.cpp">
+      <Filter>Source files\network\virtual_</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\virtual_\Socket.cpp">
+      <Filter>Source files\network\virtual_</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\virtual_\client\ConnectionProvider.cpp">
+      <Filter>Source files\network\virtual_\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\network\virtual_\server\ConnectionProvider.cpp">
+      <Filter>Source files\network\virtual_\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\orm\DbClient.cpp">
+      <Filter>Source files\orm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\orm\Executor.cpp">
+      <Filter>Source files\orm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\orm\QueryResult.cpp">
+      <Filter>Source files\orm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\orm\SchemaMigration.cpp">
+      <Filter>Source files\orm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\orm\Transaction.cpp">
+      <Filter>Source files\orm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\parser\json\Beautifier.cpp">
+      <Filter>Source files\parser\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\parser\json\Utils.cpp">
+      <Filter>Source files\parser\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\Deserializer.cpp">
+      <Filter>Source files\parser\json\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\ObjectMapper.cpp">
+      <Filter>Source files\parser\json\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\parser\json\mapping\Serializer.cpp">
+      <Filter>Source files\parser\json\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\client\ApiClient.cpp">
+      <Filter>Source files\web\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\client\HttpRequestExecutor.cpp">
+      <Filter>Source files\web\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\client\RequestExecutor.cpp">
+      <Filter>Source files\web\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\client\RetryPolicy.cpp">
+      <Filter>Source files\web\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\FileProvider.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\InMemoryDataProvider.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Multipart.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Part.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\PartList.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\PartReader.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\Reader.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\StatefulParser.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\mime\multipart\TemporaryFileProvider.cpp">
+      <Filter>Source files\web\mime\multipart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\CommunicationError.cpp">
+      <Filter>Source files\web\protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\Http.cpp">
+      <Filter>Source files\web\protocol\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\encoding\Chunked.cpp">
+      <Filter>Source files\web\protocol\http\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\encoding\ProviderCollection.cpp">
+      <Filter>Source files\web\protocol\http\encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\BodyDecoder.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\Request.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\RequestHeadersReader.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\Response.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\ResponseHeadersReader.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\incoming\SimpleBodyDecoder.cpp">
+      <Filter>Source files\web\protocol\http\incoming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Body.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\BufferBody.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\MultipartBody.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Request.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\Response.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\ResponseFactory.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\outgoing\StreamingBody.cpp">
+      <Filter>Source files\web\protocol\http\outgoing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\protocol\http\utils\CommunicationUtils.cpp">
+      <Filter>Source files\web\protocol\http\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\AsyncHttpConnectionHandler.cpp">
+      <Filter>Source files\web\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\HttpConnectionHandler.cpp">
+      <Filter>Source files\web\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\HttpProcessor.cpp">
+      <Filter>Source files\web\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\HttpRouter.cpp">
+      <Filter>Source files\web\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\api\ApiController.cpp">
+      <Filter>Source files\web\server\api</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\api\Endpoint.cpp">
+      <Filter>Source files\web\server\api</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\handler\AuthorizationHandler.cpp">
+      <Filter>Source files\web\server\handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\handler\ErrorHandler.cpp">
+      <Filter>Source files\web\server\handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\server\interceptor\AllowCorsGlobal.cpp">
+      <Filter>Source files\web\server\interceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oatpp\web\url\mapping\Pattern.cpp">
+      <Filter>Source files\web\url\mapping</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\oatpp\algorithm\CRC.hpp">
+      <Filter>Header files\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\ApiClient_define.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\ApiClient_undef.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\ApiController_define.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\ApiController_undef.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\DbClient_define.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\DbClient_undef.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\DTO_define.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\DTO_undef.hpp">
+      <Filter>Header files\codegen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\auth_define.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\auth_undef.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\base_define.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\base_undef.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\bundle_define.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\bundle_undef.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\cors_define.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\api_controller\cors_undef.hpp">
+      <Filter>Header files\codegen\api_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\dto\base_define.hpp">
+      <Filter>Header files\codegen\dto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\dto\base_undef.hpp">
+      <Filter>Header files\codegen\dto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\dto\enum_define.hpp">
+      <Filter>Header files\codegen\dto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\codegen\dto\enum_undef.hpp">
+      <Filter>Header files\codegen\dto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\IODefinitions.hpp">
+      <Filter>Header files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\Types.hpp">
+      <Filter>Header files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\ConditionVariable.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\Coroutine.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\CoroutineWaitList.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\Error.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\Executor.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\Lock.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\Processor.hpp">
+      <Filter>Header files\core\async</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\utils\FastQueue.hpp">
+      <Filter>Header files\core\async\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\worker\IOEventWorker.hpp">
+      <Filter>Header files\core\async\worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\worker\IOWorker.hpp">
+      <Filter>Header files\core\async\worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\worker\TimerWorker.hpp">
+      <Filter>Header files\core\async\worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\async\worker\Worker.hpp">
+      <Filter>Header files\core\async\worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\base\CommandLineArguments.hpp">
+      <Filter>Header files\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\base\Config.hpp">
+      <Filter>Header files\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\base\Countable.hpp">
+      <Filter>Header files\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\base\Environment.hpp">
+      <Filter>Header files\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\base\ObjectHandle.hpp">
+      <Filter>Header files\core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\concurrency\SpinLock.hpp">
+      <Filter>Header files\core\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\concurrency\Thread.hpp">
+      <Filter>Header files\core\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\Bundle.hpp">
+      <Filter>Header files\core\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\buffer\FIFOBuffer.hpp">
+      <Filter>Header files\core\data\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\buffer\IOBuffer.hpp">
+      <Filter>Header files\core\data\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\buffer\Processor.hpp">
+      <Filter>Header files\core\data\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\ObjectMapper.hpp">
+      <Filter>Header files\core\data\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\TypeResolver.hpp">
+      <Filter>Header files\core\data\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Any.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Collection.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Enum.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\List.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Map.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Object.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\PairList.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Primitive.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Type.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\UnorderedMap.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\UnorderedSet.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\mapping\type\Vector.hpp">
+      <Filter>Header files\core\data\mapping\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\resource\File.hpp">
+      <Filter>Header files\core\data\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\resource\InMemoryData.hpp">
+      <Filter>Header files\core\data\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\resource\Resource.hpp">
+      <Filter>Header files\core\data\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\resource\TemporaryFile.hpp">
+      <Filter>Header files\core\data\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\share\LazyStringMap.hpp">
+      <Filter>Header files\core\data\share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\share\MemoryLabel.hpp">
+      <Filter>Header files\core\data\share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\share\StringTemplate.hpp">
+      <Filter>Header files\core\data\share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\stream\BufferStream.hpp">
+      <Filter>Header files\core\data\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\stream\FIFOStream.hpp">
+      <Filter>Header files\core\data\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\stream\FileStream.hpp">
+      <Filter>Header files\core\data\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\stream\Stream.hpp">
+      <Filter>Header files\core\data\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\data\stream\StreamBufferedProxy.hpp">
+      <Filter>Header files\core\data\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\macro\basic.hpp">
+      <Filter>Header files\core\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\macro\codegen.hpp">
+      <Filter>Header files\core\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\macro\component.hpp">
+      <Filter>Header files\core\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\parser\Caret.hpp">
+      <Filter>Header files\core\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\parser\ParsingError.hpp">
+      <Filter>Header files\core\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\provider\Invalidator.hpp">
+      <Filter>Header files\core\provider</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\provider\Pool.hpp">
+      <Filter>Header files\core\provider</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\provider\Provider.hpp">
+      <Filter>Header files\core\provider</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\utils\Binary.hpp">
+      <Filter>Header files\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\utils\ConversionUtils.hpp">
+      <Filter>Header files\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\utils\Random.hpp">
+      <Filter>Header files\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\core\utils\String.hpp">
+      <Filter>Header files\core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\encoding\Base64.hpp">
+      <Filter>Header files\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\encoding\Hex.hpp">
+      <Filter>Header files\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\encoding\Unicode.hpp">
+      <Filter>Header files\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\encoding\Url.hpp">
+      <Filter>Header files\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\Address.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\ConnectionHandler.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\ConnectionPool.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\ConnectionProvider.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\ConnectionProviderSwitch.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\Server.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\Url.hpp">
+      <Filter>Header files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionInactivityChecker.hpp">
+      <Filter>Header files\network\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionMaxAgeChecker.hpp">
+      <Filter>Header files\network\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\monitor\ConnectionMonitor.hpp">
+      <Filter>Header files\network\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\monitor\MetricsChecker.hpp">
+      <Filter>Header files\network\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\monitor\StatCollector.hpp">
+      <Filter>Header files\network\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\tcp\Connection.hpp">
+      <Filter>Header files\network\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\tcp\client\ConnectionProvider.hpp">
+      <Filter>Header files\network\tcp\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\tcp\server\ConnectionProvider.hpp">
+      <Filter>Header files\network\tcp\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\virtual_\Interface.hpp">
+      <Filter>Header files\network\virtual_</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\virtual_\Pipe.hpp">
+      <Filter>Header files\network\virtual_</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\virtual_\Socket.hpp">
+      <Filter>Header files\network\virtual_</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\virtual_\client\ConnectionProvider.hpp">
+      <Filter>Header files\network\virtual_\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\network\virtual_\server\ConnectionProvider.hpp">
+      <Filter>Header files\network\virtual_\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\Connection.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\DbClient.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\Executor.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\QueryResult.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\SchemaMigration.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\orm\Transaction.hpp">
+      <Filter>Header files\orm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\parser\json\Beautifier.hpp">
+      <Filter>Header files\parser\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\parser\json\Utils.hpp">
+      <Filter>Header files\parser\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\Deserializer.hpp">
+      <Filter>Header files\parser\json\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\ObjectMapper.hpp">
+      <Filter>Header files\parser\json\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\parser\json\mapping\Serializer.hpp">
+      <Filter>Header files\parser\json\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\client\ApiClient.hpp">
+      <Filter>Header files\web\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\client\HttpRequestExecutor.hpp">
+      <Filter>Header files\web\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\client\RequestExecutor.hpp">
+      <Filter>Header files\web\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\client\RetryPolicy.hpp">
+      <Filter>Header files\web\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\FileProvider.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\InMemoryDataProvider.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Multipart.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Part.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\PartList.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\PartReader.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\Reader.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\StatefulParser.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\mime\multipart\TemporaryFileProvider.hpp">
+      <Filter>Header files\web\mime\multipart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\CommunicationError.hpp">
+      <Filter>Header files\web\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\Http.hpp">
+      <Filter>Header files\web\protocol\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\Chunked.hpp">
+      <Filter>Header files\web\protocol\http\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\EncoderProvider.hpp">
+      <Filter>Header files\web\protocol\http\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\encoding\ProviderCollection.hpp">
+      <Filter>Header files\web\protocol\http\encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\BodyDecoder.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\Request.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\RequestHeadersReader.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\Response.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\ResponseHeadersReader.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\incoming\SimpleBodyDecoder.hpp">
+      <Filter>Header files\web\protocol\http\incoming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Body.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\BufferBody.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\MultipartBody.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Request.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\Response.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\ResponseFactory.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\outgoing\StreamingBody.hpp">
+      <Filter>Header files\web\protocol\http\outgoing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\protocol\http\utils\CommunicationUtils.hpp">
+      <Filter>Header files\web\protocol\http\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\AsyncHttpConnectionHandler.hpp">
+      <Filter>Header files\web\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\HttpConnectionHandler.hpp">
+      <Filter>Header files\web\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\HttpProcessor.hpp">
+      <Filter>Header files\web\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\HttpRequestHandler.hpp">
+      <Filter>Header files\web\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\HttpRouter.hpp">
+      <Filter>Header files\web\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\api\ApiController.hpp">
+      <Filter>Header files\web\server\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\api\Endpoint.hpp">
+      <Filter>Header files\web\server\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\handler\AuthorizationHandler.hpp">
+      <Filter>Header files\web\server\handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\handler\ErrorHandler.hpp">
+      <Filter>Header files\web\server\handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\AllowCorsGlobal.hpp">
+      <Filter>Header files\web\server\interceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\RequestInterceptor.hpp">
+      <Filter>Header files\web\server\interceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\server\interceptor\ResponseInterceptor.hpp">
+      <Filter>Header files\web\server\interceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\url\mapping\Pattern.hpp">
+      <Filter>Header files\web\url\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\oatpp\web\url\mapping\Router.hpp">
+      <Filter>Header files\web\url\mapping</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

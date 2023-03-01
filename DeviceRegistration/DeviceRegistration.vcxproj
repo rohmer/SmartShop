@@ -39,7 +39,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../RaspUtils;../Device;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../RaspUtils;../Device;../Components/curlpp-master/include;../Components/spdlog-1.x/include/spdlog;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -91,9 +91,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HostRegistration.cpp" />
+    <ClCompile Include="RegClient.cpp" />
+    <ClCompile Include="RegistrationEndpoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HostRegistration.h" />
+    <ClInclude Include="RegClient.h" />
+    <ClInclude Include="RegistrationEndpoint.h" />
+    <ClInclude Include="RestClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
