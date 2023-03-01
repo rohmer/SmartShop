@@ -94,6 +94,9 @@
     <ProjectReference Include="..\NetworkTools\NetworkTools.vcxproj">
       <Project>{6ac720e3-988c-48c5-bdb6-093bf8ceaa7b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\RESTServer\RESTServer.vcxproj">
       <Project>{9a686d10-8a01-45fc-9fee-d819530a4de9}</Project>
     </ProjectReference>

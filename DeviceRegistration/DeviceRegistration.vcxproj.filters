@@ -18,9 +18,15 @@
     <ClInclude Include="HostRegistration.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="RegClient.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HostRegistration.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegClient.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
