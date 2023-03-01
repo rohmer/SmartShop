@@ -64,6 +64,9 @@
     <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
       <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Components\curlpp-master\curlpp\curlpp.vcxproj">
+      <Project>{de3af999-4b7a-419d-bb99-9105a3a29473}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
       <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
     </ProjectReference>
