@@ -38,12 +38,13 @@ void WindowManager::Init()
 	disp_drv.ver_res    = HEIGHT;
 	lv_disp_drv_register(&disp_drv);
 	
+	evdev_init();
 	lv_indev_drv_init(&indev_drv);
 	indev_drv.type = LV_INDEV_TYPE_POINTER;
 
 	/*This function will be called periodically (by the library) to get the mouse position and state*/
 	indev_drv.read_cb = evdev_read;
-	lv_indev_t *mouse_indev = lv_indev_drv_register(&indev_drv);
+	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
 	
@@ -58,6 +59,7 @@ void WindowManager::tickThread()
 	{
 		lv_timer_handler();
 		lv_tick_inc(5);
+		lv_task_handler();
 		usleep(5000);
 		
 	}

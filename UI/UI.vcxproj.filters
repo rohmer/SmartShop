@@ -39,6 +39,9 @@
     <ClCompile Include="Images\Wifi4.c">
       <Filter>Source files\Images</Filter>
     </ClCompile>
+    <ClCompile Include="LogTable.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="WindowManager.h">
       <Filter>Resource files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogTable.h">
+      <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

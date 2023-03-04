@@ -6,4 +6,4 @@
 #define USE_UI
 
 // Defines if nodes will automatically be allowed in
-#define DEFAULT_AUTH false
+#define DEFAULT_AUTH true

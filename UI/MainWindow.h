@@ -6,6 +6,7 @@
 #include <lvgl.h>
 #include "Settings.h"
 #include "../NetworkTools/NetworkTools.h"
+#include "LogTable.h"
 
 class MainWindow
 {
@@ -20,8 +21,11 @@ private:
 	static lv_obj_t *timeString;
 	
 	static void updateWinTask(lv_timer_t *timer);
-	static int wifiUpdateTimer;
+	static int wifiUpdateTimer, logUpdateTimer;
 	lv_timer_t *updateTimer;
 	
-	lv_obj_t *tabView, *nodeTab, *eventTab; 
+	lv_obj_t *tabView, *nodeTab, *eventTab;
+	static lv_obj_t *logTab; 
+	
+	static LogTable *logTable;
 };

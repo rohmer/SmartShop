@@ -49,7 +49,7 @@ TEST(HostRegistration, RegistrationWithDevicesToJSON)
 	hr.AddDevice(ahtx0Sensor);
 	hr.AddDevice(pca9685);
 	cJSON *json = hr.ToJSON();
-	std::string jstr = JSON::Print(json);
+	std::cout << JSON::Print(json);
 	CHECK(cJSON_HasObjectItem(json, "hostname"));
 	STRCMP_EQUAL(cJSON_GetObjectItem(json, "hostname")->valuestring, CPUInfo::GetHostname().c_str());
 	STRCMP_EQUAL(cJSON_GetObjectItem(json, "cpuid")->valuestring, CPUInfo::GetCPUID().c_str());

@@ -2,12 +2,15 @@
 
 lv_obj_t *MainWindow::timeString;
 int MainWindow::wifiUpdateTimer = 0;
+int MainWindow::logUpdateTimer = 0;
+lv_obj_t *MainWindow::logTab;
 lv_obj_t *MainWindow::wifiNetworkLabel, *MainWindow::wifiStrIcon;
 LV_IMG_DECLARE(Wifi4);
 LV_IMG_DECLARE(Wifi3);
 LV_IMG_DECLARE(Wifi2);
 LV_IMG_DECLARE(Wifi1);
 LV_IMG_DECLARE(noWifi);
+LogTable *MainWindow::logTable;
 
 MainWindow::MainWindow()
 {
@@ -33,9 +36,12 @@ MainWindow::MainWindow()
 	updateTimer = lv_timer_create(MainWindow::updateWinTask, 100, NULL);
 	lv_timer_set_repeat_count(updateTimer, -1);
 	
-	tabView = lv_tabview_create(lv_win_get_content(windowObj), LV_DIR_TOP, lv_area_get_size(&lv_win_get_content(windowObj)->coords));
-	//nodeTab = lv_tabview_add_tab(windowObj, "Nodes");
-	//eventTab = lv_tabview_add_tab(windowObj, "Events");
+	tabView = lv_tabview_create(windowObj, LV_DIR_TOP, 50);
+	nodeTab = lv_tabview_add_tab(tabView, "Events");
+	eventTab = lv_tabview_add_tab(tabView, "Nodes");
+	logTab = lv_tabview_add_tab(tabView, "Logs");
+	logTable = new LogTable(tabView, logTab);
+	
 }
 
 void MainWindow::updateWinTask(lv_timer_t *timer)
@@ -44,8 +50,14 @@ void MainWindow::updateWinTask(lv_timer_t *timer)
 	auto t = std::time(nullptr);
 	auto tm = *std::localtime(&t);
 	std::stringstream ts;
-	ts<<std::put_time(&tm, "%m/%d-%Y %H:%M:%S");
+	ts<<std::put_time(&tm, "%m/%d/%Y %H:%M:%S");
 	lv_label_set_text(timeString, ts.str().c_str());
+	if (logUpdateTimer > 30)
+	{
+		logUpdateTimer = 0;
+			
+		logTable->Refresh();
+	}
 	if (wifiUpdateTimer > 60)
 	{
 		sSignalStrength ss = NetworkTools::GetSignalStrength();
@@ -76,4 +88,5 @@ void MainWindow::updateWinTask(lv_timer_t *timer)
 	}
 	
 	wifiUpdateTimer++;
+	logUpdateTimer++;
 }

@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dlclass.hpp" />
+    <ClInclude Include="LogTable.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="WindowManager.h" />
@@ -92,6 +93,7 @@
     <ClCompile Include="Images\Wifi2.c" />
     <ClCompile Include="Images\Wifi3.c" />
     <ClCompile Include="Images\Wifi4.c" />
+    <ClCompile Include="LogTable.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
