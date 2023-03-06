@@ -88,6 +88,9 @@
     <ProjectReference Include="..\..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Device\MCP9808Sensor\MCP9808Sensor.vcxproj">
+      <Project>{f49a6e32-d71e-4f45-98a4-658c44a39beb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Device\PCA9685Device\PCA9685Device.vcxproj">
       <Project>{46e51758-271d-4e3e-b941-c52d6e8c8037}</Project>
     </ProjectReference>

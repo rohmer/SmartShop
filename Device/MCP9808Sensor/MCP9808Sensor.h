@@ -10,6 +10,7 @@
 
 class MCP9808Sensor : public I2CDevice, public Sensor
 {
+public:
 	MCP9808Sensor(
 		std::string Name="MCP9808", 
 		std::string Description="MCP9808 Temperature",

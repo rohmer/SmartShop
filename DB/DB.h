@@ -81,6 +81,7 @@ inline auto initCoreStorage(const std::string &path)
 		make_table("DeviceConfig",
 			make_column("id", &DBDeviceConfig::ID, primary_key().autoincrement()),
 			make_column("devID", &DBDeviceConfig::DeviceID),
+			make_column("cpuID", &DBDeviceConfig::CPUID),
 			make_column("hostname", &DBDeviceConfig::Hostname),
 			make_column("deviceName", &DBDeviceConfig::DeviceName),
 			make_column("deviceDesc", &DBDeviceConfig::DeviceDescription),
@@ -92,6 +93,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("dataType", &DBDeviceConfigItem::DataType),
 			make_column("deviceName", &DBDeviceConfigItem::Name),
 			make_column("value", &DBDeviceConfigItem::Value),
+			make_column("hostID", &DBDeviceConfigItem::hostID),
 			make_column("ro", &DBDeviceConfigItem::ReadOnly)),
 		make_table("Software",
 			make_column("id", &DBInstall::ID, primary_key().autoincrement()),
@@ -105,10 +107,11 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("file", &DBInstallFile::file),
 			make_column("checksum", &DBInstallFile::checksum)),
 		make_table("Devices",
-			make_column("cpuid", &DBDevice::CPUID,primary_key()),
+			make_column("id", &DBDevice::ID, primary_key()),
+			make_column("cpuid", &DBDevice::CPUID),
 			make_column("hostname", &DBDevice::Hostname),
 			make_column("cpuCount", &DBDevice::CPUCount),
-			make_column("deviceType", &DBDevice::DeviceType),
+			make_column("deviceType", &DBDevice::DeviceType),			
 			make_column("auth", &DBDevice::isAuth))
 		);
 }
@@ -140,6 +143,18 @@ public:
 			return false;
 		return dbd[0].isAuth;
 	}
+
+	bool AuthorizeNode(std::string cpuID)
+	{
+		using namespace sqlite_orm;
+		std::vector<DBDevice> dbd = storage->get_all<DBDevice>(where(c(&DBDevice::CPUID) == cpuID));
+		if (dbd.size() == 0)
+			return false;
+		DBDevice d = dbd[0];
+		d.isAuth = true;
+		storage->update<DBDevice>(d);
+	}
+
 private:
 	DB(std::string path = "");
 	static DB* instance;	

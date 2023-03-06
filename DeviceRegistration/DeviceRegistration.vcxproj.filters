@@ -32,5 +32,11 @@
     <ClCompile Include="HostRegistration.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="RegClient.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistrationEndpoint.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

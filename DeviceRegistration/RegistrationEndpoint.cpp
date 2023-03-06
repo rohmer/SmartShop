@@ -20,16 +20,22 @@ std::shared_ptr<httpserver::http_response> RegistrationEndpoint::render_POST(con
 	{		
 		using namespace sqlite_orm;
 		std::vector<DBDevice> dbd = DB::GetInstance()->GetStorage()->get_all<DBDevice>(where(c(&DBDevice::CPUID) == hr.GetCPUID()));
-		if (dbd.size() != 1)
-			return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200));
-	
+		
 		DBDevice deviceEntry;
 		deviceEntry.CPUCount = hr.GetCPUCount();
 		deviceEntry.CPUID = hr.GetCPUID();
 		deviceEntry.DeviceType = hr.GetDeviceType();
 		deviceEntry.Hostname = hr.GetHostname();
 		deviceEntry.isAuth = DEFAULT_AUTH;
-		DB::GetInstance()->GetStorage()->replace<DBDevice>(deviceEntry);
+		if (dbd.size() == 1)
+		{			
+			deviceEntry.ID = dbd[0].ID;
+			DB::GetInstance()->GetStorage()->replace<DBDevice>(deviceEntry);
+		}
+		else
+		{
+			DB::GetInstance()->GetStorage()->insert(deviceEntry);
+		}
 		for (int i = 0; i < hr.GetDevices().size(); i++)
 		{
 			HostRegistration::sDevice dev = hr.GetDevices()[i];

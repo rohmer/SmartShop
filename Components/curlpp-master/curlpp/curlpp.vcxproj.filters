@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{db3e0df7-d32e-40ac-9fec-7f77a9541f3d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b1764636-019f-46b1-b8a7-a0788320f26c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{a2a74d99-2d34-4701-acea-a73c45b2dd44}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\curlpp">
+      <UniqueIdentifier>{50261d80-0271-43c4-8a24-76bbf234f8ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\curlpp\.visualgdb">
+      <UniqueIdentifier>{3221eccd-19ce-406b-aced-6e3f4b487b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\curlpp\.visualgdb\CodeDB">
+      <UniqueIdentifier>{e45ff838-221b-4c06-a64e-fedfc73fd7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\curlpp\.visualgdb\CodeDB\curlpp-Debug-VisualGDB">
+      <UniqueIdentifier>{07fde579-44f0-4b07-9b1f-67327c481827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\include">
+      <UniqueIdentifier>{3862e021-3897-4db0-bf1c-9fe6f8d25080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\include\curlpp">
+      <UniqueIdentifier>{08b28371-d600-4b9c-a479-235374850307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\include\curlpp\internal">
+      <UniqueIdentifier>{c9dbb827-c991-40d7-bd92-1676b2b1f355}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\include\utilspp">
+      <UniqueIdentifier>{8972a10a-9a87-4d22-9da4-4225d4f1c949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\src">
+      <UniqueIdentifier>{c28bd190-f735-4653-b236-d8acd3daaa4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\src\curlpp">
+      <UniqueIdentifier>{27afae49-e4db-4ab2-a6e5-84bc885676c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\src\curlpp\internal">
+      <UniqueIdentifier>{a3d06ebe-2606-482d-b327-003bc16e9f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\curlpp">
+      <UniqueIdentifier>{4d589564-c0d7-43d8-9854-6978bd92ad5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\include">
+      <UniqueIdentifier>{b6f93aaa-a293-4899-8500-5d51e28bbe6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\include\curlpp">
+      <UniqueIdentifier>{eb126f41-1ec6-4572-9217-0e84665a49a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\include\curlpp\internal">
+      <UniqueIdentifier>{29cd0a48-d8f8-4b26-95c1-db2f513a304c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\include\utilspp">
+      <UniqueIdentifier>{9ebd6fd3-a00a-44ed-a348-ab3582d5f972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src">
+      <UniqueIdentifier>{94762635-5966-4ebb-a546-02066987c58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src\curlpp">
+      <UniqueIdentifier>{2ef1e2d2-dac1-4fe5-b0ff-dcba204c58f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src\curlpp\internal">
+      <UniqueIdentifier>{9d951135-c2cf-49ce-a18a-ada7fa07acba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt">
+      <Filter>Source files</Filter>
+    </Text>
+    <Text Include="..\conanfile.txt">
+      <Filter>Source files</Filter>
+    </Text>
+    <Text Include=".visualgdb\CodeDB\curlpp-Debug-VisualGDB\PreambleTimestamp.txt">
+      <Filter>Source files\curlpp\.visualgdb\CodeDB\curlpp-Debug-VisualGDB</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="curlpp.cpp">
+      <Filter>Source files\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\cURLpp.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\Easy.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\Exception.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\Form.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\Multi.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\OptionBase.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\Options.cpp">
+      <Filter>Source files\src\curlpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\internal\CurlHandle.cpp">
+      <Filter>Source files\src\curlpp\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\internal\OptionList.cpp">
+      <Filter>Source files\src\curlpp\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\internal\OptionSetter.cpp">
+      <Filter>Source files\src\curlpp\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\curlpp\internal\SList.cpp">
+      <Filter>Source files\src\curlpp\internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="curlpp.h">
+      <Filter>Header files\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\cURLpp.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Easy.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Exception.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Form.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Info.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Infos.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Multi.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Option.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\OptionBase.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Options.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\Types.hpp">
+      <Filter>Header files\include\curlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\CurlHandle.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\OptionContainer.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\OptionContainerType.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\OptionList.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\OptionSetter.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\curlpp\internal\SList.hpp">
+      <Filter>Header files\include\curlpp\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\clone_ptr.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\EmptyType.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\NonCopyable.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\NullType.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\SmartPtr.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\ThreadingFactoryMutex.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\ThreadingSingle.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\TypeList.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utilspp\TypeTrait.hpp">
+      <Filter>Header files\include\utilspp</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

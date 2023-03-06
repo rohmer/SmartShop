@@ -6,11 +6,13 @@
 #include <map>
 #include <vector>
 #include <Scheduler.h>
+#include <cjson/cJSON.h>
 
 #include "DeviceBase.h"
 #include "Sensor.h"
 #include "DeviceConfig.h"
 #include "../Logger/Logger.h"
+
 #include "pigpio.h"
 
 class DeviceManager

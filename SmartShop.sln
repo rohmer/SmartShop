@@ -91,8 +91,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhttpserver", "Components
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RaspUtils", "RaspUtils\RaspUtils.vcxproj", "{20DED119-980D-4E0E-8E87-339BEBAC35E2}"
 EndProject
-Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "PicoClient", "PicoClient\PicoClient.vgdbproj", "{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceRegistration", "DeviceRegistration\DeviceRegistration.vcxproj", "{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host Registration", "Host Registration", "{DB32B677-68BA-449B-8A8A-6A91A91CB9ED}"
@@ -419,14 +417,6 @@ Global
 		{20DED119-980D-4E0E-8E87-339BEBAC35E2}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{20DED119-980D-4E0E-8E87-339BEBAC35E2}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{20DED119-980D-4E0E-8E87-339BEBAC35E2}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.MinSizeRel|VisualGDB.ActiveCfg = MinSizeRel|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.MinSizeRel|VisualGDB.Build.0 = MinSizeRel|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.Release|VisualGDB.Build.0 = Release|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.RelWithDebInfo|VisualGDB.ActiveCfg = RelWithDebInfo|VisualGDB
-		{4D588FD4-173E-4BEE-A1B2-55BEA1C4F522}.RelWithDebInfo|VisualGDB.Build.0 = RelWithDebInfo|VisualGDB
 		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{38CE80F5-298B-4EE9-91BB-7FD5081F44FF}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB

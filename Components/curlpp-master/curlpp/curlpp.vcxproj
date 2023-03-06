@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{DE3AF999-4B7A-419D-BB99-9105A3A29473}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>curl;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+    <Text Include="..\conanfile.txt" />
+    <Text Include=".visualgdb\CodeDB\curlpp-Debug-VisualGDB\PreambleTimestamp.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\curlpp\cURLpp.cpp" />
+    <ClCompile Include="..\src\curlpp\Easy.cpp" />
+    <ClCompile Include="..\src\curlpp\Exception.cpp" />
+    <ClCompile Include="..\src\curlpp\Form.cpp" />
+    <ClCompile Include="..\src\curlpp\internal\CurlHandle.cpp" />
+    <ClCompile Include="..\src\curlpp\internal\OptionList.cpp" />
+    <ClCompile Include="..\src\curlpp\internal\OptionSetter.cpp" />
+    <ClCompile Include="..\src\curlpp\internal\SList.cpp" />
+    <ClCompile Include="..\src\curlpp\Multi.cpp" />
+    <ClCompile Include="..\src\curlpp\OptionBase.cpp" />
+    <ClCompile Include="..\src\curlpp\Options.cpp" />
+    <ClCompile Include="curlpp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\curlpp\cURLpp.hpp" />
+    <ClInclude Include="..\include\curlpp\Easy.hpp" />
+    <ClInclude Include="..\include\curlpp\Exception.hpp" />
+    <ClInclude Include="..\include\curlpp\Form.hpp" />
+    <ClInclude Include="..\include\curlpp\Info.hpp" />
+    <ClInclude Include="..\include\curlpp\Infos.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\CurlHandle.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\OptionContainer.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\OptionContainerType.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\OptionList.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\OptionSetter.hpp" />
+    <ClInclude Include="..\include\curlpp\internal\SList.hpp" />
+    <ClInclude Include="..\include\curlpp\Multi.hpp" />
+    <ClInclude Include="..\include\curlpp\Option.hpp" />
+    <ClInclude Include="..\include\curlpp\OptionBase.hpp" />
+    <ClInclude Include="..\include\curlpp\Options.hpp" />
+    <ClInclude Include="..\include\curlpp\Types.hpp" />
+    <ClInclude Include="..\include\utilspp\clone_ptr.hpp" />
+    <ClInclude Include="..\include\utilspp\EmptyType.hpp" />
+    <ClInclude Include="..\include\utilspp\NonCopyable.hpp" />
+    <ClInclude Include="..\include\utilspp\NullType.hpp" />
+    <ClInclude Include="..\include\utilspp\SmartPtr.hpp" />
+    <ClInclude Include="..\include\utilspp\ThreadingFactoryMutex.hpp" />
+    <ClInclude Include="..\include\utilspp\ThreadingSingle.hpp" />
+    <ClInclude Include="..\include\utilspp\TypeList.hpp" />
+    <ClInclude Include="..\include\utilspp\TypeTrait.hpp" />
+    <ClInclude Include="curlpp.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

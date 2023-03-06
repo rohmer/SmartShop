@@ -1,15 +1,15 @@
 #include "I2CDevice.h"
 
-I2CDevice::I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, unsigned short I2CAddress, eI2CBus I2CBus) 
-	: DeviceBase(Name, Description, DeviceType, eDeviceBus::I2C)
+I2CDevice::I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, unsigned short I2CAddress, eI2CBus I2CBus, int PollingInterval) 
+	: DeviceBase(Name, Description, DeviceType, eDeviceBus::I2C, PollingInterval)
 	, i2cAddr(I2CAddress)
 	, i2cBus(I2CBus)
 {
 	openBus(i2cBus, i2cAddr);
 }
 
-I2CDevice::I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, DeviceConfig config, unsigned short I2CAddress, eI2CBus I2CBus) 
-	: DeviceBase(Name, Description, config, DeviceType, eDeviceBus::I2C)
+I2CDevice::I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, DeviceConfig config, unsigned short I2CAddress, eI2CBus I2CBus, int PollingInterval) 
+	: DeviceBase(Name, Description, config, DeviceType, eDeviceBus::I2C, PollingInterval)
 	, i2cAddr(I2CAddress)
 	, i2cBus(I2CBus)
 {	

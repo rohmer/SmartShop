@@ -8,8 +8,8 @@
 class DeviceBase
 {
 public:
-	DeviceBase(std::string Name, std::string Description, eDeviceType deviceType = eDeviceType::GENERIC, eDeviceBus deviceBus = eDeviceBus::NA);
-	DeviceBase(std::string Name, std::string Description, DeviceConfig deviceConfig,eDeviceType deviceType = eDeviceType::GENERIC, eDeviceBus deviceBus = eDeviceBus::NA);
+	DeviceBase(std::string Name, std::string Description, eDeviceType deviceType = eDeviceType::GENERIC, eDeviceBus deviceBus = eDeviceBus::NA, int pollingInterval=-1);
+	DeviceBase(std::string Name, std::string Description, DeviceConfig deviceConfig, eDeviceType deviceType = eDeviceType::GENERIC, eDeviceBus deviceBus = eDeviceBus::NA, int pollingInterval = -1);
 	
 	virtual bool Init() 
 	{
@@ -23,10 +23,14 @@ public:
 	DeviceConfig GetConfig();
 	void SetConfig(DeviceConfig &deviceConfig);
 	
+	void SetPollingInterval(int val);
+	int GetPollingInterval();
+
 protected:
 	DeviceConfig config;
 	std::string name, desc;
 	eDeviceType dType;
 	eDeviceBus dBus;	
 	Logger *log;
+	int pollingInterval;
 };

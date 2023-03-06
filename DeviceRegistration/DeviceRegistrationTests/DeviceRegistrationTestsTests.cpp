@@ -1,7 +1,7 @@
 #include "../HostRegistration.h"
 #include "../Device/AHTX0Sensor/AHTX0Sensor.h"
 #include "../Device/PCA9685Device/PCA9685Device.h"
-
+#include "../Device/MCP9808Sensor/MCP9808Sensor.h"
 #include "JSON.h"
 #include "CPUInfo.h"
 #include <CppUTest/CommandLineTestRunner.h>
@@ -43,11 +43,9 @@ TEST(HostRegistration, RegistrationToJSON)
 TEST(HostRegistration, RegistrationWithDevicesToJSON)
 {
 	HostRegistration hr;
-	AHTX0Sensor *ahtx0Sensor = new AHTX0Sensor();
-	PCA9685Device *pca9685 = new PCA9685Device();
+	hr.AddDevice(new AHTX0Sensor());
+	hr.AddDevice(new MCP9808Sensor());
 	
-	hr.AddDevice(ahtx0Sensor);
-	hr.AddDevice(pca9685);
 	cJSON *json = hr.ToJSON();
 	std::cout << JSON::Print(json);
 	CHECK(cJSON_HasObjectItem(json, "hostname"));

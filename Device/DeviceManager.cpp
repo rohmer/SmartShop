@@ -52,13 +52,13 @@ void DeviceManager::AddDevice(DeviceBase *device)
 	
 	if (dc.GetDeviceType() == eDeviceType::SENSOR)
 	{
-		Sensor *s = (Sensor *)device;
+		DeviceBase *s = (DeviceBase *)device;
 		if (s != nullptr)
 		{
 			uint16_t pollingInterval = s->GetPollingInterval();
 			scheduler->every(std::chrono::seconds(pollingInterval), [s,this]()
 				{
-					scheduleSensor(s);
+					scheduleSensor((Sensor*)s);
 				});
 		}
 	}
@@ -74,7 +74,7 @@ void DeviceManager::rescheduleSensors()
 			++it)
 		{
 			Sensor *s = (Sensor *)*it;
-			uint16_t pollingInterval = s->GetPollingInterval();
+			uint16_t pollingInterval = ((DeviceBase*)s)->GetPollingInterval();
 			scheduler->every(std::chrono::seconds(pollingInterval),
 				[s, this]()
 				{

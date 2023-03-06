@@ -6,6 +6,7 @@
 class DBDevice
 {
 public:
+	unsigned int ID;
 	std::string CPUID, Hostname;
 	uint CPUCount;
 	int DeviceType;

@@ -5,11 +5,11 @@ PM25AQISensor::PM25AQISensor(
 	std::string Description,
 	unsigned int PollingInterval, 
 	eI2CBus i2cBus)
-	: I2CDevice(Name, Description, eDeviceType::SENSOR, 0x12, i2cBus)
-	, Sensor(PollingInterval)
+	: I2CDevice(Name, Description, eDeviceType::SENSOR, 0x12, i2cBus, PollingInterval)
+	, Sensor()
 {
-	deviceConfig.AddConfigItem(DeviceConfigItem("I2CBus", (int)i2cBus, false));
-	deviceConfig.AddConfigItem(DeviceConfigItem("I2CAddr", (int)0x12, false));
+	config.AddConfigItem(DeviceConfigItem("I2CBus", (int)i2cBus, false));
+	config.AddConfigItem(DeviceConfigItem("I2CAddr", (int)0x12, false));
 }
 
 std::vector<SensorEvent> PM25AQISensor::PollSensor()

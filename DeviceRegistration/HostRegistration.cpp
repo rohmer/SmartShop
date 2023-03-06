@@ -41,7 +41,7 @@ cJSON *HostRegistration::ToJSON()
 		cJSON *j = deviceToJSON(devices[i]);
 		cJSON_AddItemToArray(devArr, j);
 	}
-	cJSON_AddItemToObject(json, "devices", devArr);
+	cJSON_AddItemToObject(json, "devices", devArr);	
 	return json;
 }
 

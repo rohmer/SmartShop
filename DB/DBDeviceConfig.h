@@ -5,6 +5,6 @@ class DBDeviceConfig
 {
 public:
     unsigned int ID;
-    std::string Hostname, DeviceName, DeviceDescription, DeviceID;
+    std::string Hostname, DeviceName, DeviceDescription, DeviceID, CPUID;
     uint DeviceBus, DeviceType;
 };

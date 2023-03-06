@@ -18,8 +18,8 @@ public:
 		BUS_1=1
 	};
 	
-	I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, unsigned short I2CAddress, eI2CBus I2CBus=eI2CBus::BUS_0);
-	I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, DeviceConfig config, unsigned short I2CAddress, eI2CBus I2CBus = eI2CBus::BUS_0);
+	I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, unsigned short I2CAddress, eI2CBus I2CBus=eI2CBus::BUS_0, int PollingInterval=-1);
+	I2CDevice(std::string Name, std::string Description, eDeviceType DeviceType, DeviceConfig config, unsigned short I2CAddress, eI2CBus I2CBus = eI2CBus::BUS_0, int PollingInterval=-1);
 	~I2CDevice();
 	
 	unsigned short GetI2CAddress();

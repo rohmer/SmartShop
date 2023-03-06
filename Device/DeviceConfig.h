@@ -6,6 +6,7 @@
 
 #include <cjson/cJSON.h>
 #include "../DB/DB.h"
+#include "../RaspUtils/CPUInfo.h"
 #include "CPUInfo.h"
 #include "DeviceConfigItem.h"
 #include "DeviceEnums.h"
@@ -15,8 +16,8 @@
 class DeviceConfig
 {
 public:	
-	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="", std::string devID="");
-	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname="");
+	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="", std::string hostID="", std::string devID="");
+	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname="", std::string hostID="");
 	DeviceConfig();
 	
 	bool AddConfigItem(DeviceConfigItem item);
@@ -34,6 +35,7 @@ public:
 	void SetConfigItem(DeviceConfigItem item);
 	bool HasConfigItem(DeviceConfigItem item);
 	bool HasConfigItem(std::string name);
+	void DeleteConfigItem(std::string name);
 	
 	bool ToDB();
 	static DeviceConfig FromDB(std::string DeviceName, std::string Hostname);
@@ -41,7 +43,7 @@ public:
 	
 protected:
 	std::vector<DeviceConfigItem> items;	
-	std::string name, desc, deviceID;
+	std::string name, desc, deviceID, hostID;
 	eDeviceBus bus;
 	eDeviceType deviceType;
 	std::string hostname;

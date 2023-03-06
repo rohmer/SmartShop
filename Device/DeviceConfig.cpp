@@ -2,9 +2,11 @@
 
 DeviceConfig::DeviceConfig()
 {
+	this->hostID = CPUInfo::GetCPUID();	
+	this->deviceID = CPUInfo::GetCPUID();
 }
 
-DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname, std::string devID)
+DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname, std::string hostID, std::string devID)
 	: name(DeviceName)
 	, desc(DeviceDescription)
 	, bus(DeviceBus)
@@ -13,9 +15,12 @@ DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription
 {
 	if (devID.size() == 0)
 	{
-		devID = CPUInfo::GetCPUID();
+		deviceID = CPUInfo::GetCPUID();
 	}
-
+	if (hostID.size() == 0)
+	{
+		this->hostID = CPUInfo::GetCPUID();
+	}
 	if (hostname.size() == 0)
 	{
 		char chost[1024];
@@ -24,7 +29,7 @@ DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription
 	}
 }
 
-DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname)
+DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname, std::string hostID)
 	: name(DeviceName)
 	, desc(DeviceDescription)
 	, bus(DeviceBus)
@@ -34,6 +39,11 @@ DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription
 	{
 		items.push_back(DeviceConfigItems[i]);			
 	}
+	if (hostID.size() == 0)
+	{
+		this->hostID = CPUInfo::GetCPUID();
+	}
+	
 	if (hostname.size() == 0)
 	{
 		char chost[1024];
@@ -109,15 +119,26 @@ bool DeviceConfig::HasConfigItem(std::string name)
 	return false;
 }
 
+void DeviceConfig::DeleteConfigItem(std::string name)
+{
+	if (!HasConfigItem(name))
+		return;
+	std::vector<DeviceConfigItem> tmp;
+	for (std::vector<DeviceConfigItem>::iterator it = items.begin(); it != items.end(); it++)
+		tmp.push_back(*it);
+	items.clear();
+	
+	for (std::vector<DeviceConfigItem>::iterator it = tmp.begin(); it != items.end(); it++)
+		items.push_back(*it);
+}
+
 cJSON *DeviceConfig::ToJSON()
 {
-	cJSON *obj = cJSON_CreateObject();
-	cJSON_AddItemToObject(obj, "name", cJSON_CreateString(name.c_str()));
-	cJSON_AddItemToObject(obj, "desc", cJSON_CreateString(desc.c_str()));
+	cJSON *obj = cJSON_CreateObject();	
 	cJSON_AddItemToObject(obj, "bus", cJSON_CreateNumber(bus));
 	cJSON_AddItemToObject(obj, "type", cJSON_CreateNumber(deviceType));
-	cJSON_AddItemToObject(obj, "host", cJSON_CreateString(hostname.c_str()));
-	cJSON_AddItemToObject(obj, "devid", cJSON_CreateString(deviceID.c_str()));
+	cJSON_AddItemToObject(obj, "devid", cJSON_CreateString(deviceID.c_str()));	
+	cJSON_AddItemToObject(obj, "hostid", cJSON_CreateString(hostID.c_str()));
 	cJSON *arr = cJSON_CreateArray();
 	for (std::vector<DeviceConfigItem>::iterator it = items.begin(); it != items.end(); it++)
 		cJSON_AddItemToArray(arr, it->ToJSON());
@@ -128,7 +149,7 @@ cJSON *DeviceConfig::ToJSON()
 
 DeviceConfig DeviceConfig::FromJSON(cJSON* obj)
 {
-	std::string name, desc, hostname, devid;
+	std::string name, desc, hostname, devid, hostID;
 	eDeviceBus bus;
 	eDeviceType dType;
 	if (cJSON_HasObjectItem(obj, "name"))
@@ -156,8 +177,11 @@ DeviceConfig DeviceConfig::FromJSON(cJSON* obj)
 	{
 		devid = cJSON_GetObjectItem(obj, "devid")->valuestring;
 	}
-
-	DeviceConfig ret(name, desc, bus, dType,hostname,devid);
+	if (cJSON_HasObjectItem(obj, "hostid"))
+	{
+		hostID = cJSON_GetObjectItem(obj, "hostid")->valuestring;
+	}
+	DeviceConfig ret(name, desc, bus, dType,hostname,hostID,devid);
 	if (cJSON_HasObjectItem(obj, "config"))
 	{
 		cJSON *arr = cJSON_GetObjectItem(obj, "config");
@@ -206,6 +230,7 @@ bool DeviceConfig::ToDB()
 		dbdc.DeviceType = (int)deviceType;
 		dbdc.Hostname = hostname;
 		dbdc.DeviceID = deviceID;
+		dbdc.CPUID = hostID;
 		
 		if (update)
 		{
@@ -227,6 +252,7 @@ bool DeviceConfig::ToDB()
 			item.ReadOnly = it->IsReadOnly();
 			item.Value = it->GetStringVal();
 			item.DeviceID = it->GetStringVal();
+			item.hostID = hostID;
 			item.ID = -1;
 			int v = DB::GetInstance()->GetStorage()->insert<DBDeviceConfigItem>(item);
 		}
