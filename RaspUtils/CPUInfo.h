@@ -35,6 +35,7 @@ public:
 	static int GetCPUCount();
 	static EPIType GetPIBoardType();
 	static std::string GetHostname();
+	static float GetTempC();
 	
 private:
 	static std::string hostname;

@@ -179,3 +179,18 @@ char *CPUInfo::trimWhiteSpace(char *string)
 	*(end + 1) = 0;
 	return string;
 }
+
+float CPUInfo::GetTempC()
+{
+	std::ifstream f("/sys/class/thermal/thermal_zone0/temp");
+	if (f.good())
+	{
+		int i;
+		f >> i;
+		float temp = ((float)i) / 1000.0f;
+		f.close();
+		return temp;
+	}
+	
+	return -1.0f;
+}

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{753293a0-1105-47d6-bb4a-3f4d5255b412}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{7228c7f3-14e0-42fb-b267-56a8591ca8e3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{82fd6779-fa1e-4a52-b49c-d4848b686b46}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\src">
+      <UniqueIdentifier>{a315e515-066d-474a-9ab8-382568db3122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\src\os">
+      <UniqueIdentifier>{0c66ab2d-a2b2-45b3-ac96-14e1e9ccfa4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\src\os\linux">
+      <UniqueIdentifier>{f752d92b-e1ab-464f-83ac-fc722a3f8cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src">
+      <UniqueIdentifier>{128cee0c-26f0-4ea2-8997-b1e3f234e53f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src\os">
+      <UniqueIdentifier>{b5c0af6d-8a2f-4b39-b504-d356aa60984c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\src\os\linux">
+      <UniqueIdentifier>{4f6ca0e0-bfa2-4aaa-b7c6-dab9584d9a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\include">
+      <UniqueIdentifier>{f4201158-cd74-4aed-86ea-2a6ac9d89840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\include">
+      <UniqueIdentifier>{7d40e03f-37dd-47f2-94f6-d19fa6c56c05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\CMakeLists.txt">
+      <Filter>Source files\src</Filter>
+    </Text>
+    <Text Include="..\include\CMakeLists.txt">
+      <Filter>Source files\include</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\sigar.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_cache.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_fileinfo.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_format.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_util.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\os\linux\linux_sigar.c">
+      <Filter>Source files\src\os\linux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_getline.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_ptql.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sigar_signal.c">
+      <Filter>Source files\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\os\linux\sigar_os.h">
+      <Filter>Header files\src\os\linux</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_fileinfo.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_format.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_getline.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_log.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_private.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_ptql.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_util.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\sigar_visibility.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

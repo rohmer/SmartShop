@@ -113,6 +113,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log Endpoint", "Log Endpoin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogEndpoint", "LogEndpoint\LogEndpoint.vcxproj", "{0B364821-3FB8-4F19-9D0B-68D7F384C65A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar", "Components\sigar-master\sigar\sigar.vcxproj", "{21C413E6-0D8E-4B89-9512-0B684C91170F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Telemetry", "Telemetry\Telemetry.vcxproj", "{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -465,6 +469,22 @@ Global
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{21C413E6-0D8E-4B89-9512-0B684C91170F}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5FA409DE-9298-4D96-96BD-22D6EAD9A61E}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -511,6 +531,7 @@ Global
 		{9D0CB1E3-6CA1-4202-92C5-73A55DD70651} = {0B9F638B-61F0-44DD-9040-E05AA689DD59}
 		{19CEC43B-DCE4-4D82-B1D3-73C91455E1B7} = {C1903777-DB36-4555-B545-5221D6651B86}
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A} = {19CEC43B-DCE4-4D82-B1D3-73C91455E1B7}
+		{21C413E6-0D8E-4B89-9512-0B684C91170F} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}
