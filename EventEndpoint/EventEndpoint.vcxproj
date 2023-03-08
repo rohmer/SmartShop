@@ -71,9 +71,6 @@
     <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
       <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
-      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
       <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
     </ProjectReference>

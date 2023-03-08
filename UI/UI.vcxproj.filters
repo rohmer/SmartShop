@@ -53,10 +53,10 @@
     <ClInclude Include="dlclass.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowManager.h">
-      <Filter>Resource files</Filter>
-    </ClInclude>
     <ClInclude Include="LogTable.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowManager.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

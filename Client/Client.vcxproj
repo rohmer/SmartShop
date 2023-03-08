@@ -79,6 +79,9 @@
     <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
       <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Components\sigar-master\sigar\sigar.vcxproj">
+      <Project>{21c413e6-0d8e-4b89-9512-0b684c91170f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
       <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
     </ProjectReference>
@@ -87,6 +90,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
+      <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
@@ -102,6 +108,9 @@
     </ProjectReference>
     <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
       <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Telemetry\Telemetry.vcxproj">
+      <Project>{5fa409de-9298-4d96-96bd-22d6ead9a61e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ZeroConf\ZeroConf.vcxproj">
       <Project>{d6d294f0-b266-4b74-8e55-c7abef25896c}</Project>

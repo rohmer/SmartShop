@@ -11,7 +11,6 @@
 #include "../../Logger/LogMsg.h"
 
 #include "../UIWidget/UIWidget.h"
-#include "../../RaspUtils/Temp.h"
 
 extern "C" UIWidget * Factory();
 

@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{21C413E6-0D8E-4B89-9512-0B684C91170F}</ProjectGuid>
+    <ProjectGuid>{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -38,46 +38,52 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../include;../src/os/linux;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../../Components/oatpp-master/src;../../Components/spdlog-1.x/include;../../Components/sqlite_orm-master/include/sqlite_orm;../../Components/cpp-base64-master;../../Components/spdlog-1.x/include/spdlog;../../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
-      <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="..\include\CMakeLists.txt" />
-    <Text Include="..\src\CMakeLists.txt" />
+    <ClCompile Include="EndpointClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\os\linux\linux_sigar.c" />
-    <ClCompile Include="..\src\sigar.c" />
-    <ClCompile Include="..\src\sigar_cache.c" />
-    <ClCompile Include="..\src\sigar_fileinfo.c" />
-    <ClCompile Include="..\src\sigar_format.c" />
-    <ClCompile Include="..\src\sigar_getline.c" />
-    <ClCompile Include="..\src\sigar_ptql.c" />
-    <ClCompile Include="..\src\sigar_signal.c" />
-    <ClCompile Include="..\src\sigar_util.c" />
+    <ClInclude Include="EndpointClientAPI.h" />
+    <ClInclude Include="EndpointClient.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\sigar.h" />
-    <ClInclude Include="..\include\sigar_fileinfo.h" />
-    <ClInclude Include="..\include\sigar_format.h" />
-    <ClInclude Include="..\include\sigar_getline.h" />
-    <ClInclude Include="..\include\sigar_log.h" />
-    <ClInclude Include="..\include\sigar_private.h" />
-    <ClInclude Include="..\include\sigar_ptql.h" />
-    <ClInclude Include="..\include\sigar_util.h" />
-    <ClInclude Include="..\include\sigar_visibility.h" />
-    <ClInclude Include="..\src\os\linux\sigar_os.h" />
+    <None Include="EndpointClient-Debug.vgdbsettings" />
+    <None Include="EndpointClient-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Components\oatpp-master\oatpp\oatpp.vcxproj">
+      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
+      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
