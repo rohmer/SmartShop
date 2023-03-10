@@ -37,15 +37,15 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Device;../Components/spdlog-1.x/include;../RaspUtils;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Device;../Components/spdlog-1.x/include;../RaspUtils;../Components/oatpp-master/src;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/spdlog-1.x/include/spdlog;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>=/lib/arm-linux-gnueabihf/pulseaudio;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>pthread;sqlite3;dl;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -89,6 +89,9 @@
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\DeviceRegistration\DeviceRegistration.vcxproj">
+      <Project>{38ce80f5-298b-4ee9-91bb-7fd5081f44ff}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
     </ProjectReference>
@@ -118,6 +121,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Discovery.h" />
     <ClInclude Include="Settings.h" />

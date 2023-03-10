@@ -63,6 +63,9 @@
     <ClInclude Include="Settings.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client\Client.vcxproj">
+      <Project>{34c2fa0e-ff32-4016-8048-a1b0925d6596}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
       <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
     </ProjectReference>
@@ -90,11 +93,17 @@
     <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
       <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Components\sigar-master\sigar\sigar.vcxproj">
+      <Project>{21c413e6-0d8e-4b89-9512-0b684c91170f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
       <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
       <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\WebServer\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
+      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
@@ -102,11 +111,20 @@
     <ProjectReference Include="..\DeviceRegistration\DeviceRegistration.vcxproj">
       <Project>{38ce80f5-298b-4ee9-91bb-7fd5081f44ff}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\DeviceRegistration\DeviceRegistrationTests\DeviceRegistrationTests.vcxproj">
+      <Project>{8b8e57e5-4cc0-4d96-8323-753949aabd24}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\AHTX0Sensor\AHTX0Sensor.vcxproj">
+      <Project>{1cb8a2ff-1006-4625-93df-1a1815198317}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Device\DeviceTests\DeviceTests.vcxproj">
       <Project>{c30af8a4-71a5-4f34-aaf7-2ab8c88ccb07}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\MCP9808Sensor\MCP9808Sensor.vcxproj">
+      <Project>{f49a6e32-d71e-4f45-98a4-658c44a39beb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Device\PCA9685Device\PCA9685Device.vcxproj">
       <Project>{46e51758-271d-4e3e-b941-c52d6e8c8037}</Project>
@@ -116,6 +134,12 @@
     </ProjectReference>
     <ProjectReference Include="..\Device\SwitchDevice\SwitchDevice.vcxproj">
       <Project>{b8076e54-54f4-4ba3-b0f3-e810e8884012}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
+      <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\EventEndpoint\EndpointClient\EndpointClient.vcxproj">
+      <Project>{aa54ab8f-c3ac-46d2-81e7-7f9dd1edc668}</Project>
     </ProjectReference>
     <ProjectReference Include="..\EventEndpoint\EventEndpoint.vcxproj">
       <Project>{9d0cb1e3-6ca1-4202-92c5-73a55dd70651}</Project>
@@ -155,6 +179,15 @@
     </ProjectReference>
     <ProjectReference Include="..\SensorEvent\SensorEvent.vcxproj">
       <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SensorEvent\SensorEventTests\SensorEventTests.vcxproj">
+      <Project>{987900e1-40fb-4a3c-8d94-f52882f56fd2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Telemetry\Telemetry.vcxproj">
+      <Project>{5fa409de-9298-4d96-96bd-22d6ead9a61e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\NodeWidget\NodeWidget.vcxproj">
+      <Project>{3d2b641d-932d-4d6c-b892-0f28b33b3703}</Project>
     </ProjectReference>
     <ProjectReference Include="..\UI\StatusWidget\StatusWidget.vcxproj">
       <Project>{d4f10799-0fcf-41e5-9412-b414144a88e7}</Project>

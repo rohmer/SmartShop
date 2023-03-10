@@ -42,7 +42,18 @@ public:
 		this->hostID = hostID;
 	}
 	
+	uint GetComPort()
+	{
+		return comPort;
+	}
+	
+	std::vector<eCaps> GetCapabilities()
+	{
+		return capabilities;
+	}
+	
 private:
 	std::vector<eCaps> capabilities;
 	std::string hostname, hostID;
+	uint comPort = 8080;
 };

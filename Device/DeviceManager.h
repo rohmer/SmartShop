@@ -26,6 +26,11 @@ public:
 	DeviceBase* GetDeviceByName(std::string name);
 	std::vector<DeviceBase*> GetDeviceByBus(eDeviceBus deviceBus);
 	
+	std::vector<std::string> GetServerEndpoints();
+	void AddServerEndpoint(std::string server);
+	
+	std::vector<DeviceBase*> GetAllDevices();
+	
 private:
 	static DeviceManager *instance;
 	DeviceManager();
@@ -34,6 +39,7 @@ private:
 	Logger *log;
 	Bosma::Scheduler *scheduler;
 	
+	std::vector<std::string> serverEndpoints;
 	std::map<eDeviceBus, std::vector<DeviceBase*>> deviceByBus;
 	std::map<eDeviceType, std::vector<DeviceBase*>> deviceByType;
 	std::map<std::string, DeviceBase*> deviceByName;

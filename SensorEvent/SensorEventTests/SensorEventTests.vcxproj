@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../DB;../../Components/sqlite_orm-master/include/sqlite_orm;..;../../Components/cpp-base64-master;../../Logger;../../Components/spdlog-1.x/include;../../Components/pistache-master/include;../../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../DB;../../Components/sqlite_orm-master/include/sqlite_orm;..;../../Components/cpp-base64-master;../../Logger;../../Components/spdlog-1.x/include;../../Components/pistache-master/include;../../RaspUtils;../../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -58,6 +58,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
       <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\oatpp-master\oatpp\oatpp.vcxproj">
+      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>

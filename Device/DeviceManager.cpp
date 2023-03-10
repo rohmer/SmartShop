@@ -105,6 +105,15 @@ std::vector<DeviceBase*> DeviceManager::GetDeviceByType(eDeviceType dType)
 	return deviceByType[dType];
 }
 
+std::vector<DeviceBase *> DeviceManager::GetAllDevices()
+{
+	std::vector<DeviceBase*> ret;
+	for (std::map<std::string, DeviceBase*>::iterator it = deviceByName.begin();
+		it != deviceByName.end();
+		++it)
+		return ret;
+}
+	
 bool DeviceManager::storeConfig()
 {
 	try
@@ -175,4 +184,36 @@ bool DeviceManager::loadConfig()
 		log->LogC(ss.str());
 		return false;
 	}
+}
+
+std::vector<std::string> DeviceManager::GetServerEndpoints()
+{
+	return serverEndpoints;
+}
+
+void DeviceManager::AddServerEndpoint(std::string Server)
+{
+	bool found = false;
+	for (std::vector<std::string>::iterator it = serverEndpoints.begin();
+		it != serverEndpoints.end();
+		++it)
+	{
+		if (std::strcmp((*it).c_str(), Server.c_str()) == 0)
+		{
+			found = true;
+			it = serverEndpoints.end();
+		}
+		
+		if (found)
+		{
+			std::stringstream ss;
+			ss << "Server: " << Server << " was already defined";
+			log->LogI(ss.str());
+			return;
+		}
+	}
+	serverEndpoints.push_back(Server);
+	std::stringstream ss;
+	ss << "Server: " << Server << " regiestered";
+	log->LogI(ss.str());
 }

@@ -1186,4 +1186,8 @@
       <Filter>Header files\web\url\mapping</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="oatpp-Debug.vgdbsettings" />
+    <None Include="oatpp-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

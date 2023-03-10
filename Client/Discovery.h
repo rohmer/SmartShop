@@ -12,7 +12,7 @@ public:
 	Discovery();
 	~Discovery();
 	
-	Capabilities GetFoundPeers()
+	std::map<std::string, Capabilities> GetFoundPeers()
 	{
 		return foundIDs;
 	}

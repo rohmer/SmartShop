@@ -46,9 +46,9 @@ Server::Server()
 	caps.AddCap(Capabilities::CAP_UI);
 #endif
 	
-	ZeroConf zeroConf;
-	zeroConf.SetupPeer(caps);
-	zeroConf.Start();
+	ZeroConf *zeroConf=ZeroConf::GetInstance();
+	zeroConf->SetupPeer(caps);
+	zeroConf->Start();
 	
 	deviceManager = DeviceManager::GetInstance();
 	restServer->Start();

@@ -33,7 +33,6 @@
     <ProjectFile>Client.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
-      <EnvironmentSetupFiles />
     </RemoteBuildEnvironment>
     <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
@@ -60,6 +59,7 @@
   <ImportedPropertySheets />
   <CodeSense>
     <Enabled>True</Enabled>
+    <ExternalSourceFileList>gnutls;atomic</ExternalSourceFileList>
     <ExtraSettings>
       <HideErrorsInSystemHeaders>true</HideErrorsInSystemHeaders>
       <SupportLightweightReferenceAnalysis>true</SupportLightweightReferenceAnalysis>

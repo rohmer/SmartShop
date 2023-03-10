@@ -43,6 +43,7 @@ cJSON *Capabilities::ToJSON()
 	cJSON_AddItemToObject(doc, "caps", capArray);
 	cJSON_AddItemToObject(doc, "hostname", cJSON_CreateString(CPUInfo::GetHostname().c_str()));
 	cJSON_AddItemToObject(doc, "hostID", cJSON_CreateString(CPUInfo::GetCPUID().c_str()));
+	cJSON_AddItemToObject(doc, "comPort", cJSON_CreateNumber(comPort));
 	return doc;
 }
 
