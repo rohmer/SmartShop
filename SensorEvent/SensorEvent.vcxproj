@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/cpp-base64-master;../DB;../Components/sqlite_orm-master/include/sqlite_orm;../Logger;../Components/spdlog-1.x/include;../Components/pistache-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/cpp-base64-master;../DB;../Components/sqlite_orm-master/include/sqlite_orm;../Logger;../Components/spdlog-1.x/include;../Components/pistache-master/include;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />

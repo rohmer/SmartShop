@@ -39,7 +39,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../Components/spdlog-1.x/include/spdlog;../DB;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/pistache-master/include;c:\sysgcc\raspberry/arm-linux-gnueabihf/include/arm-linux-gnueabihf;../Components/pigpio-master;../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../Components/spdlog-1.x/include/spdlog;../DB;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/pistache-master/include;c:\sysgcc\raspberry/arm-linux-gnueabihf/include/arm-linux-gnueabihf;../Components/pigpio-master;../RaspUtils;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />

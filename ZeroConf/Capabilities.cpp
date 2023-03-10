@@ -41,6 +41,8 @@ cJSON *Capabilities::ToJSON()
 		cJSON_AddItemToArray(capArray, cJSON_CreateNumber(*it));
 	}
 	cJSON_AddItemToObject(doc, "caps", capArray);
+	cJSON_AddItemToObject(doc, "hostname", cJSON_CreateString(CPUInfo::GetHostname().c_str()));
+	cJSON_AddItemToObject(doc, "hostID", cJSON_CreateString(CPUInfo::GetCPUID().c_str()));
 	return doc;
 }
 
@@ -58,6 +60,17 @@ Capabilities Capabilities::FromJSON(cJSON *json)
 	cJSON_ArrayForEach(cap, capArray)
 	{
 		caps.AddCap((eCaps)cJSON_GetNumberValue(cap));
+	}
+	std::string hn, hid;
+	if (cJSON_HasObjectItem(json, "hostname"))
+	{
+		hn = cJSON_GetObjectItem(json, "hostname")->valuestring;
+		caps.SetHostname(hn);
+	}
+	if (cJSON_HasObjectItem(json, "hostID"))
+	{
+		hid = cJSON_GetObjectItem(json, "hostID")->valuestring;
+		caps.SetHostID(hid);
 	}
 	return caps;
 }

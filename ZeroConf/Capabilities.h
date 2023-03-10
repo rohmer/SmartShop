@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <cjson/cJSON.h>
+#include "../RaspUtils/CPUInfo.h"
 
 class Capabilities
 {
@@ -21,6 +22,27 @@ public:
 	cJSON *ToJSON();
 	static Capabilities FromJSON(cJSON *json);
 	
+	std::string GetHostname()
+	{
+		return hostname;
+	}
+	
+	std::string GetHostID()
+	{
+		return hostID;
+	}
+	
+	void SetHostname(std::string hostname)
+	{
+		this->hostname = hostname;
+	}
+	
+	void SetHostID(std::string hostID)
+	{
+		this->hostID = hostID;
+	}
+	
 private:
 	std::vector<eCaps> capabilities;
+	std::string hostname, hostID;
 };

@@ -12,12 +12,14 @@
 class ZeroConf
 {
 public:
-	ZeroConf();
+	static ZeroConf *GetInstance();
 	void SetupPeer(Capabilities caps, unsigned long appId = 8675309);
 	void Start();
 	std::vector<Peer> DiscoverPeers();
 		
 private:
+	ZeroConf();
+	static ZeroConf *instance;
 	Logger *log;
 	Capabilities caps;
 	std::string capsString;

@@ -17,15 +17,44 @@ Logger::~Logger()
 		delete(instance);
 }
 
-void Logger::Init(bool isServer, spdlog::level::level_enum logLevel)
+void Logger::AddLogServerSink(std::string server,uint port)
+{
+	if (servers.find(server) == servers.end())
+		return;
+	servers.emplace(server, port);
+}
+
+void Logger::Init(bool hasServers, uint ServerPort, bool isServer, spdlog::level::level_enum logLevel)
+{
+	Init(std::map<std::string,uint>(), hasServers, ServerPort, isServer, logLevel);
+}
+	
+void Logger::Init(
+	std::map<std::string,uint>servers,
+	bool hasServer ,
+	uint ServerPort,
+	bool isServer,
+	spdlog::level::level_enum logLevel)
 {
 	if (isServer)
 	{
 		auto sink = std::make_shared<db_sink_mt>();	
-		sink->set_level(spdlog::level::warn);
+		sink->set_level(logLevel);
 		logPtr->sinks().push_back(sink);	
 	}
-	
+	if (hasServer)
+	{
+		auto sink = std::make_shared<log_sync_mt>();
+		sink->set_level(logLevel);
+		for (std::map<std::string, uint>::iterator it = servers.begin();
+			it != servers.end();
+			++it)
+		{
+			this->servers.emplace(it->first, it->second);
+			sink->AddClient(it->first, it->second);
+		}
+		logPtr->sinks().push_back(sink);
+	}
 	for (int i = 0; i < logPtr->sinks().size(); i++)
 		logPtr->sinks()[i].get()->set_level(logLevel);
 }

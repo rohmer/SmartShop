@@ -1,4 +1,12 @@
 #include "ZeroConf.h"
+ZeroConf *ZeroConf::instance = NULL;
+
+ZeroConf *ZeroConf::GetInstance()
+{
+	if (instance == NULL)
+		instance = new ZeroConf();
+	return instance;
+}
 
 ZeroConf::ZeroConf() 
 {

@@ -14,4 +14,57 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Capabilities.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Peer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="udp_discovery_ip_port.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="udp_discovery_peer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="udp_discovery_protocol.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZeroConf.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Capabilities.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Peer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_discovered_peer.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_ip_port.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_peer.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_peer_parameters.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_protocol.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="udp_discovery_protocol_version.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZeroConf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ZeroConf-Debug.vgdbsettings" />
+    <None Include="ZeroConf-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

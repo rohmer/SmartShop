@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../DB;../Components/sqlite_orm-master/include/sqlite_orm;../Components/WebServer/cpr-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../DB;../Components/sqlite_orm-master/include/sqlite_orm;../Components/WebServer/cpr-master/include;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -62,11 +62,16 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevel.h" />
     <ClInclude Include="LogMsg.h" />
+    <ClInclude Include="RemoteSync.h" />
+    <ClInclude Include="RemoteSyncAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
+      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

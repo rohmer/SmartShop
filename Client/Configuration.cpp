@@ -14,7 +14,7 @@ Configuration *Configuration::GetInstance()
 
 bool Configuration::Init()
 { 
-	zeroConf = new ZeroConf();
+	zeroConf = ZeroConf::GetInstance();
 	Capabilities caps;
 #if HAS_CLIENT==1
 	caps.AddCap(Capabilities::eCaps::CAP_CLIENT);
