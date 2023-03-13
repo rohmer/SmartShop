@@ -6,17 +6,12 @@ DeviceConfig::DeviceConfig()
 	this->deviceID = CPUInfo::GetCPUID();
 }
 
-DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname, std::string hostID, std::string devID)
+DeviceConfig::DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname, std::string hostID)
 	: name(DeviceName)
 	, desc(DeviceDescription)
 	, bus(DeviceBus)
 	, deviceType(DeviceType)
-	, deviceID(devID)
 {
-	if (devID.size() == 0)
-	{
-		deviceID = CPUInfo::GetCPUID();
-	}
 	if (hostID.size() == 0)
 	{
 		this->hostID = CPUInfo::GetCPUID();
@@ -181,7 +176,8 @@ DeviceConfig DeviceConfig::FromJSON(cJSON* obj)
 	{
 		hostID = cJSON_GetObjectItem(obj, "hostid")->valuestring;
 	}
-	DeviceConfig ret(name, desc, bus, dType,hostname,hostID,devid);
+	DeviceConfig ret(name, desc, bus, dType,hostname,hostID);
+	ret.SetDeviceID(devid);
 	if (cJSON_HasObjectItem(obj, "config"))
 	{
 		cJSON *arr = cJSON_GetObjectItem(obj, "config");

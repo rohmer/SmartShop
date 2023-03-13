@@ -26,6 +26,8 @@ public:
 	void SetPollingInterval(int val);
 	int GetPollingInterval();
 
+	virtual void UpdateConfig(DeviceConfig newConfig);
+	
 protected:
 	DeviceConfig config;
 	std::string name, desc;

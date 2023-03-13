@@ -17,6 +17,7 @@
 #include "MainWindow.h"
 #include "UIWidget/UIWidget.h"
 #include "dlclass.hpp"
+#include "NodeWidgetManager.h"
 
 class WindowManager
 {
@@ -30,7 +31,6 @@ public:
 	
 	void LoadWidgets();
 
-	void WidgetClick(int widgetID);
 	
 private:
 	WindowManager();
@@ -43,10 +43,9 @@ private:
 	
 	Logger *log;
 	bool shutdown = false;
-	std::thread *runner;
+	std::thread *runner, *managerThread;
 	
 	void tickThread();
-	
 	MainWindow *mainWindow;
 	std::map<std::pair<std::string,uint8_t>, lv_font_t*>loadedFonts;
 	
@@ -59,5 +58,9 @@ private:
 		std::string Name;
 	};
 	
+	
 	std::map<int, sWidgets> widgets;
+	uint nodeObjectsDrawn = 0;
+	
+	uint widgetWidth, widgetHeight;
 };

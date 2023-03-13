@@ -76,6 +76,9 @@
     <ProjectReference Include="..\NetworkTools\NetworkTools.vcxproj">
       <Project>{6ac720e3-988c-48c5-bdb6-093bf8ceaa7b}</Project>
     </ProjectReference>
+    <ProjectReference Include="NodeWidget\NodeWidget.vcxproj">
+      <Project>{3d2b641d-932d-4d6c-b892-0f28b33b3703}</Project>
+    </ProjectReference>
     <ProjectReference Include="UIWidget\UIWidget.vcxproj">
       <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>
@@ -84,6 +87,7 @@
     <ClInclude Include="dlclass.hpp" />
     <ClInclude Include="LogTable.h" />
     <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="NodeWidgetManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
@@ -95,6 +99,7 @@
     <ClCompile Include="Images\Wifi4.c" />
     <ClCompile Include="LogTable.cpp" />
     <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="NodeWidgetManager.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

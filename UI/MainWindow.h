@@ -4,14 +4,16 @@
 #include <string>
 #include <ctime>
 #include <lvgl.h>
+#include <thread>
 #include "Settings.h"
 #include "../NetworkTools/NetworkTools.h"
 #include "LogTable.h"
+#include "NodeWidgetManager.h"
 
 class MainWindow
 {
 public:
-	MainWindow();
+	MainWindow(uint widgetWidth, uint widgetHeight);
 	
 private:
 	lv_obj_t *windowObj;
@@ -20,12 +22,17 @@ private:
 	
 	static lv_obj_t *timeString;
 	
-	static void updateWinTask(lv_timer_t *timer);
+	void updateWinTask();
+	void updateNodeWidgets();
+	
 	static int wifiUpdateTimer, logUpdateTimer;
-	lv_timer_t *updateTimer;
+	std::thread *updateTimer;
 	
 	lv_obj_t *tabView, *nodeTab, *eventTab;
 	static lv_obj_t *logTab; 
 	
 	static LogTable *logTable;
+	uint widgetWidth, widgetHeight;
+	bool shutdown = false;
+	NodeWidgetManager nodeWidgetManager;
 };

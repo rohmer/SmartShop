@@ -10,6 +10,15 @@ DeviceManager::DeviceManager()
 		log->LogC("Failed to initialize GPIO");
 	scheduler = new Bosma::Scheduler(16);
 	loadConfig();
+	updateThread = new std::thread([this]{updateLoop(); });
+}
+
+DeviceManager::~DeviceManager()
+{
+	shutdown = true;
+	for (int i = 0; i < devices.size(); i++)
+		if (devices[i] != NULL)
+			delete(devices[i]);
 }
 
 DeviceManager *DeviceManager::GetInstance()
@@ -28,7 +37,9 @@ void DeviceManager::scheduleSensor(Sensor *s)
 	
 void DeviceManager::AddDevice(DeviceBase *device)
 {
+	devices.push_back(device);
 	DeviceConfig dc = device->GetConfig();
+	std::string devID = md5(device->GetName());
 	if (deviceConfigs.find(dc.GetName()) != deviceConfigs.end())
 	{
 		dc = deviceConfigs[dc.GetName()];
@@ -45,7 +56,11 @@ void DeviceManager::AddDevice(DeviceBase *device)
 		std::stringstream ss;
 		ss << "Dupilicate Device Name: " << dc.GetName();
 		log->LogW(ss.str());
+		std::stringstream s;
+		s << device->GetName() << deviceByType.size();
+		devID = md5(s.str());
 	}
+	dc.SetDeviceID(devID);
 	deviceByBus[dc.GetDeviceBus()].push_back(device);
 	deviceByType[dc.GetDeviceType()].push_back(device);
 	deviceByName[dc.GetName()] = device;
@@ -216,4 +231,24 @@ void DeviceManager::AddServerEndpoint(std::string Server)
 	std::stringstream ss;
 	ss << "Server: " << Server << " regiestered";
 	log->LogI(ss.str());
+}
+
+void DeviceManager::updateLoop()
+{
+	while (!shutdown)
+	{
+		for (int i = 0; i < devices.size(); i++)
+		{
+			if (devices[i] != NULL)
+			{
+				if (devices[i]->GetConfig().Modified)
+				{
+					devices[i]->UpdateConfig(devices[i]->GetConfig());
+				}
+			}
+		}
+		
+		std::this_thread::sleep_for(std::chrono::seconds(10));
+	}
+		
 }

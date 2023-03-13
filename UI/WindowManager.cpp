@@ -47,10 +47,13 @@ void WindowManager::Init()
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
-	
 	LoadWidgets();
 	
-	mainWindow = new MainWindow();
+	// Define the widget size
+	// We are going 5, 5 tall
+	widgetWidth = WIDTH / 5-10;
+	widgetHeight = HEIGHT / 5 - 10;
+	mainWindow = new MainWindow(widgetWidth, widgetHeight);
 }
 
 void WindowManager::tickThread()
@@ -61,7 +64,6 @@ void WindowManager::tickThread()
 		lv_tick_inc(5);
 		lv_task_handler();
 		usleep(5000);
-		
 	}
 }
 
@@ -132,25 +134,3 @@ void WindowManager::LoadWidgets()
 	}
 }
 
-void WindowManager::WidgetClick(int WidgetID)
-{
-	if (widgets.find(WidgetID) == widgets.end())
-	{
-		// This is really odd, a widget id we havent seen got called 
-		std::stringstream ss;
-		ss << "Received callback from widget id: " << WidgetID << " which is not registered to the WindowManager";
-		log->LogW(ss.str());
-		return;
-	}
-	
-	if (widgets[WidgetID].isMaximized)
-	{
-		widgets[WidgetID].isMaximized = false;
-		// Redraw it minimized
-	}
-	else
-	{
-		widgets[WidgetID].isMaximized = true;
-		// Redraw it maximized
-	}
-}

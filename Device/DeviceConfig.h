@@ -16,7 +16,7 @@
 class DeviceConfig
 {
 public:	
-	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="", std::string hostID="", std::string devID="");
+	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::string hostname="", std::string hostID="");
 	DeviceConfig(std::string DeviceName, std::string DeviceDescription, eDeviceBus DeviceBus, eDeviceType DeviceType, std::vector<DeviceConfigItem> &DeviceConfigItems, std::string hostname="", std::string hostID="");
 	DeviceConfig();
 	
@@ -40,6 +40,13 @@ public:
 	bool ToDB();
 	static DeviceConfig FromDB(std::string DeviceName, std::string Hostname);
 	std::string GetHostname();
+	
+	void SetDeviceID(std::string ID)
+	{
+		deviceID = ID;
+	}
+	
+	bool Modified = false;
 	
 protected:
 	std::vector<DeviceConfigItem> items;	

@@ -2,9 +2,6 @@
 
 void NodeWidget::Init()
 {
-	char host[1024];
-	gethostname(host, 1024);
-	hostname = host;
 }
 
 

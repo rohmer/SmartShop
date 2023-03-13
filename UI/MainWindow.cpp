@@ -12,7 +12,9 @@ LV_IMG_DECLARE(Wifi1);
 LV_IMG_DECLARE(noWifi);
 LogTable *MainWindow::logTable;
 
-MainWindow::MainWindow()
+MainWindow::MainWindow(uint widgetWidth, uint widgetHeight) :
+	widgetWidth(widgetWidth),
+	widgetHeight(widgetHeight)
 {
 	windowObj = lv_win_create(lv_scr_act(), 40);
 	
@@ -32,9 +34,8 @@ MainWindow::MainWindow()
 	
 	wifiStrIcon=lv_img_create(lv_win_get_header(windowObj));
 	wifiNetworkLabel = lv_label_create(lv_win_get_header(windowObj));
-	
-	updateTimer = lv_timer_create(MainWindow::updateWinTask, 100, NULL);
-	lv_timer_set_repeat_count(updateTimer, -1);
+	wifiUpdateTimer = 61;
+	updateTimer = new std::thread([this]{updateWinTask(); });
 	
 	tabView = lv_tabview_create(windowObj, LV_DIR_TOP, 50);
 	nodeTab = lv_tabview_add_tab(tabView, "Events");
@@ -44,49 +45,62 @@ MainWindow::MainWindow()
 	
 }
 
-void MainWindow::updateWinTask(lv_timer_t *timer)
+// TODO Make this a standard thread.  This is a mess of statics
+
+void MainWindow::updateWinTask()
 {
-	// Update the time string
-	auto t = std::time(nullptr);
-	auto tm = *std::localtime(&t);
-	std::stringstream ts;
-	ts<<std::put_time(&tm, "%m/%d/%Y %H:%M:%S");
-	lv_label_set_text(timeString, ts.str().c_str());
-	if (logUpdateTimer > 30)
+	while (!shutdown)
 	{
-		logUpdateTimer = 0;
+		// Update the time string
+		auto t = std::time(nullptr);
+		auto tm = *std::localtime(&t);
+		std::stringstream ts;
+		ts << std::put_time(&tm, "%m/%d/%Y %H:%M:%S");
+		lv_label_set_text(timeString, ts.str().c_str());
+		if (logUpdateTimer > 30)
+		{
+			logUpdateTimer = 0;
 			
-		logTable->Refresh();
-	}
-	if (wifiUpdateTimer > 60)
-	{
-		sSignalStrength ss = NetworkTools::GetSignalStrength();
-		lv_label_set_text(wifiNetworkLabel, ss.network.c_str());
-		if (ss.network.length() == 0)
-		{
-			lv_img_set_src(wifiStrIcon, &noWifi);	
+			logTable->Refresh();
+			updateNodeWidgets();
 		}
-		else
+		if (wifiUpdateTimer > 60)
 		{
-			switch (ss.signalStrength)
+			sSignalStrength ss = NetworkTools::GetSignalStrength();
+			lv_label_set_text(wifiNetworkLabel, ss.network.c_str());
+			if (ss.network.length() == 0)
 			{
-			case 4:
-				lv_img_set_src(wifiStrIcon, &Wifi4);
-				break;
-			case 3:
-				lv_img_set_src(wifiStrIcon, &Wifi3);
-				break;
-			case 2:
-				lv_img_set_src(wifiStrIcon, &Wifi2);
-				break;
-			default:
-				lv_img_set_src(wifiStrIcon, &Wifi1);
-				break;
+				lv_img_set_src(wifiStrIcon, &noWifi);	
 			}
+			else
+			{
+				switch (ss.signalStrength)
+				{
+				case 4:
+					lv_img_set_src(wifiStrIcon, &Wifi4);
+					break;
+				case 3:
+					lv_img_set_src(wifiStrIcon, &Wifi3);
+					break;
+				case 2:
+					lv_img_set_src(wifiStrIcon, &Wifi2);
+					break;
+				default:
+					lv_img_set_src(wifiStrIcon, &Wifi1);
+					break;
+				}
+			}
+			wifiUpdateTimer = 0;
 		}
-		wifiUpdateTimer = 0;
-	}
 	
-	wifiUpdateTimer++;
-	logUpdateTimer++;
+		wifiUpdateTimer++;
+		logUpdateTimer++;
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+	}
+}
+
+void MainWindow::updateNodeWidgets()
+{
+	std::vector<std::string> newNodes = nodeWidgetManager.CheckNew();
+	
 }

@@ -35,6 +35,7 @@ void DeviceBase::SetPollingInterval(int interval)
 		}				
 	}
 	config.AddConfigItem(DeviceConfigItem("PollingInterval", interval, false));
+	config.Modified = true;
 }
 
 int DeviceBase::GetPollingInterval()
@@ -72,4 +73,17 @@ DeviceConfig DeviceBase::GetConfig()
 void DeviceBase::SetConfig(DeviceConfig &deviceConfig)
 {
 	config = deviceConfig;
+	config.Modified = true;
+}
+
+// This is used to take care of pollingInterval so each sensor doesnt have to
+void DeviceBase::UpdateConfig(DeviceConfig newConfig)
+{
+	if (dType != eDeviceType::SENSOR)
+		return;
+	if (newConfig.HasConfigItem("PollingInterval"))
+	{
+		int poll = newConfig.GetConfigItem("PollingInterval").GetLongVal();
+		SetPollingInterval(poll);
+	}
 }
