@@ -24,6 +24,9 @@
     <ClCompile Include="Discovery.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigEndpoint.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h">
@@ -36,6 +39,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Client.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigEndpoint.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

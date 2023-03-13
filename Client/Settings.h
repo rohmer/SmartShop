@@ -6,3 +6,4 @@
 #define HAS_CLIENT 1
 
 #define APP_ID 1234				// Different client types have different APP IDs
+#define SERVER_PORT 8080

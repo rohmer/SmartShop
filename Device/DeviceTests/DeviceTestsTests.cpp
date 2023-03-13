@@ -2,6 +2,7 @@
 #include "../DeviceConfig.h"
 #include "../DeviceConfigItem.h"
 #include <CppUTest/CommandLineTestRunner.h>
+#include "../RaspUtils/JSON.h"
 
 /*
 	This is a very basic sample demonstrating the CppUTest framework.
@@ -34,7 +35,8 @@ TEST(DeviceConfig, Create2)
 	CHECK(dc.GetDeviceBus() == eDeviceBus::I2C);
 	CHECK(dc.GetDeviceType() == eDeviceType::SENSOR);
 	CHECK(dc.GetDeviceConfig().size() == 4);
-	
+	std::string json = JSON::Print(dc.ToJSON());
+	std::cout << json;
 }
 
 TEST(DeviceConfig, Serialize)

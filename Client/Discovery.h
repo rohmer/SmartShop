@@ -5,6 +5,7 @@
 
 #include "../Logger/Logger.h"
 #include "../ZeroConf/ZeroConf.h"
+#include "DeviceManager.h"
 
 class Discovery
 {
@@ -22,4 +23,5 @@ private:
 	void discoveryLoop();
 	bool shutdown;
 	std::map<std::string, Capabilities> foundIDs;
+
 };

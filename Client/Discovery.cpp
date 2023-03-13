@@ -32,7 +32,16 @@ void Discovery::discoveryLoop()
 					nit = foundIDs.end();
 				}
 			if (!exists)
+			{
 				foundIDs.emplace(caps.GetHostID(), caps);
+				
+				// If this is a server register it to the logger and devicemanager
+				if (it->GetCapabilities().HasCap(Capabilities::CAP_SERVER))
+				{					
+					Logger::GetInstance()->AddLogServerSink(it->GetIPAddr(), it->GetCapabilities().GetComPort());
+					DeviceManager::GetInstance()->AddServerEndpoint(it->GetIPAddr());
+				}
+			}
 		}
 		
 		std::this_thread::sleep_for(std::chrono::seconds(30));

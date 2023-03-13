@@ -37,7 +37,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Device;../Components/spdlog-1.x/include;../RaspUtils;../Components/oatpp-master/src;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/spdlog-1.x/include/spdlog;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Device;../Components/spdlog-1.x/include;../RaspUtils;../Components/oatpp-master/src;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/spdlog-1.x/include/spdlog;../Components/sigar-master/include;../RESTServer;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -45,7 +45,7 @@
     <Link>
       <LibrarySearchDirectories>=/lib/arm-linux-gnueabihf/pulseaudio;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -57,6 +57,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ConfigEndpoint.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Discovery.cpp" />
   </ItemGroup>
@@ -85,6 +86,12 @@
     </ProjectReference>
     <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
       <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
+      <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\WebServer\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
+      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
@@ -122,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <ClInclude Include="ConfigEndpoint.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Discovery.h" />
     <ClInclude Include="Settings.h" />

@@ -1174,8 +1174,8 @@ int sigar_file_system_list_get(sigar_t *sigar,
     return SIGAR_OK;
 }
 
-//#define ST_MAJOR(sb) major((sb).st_rdev)
-//#define ST_MINOR(sb) minor((sb).st_rdev)
+#define ST_MAJOR(sb) 1 //major((sb).st_rdev)
+#define ST_MINOR(sb) 1 //minor((sb).st_rdev)
 
 static int get_iostat_sys(sigar_t *sigar,
                           const char *dirname,

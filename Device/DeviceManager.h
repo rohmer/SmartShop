@@ -30,7 +30,7 @@ public:
 	void AddServerEndpoint(std::string server);
 	
 	std::vector<DeviceBase*> GetAllDevices();
-	
+		
 private:
 	static DeviceManager *instance;
 	DeviceManager();
