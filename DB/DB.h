@@ -110,6 +110,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("id", &DBDevice::ID, primary_key()),
 			make_column("cpuid", &DBDevice::CPUID),
 			make_column("hostname", &DBDevice::Hostname),
+			make_column("ipAddress", &DBDevice::IPAddress),
 			make_column("cpuCount", &DBDevice::CPUCount),
 			make_column("deviceType", &DBDevice::DeviceType),			
 			make_column("auth", &DBDevice::isAuth))

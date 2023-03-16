@@ -34,5 +34,5 @@ private:
 	static LogTable *logTable;
 	uint widgetWidth, widgetHeight;
 	bool shutdown = false;
-	NodeWidgetManager nodeWidgetManager;
+	NodeWidgetManager *nodeWidgetManager;
 };

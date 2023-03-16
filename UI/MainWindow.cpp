@@ -12,9 +12,7 @@ LV_IMG_DECLARE(Wifi1);
 LV_IMG_DECLARE(noWifi);
 LogTable *MainWindow::logTable;
 
-MainWindow::MainWindow(uint widgetWidth, uint widgetHeight) :
-	widgetWidth(widgetWidth),
-	widgetHeight(widgetHeight)
+MainWindow::MainWindow(uint widgetWidth, uint widgetHeight)
 {
 	windowObj = lv_win_create(lv_scr_act(), 40);
 	
@@ -38,11 +36,13 @@ MainWindow::MainWindow(uint widgetWidth, uint widgetHeight) :
 	updateTimer = new std::thread([this]{updateWinTask(); });
 	
 	tabView = lv_tabview_create(windowObj, LV_DIR_TOP, 50);
-	nodeTab = lv_tabview_add_tab(tabView, "Events");
-	eventTab = lv_tabview_add_tab(tabView, "Nodes");
+	eventTab = lv_tabview_add_tab(tabView, "Events");
+	nodeTab = lv_tabview_add_tab(tabView, "Nodes");
 	logTab = lv_tabview_add_tab(tabView, "Logs");
 	logTable = new LogTable(tabView, logTab);
-	
+	uint width = lv_obj_get_width(lv_tabview_get_content(tabView));
+	uint height = lv_obj_get_height(lv_tabview_get_content(tabView));
+	nodeWidgetManager = new NodeWidgetManager(nodeTab, width, height);
 }
 
 // TODO Make this a standard thread.  This is a mess of statics
@@ -101,6 +101,11 @@ void MainWindow::updateWinTask()
 
 void MainWindow::updateNodeWidgets()
 {
-	std::vector<std::string> newNodes = nodeWidgetManager.CheckNew();
-	
+	std::vector<std::string> newNodes = nodeWidgetManager->CheckNew();
+	for (std::vector<std::string>::iterator it = newNodes.begin();
+		it != newNodes.end();
+		++it)
+	{
+		nodeWidgetManager->CreateNodeWidget(*it);
+	}
 }

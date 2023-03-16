@@ -194,3 +194,69 @@ float CPUInfo::GetTempC()
 	
 	return -1.0f;
 }
+
+std::string CPUInfo::GetIPAddress()
+{
+	struct ifaddrs * ifAddrStruct = NULL;
+	struct ifaddrs * ifa = NULL;
+	void * tmpAddrPtr = NULL;
+
+	getifaddrs(&ifAddrStruct);
+	for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next) {
+		if (!ifa->ifa_addr) {
+			continue;
+		}
+		if (ifa->ifa_addr->sa_family == AF_INET) {
+			// check it is IP4
+		    // is a valid IP4 Address
+			tmpAddrPtr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
+			char addressBuffer[INET_ADDRSTRLEN];
+			inet_ntop(AF_INET, tmpAddrPtr, addressBuffer, INET_ADDRSTRLEN);
+			std::stringstream ss;
+			ss << addressBuffer;
+			return ss.str();
+		}
+		
+		// Not gon support IP6 for now
+		/*else if (ifa->ifa_addr->sa_family == AF_INET6) {
+			// check it is IP6
+		    // is a valid IP6 Address
+			tmpAddrPtr = &((struct sockaddr_in6 *)ifa->ifa_addr)->sin6_addr;
+			char addressBuffer[INET6_ADDRSTRLEN];
+			inet_ntop(AF_INET6, tmpAddrPtr, addressBuffer, INET6_ADDRSTRLEN);
+			printf("%s IP Address %s\n", ifa->ifa_name, addressBuffer); 
+		} */
+	}
+	if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
+	return 0;
+}
+
+std::string CPUInfo::BoardTypeToString(EPIType boardType)
+{
+	switch (boardType)
+	{
+	case EPIType::PI_1:
+		return "Raspberry PI 1";
+	case EPIType::PI_2:
+		return "Raspberry PI 2";
+	case EPIType::PI_3:
+		return "Raspberry PI 3";
+	case EPIType::PI_4:
+		return "Raspberry PI 4";
+	case EPIType::PI_400:
+		return "PI 400";
+	case EPIType::PI_CM1:
+		return "Compute Module 1";
+	case EPIType::PI_CM3:
+		return "Compute Module 3";
+	case EPIType::PI_CM4:
+		return "Compute Module 4";
+	case EPIType::PI_ZERO:
+		return "PI Zero";
+	case EPIType::PI_ZERO_2:
+		return "PI Zero 2";
+	default:
+		return "Unknown device type";
+			
+	}
+}

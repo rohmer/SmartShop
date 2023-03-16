@@ -6,15 +6,22 @@
 #include "NodeWidget/NodeWidget.h"
 #include "../Logger/Logger.h"
 #include "../DB/DB.h"
+#include "Settings.h"
 
 class NodeWidgetManager
 {
 public:
-	NodeWidgetManager();
-	std::vector<std::string> CheckNew();  // Returns a list of nodes that need to be drawn
-	UIWidget *CreateNodeWidget(std::string nodeID, uint x, uint y, uint width, uint height);
+	NodeWidgetManager(lv_obj_t *windowPane, uint width, uint height);
+	UIWidget *CreateNodeWidget(std::string nodeID);
+	std::vector<std::string> CheckNew();
 	
 private:
 	std::map<std::string, bool> knownNodes;  // NodeID, If node is created
+	std::map<std::string, UIWidget*> nodeObjects; // NodeID, and Node UI Object
 	Logger *log;
+	uint displayedNodes;
+	uint width, height, x, y;
+	uint nodeWidth, nodeHeight;
+	uint nodePosition=0;			//  This is the position of the next node to be created
+	lv_obj_t *drawSurface;
 };

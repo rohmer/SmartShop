@@ -12,17 +12,11 @@ void StatusWidget::createObjects(lv_obj_t *parent, bool isMaximized)
 	if (isMaximized)
 	{
 		baseObject = lv_win_create(parent, 12);
-		if (minBtnTxt)
-			lv_obj_del(minBtnTxt);
-		if (minButton)
-			lv_obj_del(minButton);
 	}
 	else
 	{
 		baseObject = lv_obj_create(parent);
 		minButton = lv_btn_create(baseObject);
-		minBtnTxt = lv_label_create(minButton);
-		lv_label_set_text(minBtnTxt, LV_SYMBOL_SETTINGS "Settings");
 	}
 }
 

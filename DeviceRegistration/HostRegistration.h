@@ -48,13 +48,19 @@ public:
 	{
 		return devices;
 	}
+	
+	std::string GetIPAddress()
+	{
+		return ipAddress;
+	}
 private:
-	HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount);
+	HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount, std::string ipAddr);
 	
 	std::string cpuID;
 	std::string hostname;
 	EPIType deviceType;
 	uint cpuCount;
+	std::string ipAddress;
 	
 	std::vector<sDevice> devices;
 	

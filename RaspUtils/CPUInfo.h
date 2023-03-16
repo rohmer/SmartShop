@@ -11,6 +11,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <ifaddrs.h>
+#include <netinet/in.h> 
+#include <string.h> 
+#include <arpa/inet.h>
+#include <sstream>
 
 enum EPIType
 {
@@ -36,6 +42,8 @@ public:
 	static EPIType GetPIBoardType();
 	static std::string GetHostname();
 	static float GetTempC();
+	static std::string GetIPAddress();
+	static std::string BoardTypeToString(EPIType boardType);
 	
 private:
 	static std::string hostname;

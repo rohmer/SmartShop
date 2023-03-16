@@ -6,7 +6,7 @@ HostRegistration::HostRegistration():
 	deviceType(CPUInfo::GetPIBoardType()),
 	hostname(CPUInfo::GetHostname())
 {
-	
+	ipAddress = CPUInfo::GetIPAddress();
 }
 
 void HostRegistration::AddDevice(DeviceBase *device)
@@ -20,11 +20,12 @@ void HostRegistration::AddDevice(DeviceBase *device)
 	devices.push_back(devReg);
 }
 
-HostRegistration::HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount)
+HostRegistration::HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount, std::string ipAddress)
 	: cpuCount(cpuCount)
 	, hostname(hostname)
 	, cpuID(cpuID)
 	, deviceType(deviceType)
+	, ipAddress(ipAddress)
 {
 }
 
@@ -35,6 +36,7 @@ cJSON *HostRegistration::ToJSON()
 	cJSON_AddItemToObject(json, "cpuid", cJSON_CreateString(cpuID.c_str()));
 	cJSON_AddItemToObject(json, "cpus", cJSON_CreateNumber(cpuCount));
 	cJSON_AddItemToObject(json, "hosttype", cJSON_CreateNumber(deviceType));
+	cJSON_AddItemToObject(json, "ip", cJSON_CreateString(ipAddress.c_str()));
 	cJSON *devArr = cJSON_CreateArray();
 	for (int i = 0; i < devices.size(); i++)
 	{
@@ -50,7 +52,7 @@ HostRegistration HostRegistration::FromJSON(cJSON *json)
 	std::string hostname, cpuid;
 	uint cpuCount;
 	EPIType deviceType;
-	
+	std::string ip;
 	if (cJSON_HasObjectItem(json, "hostname"))
 	{
 		hostname = cJSON_GetObjectItem(json, "hostname")->valuestring;
@@ -67,7 +69,11 @@ HostRegistration HostRegistration::FromJSON(cJSON *json)
 	{
 		deviceType = (EPIType)cJSON_GetObjectItem(json, "hosttype")->valueint;
 	}
-	HostRegistration hr(hostname, cpuid, deviceType, cpuCount);
+	if (cJSON_HasObjectItem(json, "ip"))
+	{
+		ip = cJSON_GetObjectItem(json, "ip")->valuestring;		
+	}
+	HostRegistration hr(hostname, cpuid, deviceType, cpuCount, ip);
 	if (cJSON_HasObjectItem(json, "devices"))
 	{
 		cJSON *arr = cJSON_GetObjectItem(json, "devices");
