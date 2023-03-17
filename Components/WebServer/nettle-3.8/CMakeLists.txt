@@ -10,7 +10,7 @@ RESULT_VARIABLE result
            )
 message("RESULT: " ${result})
 message("OUTPUT: " ${output})
-file(COPY ${CMAKE_BINARY_DIR}/version.h ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_BINARY_DIR}/version.h DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 endif()
 
 file(GLOB nettlesrc 
