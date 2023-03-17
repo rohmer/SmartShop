@@ -15,7 +15,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_library(LIBGMP gmp REQUIRED)
-find_library(SSL ssl REQUIRED)
+find_library(SSL ssl3 REQUIRED)
 find_library(GNUTLS gnutls REQUIRED)
 message(LIBGMP="${LIBGMP}")
 add_subdirectory(nettle-3.8)
