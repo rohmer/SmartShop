@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "nettle")
 project($PROJECT_NAME VERSION 3.8)
 
-message("Configuring...")
+message("Configuring nettle...")
 exec_program("bash ${CMAKE_CURRENT_SOURCE_DIR}/configure" 
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
