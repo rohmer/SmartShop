@@ -14,7 +14,7 @@
 
 // NODE DISPLAY SETTING
 #ifndef NODE_COLUMNS
-#define NODE_COLUMNS	 5
+#define NODE_COLUMNS	 3
 #endif
 #ifndef NODE_ROWS
 #define NODE_ROWS	3

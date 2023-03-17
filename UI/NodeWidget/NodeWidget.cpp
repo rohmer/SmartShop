@@ -43,9 +43,9 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		lv_obj_t *leftPanel = lv_obj_create(nodeWidgetContainer);
 		lv_obj_set_flex_flow(leftPanel, LV_FLEX_FLOW_COLUMN);
 		lv_obj_t *rightQuarterPanel = lv_obj_create(nodeWidgetContainer);
-		lv_obj_set_size(rightQuarterPanel, horizontalQuarters, height);
+		lv_obj_set_size(rightQuarterPanel, horizontalQuarters*2, height);
 		lv_obj_set_flex_flow(rightQuarterPanel, LV_FLEX_FLOW_COLUMN);
-		lv_obj_set_size(leftPanel, horizontalQuarters * 3, height);
+		lv_obj_set_size(leftPanel, horizontalQuarters * 2, height);
 		
 		static lv_style_t style_shadow;
 		lv_style_init(&style_shadow);
@@ -56,30 +56,30 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		
 		// TODO: Create containers to hold icon and LED for each of the visuals in the right container
 		// We have 3 items, so lets set them to 3rds
-		int thirdHeight = this->height / 3;
-		lv_obj_t *logContainer = lv_obj_create(rightQuarterPanel);
-		lv_obj_set_size(logContainer, horizontalQuarters, thirdHeight);
+		lv_obj_set_layout(rightQuarterPanel, LV_LAYOUT_GRID);
+		lv_coord_t halfWidth = horizontalQuarters-30;
+		static lv_coord_t column_dsc[] = { halfWidth, halfWidth, LV_GRID_TEMPLATE_LAST };
+		lv_coord_t thirds = (height / 3)-30;
+		static lv_coord_t row_dsc[] = { thirds, thirds, thirds, LV_GRID_TEMPLATE_LAST };
+		lv_obj_set_grid_dsc_array(rightQuarterPanel, column_dsc, row_dsc);
 		
-		lv_obj_align(logContainer, LV_ALIGN_CENTER,0,0);
-		lv_obj_set_flex_flow(logContainer, LV_FLEX_FLOW_ROW);
-		logIcon=lv_img_create(logContainer);
-		logLed = lv_led_create(logContainer);
+		logIcon=lv_img_create(rightQuarterPanel);
+		lv_obj_set_grid_cell(logIcon, LV_GRID_ALIGN_CENTER, 0, 1, LV_GRID_ALIGN_CENTER, 0, 1);
+		logLed = lv_led_create(rightQuarterPanel);
 		lv_img_set_src(logIcon, &logfile);
+		lv_obj_set_grid_cell(logLed, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 0, 1);
 		
-		lv_obj_t *tempContainer = lv_obj_create(rightQuarterPanel);
-		lv_obj_set_size(tempContainer, horizontalQuarters, thirdHeight);
-		lv_obj_set_flex_flow(tempContainer, LV_FLEX_FLOW_ROW);
-		
-		tempIconObject = lv_img_create(tempContainer);
-		tempLed = lv_led_create(tempContainer);
+		tempIconObject = lv_img_create(rightQuarterPanel);
+		lv_obj_set_grid_cell(tempIconObject, LV_GRID_ALIGN_CENTER, 0, 1, LV_GRID_ALIGN_CENTER, 1, 1);
+		tempLed = lv_led_create(rightQuarterPanel);
 		lv_img_set_src(tempIconObject, &tempIcon);
+		lv_obj_set_grid_cell(tempLed, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 1, 1);
 		
-		lv_obj_t *hdContainer = lv_obj_create(rightQuarterPanel);
-		lv_obj_set_size(hdContainer, horizontalQuarters, thirdHeight);
-		lv_obj_set_flex_flow(hdContainer, LV_FLEX_FLOW_ROW);
 		
-		hardDiskIcon = lv_img_create(hdContainer);
-		hardDiskLed = lv_led_create(hdContainer);
+		hardDiskIcon = lv_img_create(rightQuarterPanel);
+		lv_obj_set_grid_cell(hardDiskIcon, LV_GRID_ALIGN_CENTER, 0, 1, LV_GRID_ALIGN_CENTER, 2, 1);
+		hardDiskLed = lv_led_create(rightQuarterPanel);
+		lv_obj_set_grid_cell(hardDiskLed, LV_GRID_ALIGN_CENTER, 1, 1, LV_GRID_ALIGN_CENTER, 2, 1);		
 		lv_img_set_src(hardDiskIcon, &harddisk);
 	
 		// Since we dont have info yet, we are going to set the LEDs to Grey
@@ -114,11 +114,11 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 	authorized = dev[0].isAuth;
 	if (authorized)
 	{
-		lv_label_set_text(authLabel, "#00CC00Authorized");
+		lv_label_set_text(authLabel, "#00CC00 Authorized#");
 	}
 	else
 	{
-		lv_label_set_text(authLabel, "#FF3333Not Authorized");
+		lv_label_set_text(authLabel, "#FF3333 Not Authorized#");
 	}
 	deviceType = dev[0].DeviceType;
 	lv_label_set_text(deviceTypeLabel, CPUInfo::BoardTypeToString((EPIType)deviceType).c_str());

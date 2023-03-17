@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.18)
+SET(PROJECT_NAME "Server")
+project($PROJECT_NAME VERSION 1.0)
+
+# Configuration types
+SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE)
+IF(DEFINED CMAKE_BUILD_TYPE AND CMAKE_VERSION VERSION_GREATER "2.8")
+  SET_PROPERTY(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS  ${CMAKE_CONFIGURATION_TYPES})
+ENDIF()
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Build the components
+add_compile_definitions(LV_COLOR_DEPTH=16)
+add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
+add_compile_definitions(LV_CONF_H)
+set(BUILD_SHARED_LIBS ON)
+add_subdirectory(../Components/LVGL/lv_port_linux_frame_buffer lv_port_linux_frame_buffer)
