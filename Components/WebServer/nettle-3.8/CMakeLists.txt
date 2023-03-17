@@ -172,4 +172,6 @@ file(GLOB hogweedsrc
 		ed448-shake256.c ed448-shake256-pubkey.c 
 		ed448-shake256-sign.c ed448-shake256-verify.c
 )
+
 add_library(hogweed SHARED ${hogweedsrc})
+target_include_directories(hogweed PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
