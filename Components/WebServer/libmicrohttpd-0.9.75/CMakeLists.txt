@@ -12,7 +12,7 @@ message("OUTPUT: " ${output})
 
 add_compile_definitions(HAVE_CONFIG_H=1)
 add_compile_definitions(BUILD_MHD_LIB=1)
-SET(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR/libmicrohttpd/lib/)
+SET(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR/src/lib/)
 file(GLOB libmicrohttpdsrc
     ${SRC_DIR}action_continue.c                  
 )
