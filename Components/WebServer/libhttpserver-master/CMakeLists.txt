@@ -12,5 +12,5 @@ message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 endif()
 
-message("SRCDIR=${CMAKE_CURRENT_SOURCE_DIR}")
-message("BINDIR=${CMAKE_CURRENT_BINARY_DIR}")
+set(env{CPPFLAGS} ${CMAKE_CURRENT_SOURCE_DIR}/../libmicrohttpd-0.9.75/src/include)
+message("CPPFLAGS=" env{CPPFLAGS})
