@@ -14,4 +14,41 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\command.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pig2vcd.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pigpio.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\command.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\pigpio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\pigpiod_if.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\pigpiod_if2.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\pigs.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Makefile" />
+    <None Include="..\util\Findpigpio.cmake" />
+    <None Include="pigpio-Debug.vgdbsettings" />
+    <None Include="pigpio-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
 </Project>

@@ -14,4 +14,21 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EndpointClient.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EndpointClientAPI.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndpointClient.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EndpointClient-Debug.vgdbsettings" />
+    <None Include="EndpointClient-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

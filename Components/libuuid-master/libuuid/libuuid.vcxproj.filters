@@ -14,4 +14,66 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\clear.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compare.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\copy.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gen_uuid.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\isnull.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pack.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\parse.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\randutils.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unpack.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unparse.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\uuid_time.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libarchive-master\config.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\all-io.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\c.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\randutils.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuid.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuidd.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuidP.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libuuid-Debug.vgdbsettings" />
+    <None Include="libuuid-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

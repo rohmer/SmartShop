@@ -58,7 +58,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		++it)
 	{
 		float free = 100.0 - it->usedPct;
-		if (free >= diskCrit)
+		if (free <= diskCrit)
 		{
 			SensorEvent diskEvent("TelemetryAgent");
 			diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
@@ -68,7 +68,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		}
 		else
 		{
-			if (free >= diskWarn)
+			if (free <= diskWarn)
 			{
 				SensorEvent diskEvent("TelemetryAgent");
 				diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
