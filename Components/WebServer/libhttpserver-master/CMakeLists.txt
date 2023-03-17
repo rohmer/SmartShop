@@ -13,4 +13,4 @@ message("OUTPUT: " ${output})
 endif()
 
 message("SRCDIR=${CMAKE_CURRENT_SOURCE_DIR}")
-message("BINDIR=${CMAKE_CURRENT_BINARY_DIR")
+message("BINDIR=${CMAKE_CURRENT_BINARY_DIR}")
