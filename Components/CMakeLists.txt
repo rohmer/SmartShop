@@ -4,5 +4,6 @@ project($PROJECT_NAME VERSION 1.0)
 
 #add_subdirectory(cJSON-master cJSON)
 #add_subdirectory(cpp-base64-master cpp-base64)
-add_subdirectory(libuuid-master libuuid)
+#add_subdirectory(libuuid-master libuuid)
+add_subdirectory(libwpa libwpa)
 #add_subdirectory(WebServer WebServer)
