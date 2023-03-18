@@ -7,7 +7,7 @@ if(POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW) #3.12.0 `find_package()`` uses ``<PackageName>_ROOT`` variables.
 endif()
 #
-PROJECT(libarchive C)
+PROJECT(libarchive C VERSION 3.6.2)
 #
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/buildtools/cmake")
 if(NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
