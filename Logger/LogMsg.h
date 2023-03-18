@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string>
 
-#include <cjson/cJSON.h>
+#include <cJSON.h>
 #include "LogLevel.h"
 
 class LogMsg
