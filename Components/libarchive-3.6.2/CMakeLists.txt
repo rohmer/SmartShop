@@ -475,7 +475,7 @@ TRY_MACRO_FOR_LIBRARY(
   "USE_BZIP2_DLL;USE_BZIP2_STATIC")
 message("BZIP Include Dir=${BZIP2_INCLUDE_DIR}")
 message("BZIPLIB = ${BZIP2_LIBRARIES}")
-add_dependencies(libarchive bz2)
+
 #
 # Find LZMA
 #
