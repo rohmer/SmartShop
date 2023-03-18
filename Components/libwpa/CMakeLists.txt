@@ -21,3 +21,4 @@ add_library(libwpa SHARED
 )
 target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/utils)
 target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src)
+target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/wpa_supplicant)
