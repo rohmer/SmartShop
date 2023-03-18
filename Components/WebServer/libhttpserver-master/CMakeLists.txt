@@ -9,7 +9,7 @@ message("LDFLAGS $ENV{LDFLAGS}")
 
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/configure)
 message("Bootstrapping httpserver...")
-file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/bootstrap} PERMISSIONS WORLD_EXECUTE)
+file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR}/bootstrap} PERMISSIONS WORLD_EXECUTE)
 execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/bootstrap" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
@@ -18,7 +18,7 @@ message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 endif()
 
-file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/configure} PERMISSIONS WORLD_EXECUTE)
+file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/}configure} PERMISSIONS WORLD_EXECUTE)
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build)
 message("Configuring httpserver...")
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build})
