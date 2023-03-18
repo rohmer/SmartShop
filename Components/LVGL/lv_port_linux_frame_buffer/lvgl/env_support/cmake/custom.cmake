@@ -35,15 +35,6 @@ endif()
 # Include root and optional parent path of LV_CONF_PATH
 target_include_directories(lvgl SYSTEM PUBLIC ${LVGL_ROOT_DIR} ${LV_CONF_DIR})
 
-# Build LVGL example library
-if(NOT LV_CONF_BUILD_DISABLE_EXAMPLES)
-    add_library(lvgl_examples ${EXAMPLE_SOURCES})
-    add_library(lvgl::examples ALIAS lvgl_examples)
-
-    target_include_directories(lvgl_examples SYSTEM PUBLIC ${LVGL_ROOT_DIR}/examples)
-    target_link_libraries(lvgl_examples PUBLIC lvgl)
-endif()
-
 # Lbrary and headers can be installed to system using make install
 file(GLOB LVGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/lv_conf.h"
      "${CMAKE_SOURCE_DIR}/lvgl.h")
