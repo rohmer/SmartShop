@@ -2,16 +2,14 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "microhttpd")
 project($PROJECT_NAME VERSION 0.9.75)
 
-if(NOT EXISTS ${CMAKE_BINARY_DIR}/libmicrohttpd.pc)
 message("Configuring libmicrohttpd...")
 message("CURRENT_SORUCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
-execute_process(COMMAND "bash ${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
+execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
            )
 message("RESULT: " ${result})
 message("OUTPUT: " ${output})
-endif()
 
 add_compile_definitions(HAVE_CONFIG_H=1)
 add_compile_definitions(BUILD_MHD_LIB=1)
