@@ -14,4 +14,5 @@ target_include_directories(Logger PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/cpr-master/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master	
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
 )
