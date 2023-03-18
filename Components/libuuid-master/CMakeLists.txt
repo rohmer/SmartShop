@@ -11,6 +11,9 @@ if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
     message("RESULT: " ${result})
     message("OUTPUT: " ${output})
 endif()
+
+add_compile_definitions(HAVE_CONFIG_H=1)
+
 add_library(uuid SHARED 
  clear.c
  compare.c
