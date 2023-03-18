@@ -5,7 +5,8 @@ project($PROJECT_NAME VERSION 1.0.0)
 add_library(DB SHARED 
 	DB.cpp
 )
-target_include_directories(DB 
+
+include_directories(
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}../Components/cJSON-master
 )
