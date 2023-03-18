@@ -4,7 +4,7 @@ project($PROJECT_NAME VERSION 0.9.75)
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/libmicrohttpd.pc)
 message("Configuring libmicrohttpd...")
-message("CURRENT_SORUCE_DIR=${CMAKE_CURRENT_SOURCE_DIR})
+message("CURRENT_SORUCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
 execute_process(COMMAND "bash ${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
