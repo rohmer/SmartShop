@@ -15,7 +15,7 @@ message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 
 message("Configuring httpserver...")
-exec_program("bash ${CMAKE_CURRENT_SOURCE_DIR}/configure"
+exec_program("bash ${CMAKE_CURRENT_SOURCE_DIR}/configure" ${CMAKE_CURRENT_SOURCE_DIR}
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
            )
