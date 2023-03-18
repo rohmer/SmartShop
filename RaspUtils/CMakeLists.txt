@@ -3,7 +3,7 @@ SET(PROJECT_NAME "RaspUtils")
 project($PROJECT_NAME VERSION 1.0.0)
 
 
-add_library(RapsUtils SHARED 
+add_library(RaspUtils SHARED 
 	CPUInfo.cpp
 	JSON.cpp
 )
