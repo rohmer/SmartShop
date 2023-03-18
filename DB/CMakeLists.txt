@@ -9,8 +9,7 @@ add_library(DB SHARED
 
 
 target_include_directories(DB PUBLIC 
-	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm
-	${CMAKE_CURRENT_SOURCE_DIR}../Components/cJSON-master
+	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm	
 )
 
 

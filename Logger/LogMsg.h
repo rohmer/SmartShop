@@ -9,7 +9,7 @@
 class LogMsg
 {
 public:
-	unsigned long ID;
+	unsigned long ID;	
 	std::string Host;
 	int Severity;
 	std::string Message;
