@@ -7,7 +7,7 @@ message("CPPFLAGS $ENV{CPPFLAGS}")
 
 #if(NOT EXISTS ${CMAKE_BINARY_DIR}/libmicrohttpd.pc)
 message("Bootstrapping httpserver...")
-exec_program(${CMAKE_CURRENT_SOURCE_DIR}/bootstrap ${CMAKE_CURRENT_SOURCE_DIR}
+execute_process(COMMAND "bash ${CMAKE_CURRENT_SOURCE_DIR}/bootstrap" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
            )
@@ -15,7 +15,7 @@ message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 
 message("Configuring httpserver...")
-exec_program("${CMAKE_CURRENT_SOURCE_DIR}/configure" ${CMAKE_CURRENT_SOURCE_DIR}
+exec_program("bash ${CMAKE_CURRENT_SOURCE_DIR}/configure" ${CMAKE_CURRENT_SOURCE_DIR}
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
            )
