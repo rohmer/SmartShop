@@ -21,7 +21,9 @@ endif()
 file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR}/configure PERMISSIONS WORLD_EXECUTE WORLD_READ)
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build)
 message("Configuring httpserver...")
+message("Creating dir: ${CMAKE_CURRENT_SOURCE_DIR}/build")
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build})
+message("Executing ${CMAKE_CURRENT_SOURCE_DIR}/configure in ${CMAKE_CURRENT_SOURCE_DIR}/build")
 execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     RESULT_VARIABLE result
     OUTPUT_VARIABLE output
