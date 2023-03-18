@@ -11,7 +11,7 @@ file(GLOB_RECURSE FILES_OATPP
 ## organize source files in a hierarchy (reflecting the actual folder structure)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/oatpp" FILES ${FILES_OATPP})
 
-add_library(oatpp ${FILES_OATPP})
+add_library(oatpp SHARED ${FILES_OATPP})
 
 set_target_properties(oatpp PROPERTIES
         CXX_STANDARD 11
