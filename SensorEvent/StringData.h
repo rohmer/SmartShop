@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "SensorDataBase.h"
 
 class StringData : public SensorDataBase
