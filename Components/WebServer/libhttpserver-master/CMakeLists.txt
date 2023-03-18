@@ -18,7 +18,7 @@ message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 endif()
 
-file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/}configure} PERMISSIONS WORLD_EXECUTE)
+file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR}/configure PERMISSIONS WORLD_EXECUTE)
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build)
 message("Configuring httpserver...")
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build})
