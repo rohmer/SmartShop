@@ -7,3 +7,7 @@ add_library(RapsUtils SHARED
 	CPUInfo.cpp
 	JSON.cpp
 )
+
+target_include_directories(DB PUBLIC
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master
+)
