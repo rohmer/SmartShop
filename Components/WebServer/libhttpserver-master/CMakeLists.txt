@@ -30,6 +30,7 @@ add_compile_definitions(USE_FASTOPEN=1)
 add_compile_definitions(HTTPSERVER_COMPILATION)
 
 SET(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+message("SRC_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
 file(GLOB libhttpdsrc
     ${SRC_DIR}basic_auth_fail_response.cpp
     ${SRC_DIR}deferred_response.cpp
