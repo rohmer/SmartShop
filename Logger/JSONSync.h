@@ -5,7 +5,7 @@
 #include <string>
 #include <unistd.h>
 
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "LogMsg.h"
 #include "../Components/WebServer/httplib.h"
 
