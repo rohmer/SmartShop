@@ -30,8 +30,8 @@ add_compile_definitions(USE_FASTOPEN=1)
 add_compile_definitions(HTTPSERVER_COMPILATION)
 
 SET(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-message("SRC_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
-file(GLOB libhttpdsrc
+message("SRC_DIR=${SRC_DIR}")
+file(GLOB httpserversrc
     ${SRC_DIR}basic_auth_fail_response.cpp
     ${SRC_DIR}deferred_response.cpp
     ${SRC_DIR}digest_auth_fail_response.cpp
@@ -46,5 +46,5 @@ file(GLOB libhttpdsrc
     ${SRC_DIR}webserver.cpp
 )
 
-add_library(httpserver SHARED ${libhttpdsrc})
+add_library(httpserver SHARED ${httpserversrc})
 target_include_directories(httpserver PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
