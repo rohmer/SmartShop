@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "uuid")
 project($PROJECT_NAME VERSION 1.0)
 
+execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+RESULT_VARIABLE result
+           OUTPUT_VARIABLE output
+           )
+message("RESULT: " ${result})
+message("OUTPUT: " ${output})
+
 add_library(uuid SHARED 
  clear.c
  compare.c
