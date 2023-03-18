@@ -6,7 +6,7 @@ project($PROJECT_NAME VERSION 1.0.0)
 add_library(DB SHARED 
 	DB.cpp
 )
-
+find_package (SQLite3)
 
 target_include_directories(DB PRIVATE 
 	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm/
