@@ -1,6 +1,6 @@
 PROJECT(sigar C)
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.18)
 
 INCLUDE(CheckIncludeFiles)
 INCLUDE(CheckFunctionExists)
@@ -29,7 +29,7 @@ IF(WIN32)
 	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
 ENDIF(WIN32)
 
-ADD_SUBDIRECTORY(src build-src)
-ADD_SUBDIRECTORY(tests build-tests)
-ADD_SUBDIRECTORY(include build-include)
+add_subdirectory(src build-src)
+add_subdirectory(tests build-tests)
+add_subdirectory(include build-include)
 
