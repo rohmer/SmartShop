@@ -106,9 +106,9 @@ IF (CMAKE_C_COMPILER_ID MATCHES "^GNU$" OR
   #################################################################
   # Set compile flags for all build types.
   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wformat -Wformat-security")
-  if (ENABLE_WERROR)
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
-  endif ()
+  #if (ENABLE_WERROR)
+    #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+  #endif ()
   #################################################################
   # Set compile flags for debug build.
   # This is added into CMAKE_C_FLAGS when CMAKE_BUILD_TYPE is "Debug"
