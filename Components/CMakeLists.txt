@@ -3,4 +3,4 @@ SET(PROJECT_NAME "Components")
 project($PROJECT_NAME VERSION 1.0)
 
 add_subdirectory(cJSON-master cJSON)
-add_subdirectory(WebServer WebServer)
+#add_subdirectory(WebServer WebServer)
