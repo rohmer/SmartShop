@@ -30,6 +30,5 @@ IF(WIN32)
 ENDIF(WIN32)
 
 add_subdirectory(src build-src)
-add_subdirectory(tests build-tests)
 add_subdirectory(include build-include)
 
