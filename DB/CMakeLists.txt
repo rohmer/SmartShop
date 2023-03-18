@@ -8,9 +8,10 @@ add_library(DB SHARED
 )
 
 
-target_include_directories(DB PUBLIC 
-	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm	
+target_include_directories(DB PRIVATE 
+	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite_orm-master/include/sqlite_orm/
+	${CMAKE_CURRENT_SOURCE_DIR}../Components/sqlite3/
 )
 
 
-target_link_libraries(DB PUBLIC sqlite3)
+target_link_libraries(DB PRIVATE sqlite3)
