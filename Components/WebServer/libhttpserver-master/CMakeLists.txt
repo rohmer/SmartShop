@@ -46,5 +46,18 @@ file(GLOB httpserversrc
     ${SRC_DIR}webserver.cpp
 )
 
-add_library(httpserver SHARED ${httpserversrc})
+add_library(httpserver SHARED 
+    ${SRC_DIR}basic_auth_fail_response.cpp
+    ${SRC_DIR}deferred_response.cpp
+    ${SRC_DIR}digest_auth_fail_response.cpp
+    ${SRC_DIR}file_info.cpp
+    ${SRC_DIR}file_response.cpp
+    ${SRC_DIR}http_request.cpp
+    ${SRC_DIR}http_resource.cpp
+    ${SRC_DIR}http_response.cpp
+    ${SRC_DIR}http_utils.cpp
+    ${SRC_DIR}string_response.cpp
+    ${SRC_DIR}string_utilities.cpp
+    ${SRC_DIR}webserver.cpp
+)
 target_include_directories(httpserver PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
