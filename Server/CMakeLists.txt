@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "Server")
-project($PROJECT_NAME PROJECT_VERSION 1.0.0)
+project($PROJECT_NAME VERSION 1.0.0)
 
 # Configuration types
 SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" STRING "Configs" FORCE)
