@@ -23,4 +23,5 @@ target_include_directories(SensorEvent PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master	
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
+	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 )
