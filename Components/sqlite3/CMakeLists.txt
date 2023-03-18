@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.19)
 SET(PROJECT_NAME "microhttpd")
 project($PROJECT_NAME VERSION 0.9.75)
 
