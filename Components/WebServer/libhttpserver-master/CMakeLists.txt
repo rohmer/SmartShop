@@ -7,7 +7,7 @@ message("CPPFLAGS $ENV{CPPFLAGS}")
 set(ENV{LDFLAGS} -L${CMAKE_BINARY_DIR}/lib)
 message("LDFLAGS $ENV{LDFLAGS}")
 
-#if(NOT EXISTS ${CMAKE_BINARY_DIR}/libmicrohttpd.pc)
+if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/configure)
 message("Bootstrapping httpserver...")
 file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/bootstrap} PERMISSIONS WORLD_EXECUTE)
 execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/bootstrap" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -16,10 +16,11 @@ RESULT_VARIABLE result
            )
 message("RESULT: " ${result})
 message("OUTPUT: " ${output})
+endif()
 
-message("Configuring httpserver...")
 file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/configure} PERMISSIONS WORLD_EXECUTE)
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build})
+message("Configuring httpserver...")
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build})
 execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     RESULT_VARIABLE result
