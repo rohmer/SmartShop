@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.18)
-SET(PROJECT_NAME "libwpa")
+SET(PROJECT_NAME "wpa")
 project($PROJECT_NAME VERSION 2.6)
 
 add_compile_definitions(CONFIG_CTRL_IFACE)
 add_compile_definitions(CONFIG_CTRL_IFACE_UNIX)
 
-add_library(libwpa SHARED
+add_library(wpa SHARED
 	${CMAKE_CURRENT_SOURCE_DIR}/wpa_cli_oper/bitarray.c
 	${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/common/cli.c
 	${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/utils/common.c
@@ -19,6 +19,6 @@ add_library(libwpa SHARED
 	${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/common/wpa_ctrl.c
 	${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/utils/wpa_debug.c
 )
-target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/utils)
-target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src)
-target_include_directories(libwpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/wpa_supplicant)
+target_include_directories(wpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src/utils)
+target_include_directories(wpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/src)
+target_include_directories(wpa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/wpa_supplicant-2.6/wpa_supplicant)
