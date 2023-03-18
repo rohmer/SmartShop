@@ -18,7 +18,7 @@
 #include "DBInstall.h"
 #include "DBDevice.h"
 #include "DB.h"
-#include <sqlite_orm.h>
+#include "../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h"
 
 inline auto initCoreStorage(const std::string &path)
 {
