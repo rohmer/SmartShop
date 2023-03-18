@@ -4,7 +4,7 @@ project($PROJECT_NAME VERSION 0.9.75)
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/libmicrohttpd.pc)
 message("Configuring libmicrohttpd...")
-exec_program("bash ${CMAKE_BINARY_DIR}/configure" 
+exec_program("bash ${CMAKE_SOURCE_DIR}/configure" 
 RESULT_VARIABLE result
            OUTPUT_VARIABLE output
            )
