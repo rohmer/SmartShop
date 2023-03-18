@@ -68,5 +68,5 @@ file(GLOB libmicrohttpdsrc
     ${SRC_DIR}version.c
 )
 add_library(microhttpd SHARED ${libmicrohttpdsrc})
-target_include_directories(microhttpd PRIVATE ${CMAKE_BINARY_DIR})
+target_include_directories(microhttpd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(microhttpd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
