@@ -129,6 +129,7 @@ else()
     set(CJSON_LIBRARY_TYPE STATIC)
 endif()
 
+message("Lib type=${CJSON_LIBRARY_TYPE}")
 
 if (NOT BUILD_SHARED_AND_STATIC_LIBS)
     add_library("${CJSON_LIB}" "${CJSON_LIBRARY_TYPE}" "${HEADERS}" "${SOURCES}")
