@@ -1,2 +1,0 @@
-add_subdirectory(client_autotest)
-add_subdirectory(client_timeout_autotest)
