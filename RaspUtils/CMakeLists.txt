@@ -8,6 +8,6 @@ add_library(RapsUtils SHARED
 	JSON.cpp
 )
 
-target_include_directories(DB PUBLIC
+target_include_directories(RaspUtils PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master
 )
