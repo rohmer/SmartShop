@@ -23,11 +23,11 @@ ENDFOREACH()
 # FIXME: The order of the libraries doesn't take dependencies into account,
 #	 thus there's a good chance it'll make some binutils versions unhappy...
 #	 This only affects Libs.private (looked up for static builds) though.
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/build/pkgconfig/libarchive.pc.in
-		${CMAKE_CURRENT_BINARY_DIR}/build/pkgconfig/libarchive.pc
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/buildtools/pkgconfig/libarchive.pc.in
+		${CMAKE_CURRENT_BINARY_DIR}/buildtools/pkgconfig/libarchive.pc
 		@ONLY)
 # And install it, of course ;).
 IF(ENABLE_INSTALL)
-  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build/pkgconfig/libarchive.pc
+  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/buildtool/pkgconfig/libarchive.pc
           DESTINATION "lib/pkgconfig")
 ENDIF()
