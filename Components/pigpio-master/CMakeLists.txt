@@ -12,13 +12,13 @@ option(BUILD_SHARED_LIBS "Create shared libraries" ON)
 add_compile_options(-Wall)
 
 # libpigpio.(so|a)
-add_library(pigpio pigpio.c command.c custom.cext)
+add_library(pigpio SHARED pigpio.c command.c custom.cext)
 
 # libpigpiod_if.(so|a)
-add_library(pigpiod_if pigpiod_if.c command.c)
+add_library(pigpiod_if SHARED pigpiod_if.c command.c)
 
 # libpigpiod_if2.(so|a)
-add_library(pigpiod_if2 pigpiod_if2.c command.c)
+add_library(pigpiod_if2 SHARED pigpiod_if2.c command.c)
 
 # x_pigpio
 add_executable(x_pigpio x_pigpio.c)
