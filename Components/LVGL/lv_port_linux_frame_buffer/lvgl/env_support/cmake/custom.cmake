@@ -44,15 +44,6 @@ if(NOT LV_CONF_BUILD_DISABLE_EXAMPLES)
     target_link_libraries(lvgl_examples PUBLIC lvgl)
 endif()
 
-# Build LVGL demos library
-if(NOT LV_CONF_BUILD_DISABLE_DEMOS)
-    add_library(lvgl_demos ${DEMO_SOURCES})
-    add_library(lvgl::demos ALIAS lvgl_demos)
-
-    target_include_directories(lvgl_demos SYSTEM PUBLIC ${LVGL_ROOT_DIR}/demos)
-    target_link_libraries(lvgl_demos PUBLIC lvgl)
-endif()
-
 # Lbrary and headers can be installed to system using make install
 file(GLOB LVGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/lv_conf.h"
      "${CMAKE_SOURCE_DIR}/lvgl.h")
