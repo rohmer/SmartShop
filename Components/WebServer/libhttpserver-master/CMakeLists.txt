@@ -21,10 +21,10 @@ message("Configuring httpserver...")
 file(CHMOD ${CMAKE_CURRENT_SOURCE_DIR/configure} PERMISSIONS WORLD_EXECUTE)
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build})
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build})
-execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-RESULT_VARIABLE result
-           OUTPUT_VARIABLE output
-           )
+execute_process(COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/configure" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE result
+    OUTPUT_VARIABLE output
+)
 message("RESULT: " ${result})
 message("OUTPUT: " ${output})
 endif()
