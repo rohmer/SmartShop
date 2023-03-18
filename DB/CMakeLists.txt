@@ -13,10 +13,12 @@ MACRO(HEADER_DIRECTORIES return_list)
     SET(${return_list} ${dir_list})
 ENDMACRO()
 
+set(header_dir_list ${CMAKE_CURRENT_SOURCE_DIR}/..)
 HEADER_DIRECTORIES(header_dir_list)
 
 list(LENGTH header_dir_list header_dir_list_count)
 message(STATUS "[INFO] Found ${header_dir_list_count} header directories.")
+message(STATUS "[INFO] Found ${header_dir_list} headers")
 
 add_library(DB SHARED 
 	DB.cpp
