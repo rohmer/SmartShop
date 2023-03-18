@@ -16,4 +16,4 @@ add_compile_definitions(LV_CONF_H)
 add_subdirectory(../Components Components)
 add_subdirectory(../DB DB)
 add_subdirectory(../RaspUtils RaspUtils)
-
+add_subdirectory(../Logger Logger)
