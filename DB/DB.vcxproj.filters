@@ -61,4 +61,7 @@
     <None Include="DB-Debug.vgdbsettings" />
     <None Include="DB-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

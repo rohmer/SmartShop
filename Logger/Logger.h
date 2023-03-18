@@ -17,7 +17,7 @@
 #ifdef DEBUG
 #define LOGLEVEL spdlog::level::info
 #else
-#define LOGLEVEL spdlog::level::warn;
+#define LOGLEVEL spdlog::level::warn
 #endif
 
 class Logger

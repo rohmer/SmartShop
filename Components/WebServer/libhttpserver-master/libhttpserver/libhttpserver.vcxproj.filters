@@ -112,4 +112,7 @@
     <None Include="libhttpserver-Debug.vgdbsettings" />
     <None Include="libhttpserver-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
 </Project>

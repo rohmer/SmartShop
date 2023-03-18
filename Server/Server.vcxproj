@@ -95,6 +95,7 @@
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PreLoad.cmake" />
     <None Include="Server-Debug.vgdbsettings" />
     <None Include="Server-Release.vgdbsettings" />
   </ItemGroup>

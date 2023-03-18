@@ -150,7 +150,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libarchive", "libarchive", 
 		Components\libarchive-3.6.2\libarchive\CMakeLists.txt = Components\libarchive-3.6.2\libarchive\CMakeLists.txt
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbz2", "Components\bzip2-1.0.8\libbz2\libbz2.vcxproj", "{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libbz2", "libbz2", "{C8826DF9-20DD-49DF-AA65-16729F7B94F8}"
+	ProjectSection(SolutionItems) = preProject
+		Components\bzip2-1.0.8\CMakeLists.txt = Components\bzip2-1.0.8\CMakeLists.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -916,22 +919,6 @@ Global
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|ARM.Build.0 = Release|ARM
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Debug|ARM.ActiveCfg = Debug|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Debug|ARM.Build.0 = Debug|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.MinSizeRel|ARM.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.MinSizeRel|ARM.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Release|ARM.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Release|ARM.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.Release|VisualGDB.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.RelWithDebInfo|ARM.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.RelWithDebInfo|ARM.Build.0 = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -985,7 +972,7 @@ Global
 		{D7994DC7-DD37-404F-9005-959C26A3433C} = {38B73E6C-3319-4D46-92BD-DF438413BFF6}
 		{2CBAFA6F-50F9-4691-835C-57F32DF679AE} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 		{49820EB2-A9A6-4E20-B180-BDAAD51CB9AB} = {2CBAFA6F-50F9-4691-835C-57F32DF679AE}
-		{9DB4E9AD-A7D3-4A9B-9D3C-598405AD45D9} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
+		{C8826DF9-20DD-49DF-AA65-16729F7B94F8} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

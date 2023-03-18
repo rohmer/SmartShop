@@ -204,4 +204,7 @@
     <ClInclude Include="..\src\testcurl\https\tls_test_common.h" />
     <ClInclude Include="..\src\testcurl\https\tls_test_keys.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
 </Project>

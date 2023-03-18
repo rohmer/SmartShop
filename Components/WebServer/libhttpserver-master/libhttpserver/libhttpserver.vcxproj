@@ -141,6 +141,9 @@
     <ClInclude Include="..\src\httpserver\string_utilities.hpp" />
     <ClInclude Include="..\src\httpserver\webserver.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -34,4 +34,7 @@
     <None Include="RaspUtils-Debug.vgdbsettings" />
     <None Include="RaspUtils-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>
