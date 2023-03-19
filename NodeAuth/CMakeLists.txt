@@ -15,6 +15,7 @@ target_include_directories(NodeAuth PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master	
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libhttpserver-master/src
 )
 
 target_link_libraries(NodeAuth DB)
