@@ -15,6 +15,7 @@ target_include_directories(Telemetry PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../DB
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sigar-master/include
 )
 
 target_link_libraries(Telemetry DB)
@@ -22,3 +23,4 @@ target_link_libraries(Telemetry sqlite3)
 target_link_libraries(Telemetry Logger)
 target_link_libraries(Telemetry oatpp)
 target_link_libraries(Telemetry cjson)
+target_link_libraries(Telemetry sigar)
