@@ -51,4 +51,7 @@ target_include_directories(Server PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lvgl
+	${CMAKE_CURRENT_SOURCE_DIR}/../NetworkTools
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_cli_oper
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant
 )
