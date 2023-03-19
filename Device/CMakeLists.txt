@@ -11,7 +11,7 @@ add_library(Device SHARED
 	I2CDevice.cpp
 )
 
-target_include_directories(LogEndpoint PUBLIC
+target_include_directories(Device PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../DB
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite_orm-master/include/sqlite_orm
