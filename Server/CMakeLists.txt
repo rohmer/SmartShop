@@ -8,6 +8,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+target_include_directories(Server PUBLIC
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../DB
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite_orm-master/include/sqlite_orm
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/cpr-master/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master	
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libhttpserver-master/src
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libmicrohttpd-0.9.75/src/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../RaspUtils
+)
 
 # Build the components
 add_compile_definitions(LV_COLOR_DEPTH=16)
