@@ -55,4 +55,5 @@ target_include_directories(Server PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_cli_oper
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/Scheduler-master
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
 )
