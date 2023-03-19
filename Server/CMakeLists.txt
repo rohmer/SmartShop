@@ -44,4 +44,5 @@ target_include_directories(Server PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libhttpserver-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libmicrohttpd-0.9.75/src/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../RaspUtils
+	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 )
