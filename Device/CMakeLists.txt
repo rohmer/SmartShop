@@ -43,3 +43,7 @@ target_link_libraries(Device SensorEvent)
 
 add_subdirectory(AHTX0Sensor AHTX0Sensor)
 add_subdirectory(MCP9808Sensor MCP9808Sensor)
+add_subdirectory(PCA9685Device PCA9685Device)
+add_subdirectory(PM25AQISensor PM25AQISensor)
+add_subdirectory(SwitchDevice SwitchDevice)
+add_subdirectroy(TelemetryAgent TelemetryAgent)
