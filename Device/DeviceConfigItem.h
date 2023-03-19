@@ -2,7 +2,7 @@
 #include <cstring>
 #include <sstream>
 #include <string>
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 
 enum eConfigDataType
 {

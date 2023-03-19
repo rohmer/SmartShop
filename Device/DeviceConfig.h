@@ -4,7 +4,7 @@
 #include <vector>
 #include <unistd.h>
 
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "../DB/DB.h"
 #include "../RaspUtils/CPUInfo.h"
 #include "CPUInfo.h"

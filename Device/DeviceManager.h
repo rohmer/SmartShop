@@ -7,7 +7,7 @@
 #include <thread>
 #include <vector>
 #include <Scheduler.h>
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 
 #include "DeviceBase.h"
 #include "Sensor.h"
