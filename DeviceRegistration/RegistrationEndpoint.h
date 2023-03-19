@@ -3,7 +3,7 @@
 #include <string>
 #include <algorithm>
 
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "../Components/WebServer/libhttpserver-master/src/httpserver.hpp"
 #include "../Logger/Logger.h"
 #include "DBDevice.h"
