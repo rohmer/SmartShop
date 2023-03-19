@@ -7,6 +7,11 @@ add_library(UI SHARED
 	MainWindow.cpp
 	NodeWidgetManager.cpp
 	WindowManager.cpp
+	Images/noWifi.c
+	Images/Wifi1.c
+	Images/Wifi2.c
+	Images/Wifi3.c
+	Images/Wifi4.c
 )
 target_include_directories(UI PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lvgl
