@@ -27,6 +27,8 @@ target_include_directories(LogEndpoint PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../Device
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/date-master/include/
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/pigpio-master
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/Scheduler-master	
 )
 
 target_link_libraries(Device DB)
