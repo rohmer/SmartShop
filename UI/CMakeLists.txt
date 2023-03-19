@@ -17,14 +17,23 @@ target_include_directories(UI PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_cli_oper
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
+)
 
-target_link_libraries(TelemetryAgent DB)
-target_link_libraries(TelemetryAgent sqlite3)
-target_link_libraries(TelemetryAgent RaspUtils)
-target_link_libraries(TelemetryAgent cjson)
-target_link_libraries(TelemetryAgent cpp-base64)
-target_link_libraries(TelemetryAgent Logger)
-target_link_libraries(TelemetryAgent md5)
-target_link_libraries(TelemetryAgent pigpio)
-target_link_libraries(TelemetryAgent SensorEvent)
-target_link_libraries(TelemetryAgent Telemetry)
+target_link_libraries(UI DB)
+target_link_libraries(UI sqlite3)
+target_link_libraries(UI RaspUtils)
+target_link_libraries(UI cjson)
+target_link_libraries(UI NetworkTools)
+target_link_libraries(UI Logger)
+target_link_libraries(UI lvgl)
+target_link_libraries(UI lv_drivers)
+target_link_libraries(UI NodeWidget)
+target_link_libraries(UI UIWidget)
+
+add_subdirectory(NodeWidget NodeWidget)
+add_subdirectory(StatusWidget StatusWidget)
+add_subdirectory(UIWidget UIWidget)
+
+add_dependencies(NodeWidget UIWidget)
+add_dependencies(StatusWidget UI)
+add_dependencies(StatusWidget UIWidget)
