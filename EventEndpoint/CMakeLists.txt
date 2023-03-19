@@ -24,13 +24,13 @@ target_include_directories(EventEndpoint PUBLIC
 
 )
 
-target_link_libraries(EndpointClient DB)
-target_link_libraries(EndpointClient sqlite3)
-target_link_libraries(EndpointClient microhttpd)
-target_link_libraries(EndpointClient httpserver)
-target_link_libraries(EndpointClient RaspUtils)
-target_link_libraries(EndpointClient cjson)
-target_link_libraries(EndpointClient NodeAuth)
-target_link_libraries(EndpointClient SensorEvent)
+target_link_libraries(EventEndpoint DB)
+target_link_libraries(EventEndpoint sqlite3)
+target_link_libraries(EventEndpoint microhttpd)
+target_link_libraries(EventEndpoint httpserver)
+target_link_libraries(EventEndpoint RaspUtils)
+target_link_libraries(EventEndpoint cjson)
+target_link_libraries(EventEndpoint NodeAuth)
+target_link_libraries(EventEndpoint SensorEvent)
 
 add_subdirectory(EndpointClient EndpointClient)
