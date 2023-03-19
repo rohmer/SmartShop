@@ -64,4 +64,7 @@
     <None Include="Device-Debug.vgdbsettings" />
     <None Include="Device-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

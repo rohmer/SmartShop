@@ -28,4 +28,7 @@
     <None Include="NetworkTools-Debug.vgdbsettings" />
     <None Include="NetworkTools-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

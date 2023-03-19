@@ -60,7 +60,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../RaspUtils;../Device;../Components/curlpp-master/include;../Components/spdlog-1.x/include/spdlog;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/oatpp-master/src;../Components/cpp-base64-master;../Components/Scheduler-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../RaspUtils;../Device;../Components/curlpp-master/include;../Components/spdlog-1.x/include/spdlog;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/oatpp-master/src;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/cJSON-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -110,9 +110,6 @@
     <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
       <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Components\curlpp-master\curlpp\curlpp.vcxproj">
-      <Project>{de3af999-4b7a-419d-bb99-9105a3a29473}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
       <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
     </ProjectReference>
@@ -148,6 +145,9 @@
     <ClInclude Include="RegClient.h" />
     <ClInclude Include="RegistrationEndpoint.h" />
     <ClInclude Include="RestClient.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

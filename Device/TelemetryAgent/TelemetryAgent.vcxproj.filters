@@ -28,4 +28,7 @@
     <None Include="TelemetryAgent-Debug.vgdbsettings" />
     <None Include="TelemetryAgent-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

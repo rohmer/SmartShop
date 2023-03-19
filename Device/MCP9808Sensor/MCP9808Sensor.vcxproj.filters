@@ -31,4 +31,7 @@
     <None Include="MCP9808Sensor-Debug.vgdbsettings" />
     <None Include="MCP9808Sensor-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

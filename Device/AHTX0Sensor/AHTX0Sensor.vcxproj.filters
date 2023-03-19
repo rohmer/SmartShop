@@ -31,4 +31,7 @@
     <None Include="AHTX0Sensor-Debug.vgdbsettings" />
     <None Include="AHTX0Sensor-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

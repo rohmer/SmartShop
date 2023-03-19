@@ -28,4 +28,7 @@
     <None Include="NodeAuth-Debug.vgdbsettings" />
     <None Include="NodeAuth-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

@@ -73,4 +73,7 @@
     <None Include="SensorEvent-Debug.vgdbsettings" />
     <None Include="SensorEvent-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

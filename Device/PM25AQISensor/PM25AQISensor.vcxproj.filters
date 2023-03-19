@@ -28,4 +28,7 @@
     <None Include="PM25AQISensor-Debug.vgdbsettings" />
     <None Include="PM25AQISensor-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

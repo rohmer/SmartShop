@@ -31,4 +31,7 @@
     <None Include="EndpointClient-Debug.vgdbsettings" />
     <None Include="EndpointClient-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

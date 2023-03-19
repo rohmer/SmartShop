@@ -31,4 +31,7 @@
     <None Include="PCA9685Device-Debug.vgdbsettings" />
     <None Include="PCA9685Device-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

@@ -28,4 +28,7 @@
     <None Include="RESTServer-Debug.vgdbsettings" />
     <None Include="RESTServer-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

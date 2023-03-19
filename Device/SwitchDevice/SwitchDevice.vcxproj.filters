@@ -28,4 +28,7 @@
     <None Include="SwitchDevice-Debug.vgdbsettings" />
     <None Include="SwitchDevice-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

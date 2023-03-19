@@ -40,4 +40,7 @@
     <None Include="NodeWidget-Debug.vgdbsettings" />
     <None Include="NodeWidget-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

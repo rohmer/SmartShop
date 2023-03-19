@@ -28,4 +28,7 @@
     <None Include="LogEndpoint-Debug.vgdbsettings" />
     <None Include="LogEndpoint-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

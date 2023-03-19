@@ -28,4 +28,7 @@
     <None Include="MD5-Debug.vgdbsettings" />
     <None Include="MD5-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
 </Project>

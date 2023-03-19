@@ -70,4 +70,7 @@
     <None Include="UI-Debug.vgdbsettings" />
     <None Include="UI-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>
