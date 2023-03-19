@@ -5,6 +5,10 @@ project($PROJECT_NAME VERSION 1.0.0)
 
 file(GLOB UIWidget_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
 
+add_compile_definitions(LV_COLOR_DEPTH=16)
+add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
+add_compile_definitions(LV_CONF_H)
+
 add_library(UIWidget ${UIWidget_SRC})
 target_include_directories(UIWidget PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/LVGL/lv_port_linux_frame_buffer/lvgl

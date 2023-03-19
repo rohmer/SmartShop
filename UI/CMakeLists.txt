@@ -34,6 +34,9 @@ add_subdirectory(NodeWidget NodeWidget)
 add_subdirectory(StatusWidget StatusWidget)
 add_subdirectory(UIWidget UIWidget)
 
+add_compile_definitions(LV_COLOR_DEPTH=16)
+add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
+add_compile_definitions(LV_CONF_H)
 
 #add_dependencies(NodeWidget UIWidget)
 #add_dependencies(StatusWidget UI)
