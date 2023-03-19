@@ -19,6 +19,7 @@ target_include_directories(EventEndpoint PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libmicrohttpd-0.9.75/src/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../RaspUtils
 	${CMAKE_CURRENT_SOURCE_DIR}/../SensorEvent
+	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 )
 
 target_link_libraries(RESTServer DB)
