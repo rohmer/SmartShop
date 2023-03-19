@@ -52,6 +52,8 @@ add_library(httpserver SHARED
     ${SRC_DIR}string_response.cpp
     ${SRC_DIR}string_utilities.cpp
     ${SRC_DIR}webserver.cpp
+    ${SRC_DIR}/details/http_endpoint.cpp
+
 )
 target_include_directories(httpserver PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(httpserver PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../libmicrohttpd-0.9.75/src/include)
