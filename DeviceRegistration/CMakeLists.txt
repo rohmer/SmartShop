@@ -23,6 +23,7 @@ target_include_directories(DeviceRegistration PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../SensorEvent	
 	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
+	${CMAKE_CURRENT_SOURCE_DIR}/../Device
 )
 
 target_link_libraries(DeviceRegistration DB)
