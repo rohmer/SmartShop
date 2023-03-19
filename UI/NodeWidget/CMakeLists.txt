@@ -9,7 +9,7 @@ add_compile_definitions(LV_COLOR_DEPTH=16)
 add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
 add_compile_definitions(LV_CONF_H)
 
-add_library(NodeWidget ${NodeWidget_SRC})
+add_library(NodeWidget SHARED ${NodeWidget_SRC})
 target_include_directories(NodeWidget PUBLIC
 target_include_directories(UIWidget PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/LVGL/lv_port_linux_frame_buffer/lvgl

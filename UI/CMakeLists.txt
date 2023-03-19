@@ -8,7 +8,7 @@ add_library(UI
 	NodeWidgetManager.cpp
 	WindowManager.cpp
 )
-target_include_directories(UI PUBLIC
+target_include_directories(UI SHARED PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lvgl
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
