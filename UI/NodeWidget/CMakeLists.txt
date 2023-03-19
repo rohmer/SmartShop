@@ -3,7 +3,7 @@ SET(PROJECT_NAME "NodeWidget")
 project($PROJECT_NAME VERSION 1.0.0)
 
 
-file(GLOB NodeWidget_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
+file(GLOB NodeWidget_SRC CONFIGURE_DEPENDS "*.h" "*.cpp" "*.c")
 
 add_compile_definitions(LV_COLOR_DEPTH=16)
 add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
