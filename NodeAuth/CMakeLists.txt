@@ -16,6 +16,7 @@ target_include_directories(NodeAuth PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master	
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libhttpserver-master/src
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/WebServer/libmicrohttpd-0.9.75/src/include
 )
 
 target_link_libraries(NodeAuth DB)
