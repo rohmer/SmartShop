@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "Components")
 project($PROJECT_NAME VERSION 1.0)
+add_subdirectory(LVGL/lv_port_linux_frame_buffer)
 add_subdirectory(bzip2-1.0.8 bz2)
 add_subdirectory(libarchive-3.6.2 archive)
 add_subdirectory(cJSON-master cJSON)
