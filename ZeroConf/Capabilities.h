@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "../RaspUtils/CPUInfo.h"
 
 class Capabilities
