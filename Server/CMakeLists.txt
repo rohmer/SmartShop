@@ -47,4 +47,5 @@ target_include_directories(Server PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 	${CMAKE_CURRENT_SOURCE_DIR}/../EventEndpoint
 	${CMAKE_CURRENT_SOURCE_DIR}/../LogEndpoint
+	${CMAKE_CURRENT_SOURCE+DIR}/../Components/date-master/include/date
 )
