@@ -60,7 +60,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../Components/sigar-master/include;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../Components/sigar-master/include;../Components/oatpp-master/src;../Components/cJSON-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
