@@ -20,11 +20,12 @@ target_include_directories(EndpointClient PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../RaspUtils
 	${CMAKE_CURRENT_SOURCE_DIR}/../SensorEvent	
 	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
 )
 
-target_link_libraries(RESTServer DB)
-target_link_libraries(RESTServer sqlite3)
-target_link_libraries(RESTServer RaspUtils)
-target_link_libraries(RESTServer cjson)
-target_link_libraries(RESTServer SensorEvent)
-target_link_libraries(RESTServer oatpp)
+target_link_libraries(EndpointClient DB)
+target_link_libraries(EndpointClient sqlite3)
+target_link_libraries(EndpointClient RaspUtils)
+target_link_libraries(EndpointClient cjson)
+target_link_libraries(EndpointClient SensorEvent)
+target_link_libraries(EndpointClient oatpp)
