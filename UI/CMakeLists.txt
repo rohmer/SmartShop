@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "UI")
 project($PROJECT_NAME VERSION 1.0.0)
 
-add_library(UI 
+add_library(UI SHARED
 	LogTable.cpp
 	MainWindow.cpp
 	NodeWidgetManager.cpp
 	WindowManager.cpp
 )
-target_include_directories(UI SHARED PUBLIC
+target_include_directories(UI PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lvgl
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/oatpp-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
