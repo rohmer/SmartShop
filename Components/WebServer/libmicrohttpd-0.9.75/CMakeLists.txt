@@ -43,9 +43,55 @@ file(GLOB_RECURSE src1
     "src/lib/*.h"
 )
     
-add_library(microhttpd SHARED 
-    ${src1}
+add_library(microhttpd SHARED  
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/reason_phrase.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/daemon.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/internal.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/internal.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/memorypool.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/memorypool.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_mono_clock.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_mono_clock.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_limits.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/sysfdsetsize.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/sysfdsetsize.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_str.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_str.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_send.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_send.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_assert.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_sockets.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_sockets.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_itc.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_itc.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_itc_types.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_compat.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_compat.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/response.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/response.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_threads.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_threads.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_locks.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/tsearch.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/tsearch.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/postprocessor.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/digestauth.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_bithelpers.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_byteorder.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/mhd_align.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/md5.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/md5.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/sha256.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/sha256.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/basicauth.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/base64.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/base64.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection_https.c 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection_https.h
 )
+
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build)
