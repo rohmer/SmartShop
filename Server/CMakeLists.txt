@@ -28,3 +28,7 @@ add_subdirectory(../Device Device)
 add_subdirectory(../NetworkTools NetworkTools)
 add_subdirectory(../UI UI)
 add_subdirectory(../ZeroConf ZeroConf)
+
+file(GLOB Server_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
+
+add_executable(Server ${Server_SRC})
