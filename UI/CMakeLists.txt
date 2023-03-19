@@ -34,6 +34,7 @@ add_subdirectory(NodeWidget NodeWidget)
 add_subdirectory(StatusWidget StatusWidget)
 add_subdirectory(UIWidget UIWidget)
 
-add_dependencies(NodeWidget UIWidget)
-add_dependencies(StatusWidget UI)
-add_dependencies(StatusWidget UIWidget)
+
+#add_dependencies(NodeWidget UIWidget)
+#add_dependencies(StatusWidget UI)
+#add_dependencies(StatusWidget UIWidget)

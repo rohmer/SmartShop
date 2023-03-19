@@ -4,6 +4,7 @@ project($PROJECT_NAME VERSION 1.0.0)
 
 
 file(GLOB UIWidget_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
+target_compile_features(UIWidget PUBLIC cxx_std_17)
 
 add_library(UIWidget ${UIWidget_SRC})
 target_include_directories(UIWidget PUBLIC
