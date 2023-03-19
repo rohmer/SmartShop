@@ -95,3 +95,5 @@ add_library(microhttpd SHARED
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
 target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build)
+
+target_link_libraries(microhttpd gnutls)
