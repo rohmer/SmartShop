@@ -11,4 +11,4 @@ add_library(RaspUtils SHARED
 target_include_directories(RaspUtils PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cJSON-master
 )
-target_link_libraries(RaspUtil cjson)
+target_link_libraries(RaspUtils cjson)
