@@ -15,6 +15,7 @@ target_include_directories(UI PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite3
 	${CMAKE_CURRENT_SOURCE_DIR}/../NetworkTools
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_cli_oper
+	${CMAKE_CURRENT_SOURCE_DIR}/../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant
 )
 
 target_link_libraries(UI DB)
