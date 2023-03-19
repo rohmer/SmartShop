@@ -1,17 +1,13 @@
 cmake_minimum_required(VERSION 3.18)
-SET(PROJECT_NAME "Device")
+SET(PROJECT_NAME "MCP9808Sensor")
 project($PROJECT_NAME VERSION 1.0.0)
 
 
-add_library(Device SHARED 
-	DeviceBase.cpp
-	DeviceConfig.cpp
-	DeviceManager.cpp
-	GPIODevice.cpp
-	I2CDevice.cpp
+add_library(MCP9808Sensor SHARED 
+	MCP9808Sensor.cpp
 )
 
-target_include_directories(Device PUBLIC
+target_include_directories(MCP9808Sensor PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../DB
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/sqlite_orm-master/include/sqlite_orm
@@ -31,15 +27,12 @@ target_include_directories(Device PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/Scheduler-master	
 )
 
-target_link_libraries(Device DB)
-target_link_libraries(Device sqlite3)
-target_link_libraries(Device RaspUtils)
-target_link_libraries(Device cjson)
-target_link_libraries(Device cpp-base64)
-target_link_libraries(Device Logger)
-target_link_libraries(Device md5)
-target_link_libraries(Device pigpio)
-target_link_libraries(Device SensorEvent)
-
-add_subdirectory(AHTX0Sensor AHTX0Sensor)
-add_subdirectory(MCP9808Sensor MCP9808Sensor)
+target_link_libraries(MCP9808Sensor DB)
+target_link_libraries(MCP9808Sensor sqlite3)
+target_link_libraries(MCP9808Sensor RaspUtils)
+target_link_libraries(MCP9808Sensor cjson)
+target_link_libraries(MCP9808Sensor cpp-base64)
+target_link_libraries(MCP9808Sensor Logger)
+target_link_libraries(MCP9808Sensor md5)
+target_link_libraries(MCP9808Sensor pigpio)
+target_link_libraries(MCP9808Sensor SensorEvent)
