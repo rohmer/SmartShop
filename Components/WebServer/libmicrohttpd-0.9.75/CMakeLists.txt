@@ -46,6 +46,6 @@ file(GLOB_RECURSE src1
 add_library(microhttpd SHARED 
     ${src1}
 )
-target_include_directories(microhttpd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(microhttpd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
-target_include_directories(microhttpd PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
+target_include_directories(microhttpd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build)
