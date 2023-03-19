@@ -7,14 +7,14 @@ file(GLOB UI_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
 
 add_library(UI ${UI_SRC})
 target_include_directories(UI PUBLIC
-target_include_directories(UIWidget PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/LVGL/lv_port_linux_frame_buffer/lvgl
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/oatpp-master/src
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/sqlite_orm-master/include/sqlite_orm
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/cJSON-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/sqlite3
-)
+	${CMAKE_CURRENT_SOURCE_DIR}/../../NetworkTools
+	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/libwpa/wpa_cli_oper
 )
 
 target_link_libraries(UI DB)
