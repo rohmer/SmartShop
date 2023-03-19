@@ -25,3 +25,10 @@ target_include_directories(SensorEvent PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../Logger
 )
+
+target_link_libraries(SensorEvent DB)
+target_link_libraries(SensorEvent sqlite3)
+target_link_libraries(SensorEvent oatpp)
+target_link_libraries(SensorEvent Logger)
+target_link_libraries(SensorEvent cjson)
+target_link_libraries(SensorEvent cpp-base64)
