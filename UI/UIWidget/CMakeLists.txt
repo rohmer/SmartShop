@@ -16,6 +16,7 @@ target_include_directories(UIWidget PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/sqlite_orm-master/include/sqlite_orm
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/cJSON-master
+	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/sqlite3
 )
 
 target_compile_features(UIWidget PUBLIC cxx_std_17)
