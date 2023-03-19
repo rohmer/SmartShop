@@ -57,5 +57,5 @@ target_include_directories(Server PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/Scheduler-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/cpp-base64-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/pigpio-master
-
+	${CMAKE_CURRENT_SOURCE_DIR}/../Device
 )
