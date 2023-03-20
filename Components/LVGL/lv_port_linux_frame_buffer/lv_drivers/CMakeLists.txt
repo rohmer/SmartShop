@@ -10,11 +10,12 @@ file(GLOB_RECURSE SOURCES ./*.c)
 if (BUILD_SHARED_LIBS)
   add_library(lv_drivers SHARED ${SOURCES})
 else()
-  add_library(lv_drivers STATIC ${SOURCES})
+  add_library(lv_drivers SHARED ${SOURCES})
 endif()
 
 add_library(lvgl_drivers ALIAS lv_drivers)
 add_library(lvgl::drivers ALIAS lv_drivers)
+set_property(TARGET lvgl PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(lv_drivers SYSTEM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

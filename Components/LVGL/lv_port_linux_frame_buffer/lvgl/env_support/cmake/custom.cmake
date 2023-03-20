@@ -21,7 +21,7 @@ file(GLOB_RECURSE EXAMPLE_SOURCES ${LVGL_ROOT_DIR}/examples/*.c)
 file(GLOB_RECURSE DEMO_SOURCES ${LVGL_ROOT_DIR}/demos/*.c)
 
 # Build LVGL library
-add_library(lvgl ${SOURCES})
+add_library(lvgl SHARED ${SOURCES})
 add_library(lvgl::lvgl ALIAS lvgl)
 set_property(TARGET lvgl PROPERTY POSITION_INDEPENDENT_CODE ON)
 
