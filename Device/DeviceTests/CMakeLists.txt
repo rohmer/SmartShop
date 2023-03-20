@@ -22,7 +22,7 @@ target_include_directories(Device PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/Scheduler-master	
 )
 
-add_executable(DeviceTests DeviceTests.cpp DeviceTestsTest.cpp)
+add_executable(DeviceTests DeviceTests.cpp DeviceTestsTests.cpp)
 
 target_link_libraries(DeviceTests PRIVATE
     CppUTest::CppUTest
