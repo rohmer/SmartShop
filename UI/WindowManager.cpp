@@ -95,6 +95,14 @@ lv_font_t* WindowManager::GetFont(std::string fontName, uint8_t fontSize)
 	return loadedFonts[ftDesc];
 }
 
+std::shared_ptr<UIWidget> WindowManager::CreateWidget(std::string Name)
+{
+	if (factories.find(Name) == factories.end())
+		return NULL;
+	DLClass<UIWidget> factory = factories[Name];
+	
+}
+
 void WindowManager::LoadWidgets()
 {
 	std::filesystem::path cwd = std::filesystem::current_path();
@@ -118,12 +126,7 @@ void WindowManager::LoadWidgets()
 					std::shared_ptr<UIWidget> widget = dlWidget->make_obj();
 					if (widget != NULL)
 					{
-						sWidgets wdata;
-						wdata.dataPoints = widget->GetSensorInputs();
-						wdata.isMaximized = false;
-						wdata.widget = widget;
-						wdata.Name = widget->GetName();
-						widgets.insert(std::pair<int, sWidgets>(widget->GetID(), wdata));
+						factories.emplace(widget->GetName(), dlWidget);
 					}
 				}
 				catch (std::exception &)

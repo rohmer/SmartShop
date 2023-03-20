@@ -31,6 +31,7 @@ public:
 	
 	void LoadWidgets();
 
+	std::shared_ptr<UIWidget> CreateWidget(std::string widgetName);
 	
 private:
 	WindowManager();
@@ -48,18 +49,9 @@ private:
 	void tickThread();
 	MainWindow *mainWindow;
 	std::map<std::pair<std::string,uint8_t>, lv_font_t*>loadedFonts;
+		
+	std::map<std::string, DLClass<UIWidget>> factories;
 	
-	struct sWidgets
-	{
-	public:
-		std::shared_ptr<UIWidget> widget;
-		bool isMaximized = false;
-		std::vector<std::string> dataPoints;
-		std::string Name;
-	};
-	
-	
-	std::map<int, sWidgets> widgets;
 	uint nodeObjectsDrawn = 0;
 	
 	uint widgetWidth, widgetHeight;

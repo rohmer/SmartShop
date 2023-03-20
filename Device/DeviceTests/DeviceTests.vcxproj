@@ -213,4 +213,7 @@
     <None Include="DeviceTests-Debug.vgdbsettings" />
     <None Include="DeviceTests-Release.vgdbsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>
