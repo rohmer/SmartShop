@@ -55,7 +55,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/pistache-master/include;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/date-master/include/date;../RaspUtils;../Components/cpp-base64-master;../Device;../LogEndpoint;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Logger;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB;../Components/rapidjson-master/include;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/pistache-master/include/pistache;../Components/Scheduler-master;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/date-master/include/date;../RaspUtils;../Components/cpp-base64-master;../Device;../LogEndpoint;../Components/oatpp-master/src;../Components/cJSON-master;../Components/sqlite3;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -65,7 +65,7 @@
     <Link>
       <LibrarySearchDirectories>=/usr/lib/arm-linux-gnueabihf;=/usr/local/lib/arm-linux-gnueabihf;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>

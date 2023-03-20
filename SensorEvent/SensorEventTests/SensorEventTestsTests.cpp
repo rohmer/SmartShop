@@ -3,7 +3,7 @@
 #include <sstream>
 #include "../DB/DB.h"
 #include "SensorEvent.h"
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 #include "JSON.h"
 #include <CppUTest/CommandLineTestRunner.h>
 TEST_GROUP(SwitchTests)

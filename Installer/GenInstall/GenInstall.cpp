@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <cjson/cJSON.h>
+#include "cJSON.h"
 
 #include "Options.h"
 #include "File.h"

@@ -55,7 +55,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../InstallLib;../../Components/libarchive-master/libarchive;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../InstallLib;../../Components/libarchive-master/libarchive;../../Components/cJSON-master;../../Components/libarchive-3.6.2/libarchive;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
       <SupportExceptions>true</SupportExceptions>
@@ -63,8 +63,8 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>icudata;dl;lzma;bz2;xml2;pthread;z;icuuc;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
