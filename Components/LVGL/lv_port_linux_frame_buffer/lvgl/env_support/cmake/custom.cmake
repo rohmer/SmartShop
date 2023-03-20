@@ -14,7 +14,6 @@ get_filename_component(LV_CONF_DIR ${LV_CONF_PATH} DIRECTORY)
 # Option to build shared libraries (as opposed to static), default: OFF
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-set_property(TARGET lvgl PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 # Set sources used for LVGL components
 file(GLOB_RECURSE SOURCES ${LVGL_ROOT_DIR}/src/*.c)
@@ -24,6 +23,7 @@ file(GLOB_RECURSE DEMO_SOURCES ${LVGL_ROOT_DIR}/demos/*.c)
 # Build LVGL library
 add_library(lvgl ${SOURCES})
 add_library(lvgl::lvgl ALIAS lvgl)
+set_property(TARGET lvgl PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 target_compile_definitions(
   lvgl PUBLIC $<$<BOOL:${LV_LVGL_H_INCLUDE_SIMPLE}>:LV_LVGL_H_INCLUDE_SIMPLE>
