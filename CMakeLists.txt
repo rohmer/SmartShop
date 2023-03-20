@@ -1,5 +1,6 @@
 set(PROJECT_NAME "SmartShop")
 set(PROJECT_VERSION VERSION 1.0.0)
+project(SmartShop)
 
 option(BUILD_DEBUG "Builds debug release" ON)
 option(BUILD_RELEASE "Builds release" OFF)
