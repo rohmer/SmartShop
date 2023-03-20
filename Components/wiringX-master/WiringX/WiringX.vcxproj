@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{EA10ABF4-F776-4AA3-AE14-B47505F860E3}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="WiringX-Debug.vgdbsettings" />
+    <None Include="WiringX-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\i2c-dev.c" />
+    <ClCompile Include="..\src\wiringx.c" />
+    <ClCompile Include="..\src\platform\platform.c" />
+    <ClCompile Include="..\src\platform\hardkernel\odroidc1.c" />
+    <ClCompile Include="..\src\platform\hardkernel\odroidc2.c" />
+    <ClCompile Include="..\src\platform\hardkernel\odroidxu4.c" />
+    <ClCompile Include="..\src\platform\lemaker\bananapi1.c" />
+    <ClCompile Include="..\src\platform\lemaker\bananapim2.c" />
+    <ClCompile Include="..\src\platform\linksprite\pcduino1.c" />
+    <ClCompile Include="..\src\platform\radxa\rock4.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b+.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b1.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b2.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi2.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi3.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi4.c" />
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypizero.c" />
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_base_pro_dq.c" />
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_base_pro_sdl.c" />
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_gate_edge_dq.c" />
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_gate_edge_sdl.c" />
+    <ClCompile Include="..\src\platform\xunlong\orangepipc+.c" />
+    <ClCompile Include="..\src\platform\xunlong\orangepipc2.c" />
+    <ClCompile Include="..\src\soc\soc.c" />
+    <ClCompile Include="..\src\soc\allwinner\a10.c" />
+    <ClCompile Include="..\src\soc\allwinner\a31s.c" />
+    <ClCompile Include="..\src\soc\allwinner\h3.c" />
+    <ClCompile Include="..\src\soc\allwinner\h5.c" />
+    <ClCompile Include="..\src\soc\amlogic\s805.c" />
+    <ClCompile Include="..\src\soc\amlogic\s905.c" />
+    <ClCompile Include="..\src\soc\broadcom\2711.c" />
+    <ClCompile Include="..\src\soc\broadcom\2835.c" />
+    <ClCompile Include="..\src\soc\broadcom\2836.c" />
+    <ClCompile Include="..\src\soc\nxp\imx6dqrm.c" />
+    <ClCompile Include="..\src\soc\nxp\imx6sdlrm.c" />
+    <ClCompile Include="..\src\soc\rockchip\rk3399.c" />
+    <ClCompile Include="..\src\soc\samsung\exynos5422.c" />
+    <ClInclude Include="..\src\i2c-dev.h" />
+    <ClInclude Include="..\src\wiringx.h" />
+    <ClInclude Include="..\src\platform\platform.h" />
+    <ClInclude Include="..\src\platform\hardkernel\odroidc1.h" />
+    <ClInclude Include="..\src\platform\hardkernel\odroidc2.h" />
+    <ClInclude Include="..\src\platform\hardkernel\odroidxu4.h" />
+    <ClInclude Include="..\src\platform\lemaker\bananapi1.h" />
+    <ClInclude Include="..\src\platform\lemaker\bananapim2.h" />
+    <ClInclude Include="..\src\platform\linksprite\pcduino1.h" />
+    <ClInclude Include="..\src\platform\radxa\rock4.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b+.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b1.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b2.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi2.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi3.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi4.h" />
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypizero.h" />
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_base_pro_dq.h" />
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_base_pro_sdl.h" />
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_gate_edge_dq.h" />
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_gate_edge_sdl.h" />
+    <ClInclude Include="..\src\platform\xunlong\orangepipc+.h" />
+    <ClInclude Include="..\src\platform\xunlong\orangepipc2.h" />
+    <ClInclude Include="..\src\soc\soc.h" />
+    <ClInclude Include="..\src\soc\allwinner\a10.h" />
+    <ClInclude Include="..\src\soc\allwinner\a31s.h" />
+    <ClInclude Include="..\src\soc\allwinner\h3.h" />
+    <ClInclude Include="..\src\soc\allwinner\h5.h" />
+    <ClInclude Include="..\src\soc\amlogic\s805.h" />
+    <ClInclude Include="..\src\soc\amlogic\s905.h" />
+    <ClInclude Include="..\src\soc\broadcom\2711.h" />
+    <ClInclude Include="..\src\soc\broadcom\2835.h" />
+    <ClInclude Include="..\src\soc\broadcom\2836.h" />
+    <ClInclude Include="..\src\soc\nxp\imx6dqrm.h" />
+    <ClInclude Include="..\src\soc\nxp\imx6sdlrm.h" />
+    <ClInclude Include="..\src\soc\rockchip\rk3399.h" />
+    <ClInclude Include="..\src\soc\samsung\exynos5422.h" />
+  </ItemGroup>
+</Project>

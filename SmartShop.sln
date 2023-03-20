@@ -63,6 +63,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Device", "Device\Device.vcxproj", "{2AFF492E-7F85-44D9-A0CC-414C90D2CC69}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeviceManager", "DeviceManager", "{82F2BB31-2D4B-41C1-8E56-9D750B13E300}"
+	ProjectSection(SolutionItems) = preProject
+		Components\CMakeLists.txt = Components\CMakeLists.txt
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceTests", "Device\DeviceTests\DeviceTests.vcxproj", "{C30AF8A4-71A5-4F34-AAF7-2AB8C88CCB07}"
 EndProject
@@ -157,6 +160,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libbz2", "libbz2", "{C8826D
 	ProjectSection(SolutionItems) = preProject
 		Components\bzip2-1.0.8\CMakeLists.txt = Components\bzip2-1.0.8\CMakeLists.txt
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WiringX", "Components\wiringX-master\WiringX\WiringX.vcxproj", "{EA10ABF4-F776-4AA3-AE14-B47505F860E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -922,6 +927,22 @@ Global
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|ARM.Build.0 = Release|ARM
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|ARM.ActiveCfg = Debug|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|ARM.Build.0 = Debug|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|ARM.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|ARM.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|ARM.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|ARM.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|ARM.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|ARM.Build.0 = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -976,6 +997,7 @@ Global
 		{2CBAFA6F-50F9-4691-835C-57F32DF679AE} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 		{49820EB2-A9A6-4E20-B180-BDAAD51CB9AB} = {2CBAFA6F-50F9-4691-835C-57F32DF679AE}
 		{C8826DF9-20DD-49DF-AA65-16729F7B94F8} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
+		{EA10ABF4-F776-4AA3-AE14-B47505F860E3} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

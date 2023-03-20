@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{bcb46b3f-942f-4a27-9b1f-736505358186}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{fc32f07e-0a11-4d2f-b9c8-85e45ebd79e6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{530c0415-d64f-4075-9c73-6d39e4f7bb8b}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\platform">
+      <UniqueIdentifier>{013a44a0-c0ea-49c1-b480-05452078e6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\hardkernel">
+      <UniqueIdentifier>{53d87ca2-be6c-458e-bfb9-b8079693732c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\lemaker">
+      <UniqueIdentifier>{98a53de8-c100-4535-ae25-5e463ad328b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\linksprite">
+      <UniqueIdentifier>{664e8837-6e6e-4cf9-b8de-81a7aa0de3cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\radxa">
+      <UniqueIdentifier>{89d5cccb-671a-43f8-8df1-38124f32274d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\raspberrypi">
+      <UniqueIdentifier>{d0fbd4d3-2c7f-4c8c-8b44-4f8504db3b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\solidrun">
+      <UniqueIdentifier>{48877063-f75d-4db4-95bc-9daeb53c750f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\platform\xunlong">
+      <UniqueIdentifier>{6861edc7-dc0a-446f-97ca-d46af20f4987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc">
+      <UniqueIdentifier>{e4f01d99-5caa-430c-bb77-19c58b409d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\allwinner">
+      <UniqueIdentifier>{269d8330-7a64-4bd1-84be-57b3a859590c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\amlogic">
+      <UniqueIdentifier>{4ecb5b18-fbab-4210-8b61-d4c6d1252217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\broadcom">
+      <UniqueIdentifier>{b9f415e7-ca3a-4341-8d28-e1455b3e2ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\nxp">
+      <UniqueIdentifier>{6cadc378-24f0-4c5d-8c66-b5826cf1deac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\rockchip">
+      <UniqueIdentifier>{92d6e65a-bf15-4f83-bdc1-a0652f14b3b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\soc\samsung">
+      <UniqueIdentifier>{99ddcba0-66bc-4f5a-996a-cbe4fbf37833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform">
+      <UniqueIdentifier>{5d011e6f-67e3-4970-93ef-cfd3398907e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\hardkernel">
+      <UniqueIdentifier>{9867b07b-9a07-4ff4-9a5a-695dbefdd01b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\lemaker">
+      <UniqueIdentifier>{34b26468-59f5-49ac-ab29-e5e9342b351b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\linksprite">
+      <UniqueIdentifier>{b8180b77-3670-41c3-b8ee-d5fcd2155b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\radxa">
+      <UniqueIdentifier>{976cc95a-0cc1-4fcd-9cc9-0f86b1fb4b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\raspberrypi">
+      <UniqueIdentifier>{a5db7dcd-fd79-464c-98e7-a6a9093781bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\solidrun">
+      <UniqueIdentifier>{c4a44421-9ffd-4925-b2ec-76de95de0577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\platform\xunlong">
+      <UniqueIdentifier>{868ce82c-d546-4745-bcf4-ce36fec75903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc">
+      <UniqueIdentifier>{19d0eb45-11ef-4407-957e-21986b314741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\allwinner">
+      <UniqueIdentifier>{696447d5-a3ea-4113-8309-8939dd85a775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\amlogic">
+      <UniqueIdentifier>{56e39be9-5aeb-438c-bba7-a881157933e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\broadcom">
+      <UniqueIdentifier>{dc06eea0-08bd-4c56-b6e2-9f962c0783a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\nxp">
+      <UniqueIdentifier>{344c7cec-c55f-4ef2-badc-39d58429c146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\rockchip">
+      <UniqueIdentifier>{ae46943e-17c5-4022-bd52-2e8b4a3b9fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\soc\samsung">
+      <UniqueIdentifier>{53be833f-5100-456b-aa92-361300837f64}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\i2c-dev.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wiringx.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\platform.c">
+      <Filter>Source files\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\hardkernel\odroidc1.c">
+      <Filter>Source files\platform\hardkernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\hardkernel\odroidc2.c">
+      <Filter>Source files\platform\hardkernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\hardkernel\odroidxu4.c">
+      <Filter>Source files\platform\hardkernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\lemaker\bananapi1.c">
+      <Filter>Source files\platform\lemaker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\lemaker\bananapim2.c">
+      <Filter>Source files\platform\lemaker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\linksprite\pcduino1.c">
+      <Filter>Source files\platform\linksprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\radxa\rock4.c">
+      <Filter>Source files\platform\radxa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b+.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b1.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi1b2.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi2.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi3.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypi4.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\raspberrypi\raspberrypizero.c">
+      <Filter>Source files\platform\raspberrypi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_base_pro_dq.c">
+      <Filter>Source files\platform\solidrun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_base_pro_sdl.c">
+      <Filter>Source files\platform\solidrun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_gate_edge_dq.c">
+      <Filter>Source files\platform\solidrun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\solidrun\hummingboard_gate_edge_sdl.c">
+      <Filter>Source files\platform\solidrun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\xunlong\orangepipc+.c">
+      <Filter>Source files\platform\xunlong</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\platform\xunlong\orangepipc2.c">
+      <Filter>Source files\platform\xunlong</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\soc.c">
+      <Filter>Source files\soc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\allwinner\a10.c">
+      <Filter>Source files\soc\allwinner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\allwinner\a31s.c">
+      <Filter>Source files\soc\allwinner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\allwinner\h3.c">
+      <Filter>Source files\soc\allwinner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\allwinner\h5.c">
+      <Filter>Source files\soc\allwinner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\amlogic\s805.c">
+      <Filter>Source files\soc\amlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\amlogic\s905.c">
+      <Filter>Source files\soc\amlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\broadcom\2711.c">
+      <Filter>Source files\soc\broadcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\broadcom\2835.c">
+      <Filter>Source files\soc\broadcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\broadcom\2836.c">
+      <Filter>Source files\soc\broadcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\nxp\imx6dqrm.c">
+      <Filter>Source files\soc\nxp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\nxp\imx6sdlrm.c">
+      <Filter>Source files\soc\nxp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\rockchip\rk3399.c">
+      <Filter>Source files\soc\rockchip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\soc\samsung\exynos5422.c">
+      <Filter>Source files\soc\samsung</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\i2c-dev.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\wiringx.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\platform.h">
+      <Filter>Header files\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\hardkernel\odroidc1.h">
+      <Filter>Header files\platform\hardkernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\hardkernel\odroidc2.h">
+      <Filter>Header files\platform\hardkernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\hardkernel\odroidxu4.h">
+      <Filter>Header files\platform\hardkernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\lemaker\bananapi1.h">
+      <Filter>Header files\platform\lemaker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\lemaker\bananapim2.h">
+      <Filter>Header files\platform\lemaker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\linksprite\pcduino1.h">
+      <Filter>Header files\platform\linksprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\radxa\rock4.h">
+      <Filter>Header files\platform\radxa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b+.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b1.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi1b2.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi2.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi3.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypi4.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\raspberrypi\raspberrypizero.h">
+      <Filter>Header files\platform\raspberrypi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_base_pro_dq.h">
+      <Filter>Header files\platform\solidrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_base_pro_sdl.h">
+      <Filter>Header files\platform\solidrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_gate_edge_dq.h">
+      <Filter>Header files\platform\solidrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\solidrun\hummingboard_gate_edge_sdl.h">
+      <Filter>Header files\platform\solidrun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\xunlong\orangepipc+.h">
+      <Filter>Header files\platform\xunlong</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform\xunlong\orangepipc2.h">
+      <Filter>Header files\platform\xunlong</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\soc.h">
+      <Filter>Header files\soc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\allwinner\a10.h">
+      <Filter>Header files\soc\allwinner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\allwinner\a31s.h">
+      <Filter>Header files\soc\allwinner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\allwinner\h3.h">
+      <Filter>Header files\soc\allwinner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\allwinner\h5.h">
+      <Filter>Header files\soc\allwinner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\amlogic\s805.h">
+      <Filter>Header files\soc\amlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\amlogic\s905.h">
+      <Filter>Header files\soc\amlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\broadcom\2711.h">
+      <Filter>Header files\soc\broadcom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\broadcom\2835.h">
+      <Filter>Header files\soc\broadcom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\broadcom\2836.h">
+      <Filter>Header files\soc\broadcom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\nxp\imx6dqrm.h">
+      <Filter>Header files\soc\nxp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\nxp\imx6sdlrm.h">
+      <Filter>Header files\soc\nxp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\rockchip\rk3399.h">
+      <Filter>Header files\soc\rockchip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\soc\samsung\exynos5422.h">
+      <Filter>Header files\soc\samsung</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
