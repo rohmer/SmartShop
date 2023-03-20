@@ -9,6 +9,7 @@ NodeWidgetManager::NodeWidgetManager(lv_obj_t *windowPane, uint width, uint heig
 	, drawSurface(windowPane)
 	, width(width)
 	, height(height)
+	, pluginManager(PluginManager::GetInstance())
 {
 	nodeWidth = width / NODE_COLUMNS - (10*NODE_COLUMNS);
 	nodeHeight = height / NODE_ROWS - 50 - (10*NODE_ROWS);
@@ -52,8 +53,9 @@ UIWidget *NodeWidgetManager::CreateNodeWidget(std::string nodeID)
 	// x,y starting point
 	// nodWidth, nodeHeight the size
 	
-	NodeWidget *nw = new NodeWidget();
+	std::shared_ptr<NodeWidget> nw = std::static_pointer_cast<NodeWidget>(pluginManager->WidgetFactory("NodeWidget"));
 	nw->SetID(nodeID);
 	nw->Draw(drawSurface, false, nodeWidth, nodeHeight, x, y);
+	nodeObjects.emplace(nodeID,nw);
 	knownNodes.emplace(nodeID,false);
 }

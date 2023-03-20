@@ -130,6 +130,7 @@
     <ClInclude Include="LogTable.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="NodeWidgetManager.h" />
+    <ClInclude Include="PluginManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="LogTable.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="NodeWidgetManager.cpp" />
+    <ClCompile Include="PluginManager.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>

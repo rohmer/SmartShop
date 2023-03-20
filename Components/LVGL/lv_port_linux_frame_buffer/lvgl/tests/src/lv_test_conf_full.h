@@ -13,7 +13,6 @@
 #define LV_USE_ASSERT_MEM_INTEGRITY     1
 #define LV_USE_ASSERT_OBJ               1
 #define LV_USE_ASSERT_STYLE             1
-#define LV_USE_USER_DATA                1
 #define LV_USE_LARGE_COORD      1
 
 #define LV_FONT_MONTSERRAT_8    1
@@ -57,6 +56,7 @@
 
 #define LV_USE_FS_STDIO     1
 #define LV_FS_STDIO_LETTER  'A'
+#define LV_FS_STDIO_CACHE_SIZE 512
 #define LV_USE_FS_POSIX     1
 #define LV_FS_POSIX_LETTER  'B'
 

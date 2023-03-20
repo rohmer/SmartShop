@@ -61,7 +61,7 @@
    COLOR SETTINGS
  *====================*/
 
-/*Color depth: 1 (1 byte per pixel), 8 (RGB332), 16 (RGB565), 32 (ARGB8888)*/
+/*Color depth: 1 (1 byte per pixel), 8 (RGB332), 16 (RGB565), 24 (RGB888), 32 (ARGB8888)*/
 #ifndef LV_COLOR_DEPTH
     #ifdef CONFIG_LV_COLOR_DEPTH
         #define LV_COLOR_DEPTH CONFIG_LV_COLOR_DEPTH
@@ -100,7 +100,7 @@
         #ifdef CONFIG_LV_MEM_SIZE
             #define LV_MEM_SIZE CONFIG_LV_MEM_SIZE
         #else
-            #define LV_MEM_SIZE (128U * 1024U)          /*[bytes]*/
+            #define LV_MEM_SIZE (48U * 1024U)          /*[bytes]*/
         #endif
     #endif
 
@@ -260,9 +260,47 @@
     #endif
 #endif
 
+#ifndef LV_COLOR_EXTERN_INCLUDE
+    #ifdef CONFIG_LV_COLOR_EXTERN_INCLUDE
+        #define LV_COLOR_EXTERN_INCLUDE CONFIG_LV_COLOR_EXTERN_INCLUDE
+    #else
+        #define LV_COLOR_EXTERN_INCLUDE <stdint.h>
+    #endif
+#endif
+#ifndef LV_COLOR_MIX
+    #ifdef CONFIG_LV_COLOR_MIX
+        #define LV_COLOR_MIX CONFIG_LV_COLOR_MIX
+    #else
+        #define LV_COLOR_MIX      lv_color_mix
+    #endif
+#endif
+#ifndef LV_COLOR_PREMULT
+    #ifdef CONFIG_LV_COLOR_PREMULT
+        #define LV_COLOR_PREMULT CONFIG_LV_COLOR_PREMULT
+    #else
+        #define LV_COLOR_PREMULT      lv_color_premult
+    #endif
+#endif
+#ifndef LV_COLOR_MIX_PREMULT
+    #ifdef CONFIG_LV_COLOR_MIX_PREMULT
+        #define LV_COLOR_MIX_PREMULT CONFIG_LV_COLOR_MIX_PREMULT
+    #else
+        #define LV_COLOR_MIX_PREMULT      lv_color_mix_premult
+    #endif
+#endif
+
 /*====================
    HAL SETTINGS
  *====================*/
+
+/*Default display refresh, input device read and animation step period.*/
+#ifndef LV_DEF_REFR_PERIOD
+    #ifdef CONFIG_LV_DEF_REFR_PERIOD
+        #define LV_DEF_REFR_PERIOD CONFIG_LV_DEF_REFR_PERIOD
+    #else
+        #define LV_DEF_REFR_PERIOD  33      /*[ms]*/
+    #endif
+#endif
 
 /*Use a custom tick source that tells the elapsed time in milliseconds.
  *It removes the need to manually update the tick with `lv_tick_inc()`)*/
@@ -864,18 +902,6 @@
         #define LV_DISP_ROT_MAX_BUF CONFIG_LV_DISP_ROT_MAX_BUF
     #else
         #define LV_DISP_ROT_MAX_BUF (10*1024)
-    #endif
-#endif
-
-#ifndef LV_USE_USER_DATA
-    #ifdef _LV_KCONFIG_PRESENT
-        #ifdef CONFIG_LV_USE_USER_DATA
-            #define LV_USE_USER_DATA CONFIG_LV_USE_USER_DATA
-        #else
-            #define LV_USE_USER_DATA 0
-        #endif
-    #else
-        #define LV_USE_USER_DATA 1
     #endif
 #endif
 
@@ -2443,6 +2469,69 @@
         #else
             #define LV_FILE_EXPLORER_QUICK_ACCESS        1
         #endif
+    #endif
+#endif
+
+/*==================
+ * DEVICES
+ *==================*/
+
+/*Use SDL to open window on PC and handle mouse and keyboard*/
+#ifndef LV_USE_SDL
+    #ifdef CONFIG_LV_USE_SDL
+        #define LV_USE_SDL CONFIG_LV_USE_SDL
+    #else
+        #define LV_USE_SDL              0
+    #endif
+#endif
+#if LV_USE_SDL
+    #ifndef LV_SDL_INCLUDE_PATH
+        #ifdef CONFIG_LV_SDL_INCLUDE_PATH
+            #define LV_SDL_INCLUDE_PATH CONFIG_LV_SDL_INCLUDE_PATH
+        #else
+            #define LV_SDL_INCLUDE_PATH    <SDL2/SDL.h>
+        #endif
+    #endif
+    #ifndef LV_SDL_PARTIAL_MODE
+        #ifdef CONFIG_LV_SDL_PARTIAL_MODE
+            #define LV_SDL_PARTIAL_MODE CONFIG_LV_SDL_PARTIAL_MODE
+        #else
+            #define LV_SDL_PARTIAL_MODE    0    /*Recommended only to emulate a setup with a display controller*/
+        #endif
+    #endif
+    #ifndef LV_SDL_FULLSCREEN
+        #ifdef CONFIG_LV_SDL_FULLSCREEN
+            #define LV_SDL_FULLSCREEN CONFIG_LV_SDL_FULLSCREEN
+        #else
+            #define LV_SDL_FULLSCREEN      0
+        #endif
+    #endif
+#endif
+
+/*Driver for /dev/fb*/
+#ifndef LV_USE_LINUX_FBDEV
+    #ifdef CONFIG_LV_USE_LINUX_FBDEV
+        #define LV_USE_LINUX_FBDEV CONFIG_LV_USE_LINUX_FBDEV
+    #else
+        #define LV_USE_LINUX_FBDEV      0
+    #endif
+#endif
+#if LV_USE_LINUX_FBDEV
+    #ifndef LV_LINUX_FBDEV_BSD
+        #ifdef CONFIG_LV_LINUX_FBDEV_BSD
+            #define LV_LINUX_FBDEV_BSD CONFIG_LV_LINUX_FBDEV_BSD
+        #else
+            #define LV_LINUX_FBDEV_BSD  0
+        #endif
+    #endif
+#endif
+
+/*Interface for TFT_eSPI*/
+#ifndef LV_USE_TFT_ESPI
+    #ifdef CONFIG_LV_USE_TFT_ESPI
+        #define LV_USE_TFT_ESPI CONFIG_LV_USE_TFT_ESPI
+    #else
+        #define LV_USE_TFT_ESPI         0
     #endif
 #endif
 

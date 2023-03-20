@@ -11,7 +11,7 @@ class NodeWidget : public UIWidget
 {
 public:
 	NodeWidget()
-		: UIWidget("ALL", "Status")
+		: UIWidget("ALL", "NodeWidget")
 	{
 	}
 	~NodeWidget();

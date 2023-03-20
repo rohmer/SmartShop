@@ -7,6 +7,7 @@
 #include "../Logger/Logger.h"
 #include "../DB/DB.h"
 #include "Settings.h"
+#include "PluginManager.h"
 
 class NodeWidgetManager
 {
@@ -17,11 +18,12 @@ public:
 	
 private:
 	std::map<std::string, bool> knownNodes;  // NodeID, If node is created
-	std::map<std::string, UIWidget*> nodeObjects; // NodeID, and Node UI Object
+	std::map<std::string, std::shared_ptr<NodeWidget>> nodeObjects; // NodeID, and Node UI Object
 	Logger *log;
 	uint displayedNodes;
 	uint width, height, x, y;
 	uint nodeWidth, nodeHeight;
 	uint nodePosition=0;			//  This is the position of the next node to be created
 	lv_obj_t *drawSurface;
+	PluginManager *pluginManager;
 };

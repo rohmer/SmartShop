@@ -99,7 +99,7 @@ void lv_flex_init(void)
 {
     LV_LAYOUT_FLEX = lv_layout_register(flex_update, NULL);
 
-    LV_STYLE_FLEX_FLOW = lv_style_register_prop(LV_STYLE_PROP_FLAG_NONE);
+    LV_STYLE_FLEX_FLOW = lv_style_register_prop(LV_STYLE_PROP_FLAG_LAYOUT_UPDATE);
     LV_STYLE_FLEX_MAIN_PLACE = lv_style_register_prop(LV_STYLE_PROP_FLAG_LAYOUT_UPDATE);
     LV_STYLE_FLEX_CROSS_PLACE = lv_style_register_prop(LV_STYLE_PROP_FLAG_LAYOUT_UPDATE);
     LV_STYLE_FLEX_TRACK_PLACE = lv_style_register_prop(LV_STYLE_PROP_FLAG_LAYOUT_UPDATE);
@@ -311,7 +311,7 @@ static void flex_update(lv_obj_t * cont, void * user_data)
         lv_obj_refr_size(cont);
     }
 
-    lv_event_send(cont, LV_EVENT_LAYOUT_CHANGED, NULL);
+    lv_obj_send_event(cont, LV_EVENT_LAYOUT_CHANGED, NULL);
 
     LV_TRACE_LAYOUT("finished");
 }
@@ -493,8 +493,8 @@ static void children_repos(lv_obj_t * cont, flex_t * f, int32_t item_first_id, i
                 lv_area_t old_coords;
                 lv_area_copy(&old_coords, &item->coords);
                 area_set_main_size(&item->coords, s);
-                lv_event_send(item, LV_EVENT_SIZE_CHANGED, &old_coords);
-                lv_event_send(lv_obj_get_parent(item), LV_EVENT_CHILD_CHANGED, item);
+                lv_obj_send_event(item, LV_EVENT_SIZE_CHANGED, &old_coords);
+                lv_obj_send_event(lv_obj_get_parent(item), LV_EVENT_CHILD_CHANGED, item);
                 lv_obj_invalidate(item);
             }
         }

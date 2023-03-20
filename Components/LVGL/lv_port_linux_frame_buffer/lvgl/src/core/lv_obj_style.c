@@ -8,7 +8,9 @@
  *********************/
 #include "lv_obj.h"
 #include "lv_disp.h"
+#include "lv_disp_private.h"
 #include "../misc/lv_gc.h"
+#include LV_COLOR_EXTERN_INCLUDE
 
 /*********************
  *      DEFINES
@@ -238,7 +240,7 @@ void lv_obj_refresh_style(lv_obj_t * obj, lv_style_selector_t selector, lv_style
            part == LV_PART_MAIN ||
            lv_obj_get_style_height(obj, 0) == LV_SIZE_CONTENT ||
            lv_obj_get_style_width(obj, 0) == LV_SIZE_CONTENT) {
-            lv_event_send(obj, LV_EVENT_STYLE_CHANGED, NULL);
+            lv_obj_send_event(obj, LV_EVENT_STYLE_CHANGED, NULL);
             lv_obj_mark_layout_as_dirty(obj);
         }
     }
@@ -389,7 +391,7 @@ void _lv_obj_style_create_transition(lv_obj_t * obj, lv_part_t part, lv_state_t 
     lv_style_value_t v2 = lv_obj_get_style_prop(obj, part, tr_dsc->prop);
     obj->skip_trans = 0;
 
-    if(v1.ptr == v2.ptr && v1.num == v2.num && v1.color.full == v2.color.full)  return;
+    if(v1.ptr == v2.ptr && v1.num == v2.num && lv_color_eq(v1.color, v2.color))  return;
     obj->state = prev_state;
     v1 = lv_obj_get_style_prop(obj, part, tr_dsc->prop);
     obj->state = new_state;
@@ -426,9 +428,7 @@ void _lv_obj_style_create_transition(lv_obj_t * obj, lv_part_t part, lv_state_t 
     lv_anim_set_delay(&a, tr_dsc->delay);
     lv_anim_set_path_cb(&a, tr_dsc->path_cb);
     lv_anim_set_early_apply(&a, false);
-#if LV_USE_USER_DATA
-    a.user_data = tr_dsc->user_data;
-#endif
+    lv_anim_set_user_data(&a, tr_dsc->user_data);
     lv_anim_start(&a);
 }
 
@@ -728,7 +728,7 @@ static void refresh_children_style(lv_obj_t * obj)
     for(i = 0; i < child_cnt; i++) {
         lv_obj_t * child = obj->spec_attr->children[i];
         lv_obj_invalidate(child);
-        lv_event_send(child, LV_EVENT_STYLE_CHANGED, NULL);
+        lv_obj_send_event(child, LV_EVENT_STYLE_CHANGED, NULL);
         lv_obj_invalidate(child);
 
         refresh_children_style(child); /*Check children too*/
@@ -815,7 +815,7 @@ static void trans_anim_cb(void * _tr, int32_t v)
             case LV_STYLE_IMG_RECOLOR:
                 if(v <= 0) value_final.color = tr->start_value.color;
                 else if(v >= 255) value_final.color = tr->end_value.color;
-                else value_final.color = lv_color_mix(tr->end_value.color, tr->start_value.color, v);
+                else value_final.color = LV_COLOR_MIX(tr->end_value.color, tr->start_value.color, v);
                 break;
 
             default:
@@ -828,7 +828,7 @@ static void trans_anim_cb(void * _tr, int32_t v)
         lv_style_value_t old_value;
         bool refr = true;
         if(lv_style_get_prop(obj->styles[i].style, tr->prop, &old_value)) {
-            if(value_final.ptr == old_value.ptr && value_final.color.full == old_value.color.full &&
+            if(value_final.ptr == old_value.ptr && lv_color_eq(value_final.color, old_value.color) &&
                value_final.num == old_value.num) {
                 refr = false;
             }

@@ -16,8 +16,8 @@
 #include "Settings.h"
 #include "MainWindow.h"
 #include "UIWidget/UIWidget.h"
-#include "dlclass.hpp"
 #include "NodeWidgetManager.h"
+#include "PluginManager.h"
 
 class WindowManager
 {
@@ -28,10 +28,6 @@ public:
 	
 	bool LoadFont(std::string fontName, uint8_t fontSize, std::string filename);
 	lv_font_t* GetFont(std::string fontName, uint8_t fontSize);
-	
-	void LoadWidgets();
-
-	std::shared_ptr<UIWidget> CreateWidget(std::string widgetName);
 	
 private:
 	WindowManager();
@@ -50,9 +46,9 @@ private:
 	MainWindow *mainWindow;
 	std::map<std::pair<std::string,uint8_t>, lv_font_t*>loadedFonts;
 		
-	std::map<std::string, DLClass<UIWidget>> factories;
-	
+
 	uint nodeObjectsDrawn = 0;
 	
 	uint widgetWidth, widgetHeight;
+	PluginManager *pluginManager;
 };

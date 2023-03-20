@@ -10,6 +10,7 @@ WindowManager *WindowManager::instance = NULL;
 WindowManager::WindowManager()
 {
 	log = Logger::GetInstance();
+	pluginManager = PluginManager::GetInstance();
 }
 
 WindowManager::~WindowManager()
@@ -47,13 +48,13 @@ void WindowManager::Init()
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
-	LoadWidgets();
+	pluginManager->LoadPlugins();
 	
 	// Define the widget size
 	// We are going 5, 5 tall
 	widgetWidth = WIDTH / 5-10;
 	widgetHeight = HEIGHT / 5 - 10;
-	mainWindow = new MainWindow(widgetWidth, widgetHeight);
+//	mainWindow = new MainWindow(widgetWidth, widgetHeight);
 }
 
 void WindowManager::tickThread()
@@ -95,45 +96,4 @@ lv_font_t* WindowManager::GetFont(std::string fontName, uint8_t fontSize)
 	return loadedFonts[ftDesc];
 }
 
-std::shared_ptr<UIWidget> WindowManager::CreateWidget(std::string Name)
-{
-	if (factories.find(Name) == factories.end())
-		return NULL;
-	DLClass<UIWidget> factory = factories[Name];
-	
-}
-
-void WindowManager::LoadWidgets()
-{
-	std::filesystem::path cwd = std::filesystem::current_path();
-	std::filesystem::path uiPath = cwd;
-	uiPath /= "UI";
-	
-	for (const std::filesystem::directory_entry& entry : std::filesystem::directory_iterator(uiPath))
-	{
-		if (entry.is_regular_file())
-		{
-			std::filesystem::path p = entry.path();
-			if (p.extension().string() == ".so" && p.filename().string()!="UIWidget.so")
-			{
-				std::stringstream ss;
-				ss << "Attempting to load: " << p.string();
-				log->LogI(ss.str());
-				
-				try
-				{
-					auto dlWidget = new DLClass<UIWidget>(p.string());
-					std::shared_ptr<UIWidget> widget = dlWidget->make_obj();
-					if (widget != NULL)
-					{
-						factories.emplace(widget->GetName(), dlWidget);
-					}
-				}
-				catch (std::exception &)
-				{
-				}
-			}
-		}
-	}
-}
 

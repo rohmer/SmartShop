@@ -166,8 +166,6 @@ void lv_img_set_offset_x(lv_obj_t * obj, lv_coord_t x)
 
     lv_img_t * img = (lv_img_t *)obj;
 
-    x = x % img->w;
-
     img->offset.x = x;
     lv_obj_invalidate(obj);
 }
@@ -177,8 +175,6 @@ void lv_img_set_offset_y(lv_obj_t * obj, lv_coord_t y)
     LV_ASSERT_OBJ(obj, MY_CLASS);
 
     lv_img_t * img = (lv_img_t *)obj;
-
-    y = y % img->h;
 
     img->offset.y = y;
     lv_obj_invalidate(obj);
@@ -395,7 +391,7 @@ static void lv_img_constructor(const lv_obj_class_t * class_p, lv_obj_t * obj)
 
     img->src       = NULL;
     img->src_type  = LV_IMG_SRC_UNKNOWN;
-    img->cf        = LV_IMG_CF_UNKNOWN;
+    img->cf        = LV_COLOR_FORMAT_UNKNOWN;
     img->w         = lv_obj_get_width(obj);
     img->h         = lv_obj_get_height(obj);
     img->angle = 0;
@@ -534,7 +530,7 @@ static void draw_img(lv_event_t * e)
         }
 
         /*Non true color format might have "holes"*/
-        if(img->cf != LV_IMG_CF_TRUE_COLOR && img->cf != LV_IMG_CF_RAW) {
+        if(lv_color_format_has_alpha(img->cf)) {
             info->res = LV_COVER_RES_NOT_COVER;
             return;
         }
@@ -660,12 +656,14 @@ static void draw_img(lv_event_t * e)
                 draw_ctx->clip_area = &img_clip_area;
 
                 lv_area_t coords_tmp;
-                coords_tmp.y1 = img_max_area.y1 + img->offset.y;
+                lv_coord_t offset_x = img->offset.x % img->w;
+                lv_coord_t offset_y = img->offset.y % img->h;
+                coords_tmp.y1 = img_max_area.y1 + offset_y;
                 if(coords_tmp.y1 > img_max_area.y1) coords_tmp.y1 -= img->h;
                 coords_tmp.y2 = coords_tmp.y1 + img->h - 1;
 
                 for(; coords_tmp.y1 < img_max_area.y2; coords_tmp.y1 += img_size_final.y, coords_tmp.y2 += img_size_final.y) {
-                    coords_tmp.x1 = img_max_area.x1 + img->offset.x;
+                    coords_tmp.x1 = img_max_area.x1 + offset_x;
                     if(coords_tmp.x1 > img_max_area.x1) coords_tmp.x1 -= img->w;
                     coords_tmp.x2 = coords_tmp.x1 + img->w - 1;
 

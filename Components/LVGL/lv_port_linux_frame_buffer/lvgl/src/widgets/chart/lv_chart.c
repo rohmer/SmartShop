@@ -188,6 +188,7 @@ void lv_chart_set_zoom_x(lv_obj_t * obj, uint16_t zoom_x)
 
     lv_chart_t * chart  = (lv_chart_t *)obj;
     if(chart->zoom_x == zoom_x) return;
+    if(LV_ZOOM_NONE > zoom_x) zoom_x = LV_ZOOM_NONE;
 
     chart->zoom_x = zoom_x;
     lv_obj_refresh_self_size(obj);
@@ -202,6 +203,7 @@ void lv_chart_set_zoom_y(lv_obj_t * obj, uint16_t zoom_y)
 
     lv_chart_t * chart  = (lv_chart_t *)obj;
     if(chart->zoom_y == zoom_y) return;
+    if(LV_ZOOM_NONE > zoom_y) zoom_y = LV_ZOOM_NONE;
 
     chart->zoom_y = zoom_y;
     lv_obj_refresh_self_size(obj);
@@ -297,17 +299,17 @@ void lv_chart_get_point_pos_by_id(lv_obj_t * obj, lv_chart_series_t * ser, uint1
         int32_t block_gap = ((int32_t)lv_obj_get_style_pad_column(obj,
                                                                   LV_PART_MAIN) * chart->zoom_x) >> 8;  /*Gap between the column on ~adjacent X*/
         lv_coord_t block_w = (w - ((chart->point_cnt - 1) * block_gap)) / chart->point_cnt;
-        lv_coord_t col_w = block_w / ser_cnt;
+        lv_coord_t col_w = (block_w - (ser_cnt - 1) * ser_gap) / ser_cnt;
+        //        p_out->x = (int32_t)((int32_t)w * id) / chart->point_cnt;
 
-        p_out->x = (int32_t)((int32_t)w * id) / chart->point_cnt;
-
+        p_out->x = (int32_t)((int32_t)(w - block_w) * id) / (chart->point_cnt - 1);
         lv_chart_series_t * ser_i = NULL;
         _LV_LL_READ_BACK(&chart->series_ll, ser_i) {
             if(ser_i == ser) break;
-            p_out->x += col_w;
+            p_out->x += col_w + ser_gap;
         }
 
-        p_out->x += (col_w - ser_gap) / 2;
+        p_out->x += col_w / 2;
     }
     else {
         p_out->x = 0;
@@ -345,26 +347,38 @@ lv_chart_series_t * lv_chart_add_series(lv_obj_t * obj, lv_color_t color, lv_cha
     LV_ASSERT_OBJ(obj, MY_CLASS);
 
     lv_chart_t * chart    = (lv_chart_t *)obj;
+
+    /* Allocate space for a new series and add it to the chart series linked list */
     lv_chart_series_t * ser = _lv_ll_ins_head(&chart->series_ll);
     LV_ASSERT_MALLOC(ser);
     if(ser == NULL) return NULL;
 
-    lv_coord_t def = LV_CHART_POINT_NONE;
-
-    ser->color  = color;
+    /* Allocate memory for point_cnt points, handle failure below */
     ser->y_points = lv_malloc(sizeof(lv_coord_t) * chart->point_cnt);
     LV_ASSERT_MALLOC(ser->y_points);
 
     if(chart->type == LV_CHART_TYPE_SCATTER) {
         ser->x_points = lv_malloc(sizeof(lv_coord_t) * chart->point_cnt);
         LV_ASSERT_MALLOC(ser->x_points);
+        if(NULL == ser->x_points) {
+            lv_free(ser->y_points);
+            _lv_ll_remove(&chart->series_ll, ser);
+            lv_free(ser);
+            return NULL;
+        }
     }
+    else {
+        ser->x_points = NULL;
+    }
+
     if(ser->y_points == NULL) {
         _lv_ll_remove(&chart->series_ll, ser);
         lv_free(ser);
         return NULL;
     }
 
+    /* Set series properties on successful allocation */
+    ser->color = color;
     ser->start_point = 0;
     ser->y_ext_buf_assigned = false;
     ser->hidden = 0;
@@ -372,6 +386,7 @@ lv_chart_series_t * lv_chart_add_series(lv_obj_t * obj, lv_color_t color, lv_cha
     ser->y_axis_sec = axis & LV_CHART_AXIS_SECONDARY_Y ? 1 : 0;
 
     uint16_t i;
+    const lv_coord_t def = LV_CHART_POINT_NONE;
     lv_coord_t * p_tmp = ser->y_points;
     for(i = 0; i < chart->point_cnt; i++) {
         *p_tmp = def;
@@ -725,7 +740,7 @@ static void lv_chart_event(const lv_obj_class_t * class_p, lv_event_t * e)
             invalidate_point(obj, id);
             invalidate_point(obj, chart->pressed_point_id);
             chart->pressed_point_id = id;
-            lv_event_send(obj, LV_EVENT_VALUE_CHANGED, NULL);
+            lv_obj_send_event(obj, LV_EVENT_VALUE_CHANGED, NULL);
         }
     }
     else if(code == LV_EVENT_RELEASED) {
@@ -794,7 +809,7 @@ static void draw_div_lines(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
     part_draw_dsc.id = 0xFFFFFFFF;
     part_draw_dsc.p1 = NULL;
     part_draw_dsc.p2 = NULL;
-    lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+    lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
 
     lv_opa_t border_opa = lv_obj_get_style_border_opa(obj, LV_PART_MAIN);
     lv_coord_t border_w = lv_obj_get_style_border_width(obj, LV_PART_MAIN);
@@ -825,9 +840,9 @@ static void draw_div_lines(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
             part_draw_dsc.p2 = &p2;
             part_draw_dsc.id = i;
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
             lv_draw_line(draw_ctx, &line_dsc, &p1, &p2);
-            lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
         }
     }
 
@@ -853,16 +868,16 @@ static void draw_div_lines(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
             part_draw_dsc.p2 = &p2;
             part_draw_dsc.id = i;
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
             lv_draw_line(draw_ctx, &line_dsc, &p1, &p2);
-            lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
         }
     }
 
     part_draw_dsc.id = 0xFFFFFFFF;
     part_draw_dsc.p1 = NULL;
     part_draw_dsc.p2 = NULL;
-    lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+    lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
 
     draw_ctx->clip_area = clip_area_ori;
 }
@@ -993,7 +1008,7 @@ static void draw_series_line(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                     part_draw_dsc.draw_area = &point_area;
                     part_draw_dsc.value = ser->y_points[p_prev];
 
-                    lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+                    lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
 
                     if(ser->y_points[p_prev] != LV_CHART_POINT_NONE && ser->y_points[p_act] != LV_CHART_POINT_NONE) {
                         lv_draw_line(draw_ctx, &line_dsc_default, &p1, &p2);
@@ -1003,7 +1018,7 @@ static void draw_series_line(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                         lv_draw_rect(draw_ctx, &point_dsc_default, &point_area);
                     }
 
-                    lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+                    lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
                 }
 
             }
@@ -1026,9 +1041,9 @@ static void draw_series_line(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                 part_draw_dsc.draw_area = &point_area;
                 part_draw_dsc.value = ser->y_points[p_act];
 
-                lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
                 lv_draw_rect(draw_ctx, &point_dsc_default, &point_area);
-                lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
             }
         }
     }
@@ -1141,7 +1156,7 @@ static void draw_series_scatter(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                 part_draw_dsc.draw_area = &point_area;
                 part_draw_dsc.value = ser->y_points[p_prev];
 
-                lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
 
                 if(ser->y_points[p_prev] != LV_CHART_POINT_NONE && ser->y_points[p_act] != LV_CHART_POINT_NONE) {
                     lv_draw_line(draw_ctx, &line_dsc_default, &p1, &p2);
@@ -1150,7 +1165,7 @@ static void draw_series_scatter(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                     }
                 }
 
-                lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
             }
             p_prev = p_act;
         }
@@ -1170,9 +1185,9 @@ static void draw_series_scatter(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                 part_draw_dsc.p2 = NULL;
                 part_draw_dsc.draw_area = &point_area;
                 part_draw_dsc.value = ser->y_points[p_act];
-                lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
                 lv_draw_rect(draw_ctx, &point_dsc_default, &point_area);
-                lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
             }
         }
     }
@@ -1255,9 +1270,9 @@ static void draw_series_bar(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
                 part_draw_dsc.rect_dsc = &col_dsc;
                 part_draw_dsc.sub_part_ptr = ser;
                 part_draw_dsc.value = ser->y_points[p_act];
-                lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
                 lv_draw_rect(draw_ctx, &col_dsc, &col_a);
-                lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+                lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
             }
         }
     }
@@ -1351,14 +1366,14 @@ static void draw_cursors(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
             p2.x = cursor->dir & LV_DIR_RIGHT ? obj->coords.x2 : cx;
             p2.y = p1.y;
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
             lv_draw_line(draw_ctx, &line_dsc_tmp, &p1, &p2);
 
             if(draw_point) {
                 lv_draw_rect(draw_ctx, &point_dsc_tmp, &point_area);
             }
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
         }
 
         if(cursor->dir & LV_DIR_VER) {
@@ -1367,14 +1382,14 @@ static void draw_cursors(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx)
             p2.x = p1.x;
             p2.y = cursor->dir & LV_DIR_BOTTOM ? obj->coords.y2 : cy;
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
             lv_draw_line(draw_ctx, &line_dsc_tmp, &p1, &p2);
 
             if(draw_point) {
                 lv_draw_rect(draw_ctx, &point_dsc_tmp, &point_area);
             }
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
         }
     }
 
@@ -1470,7 +1485,7 @@ static void draw_y_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             part_draw_dsc.label_dsc = &label_dsc;
             part_draw_dsc.text = buf;
             part_draw_dsc.text_length = LV_CHART_LABEL_MAX_TEXT_LENGTH;
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
 
             /*reserve appropriate area*/
             lv_point_t size;
@@ -1500,7 +1515,7 @@ static void draw_y_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             part_draw_dsc.label_dsc = NULL;
             part_draw_dsc.text = NULL;
             part_draw_dsc.text_length = 0;
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         }
 
         if(p1.y + line_dsc.width / 2  >= obj->coords.y1 &&
@@ -1508,7 +1523,7 @@ static void draw_y_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             lv_draw_line(draw_ctx, &line_dsc, &p1, &p2);
         }
 
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
     }
 }
 
@@ -1607,7 +1622,7 @@ static void draw_x_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             part_draw_dsc.text = buf;
             part_draw_dsc.text_length = LV_CHART_LABEL_MAX_TEXT_LENGTH;
 
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
 
             /*reserve appropriate area*/
             lv_point_t size;
@@ -1636,7 +1651,7 @@ static void draw_x_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             part_draw_dsc.label_dsc = NULL;
             part_draw_dsc.text = NULL;
             part_draw_dsc.text_length = 0;
-            lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+            lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         }
 
         if(p1.x + line_dsc.width / 2  >= obj->coords.x1 &&
@@ -1644,7 +1659,7 @@ static void draw_x_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
             lv_draw_line(draw_ctx, &line_dsc, &p1, &p2);
         }
 
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
     }
 }
 

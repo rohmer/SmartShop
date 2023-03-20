@@ -11,6 +11,7 @@
 
 #include "../../misc/lv_assert.h"
 #include "../../themes/lv_themes.h"
+#include LV_COLOR_EXTERN_INCLUDE
 
 /*********************
  *      DEFINES
@@ -132,7 +133,7 @@ void lv_led_toggle(lv_obj_t * obj)
  *====================*/
 
 /**
- * Get the brightness of a LEd object
+ * Get the brightness of a LED object
  * @param led pointer to LED object
  * @return bright 0 (max. dark) ... 255 (max. light)
  */
@@ -179,22 +180,22 @@ static void lv_led_event(const lv_obj_class_t * class_p, lv_event_t * e)
         lv_obj_init_draw_rect_dsc(obj, LV_PART_MAIN, &rect_dsc);
 
         /*Use the original colors brightness to modify color->led*/
-        rect_dsc.bg_color = lv_color_mix(led->color, lv_color_black(), lv_color_brightness(rect_dsc.bg_color));
-        rect_dsc.bg_grad.stops[0].color = lv_color_mix(led->color, lv_color_black(),
+        rect_dsc.bg_color = LV_COLOR_MIX(led->color, lv_color_black(), lv_color_brightness(rect_dsc.bg_color));
+        rect_dsc.bg_grad.stops[0].color = LV_COLOR_MIX(led->color, lv_color_black(),
                                                        lv_color_brightness(rect_dsc.bg_grad.stops[0].color));
-        rect_dsc.bg_grad.stops[1].color = lv_color_mix(led->color, lv_color_black(),
+        rect_dsc.bg_grad.stops[1].color = LV_COLOR_MIX(led->color, lv_color_black(),
                                                        lv_color_brightness(rect_dsc.bg_grad.stops[1].color));
-        rect_dsc.shadow_color = lv_color_mix(led->color, lv_color_black(), lv_color_brightness(rect_dsc.shadow_color));
-        rect_dsc.border_color = lv_color_mix(led->color, lv_color_black(), lv_color_brightness(rect_dsc.border_color));
-        rect_dsc.outline_color = lv_color_mix(led->color, lv_color_black(), lv_color_brightness(rect_dsc.outline_color));
+        rect_dsc.shadow_color = LV_COLOR_MIX(led->color, lv_color_black(), lv_color_brightness(rect_dsc.shadow_color));
+        rect_dsc.border_color = LV_COLOR_MIX(led->color, lv_color_black(), lv_color_brightness(rect_dsc.border_color));
+        rect_dsc.outline_color = LV_COLOR_MIX(led->color, lv_color_black(), lv_color_brightness(rect_dsc.outline_color));
 
         /*Mix. the color with black proportionally with brightness*/
-        rect_dsc.bg_color = lv_color_mix(rect_dsc.bg_color, lv_color_black(), led->bright);
-        rect_dsc.bg_grad.stops[0].color   = lv_color_mix(rect_dsc.bg_grad.stops[0].color, lv_color_black(), led->bright);
-        rect_dsc.bg_grad.stops[1].color   = lv_color_mix(rect_dsc.bg_grad.stops[1].color, lv_color_black(), led->bright);
-        rect_dsc.border_color = lv_color_mix(rect_dsc.border_color, lv_color_black(), led->bright);
-        rect_dsc.shadow_color = lv_color_mix(rect_dsc.shadow_color, lv_color_black(), led->bright);
-        rect_dsc.outline_color = lv_color_mix(rect_dsc.outline_color, lv_color_black(), led->bright);
+        rect_dsc.bg_color = LV_COLOR_MIX(rect_dsc.bg_color, lv_color_black(), led->bright);
+        rect_dsc.bg_grad.stops[0].color   = LV_COLOR_MIX(rect_dsc.bg_grad.stops[0].color, lv_color_black(), led->bright);
+        rect_dsc.bg_grad.stops[1].color   = LV_COLOR_MIX(rect_dsc.bg_grad.stops[1].color, lv_color_black(), led->bright);
+        rect_dsc.border_color = LV_COLOR_MIX(rect_dsc.border_color, lv_color_black(), led->bright);
+        rect_dsc.shadow_color = LV_COLOR_MIX(rect_dsc.shadow_color, lv_color_black(), led->bright);
+        rect_dsc.outline_color = LV_COLOR_MIX(rect_dsc.outline_color, lv_color_black(), led->bright);
 
         /*Set the current shadow width according to brightness proportionally between LV_LED_BRIGHT_OFF
          * and LV_LED_BRIGHT_ON*/
@@ -213,9 +214,9 @@ static void lv_led_event(const lv_obj_class_t * class_p, lv_event_t * e)
         part_draw_dsc.rect_dsc = &rect_dsc;
         part_draw_dsc.part = LV_PART_MAIN;
 
-        lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         lv_draw_rect(draw_ctx, &rect_dsc, &obj->coords);
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
     }
 }
 

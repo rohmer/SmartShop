@@ -12,9 +12,10 @@
 #include "../../misc/lv_assert.h"
 #include "../../core/lv_group.h"
 #include "../../core/lv_indev.h"
+#include "../../core/lv_indev_private.h"
+#include "../../core/lv_disp.h"
 #include "../../draw/lv_draw.h"
 #include "../../misc/lv_math.h"
-#include "../../core/lv_disp.h"
 #include "../img/lv_img.h"
 
 /*********************
@@ -91,6 +92,7 @@ static void lv_slider_constructor(const lv_obj_class_t * class_p, lv_obj_t * obj
 
     lv_obj_clear_flag(obj, LV_OBJ_FLAG_SCROLL_CHAIN_HOR);
     lv_obj_clear_flag(obj, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_add_flag(obj, LV_OBJ_FLAG_SCROLL_ON_FOCUS);
     lv_obj_set_ext_click_area(obj, LV_DPX(8));
 }
 
@@ -130,6 +132,7 @@ static void lv_slider_event(const lv_obj_class_t * class_p, lv_event_t * e)
     else if(code == LV_EVENT_PRESSED) {
         /*Save the pressed coordinates*/
         lv_indev_get_point(lv_indev_get_act(), &slider->pressed_point);
+        lv_obj_transform_point(obj, &slider->pressed_point, true, true);
     }
     else if(code == LV_EVENT_PRESSING) {
         update_knob_pos(obj, true);
@@ -217,7 +220,7 @@ static void lv_slider_event(const lv_obj_class_t * class_p, lv_event_t * e)
             return;
         }
 
-        res = lv_event_send(obj, LV_EVENT_VALUE_CHANGED, NULL);
+        res = lv_obj_send_event(obj, LV_EVENT_VALUE_CHANGED, NULL);
         if(res != LV_RES_OK) return;
     }
     else if(code == LV_EVENT_DRAW_MAIN) {
@@ -269,18 +272,18 @@ static void draw_knob(lv_event_t * e)
     part_draw_dsc.rect_dsc = &knob_rect_dsc;
 
     if(lv_slider_get_mode(obj) != LV_SLIDER_MODE_RANGE) {
-        lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         lv_draw_rect(draw_ctx, &knob_rect_dsc, &slider->right_knob_area);
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
     }
     else {
         /*Save the draw part_draw_dsc. because it can be modified in the event*/
         lv_draw_rect_dsc_t knob_rect_dsc_tmp;
         lv_memcpy(&knob_rect_dsc_tmp, &knob_rect_dsc, sizeof(lv_draw_rect_dsc_t));
         /* Draw the right knob */
-        lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         lv_draw_rect(draw_ctx, &knob_rect_dsc, &slider->right_knob_area);
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
 
         /*Calculate the second knob area*/
         if(is_horizontal) {
@@ -299,9 +302,9 @@ static void draw_knob(lv_event_t * e)
         part_draw_dsc.rect_dsc = &knob_rect_dsc;
         part_draw_dsc.id = 1;
 
-        lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);
         lv_draw_rect(draw_ctx, &knob_rect_dsc, &slider->left_knob_area);
-        lv_event_send(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
+        lv_obj_send_event(obj, LV_EVENT_DRAW_PART_END, &part_draw_dsc);
     }
 }
 
@@ -351,6 +354,7 @@ static void drag_start(lv_obj_t * obj)
     }
     else if(mode == LV_SLIDER_MODE_RANGE) {
         lv_indev_get_point(lv_indev_get_act(), &p);
+        lv_obj_transform_point(obj, &p, true, true);
         bool hor = is_slider_horizontal(obj);
         lv_base_dir_t base_dir = lv_obj_get_style_base_dir(obj, LV_PART_MAIN);
 
@@ -417,13 +421,15 @@ static void update_knob_pos(lv_obj_t * obj, bool check_drag)
 
     lv_point_t p;
     lv_indev_get_point(indev, &p);
+    lv_obj_transform_point(obj, &p, true, true);
+
     bool is_hor = is_slider_horizontal(obj);
 
     if(check_drag && !slider->dragging) {
         lv_coord_t ofs = is_hor ? (p.x - slider->pressed_point.x) : (p.y - slider->pressed_point.y);
 
         /*Stop processing when offset is below scroll_limit*/
-        if(LV_ABS(ofs) < indev->driver->scroll_limit) {
+        if(LV_ABS(ofs) < indev->scroll_limit) {
             return;
         }
     }
@@ -485,7 +491,7 @@ static void update_knob_pos(lv_obj_t * obj, bool check_drag)
             lv_obj_clear_flag(obj, LV_OBJ_FLAG_SCROLL_CHAIN_HOR);
 
         lv_obj_invalidate(obj);
-        lv_res_t res = lv_event_send(obj, LV_EVENT_VALUE_CHANGED, NULL);
+        lv_res_t res = lv_obj_send_event(obj, LV_EVENT_VALUE_CHANGED, NULL);
         if(res != LV_RES_OK)
             return;
     }

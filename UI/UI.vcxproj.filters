@@ -45,6 +45,9 @@
     <ClCompile Include="NodeWidgetManager.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -63,6 +66,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="NodeWidgetManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

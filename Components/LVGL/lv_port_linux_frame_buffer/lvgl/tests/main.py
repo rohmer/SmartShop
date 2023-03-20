@@ -12,9 +12,9 @@ lvgl_test_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Key values must match variable names in CMakeLists.txt.
 build_only_options = {
-    'OPTIONS_MINIMAL_MONOCHROME': 'Minimal config monochrome',
     'OPTIONS_NORMAL_8BIT': 'Normal config, 8 bit color depth',
     'OPTIONS_16BIT': 'Minimal config, 16 bit color depth',
+    'OPTIONS_24BIT': 'Normal config, 24 bit color depth',
     'OPTIONS_FULL_32BIT': 'Full config, 32 bit color depth',
 }
 
@@ -90,7 +90,7 @@ def build_tests(options_name, build_type, clean):
                            '--parallel', str(os.cpu_count())])
 
 
-def run_tests(options_name):
+def run_tests(options_name, test_suite):
     '''Run the tests for the given options name.'''
 
     print()
@@ -101,8 +101,15 @@ def run_tests(options_name):
     print('=' * len(label), flush=True)
 
     os.chdir(get_build_dir(options_name))
-    subprocess.check_call(
-        ['ctest', '--timeout', '30', '--parallel', str(os.cpu_count()), '--output-on-failure'])
+    args = [
+        'ctest',
+        '--timeout', '300',
+        '--parallel', str(os.cpu_count()),
+        '--output-on-failure',
+    ]
+    if test_suite is not None:
+        args.extend(["--tests-regex", test_suite])
+    subprocess.check_call(args)
 
 
 def generate_code_coverage_report():
@@ -151,6 +158,8 @@ if __name__ == "__main__":
                         help='generate code coverage report for tests.')
     parser.add_argument('actions', nargs='*', choices=['build', 'test'],
                         help='build: compile build tests, test: compile/run executable tests.')
+    parser.add_argument('--test-suite', default=None,
+                        help='select test suite to run')
 
     args = parser.parse_args()
 
@@ -171,7 +180,7 @@ if __name__ == "__main__":
         build_tests(options_name, build_type, args.clean)
         if is_test:
             try:
-                run_tests(options_name)
+                run_tests(options_name, args.test_suite)
             except subprocess.CalledProcessError as e:
                 sys.exit(e.returncode)
 
