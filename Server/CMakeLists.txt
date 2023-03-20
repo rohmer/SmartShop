@@ -9,6 +9,17 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+option(BUILD_DEBUG "Builds debug release" ON)
+option(BUILD_RELEASE "Builds release" OFF)
+if(BUILD_DEBUG)
+	set(CMAKE_BUILD_TYPE "Debug")
+	message("Building Debug")
+endif()
+if(BUILD_RELEASE)
+	set(CMAKE_BUILD_TYPE "Release")
+	message("Building Release")
+endif()
+
 # Build the components
 add_compile_definitions(LV_COLOR_DEPTH=16)
 add_compile_definitions(LV_CONF_INCLUDE_SIMPLE)
