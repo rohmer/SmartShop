@@ -14,6 +14,8 @@ get_filename_component(LV_CONF_DIR ${LV_CONF_PATH} DIRECTORY)
 # Option to build shared libraries (as opposed to static), default: OFF
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
+set_property(TARGET lvgl PROPERTY POSITION_INDEPENDENT_CODE ON)
+
 # Set sources used for LVGL components
 file(GLOB_RECURSE SOURCES ${LVGL_ROOT_DIR}/src/*.c)
 file(GLOB_RECURSE EXAMPLE_SOURCES ${LVGL_ROOT_DIR}/examples/*.c)
