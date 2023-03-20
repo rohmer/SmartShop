@@ -24,6 +24,17 @@ target_include_directories(Device PUBLIC
 
 add_executable(DeviceTests DeviceTests.cpp DeviceTestsTests.cpp)
 
+# CppUTest
+include(FetchContent)
+FetchContent_Declare(
+    CppUTest
+    GIT_REPOSITORY https://github.com/cpputest/cpputest.git
+    GIT_TAG        master # or use release tag, eg. v4.0
+)
+# Set this to ON if you want to have the CppUTests in your project as well.
+set(TESTS OFF CACHE BOOL "Switch off CppUTest Test build")
+FetchContent_MakeAvailable(CppUTest)
+
 target_link_libraries(DeviceTests PRIVATE
     CppUTest::CppUTest
     CppUTest::CppUTestExt)
