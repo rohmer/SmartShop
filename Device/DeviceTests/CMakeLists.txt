@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "DeviceTests")
 project($PROJECT_NAME VERSION 1.0.0)
 
+add_executable(DeviceTests DeviceTests.cpp DeviceTestsTests.cpp)
+
 target_include_directories(DeviceTests PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/spdlog-1.x/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../../DB
@@ -21,8 +23,6 @@ target_include_directories(DeviceTests PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/pigpio-master
 	${CMAKE_CURRENT_SOURCE_DIR}/../../Components/Scheduler-master	
 )
-
-add_executable(DeviceTests DeviceTests.cpp DeviceTestsTests.cpp)
 
 # CppUTest
 include(FetchContent)
