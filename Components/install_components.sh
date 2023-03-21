@@ -18,3 +18,5 @@ cp -R Scheduler-master/*.h /usr/local/include
 /bin/bash build-scripts/sigar.sh
 cp -R spdlog-1.x/include/* /usr/local/include
 /bin/bash build-scripts/sqlite3.sh
+/bin/bash build-scripts/sqliteorm.sh
+/bin/bash build-scripts/cxxopts.sh
