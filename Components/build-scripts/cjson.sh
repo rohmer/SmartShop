@@ -5,7 +5,7 @@ if [ ! -d /tmp/cjson.build ]; then
 	mkdir /tmp/cjson.build
 fi
 cd /tmp/cjson.build
-cp -R $bdir/cJSON-master .
+cp -R $bdir/cJSON-master/* .
 make -j4 
 make install
 
