@@ -1,31 +1,9 @@
 #!/bin/bash
 
-/bin/bash build-scripts/lvgl.sh
-#Scheduler
-cp -R Scheduler-master/*.h /usr/local/include
-
-
-#WebServer
-#Nettle
-if [ ! -d /tmp/nettle.build ]; then
-	mkdir /tmp/nettle.build
-fi
-cd /tmp/nettle.build
-#/bin/bash $bdir/WebServer/nettle-3.8/configure --disable-documentation
-make -j4 
-make install
-#rm -rf /tmp/nettle.build
-
-#Microhttpd
-apt install libgnutls28-dev libguntls30 -y
-if [ ! -d /tmp/microhttpd.build ]; then
-	mkdir /tmp/microhttpd.build
-fi
-cd /tmp/microhttpd.build
-#/bin/bash $bdir/WebServer/libmicrohttpd-0.9.75/configure --disable-doc
-make -j4
-make install
-#rm -rf /tmp/microhttpd.build
+#/bin/bash build-scripts/lvgl.sh
+#cp -R Scheduler-master/*.h /usr/local/include
+#/bin/bash build-scripts/nettle.sh
+/bin/bash build-scripts/microhttpd.sh
 
 if [ ! -d /tmp/httpserver.build ]; then
 	mkdir /tmp/httpserver.build 
