@@ -16,6 +16,9 @@
     <Filter Include="Build">
       <UniqueIdentifier>{2e683b26-4dac-49e1-b64f-8125898402a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header files\Configuration">
+      <UniqueIdentifier>{0537335b-31fd-472a-a63d-41ad6bae18aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">

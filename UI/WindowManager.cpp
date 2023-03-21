@@ -48,13 +48,14 @@ void WindowManager::Init()
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
-	//pluginManager->LoadPlugins();
+	pluginManager->LoadPlugins();
 	
 	// Define the widget size
 	// We are going 5, 5 tall
 	widgetWidth = WIDTH / 5-10;
 	widgetHeight = HEIGHT / 5 - 10;
 	mainWindow = new MainWindow(widgetWidth, widgetHeight);
+	log->LogI("WindowManager Initalized");
 }
 
 void WindowManager::tickThread()
