@@ -20,3 +20,4 @@ cp -R spdlog-1.x/include/* /usr/local/include
 /bin/bash build-scripts/sqlite3.sh
 /bin/bash build-scripts/sqliteorm.sh
 /bin/bash build-scripts/cxxopts.sh
+/bin/bash build-scripts/wiringx.sh

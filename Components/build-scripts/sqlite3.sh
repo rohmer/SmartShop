@@ -6,6 +6,7 @@ if [ ! -d /tmp/sqlite3.build ]; then
 fi
 cd /tmp/sqlite3.build
 cp -R $bdir/sqlite3/* .
+rm -rf sqlite3
 ./configure
 make -j4
 make install
