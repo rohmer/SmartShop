@@ -2,16 +2,13 @@ cmake_minimum_required(VERSION 3.18)
 SET(PROJECT_NAME "UI")
 project($PROJECT_NAME VERSION 1.0.0)
 
+file(GLOB_RECURSE src 
+    "*.cpp"
+    "*.h"
+	"*.c"
+)
 add_library(UI SHARED
-	LogTable.cpp
-	MainWindow.cpp
-	NodeWidgetManager.cpp
-	WindowManager.cpp
-	Images/noWifi.c
-	Images/Wifi1.c
-	Images/Wifi2.c
-	Images/Wifi3.c
-	Images/Wifi4.c
+	${src}
 )
 target_include_directories(UI PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/../Components/LVGL/lv_port_linux_frame_buffer/lvgl
