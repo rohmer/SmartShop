@@ -1,76 +1,16 @@
 #!/bin/bash
 
-#/bin/bash build-scripts/lvgl.sh
-#cp -R Scheduler-master/*.h /usr/local/include
-#/bin/bash build-scripts/nettle.sh
-#/bin/bash build-scripts/microhttpd.sh
+/bin/bash build-scripts/lvgl.sh
+cp -R Scheduler-master/*.h /usr/local/include
+/bin/bash build-scripts/nettle.sh
+/bin/bash build-scripts/microhttpd.sh
 /bin/bash build-scripts/httpserver.sh
-
-#bzip2
-if [ ! -d /tmp/bzip2.build ]; then
-	mkdir /tmp/bzip2.build
-fi
-cd /tmp/bzip2.build
-cp -R $bdir/bzip2-1.0.8/* .
-make -j4 -f Makefile-libbz2_so
-make install
-
-#rm -rf /tmp/bzip2.build
-
-#cJSON
-if [ ! -d /tmp/cjson.build ]; then
-	mkdir /tmp/cjson.build
-fi
-cd /tmp/cjson.build
-cp -R $bdir/cJSON-master .
-make -j4 
-make install
-
-#rm -rf /tmp/cjson.build
-
-#cpp-base64
-if [ ! -d /tmp/base64.build ]; then
-	mkdir /tmp/base64.build 
-fi
-cd /tmp/base64.build
-cmake $bdir/cpp-base64-master
-make
-cp libcpp-base64.so /usr/local/lib
-
-#rm -rf /tmp/base64.build
-
-#date
-if [ ! -d /tmp/date.build ]; then
-	mkdir /tmp/date.build
-fi
-cd /tmp/date.build
-cmake $bdir/date-master
-make install
-
-# rm -rf /tmp/date.build
-
-#libarchive
-if [ ! -d /tmp/archive.build ]; then
-	mkdir /tmp/archive.build
-fi
-cd /tmp/archive.build
-cmake $bdir/libarchive-3.6.2
-make -j4
-make install
-
-#rm -rf /tmp/archive.build
-
-#libuuid
-if [ ! -d /tmp/uuid.build ]; then
-	mkdir /tmp/uuid.build
-fi
-cd /tmp/uuid.build
-cp -R $bdir/libuuid-master/* .
-bash ./configure
-make -j4
-make install
-
-#rm -rf /tmp/uuid.build
+/bin/bash build-scripts/bzip.sh
+/bin/bash build-scripts/cjson.sh
+/bin/bash build-scripts/base64.sh
+/bin/bash build-scripts/date.sh
+/bin/bash build-scripts/archive.sh
+/bin/bash build-scripts/uuid.sh
 
 #libwpa
 if [ ! -d /tmp/wpa.build ]; then
