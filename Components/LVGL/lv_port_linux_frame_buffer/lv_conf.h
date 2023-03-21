@@ -775,5 +775,6 @@
 /*Flex layout demo*/
 #define LV_USE_DEMO_FLEX_LAYOUT 0
 
+#define LV_CONF_H 1
 /*--END OF LV_CONF_H--*/
 
