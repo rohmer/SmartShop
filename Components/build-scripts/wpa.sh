@@ -7,4 +7,4 @@ fi
 cd /tmp/wpa.build
 
 cmake $bdir/libwpa
-cp libpa.so /usr/local/lib
+cp libwpa.so /usr/local/lib
