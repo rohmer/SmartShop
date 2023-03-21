@@ -8,4 +8,4 @@ cd /tmp/oatpp.build
 
 cmake $bdir/oatpp-master
 make -j4
-make install
+cp src/liboatpp.so /usr/local/lib

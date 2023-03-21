@@ -14,3 +14,4 @@ cp -R Scheduler-master/*.h /usr/local/include
 /bin/bash build-scripts/wpa.sh
 /bin/bash build-scripts/md5.sh
 /bin/bash build-scripts/oatpp.sh
+/bin/bash build-scripts/pigpio.sh
