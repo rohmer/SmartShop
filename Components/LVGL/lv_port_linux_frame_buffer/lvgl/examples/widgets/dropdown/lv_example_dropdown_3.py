@@ -1,3 +1,10 @@
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
+
 # Create an image from the png file
 try:
     with open('../../assets/img_caret_down.png','rb') as f:
@@ -12,7 +19,7 @@ img_caret_down_argb = lv.img_dsc_t({
 })
 
 def event_cb(e):
-    dropdown = e.get_target_obj()
+    dropdown = e.get_target()
     option = " "*64 # should be large enough to store the option
     dropdown.get_selected_str(option, len(option))
     print(option.strip() +" is selected")
@@ -42,5 +49,5 @@ dropdown.set_style_transform_angle(1800, lv.PART.INDICATOR | lv.STATE.CHECKED)
 # In a menu we don't need to show the last clicked item
 dropdown.set_selected_highlight(False)
 
-dropdown.add_event(event_cb, lv.EVENT.VALUE_CHANGED, None)
+dropdown.add_event_cb(event_cb, lv.EVENT.VALUE_CHANGED, None)
 

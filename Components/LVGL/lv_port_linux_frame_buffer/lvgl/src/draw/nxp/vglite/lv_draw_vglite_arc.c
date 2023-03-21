@@ -115,7 +115,7 @@ lv_res_t lv_gpu_nxp_vglite_draw_arc(const lv_point_t * center, int32_t radius, i
 
     /* path: max size = 16 cubic bezier (7 words each) */
     int32_t arc_path[16 * 7];
-    lv_memzero(arc_path, sizeof(arc_path));
+    lv_memset_00(arc_path, sizeof(arc_path));
 
     /*** Init path ***/
     lv_coord_t width = dsc->width;  /* inner arc radius = outer arc radius - width */

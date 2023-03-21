@@ -30,7 +30,7 @@ void lv_example_event_3(void)
     uint32_t i;
     for(i = 0; i < 30; i++) {
         lv_obj_t * btn = lv_btn_create(cont);
-        lv_obj_set_size(btn, 70, 50);
+        lv_obj_set_size(btn, 80, 50);
         lv_obj_add_flag(btn, LV_OBJ_FLAG_EVENT_BUBBLE);
 
         lv_obj_t * label = lv_label_create(btn);
@@ -38,7 +38,7 @@ void lv_example_event_3(void)
         lv_obj_center(label);
     }
 
-    lv_obj_add_event(cont, event_cb, LV_EVENT_CLICKED, NULL);
+    lv_obj_add_event_cb(cont, event_cb, LV_EVENT_CLICKED, NULL);
 }
 
 #endif

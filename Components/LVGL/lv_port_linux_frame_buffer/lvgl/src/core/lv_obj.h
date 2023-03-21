@@ -140,7 +140,7 @@ typedef enum {
 #include "lv_obj_style.h"
 #include "lv_obj_draw.h"
 #include "lv_obj_class.h"
-#include "lv_obj_event.h"
+#include "lv_event.h"
 #include "lv_group.h"
 
 /**
@@ -156,8 +156,8 @@ typedef struct {
     struct _lv_obj_t ** children;       /**< Store the pointer of the children in an array.*/
     uint32_t child_cnt;                 /**< Number of children*/
     lv_group_t * group_p;
-    lv_event_list_t event_list;
 
+    struct _lv_event_dsc_t * event_dsc; /**< Dynamically allocated event callback and user data array*/
     lv_point_t scroll;                  /**< The current X/Y scroll offset*/
 
     lv_coord_t ext_click_pad;           /**< Extra click padding in all direction*/
@@ -167,6 +167,7 @@ typedef struct {
     lv_scroll_snap_t scroll_snap_x : 2;     /**< Where to align the snappable children horizontally*/
     lv_scroll_snap_t scroll_snap_y : 2;     /**< Where to align the snappable children vertically*/
     lv_dir_t scroll_dir : 4;                /**< The allowed scroll direction(s)*/
+    uint8_t event_dsc_cnt : 6;              /**< Number of event callbacks stored in `event_dsc` array*/
     uint8_t layer_type : 2;    /**< Cache the layer type here. Element of @lv_intermediate_layer_type_t */
 } _lv_obj_spec_attr_t;
 
@@ -175,7 +176,9 @@ typedef struct _lv_obj_t {
     struct _lv_obj_t * parent;
     _lv_obj_spec_attr_t * spec_attr;
     _lv_obj_style_t * styles;
+#if LV_USE_USER_DATA
     void * user_data;
+#endif
     lv_area_t coords;
     lv_obj_flag_t flags;
     lv_state_t state;
@@ -187,6 +190,7 @@ typedef struct _lv_obj_t {
     uint16_t w_layout   : 1;
 } lv_obj_t;
 
+
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
@@ -197,7 +201,7 @@ typedef struct _lv_obj_t {
  */
 void lv_init(void);
 
-#if LV_ENABLE_GC || LV_USE_BUILTIN_MALLOC
+#if LV_ENABLE_GC || !LV_MEM_CUSTOM
 
 /**
  * Deinit the 'lv' library
@@ -260,10 +264,12 @@ void lv_obj_clear_state(lv_obj_t * obj, lv_state_t state);
  * @param obj   pointer to an object
  * @param user_data   pointer to the new user_data.
  */
+#if LV_USE_USER_DATA
 static inline void lv_obj_set_user_data(lv_obj_t * obj, void * user_data)
 {
     obj->user_data = user_data;
 }
+#endif
 
 /*=======================
  * Getter functions
@@ -305,17 +311,19 @@ bool lv_obj_has_state(const lv_obj_t * obj, lv_state_t state);
  * @param       obj pointer to an object
  * @return      the pointer to group of the object
  */
-lv_group_t * lv_obj_get_group(const lv_obj_t * obj);
+void * lv_obj_get_group(const lv_obj_t * obj);
 
 /**
  * Get the user_data field of the object
  * @param obj   pointer to an object
  * @return      the pointer to the user_data of the object
  */
+#if LV_USE_USER_DATA
 static inline void * lv_obj_get_user_data(lv_obj_t * obj)
 {
     return obj->user_data;
 }
+#endif
 
 /*=======================
  * Other functions
@@ -357,6 +365,20 @@ const lv_obj_class_t * lv_obj_get_class(const lv_obj_t * obj);
  * @return          true: valid
  */
 bool lv_obj_is_valid(const lv_obj_t * obj);
+
+/**
+ * Scale the given number of pixels (a distance or size) relative to a 160 DPI display
+ * considering the DPI of the `obj`'s display.
+ * It ensures that e.g. `lv_dpx(100)` will have the same physical size regardless to the
+ * DPI of the display.
+ * @param obj   an object whose display's dpi should be considered
+ * @param n     the number of pixels to scale
+ * @return      `n x current_dpi/160`
+ */
+static inline lv_coord_t lv_obj_dpx(const lv_obj_t * obj, lv_coord_t n)
+{
+    return _LV_DPX_CALC(lv_disp_get_dpi(lv_obj_get_disp(obj)), n);
+}
 
 /**********************
  *      MACROS

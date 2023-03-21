@@ -13,7 +13,7 @@ class ExampleChart_6():
         chart.set_axis_tick(lv.chart.AXIS.PRIMARY_Y, 10, 5, 6, 5, True, 40)
         chart.set_axis_tick(lv.chart.AXIS.PRIMARY_X, 10, 5, 10, 1, True, 30)
 
-        chart.add_event(self.event_cb, lv.EVENT.ALL, None)
+        chart.add_event_cb(self.event_cb, lv.EVENT.ALL, None)
         chart.refresh_ext_draw_size()
 
         self.cursor = chart.add_cursor(lv.palette_main(lv.PALETTE.BLUE), lv.DIR.LEFT | lv.DIR.BOTTOM)
@@ -37,12 +37,12 @@ class ExampleChart_6():
     def event_cb(self,e):
 
         code = e.get_code()
-        chart = e.get_target_obj()
+        chart = e.get_target()
 
         if code == lv.EVENT.VALUE_CHANGED:
             # print("last_id: ",self.last_id)
             self.last_id = chart.get_pressed_point()
-            if self.last_id != lv.CHART_POINT_NONE:
+            if self.last_id != lv.CHART_POINT.NONE:
                 p = lv.point_t()
                 chart.get_point_pos_by_id(self.ser, self.last_id, p)
                 chart.set_cursor_point(self.cursor, None, self.last_id)
@@ -73,7 +73,8 @@ class ExampleChart_6():
                 draw_rect_dsc.init()
                 draw_rect_dsc.bg_color = lv.palette_main(lv.PALETTE.BLUE)
                 draw_rect_dsc.radius = 3
-                dsc.draw_ctx.rect(draw_rect_dsc,a)
+
+                lv.draw_rect(a, dsc.clip_area, draw_rect_dsc)
 
                 draw_label_dsc = lv.draw_label_dsc_t()
                 draw_label_dsc.init()
@@ -82,6 +83,6 @@ class ExampleChart_6():
                 a.x2 -= 5
                 a.y1 += 5
                 a.y2 -= 5
-                dsc.draw_ctx.label(draw_label_dsc,a,value_txt,None)
+                lv.draw_label(a, dsc.clip_area, draw_label_dsc, value_txt, None)
 
 example_chart_6 = ExampleChart_6()

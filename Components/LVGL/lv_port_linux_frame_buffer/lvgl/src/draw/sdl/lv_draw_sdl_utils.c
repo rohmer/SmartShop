@@ -8,7 +8,7 @@
  *********************/
 #include "../../lv_conf_internal.h"
 
-#if LV_USE_DRAW_SDL
+#if LV_USE_GPU_SDL
 
 #include "lv_draw_sdl_utils.h"
 
@@ -94,7 +94,7 @@ void lv_color_to_sdl_color(const lv_color_t * in, SDL_Color * out)
 
 void lv_area_zoom_to_sdl_rect(const lv_area_t * in, SDL_Rect * out, uint16_t zoom, const lv_point_t * pivot)
 {
-    if(zoom == LV_ZOOM_NONE) {
+    if(zoom == LV_IMG_ZOOM_NONE) {
         lv_area_to_sdl_rect(in, out);
         return;
     }
@@ -180,4 +180,4 @@ void lv_sdl_to_8bpp(uint8_t * dest, const uint8_t * src, int width, int height, 
  *   STATIC FUNCTIONS
  **********************/
 
-#endif /*LV_USE_DRAW_SDL*/
+#endif /*LV_USE_GPU_SDL*/

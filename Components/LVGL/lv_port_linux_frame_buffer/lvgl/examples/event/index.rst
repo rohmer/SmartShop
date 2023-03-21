@@ -16,9 +16,4 @@ Event bubbling
 .. lv_example:: event/lv_example_event_3
   :language: c
 
-Draw event
-""""""""""""""""""""""""
-.. lv_example:: event/lv_example_event_4
-  :language: c
-
 

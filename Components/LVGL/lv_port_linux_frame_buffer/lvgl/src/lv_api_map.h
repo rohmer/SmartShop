@@ -23,11 +23,6 @@ extern "C" {
 #define LV_INDEV_STATE_REL      LV_INDEV_STATE_RELEASED
 #define LV_INDEV_STATE_PR       LV_INDEV_STATE_PRESSED
 #define LV_OBJ_FLAG_SNAPABLE    LV_OBJ_FLAG_SNAPPABLE   /*Fixed typo*/
-#define LV_IMG_ZOOM_NONE        LV_ZOOM_NONE
-
-#ifndef LV_COLOR_SIZE
-#  define LV_COLOR_SIZE LV_COLOR_DEPTH
-#endif
 
 /**********************
  *      TYPEDEFS
@@ -60,11 +55,6 @@ static inline LV_ATTRIBUTE_TIMER_HANDLER uint32_t lv_task_handler(void)
 static inline void lv_obj_move_foreground(lv_obj_t * obj)
 {
     lv_obj_t * parent = lv_obj_get_parent(obj);
-    if(!parent) {
-        LV_LOG_WARN("parent is NULL");
-        return;
-    }
-
     lv_obj_move_to_index(obj, lv_obj_get_child_cnt(parent) - 1);
 }
 
@@ -78,6 +68,8 @@ static inline void lv_obj_move_background(lv_obj_t * obj)
 {
     lv_obj_move_to_index(obj, 0);
 }
+
+
 
 /**********************
  * DEPRECATED FUNCTIONS

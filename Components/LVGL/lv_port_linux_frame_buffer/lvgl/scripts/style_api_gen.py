@@ -60,7 +60,7 @@ props = [
 
 {'name': 'TRANSFORM_ZOOM',
  'style_type': 'num',   'var_type': 'lv_coord_t',  'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 1,
- 'dsc': "Zoom an objects. The value 256 (or `LV_ZOOM_NONE`) means normal size, 128 half size, 512 double size, and so on" },
+ 'dsc': "Zoom an objects. The value 256 (or `LV_IMG_ZOOM_NONE`) means normal size, 128 half size, 512 double size, and so on" },
 
 {'name': 'TRANSFORM_ANGLE',
  'style_type': 'num',   'var_type': 'lv_coord_t',  'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 1,
@@ -98,23 +98,6 @@ props = [
 {'name': 'PAD_COLUMN',
  'style_type': 'num',   'var_type': 'lv_coord_t', 'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 0,
  'dsc': "Sets the padding between the columns. Used by the layouts."},
-
-{'section': 'Margin', 'dsc' : "Properties to describe spacing around an object. Very similar to the margin properties in HTML."},
-{'name': 'MARGIN_TOP',
- 'style_type': 'num',   'var_type': 'lv_coord_t',  'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 0,
- 'dsc': "Sets the margin on the top. The object will keep this space from its siblings in layouts. "},
-
-{'name': 'MARGIN_BOTTOM',
- 'style_type': 'num',   'var_type': 'lv_coord_t', 'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 0,
- 'dsc': "Sets the margin on the bottom. The object will keep this space from its siblings in layouts."},
-
-{'name': 'MARGIN_LEFT',
- 'style_type': 'num',   'var_type': 'lv_coord_t', 'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 0,
- 'dsc': "Sets the margin on the left. The object will keep this space from its siblings in layouts."},
-
-{'name': 'MARGIN_RIGHT',
-  'style_type': 'num',   'var_type': 'lv_coord_t', 'default':0, 'inherited': 0, 'layout': 1, 'ext_draw': 0,
- 'dsc': "Sets the margin on the right. The object will keep this space from its siblings in layouts."},
 
 {'section': 'Background', 'dsc':'Properties to describe the background color and image of the objects.' },
 {'name': 'BG_COLOR',
@@ -418,15 +401,12 @@ def style_set_c(p):
   print("    };")
   print("    lv_style_set_prop(style, LV_STYLE_" + p['name'] +", v);")
   print("}")
-  print("")
-  print("const lv_style_prop_t _lv_style_const_prop_id_" + p['name'] + " = LV_STYLE_" + p['name'] + ";")
 
 
 def style_set_h(p):
   if 'section' in p: return
 
   print("void lv_style_set_" + p['name'].lower() +"(lv_style_t * style, "+ p['var_type'] +" value);")
-  print("extern const lv_style_prop_t _lv_style_const_prop_id_" + p['name'] + ";")
 
 
 def local_style_set_c(p):
@@ -455,7 +435,7 @@ def style_const_set(p):
   print("")
   print("#define LV_STYLE_CONST_" + p['name'] + "(val) \\")
   print("    { \\")
-  print("        .prop_ptr = &_lv_style_const_prop_id_" + p['name'] + ", .value = { ." + p['style_type'] +" = " + cast + "val } \\")
+  print("        .prop = LV_STYLE_" + p['name'] + ", .value = { ." + p['style_type'] +" = " + cast + "val } \\")
   print("    }")
 
 
@@ -498,9 +478,6 @@ def docs(p):
 base_dir = os.path.abspath(os.path.dirname(__file__))
 sys.stdout = open(base_dir + '/../src/core/lv_obj_style_gen.h', 'w')
 
-print("#include \"../misc/lv_area.h\"")
-print("#include \"../misc/lv_style.h\"")
-print("#include \"../core/lv_obj_style.h\"")
 for p in props:
   obj_style_get(p)
 

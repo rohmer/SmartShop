@@ -48,13 +48,13 @@ void WindowManager::Init()
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
-	pluginManager->LoadPlugins();
+	//pluginManager->LoadPlugins();
 	
 	// Define the widget size
 	// We are going 5, 5 tall
 	widgetWidth = WIDTH / 5-10;
 	widgetHeight = HEIGHT / 5 - 10;
-//	mainWindow = new MainWindow(widgetWidth, widgetHeight);
+	mainWindow = new MainWindow(widgetWidth, widgetHeight);
 }
 
 void WindowManager::tickThread()
@@ -73,7 +73,7 @@ bool WindowManager::LoadFont(std::string fontName, uint8_t fontSize, std::string
 	std::pair<std::string, uint8_t> ftDesc(fontName, fontSize);
 	if (loadedFonts.find(ftDesc) != loadedFonts.end())
 		return true;
-	std::stringstream path;
+	/*std::stringstream path;
 	path << "A:./fonts" << filename;
 	lv_font_t* font = lv_tiny_ttf_create_file(path.str().c_str(), fontSize);
 	if (font == NULL)
@@ -84,6 +84,7 @@ bool WindowManager::LoadFont(std::string fontName, uint8_t fontSize, std::string
 		return false;
 	}
 	loadedFonts[ftDesc]=font;
+	*/
 	return true;
 }
 

@@ -18,8 +18,8 @@ Pointer input devices (like a mouse) can have a cursor.
 
 ```c
 ...
-lv_indev_t * mouse_indev = lv_indev_create();
-...
+lv_indev_t * mouse_indev = lv_indev_drv_register(&indev_drv);
+
 LV_IMG_DECLARE(mouse_cursor_icon);                          /*Declare the image source.*/
 lv_obj_t * cursor_obj = lv_img_create(lv_scr_act());       /*Create an image object for the cursor */
 lv_img_set_src(cursor_obj, &mouse_cursor_icon);             /*Set the image source*/
@@ -55,14 +55,14 @@ void my_event(lv_event_t * e)
 
 ...
 
-lv_obj_add_event(screen1, my_event, LV_EVENT_GESTURE, NULL);
+lv_obj_add_event_cb(screen1, my_event, LV_EVENT_GESTURE, NULL);
 ```
 
 To prevent passing the gesture event to the parent from an object use `lv_obj_clear_flag(obj, LV_OBJ_FLAG_GESTURE_BUBBLE)`.
 
 Note that, gestures are not triggered if an object is being scrolled.
 
-If you did some action on a gesture you can call `lv_indev_wait_release(lv_indev_get_act())` in the event handler to prevent LVGL sending further input device related events.
+If you did some action on a gesture you can call `lv_indev_wait_release(lv_indev_get_act())` in the event handler to prevent LVGL sending further input device related events. 
 
 ## Keypad and encoder
 
@@ -72,14 +72,14 @@ You can fully control the user interface without a touchpad or mouse by using a 
 
 Objects you want to control with a keypad or encoder need to be added to a *Group*.
 In every group there is exactly one focused object which receives the pressed keys or the encoder actions.
-For example, if a [Text area](/widgets/textarea) is focused and you press some letter on a keyboard, the keys will be sent and inserted into the text area.
-Similarly, if a [Slider](/widgets/slider) is focused and you press the left or right arrows, the slider's value will be changed.
+For example, if a [Text area](/widgets/core/textarea) is focused and you press some letter on a keyboard, the keys will be sent and inserted into the text area.
+Similarly, if a [Slider](/widgets/core/slider) is focused and you press the left or right arrows, the slider's value will be changed.
 
 You need to associate an input device with a group. An input device can send key events to only one group but a group can receive data from more than one input device.
 
 To create a group use `lv_group_t * g = lv_group_create()` and to add an object to the group use `lv_group_add_obj(g, obj)`.
 
-To associate a group with an input device use `lv_indev_set_group(indev, g)`.
+To associate a group with an input device use `lv_indev_set_group(indev, g)`, where `indev` is the return value of `lv_indev_drv_register()`
 
 #### Keys
 There are some predefined keys which have special meaning:
@@ -90,11 +90,11 @@ There are some predefined keys which have special meaning:
 - **LV_KEY_DOWN** Decrease value or move downwards
 - **LV_KEY_RIGHT** Increase value or move to the right
 - **LV_KEY_LEFT** Decrease value or move to the left
-- **LV_KEY_ESC**  Close or exit (E.g. close a [Drop down list](/widgets/dropdown))
-- **LV_KEY_DEL**  Delete (E.g. a character on the right in a [Text area](/widgets/textarea))
-- **LV_KEY_BACKSPACE** Delete a character on the left (E.g. in a [Text area](/widgets/textarea))
-- **LV_KEY_HOME** Go to the beginning/top (E.g. in a [Text area](/widgets/textarea))
-- **LV_KEY_END** Go to the end (E.g. in a [Text area](/widgets/textarea))
+- **LV_KEY_ESC**  Close or exit (E.g. close a [Drop down list](/widgets/core/dropdown))
+- **LV_KEY_DEL**  Delete (E.g. a character on the right in a [Text area](/widgets/core/textarea))
+- **LV_KEY_BACKSPACE** Delete a character on the left (E.g. in a [Text area](/widgets/core/textarea))
+- **LV_KEY_HOME** Go to the beginning/top (E.g. in a [Text area](/widgets/core/textarea))
+- **LV_KEY_END** Go to the end (E.g. in a [Text area](/widgets/core/textarea))
 
 The most important special keys are `LV_KEY_NEXT/PREV`, `LV_KEY_ENTER` and `LV_KEY_UP/DOWN/LEFT/RIGHT`.
 In your `read_cb` function, you should translate some of your keys to these special keys to support navigation in a group and interact with selected objects.
@@ -112,7 +112,7 @@ Pressing `LV_KEY_ENTER` will change to *Edit* mode.
 
 In *Edit* mode, `LV_KEY_NEXT/PREV` is usually used to modify an object.
 Depending on the object's type, a short or long press of `LV_KEY_ENTER` changes back to *Navigate* mode.
-Usually, an object which cannot be pressed (like a [Slider](/widgets/slider)) leaves *Edit* mode upon a short click. But with objects where a short click has meaning (e.g. [Button](/widgets/btn)), a long press is required.
+Usually, an object which cannot be pressed (like a [Slider](/widgets/core/slider)) leaves *Edit* mode upon a short click. But with objects where a short click has meaning (e.g. [Button](/widgets/core/btn)), a long press is required.
 
 #### Default group
 Interactive widgets - such as buttons, checkboxes, sliders, etc. - can be automatically added to a default group.
@@ -126,7 +126,7 @@ If an object is focused either by clicking it via touchpad or focused via an enc
 
 If an object switches to edit mode it enters the `LV_STATE_FOCUSED | LV_STATE_EDITED` states so these style properties will be shown.
 
-For a more detailed description read the [Style](https://docs.lvgl.io/master/overview/style.html) section.
+For a more detailed description read the [Style](https://docs.lvgl.io/v7/en/html/overview/style.html) section.
 
 ## API
 

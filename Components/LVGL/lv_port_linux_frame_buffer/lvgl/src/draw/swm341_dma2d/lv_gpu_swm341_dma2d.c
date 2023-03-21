@@ -17,6 +17,10 @@
  *      DEFINES
  *********************/
 
+#if LV_COLOR_16_SWAP
+    #error "Can't use DMA2D with LV_COLOR_16_SWAP 1"
+#endif
+
 #if LV_COLOR_DEPTH == 8
     #error "Can't use DMA2D with LV_COLOR_DEPTH == 8"
 #endif
@@ -76,7 +80,7 @@ void lv_draw_swm341_dma2d_init(void)
     DMA2D->L[DMA2D_LAYER_OUT].PFCCR = (LV_DMA2D_COLOR_FORMAT << DMA2D_PFCCR_CFMT_Pos);
 }
 
-void lv_draw_swm341_dma2d_ctx_init(lv_disp_t * disp, lv_draw_ctx_t * draw_ctx)
+void lv_draw_swm341_dma2d_ctx_init(lv_disp_drv_t * drv, lv_draw_ctx_t * draw_ctx)
 {
 
     lv_draw_sw_init_ctx(drv, draw_ctx);
@@ -88,9 +92,9 @@ void lv_draw_swm341_dma2d_ctx_init(lv_disp_t * disp, lv_draw_ctx_t * draw_ctx)
     dma2d_draw_ctx->base_draw.wait_for_finish = lv_gpu_swm341_dma2d_wait_cb;
 }
 
-void lv_draw_swm341_dma2d_ctx_deinit(lv_disp_t * disp, lv_draw_ctx_t * draw_ctx)
+void lv_draw_swm341_dma2d_ctx_deinit(lv_disp_drv_t * drv, lv_draw_ctx_t * draw_ctx)
 {
-    LV_UNUSED(disp);
+    LV_UNUSED(drv);
     LV_UNUSED(draw_ctx);
 }
 
@@ -200,7 +204,7 @@ static void lv_draw_swm341_dma2d_blend_map(lv_color_t * dest_buf, const lv_area_
         DMA2D->L[DMA2D_LAYER_FG].OR = src_stride - dest_w;
         DMA2D->L[DMA2D_LAYER_FG].PFCCR = (LV_DMA2D_COLOR_FORMAT << DMA2D_PFCCR_CFMT_Pos)
                                          /*alpha mode 2, replace with foreground * alpha value*/
-                                         | (2 << DMA2D_PFCCR_AMODE_Pos)
+                                         | (2 << DAM2D_PFCCR_AMODE_Pos)
                                          /*alpha value*/
                                          | (opa << DMA2D_PFCCR_ALPHA_Pos);
 

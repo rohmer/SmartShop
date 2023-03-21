@@ -33,7 +33,6 @@
 - bump version numbers to v8.3.5-dev [`47c8f8f`](https://github.com/lvgl/lvgl/commit/47c8f8f9822f4c0c0ffbe2f12b380bddefcec475)
 - Update layer.md [`9faca8a`](https://github.com/lvgl/lvgl/commit/9faca8a8d4125e21dedbf6e46aa1586a6b57e5b8)
 
-
 ## [v8.3.4](https://github.com/lvgl/lvgl/compare/v8.3.4...v8.3.3) 15 December 2022
 
 ### New Features
@@ -66,7 +65,6 @@
 ## [v8.3.3](https://github.com/lvgl/lvgl/compare/v8.3.2...v8.3.3) 06 October 2022
 
 v8.3.3 is the same as v8.3.2. It was released only because the version number was set incorrectly in lvgl.h.
-
 
 ## [v8.3.2](https://github.com/lvgl/lvgl/compare/v8.3.1...v8.3.2) 27 September 2022
 
@@ -104,6 +102,7 @@ v8.3.3 is the same as v8.3.2. It was released only because the version number wa
 - chore: fix warnings [`7640950`](https://github.com/lvgl/lvgl/commit/76409502163ffe67cfbab9c7f24f2226cc8a5941)
 - remove accidentally added code [`5022476`](https://github.com/lvgl/lvgl/commit/5022476edc8676f2a6ef7b919d3578159edeef7c)
 
+
 ## [v8.3.1](https://github.com/lvgl/lvgl/compare/v8.3.0...v8.3.1) 25 July 2022
 
 ### Fixes
@@ -124,6 +123,7 @@ v8.3.3 is the same as v8.3.2. It was released only because the version number wa
 - docs(tasmota): support LVGL 8.3.0 (#3511) [`62662f6`](https://github.com/lvgl/lvgl/commit/62662f68e9cf90adcb96d42030eca5fa135b96a5)
 
 
+
 ## [v8.3.0](https://github.com/lvgl/lvgl/compare/v8.2.0...v8.3.0) 6 July 2022
 
 
@@ -133,7 +133,7 @@ v8.3.3 is the same as v8.3.2. It was released only because the version number wa
 - **inherit and initial style properties** Besides setting "normal values" for style properties now you can set them to `inherit` (inherit the parent's value) and `initial` (set the system default). See more [here](https://docs.lvgl.io/master/overview/style.html#forced-value-inheritance-default-value)
 - **NXP-PXP and VGLITE GPU support** The support for NXP GPUs are added again
 - **Color font support** You can use emojis and images in texts with this great new features. See more [here](https://docs.lvgl.io/master/others/imgfont.html).
-- **ARM2D GPU support** Get support for Arm's Microcontroller 2D Graphics Acceleration, e.g. Helium based acceleration, DMA-350 based acceleration etc.
+- **ARM2D GPU support** Get support for ARM's own GPU.
 - **PubSub messaging** A publisher-subscriber based messaging system is added to make communication between components easier. See more [here](https://docs.lvgl.io/master/others/msg.html).
 - **Pinyin IME** Add support for Pinyin IME Chinese input. See more [here](https://docs.lvgl.io/master/others/ime_pinyin.html).
 - **render_start_cb** A new callback is added to `lv_disp_drv_t` to indicate when the rendering starts. It's useful to make synchronization, e.g. wait for a TE signal.
@@ -1786,7 +1786,7 @@ The main new features of v7.4 are run-time font loading, style caching and arc k
 ## v7.0.0 (18.05.2020)
 
 ### Documentation
-The docs for v7 is available at https://docs.lvgl.io/7.11/index.html
+The docs for v7 is available at https://docs.littlevgl.com/v7/en/html/index.html
 
 ### Legal changes
 
@@ -1825,7 +1825,7 @@ As part of these updates, a lot of objects were reworked and the APIs have been 
 - *value* display a text which is stored in the style. It can be used e.g. as a light-weighted text on buttons too.
 - *margin*: similar to *padding* but used to keep space outside the object
 
-Read the [Style](https://docs.lvgl.io/7.11/overview/style.html) section of the documentation to learn how the new styles system works.
+Read the [Style](https://docs.littlevgl.com/v7/en/html/overview/style.html) section of the documentation to learn how the new styles system works.
 
 ### GPU integration
 To better utilize GPUs, from this version GPU usage can be integrated into LVGL. In `lv_conf.h` any supported GPUs can be enabled with a single configuration option.

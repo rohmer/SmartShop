@@ -38,9 +38,10 @@ lv_obj_del(label2);
 
 There are four explicit ways to bring an object to the foreground:
 - Use `lv_obj_move_foreground(obj)` to bring an object to the foreground. Similarly, use `lv_obj_move_background(obj)` to move it to the background.
-- Use `lv_obj_move_to_index(obj, idx)` to move an object to a given index in the order of children. (0: background, child_num - 1: foreground, <0: count from the top, to move forward (up): `lv_obj_move_to_index(obj, lv_obj_get_index(obj) - 1)`)
+- Use `lv_obj_move_to_index(obj, idx)` to move an object to a given index in the order of children. (0: backgroud, child_num - 1: foreground, <0: count from the top, to move forward (up): `lv_obj_move_to_index(obj, lv_obj_get_index(obj) - 1)`)
 - Use `lv_obj_swap(obj1, obj2)` to swap the relative layer position of two objects.
 - When `lv_obj_set_parent(obj, new_parent)` is used, `obj` will be on the foreground of the `new_parent`.
+
 
 ## Top and sys layers
 

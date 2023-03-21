@@ -9,7 +9,6 @@
    snapshot
    monkey
    gridnav
-   file_explorer
    fragment
    msg
    imgfont

@@ -8,12 +8,12 @@
  *********************/
 #include "../../lv_conf_internal.h"
 
-#if LV_USE_DRAW_SDL
+#if LV_USE_GPU_SDL
 
 #include "../../core/lv_refr.h"
 
 #include "lv_draw_sdl.h"
-#include "lv_draw_sdl_private.h"
+#include "lv_draw_sdl_priv.h"
 #include "lv_draw_sdl_composite.h"
 #include "lv_draw_sdl_utils.h"
 #include "lv_draw_sdl_layer.h"
@@ -138,4 +138,4 @@ void lv_draw_sdl_transform_areas_offset(lv_draw_sdl_ctx_t * ctx, bool has_compos
  *   STATIC FUNCTIONS
  **********************/
 
-#endif /*LV_USE_DRAW_SDL*/
+#endif /*LV_USE_GPU_SDL*/

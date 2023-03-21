@@ -10,7 +10,7 @@
 
 #if LV_USE_DEMO_WIDGETS
 
-#if LV_USE_BUILTIN_MALLOC && LV_MEM_SIZE < (38ul * 1024ul)
+#if LV_MEM_CUSTOM == 0 && LV_MEM_SIZE < (38ul * 1024ul)
     #error Insufficient memory for lv_demo_widgets. Please set LV_MEM_SIZE to at least 38KB (38ul * 1024ul).  48KB is recommended.
 #endif
 
@@ -266,7 +266,7 @@ static void profile_create(lv_obj_t * parent)
     lv_obj_t * user_name = lv_textarea_create(panel2);
     lv_textarea_set_one_line(user_name, true);
     lv_textarea_set_placeholder_text(user_name, "Your name");
-    lv_obj_add_event(user_name, ta_event_cb, LV_EVENT_ALL, kb);
+    lv_obj_add_event_cb(user_name, ta_event_cb, LV_EVENT_ALL, kb);
 
     lv_obj_t * password_label = lv_label_create(panel2);
     lv_label_set_text(password_label, "Password");
@@ -276,7 +276,7 @@ static void profile_create(lv_obj_t * parent)
     lv_textarea_set_one_line(password, true);
     lv_textarea_set_password_mode(password, true);
     lv_textarea_set_placeholder_text(password, "Min. 8 chars.");
-    lv_obj_add_event(password, ta_event_cb, LV_EVENT_ALL, kb);
+    lv_obj_add_event_cb(password, ta_event_cb, LV_EVENT_ALL, kb);
 
     lv_obj_t * gender_label = lv_label_create(panel2);
     lv_label_set_text(gender_label, "Gender");
@@ -291,7 +291,7 @@ static void profile_create(lv_obj_t * parent)
 
     lv_obj_t * birthdate = lv_textarea_create(panel2);
     lv_textarea_set_one_line(birthdate, true);
-    lv_obj_add_event(birthdate, birthday_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(birthdate, birthday_event_cb, LV_EVENT_ALL, NULL);
 
     /*Create the third panel*/
     lv_obj_t * panel3 = lv_obj_create(parent);
@@ -305,7 +305,7 @@ static void profile_create(lv_obj_t * parent)
 
     lv_obj_t * slider1 = lv_slider_create(panel3);
     lv_obj_set_width(slider1, LV_PCT(95));
-    lv_obj_add_event(slider1, slider_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(slider1, slider_event_cb, LV_EVENT_ALL, NULL);
     lv_obj_refresh_ext_draw_size(slider1);
 
     lv_obj_t * team_player_label = lv_label_create(panel3);
@@ -554,7 +554,7 @@ static void analytics_create(lv_obj_t * parent)
     lv_chart_set_axis_tick(chart1, LV_CHART_AXIS_PRIMARY_X, 0, 0, 12, 1, true, 50);
     lv_chart_set_div_line_count(chart1, 0, 12);
     lv_chart_set_point_count(chart1, 12);
-    lv_obj_add_event(chart1, chart_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(chart1, chart_event_cb, LV_EVENT_ALL, NULL);
     if(disp_size == DISP_SMALL) lv_chart_set_zoom_x(chart1, 256 * 3);
     else if(disp_size == DISP_MEDIUM) lv_chart_set_zoom_x(chart1, 256 * 2);
 
@@ -601,7 +601,7 @@ static void analytics_create(lv_obj_t * parent)
     lv_chart_set_type(chart2, LV_CHART_TYPE_BAR);
     lv_chart_set_div_line_count(chart2, 6, 0);
     lv_chart_set_point_count(chart2, 12);
-    lv_obj_add_event(chart2, chart_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(chart2, chart_event_cb, LV_EVENT_ALL, NULL);
     lv_chart_set_zoom_x(chart2, 256 * 2);
     lv_obj_set_style_border_side(chart2, LV_BORDER_SIDE_LEFT | LV_BORDER_SIDE_BOTTOM, 0);
     lv_obj_set_style_radius(chart2, 0, 0);
@@ -644,25 +644,27 @@ static void analytics_create(lv_obj_t * parent)
     lv_chart_set_next_value(chart2, ser3, lv_rand(10, 80));
     lv_chart_set_next_value(chart2, ser3, lv_rand(10, 80));
 
+    lv_meter_scale_t * scale;
     lv_meter_indicator_t * indic;
     meter1 = create_meter_box(parent, "Monthly Target", "Revenue: 63%", "Sales: 44%", "Costs: 58%");
     lv_obj_add_flag(lv_obj_get_parent(meter1), LV_OBJ_FLAG_FLEX_IN_NEW_TRACK);
-    lv_meter_set_scale_range(meter1, 0, 100, 270, 90);
-    lv_meter_set_scale_ticks(meter1, 0, 0, 0, lv_color_black());
+    scale = lv_meter_add_scale(meter1);
+    lv_meter_set_scale_range(meter1, scale, 0, 100, 270, 90);
+    lv_meter_set_scale_ticks(meter1, scale, 0, 0, 0, lv_color_black());
 
     lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_values(&a, 20, 100);
     lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE);
 
-    indic = lv_meter_add_arc(meter1, 15, lv_palette_main(LV_PALETTE_BLUE), 0);
+    indic = lv_meter_add_arc(meter1, scale, 15, lv_palette_main(LV_PALETTE_BLUE), 0);
     lv_anim_set_exec_cb(&a, meter1_indic1_anim_cb);
     lv_anim_set_var(&a, indic);
     lv_anim_set_time(&a, 4100);
     lv_anim_set_playback_time(&a, 2700);
     lv_anim_start(&a);
 
-    indic = lv_meter_add_arc(meter1, 15, lv_palette_main(LV_PALETTE_RED), -20);
+    indic = lv_meter_add_arc(meter1, scale, 15, lv_palette_main(LV_PALETTE_RED), -20);
     lv_anim_set_exec_cb(&a, meter1_indic2_anim_cb);
     lv_anim_set_var(&a, indic);
     lv_anim_set_time(&a, 2600);
@@ -670,7 +672,7 @@ static void analytics_create(lv_obj_t * parent)
     a.user_data = indic;
     lv_anim_start(&a);
 
-    indic = lv_meter_add_arc(meter1, 15, lv_palette_main(LV_PALETTE_GREEN), -40);
+    indic = lv_meter_add_arc(meter1, scale, 15, lv_palette_main(LV_PALETTE_GREEN), -40);
     lv_anim_set_exec_cb(&a, meter1_indic3_anim_cb);
     lv_anim_set_var(&a, indic);
     lv_anim_set_time(&a, 2800);
@@ -679,19 +681,20 @@ static void analytics_create(lv_obj_t * parent)
 
     meter2 = create_meter_box(parent, "Sessions", "Desktop: ", "Tablet: ", "Mobile: ");
     if(disp_size < DISP_LARGE) lv_obj_add_flag(lv_obj_get_parent(meter2), LV_OBJ_FLAG_FLEX_IN_NEW_TRACK);
-    lv_meter_set_scale_range(meter2, 0, 100, 360, 90);
-    lv_meter_set_scale_ticks(meter2, 0, 0, 0, lv_color_black());
+    scale = lv_meter_add_scale(meter2);
+    lv_meter_set_scale_range(meter2, scale, 0, 100, 360, 90);
+    lv_meter_set_scale_ticks(meter2, scale, 0, 0, 0, lv_color_black());
 
     static lv_meter_indicator_t * meter2_indic[3];
-    meter2_indic[0] = lv_meter_add_arc(meter2, 20, lv_palette_main(LV_PALETTE_RED), -10);
+    meter2_indic[0] = lv_meter_add_arc(meter2, scale, 20, lv_palette_main(LV_PALETTE_RED), -10);
     lv_meter_set_indicator_start_value(meter2, meter2_indic[0], 0);
     lv_meter_set_indicator_end_value(meter2, meter2_indic[0], 39);
 
-    meter2_indic[1] = lv_meter_add_arc(meter2, 30, lv_palette_main(LV_PALETTE_BLUE), 0);
+    meter2_indic[1] = lv_meter_add_arc(meter2, scale, 30, lv_palette_main(LV_PALETTE_BLUE), 0);
     lv_meter_set_indicator_start_value(meter2, meter2_indic[1], 40);
     lv_meter_set_indicator_end_value(meter2, meter2_indic[1], 69);
 
-    meter2_indic[2] = lv_meter_add_arc(meter2, 10, lv_palette_main(LV_PALETTE_GREEN), -20);
+    meter2_indic[2] = lv_meter_add_arc(meter2, scale, 10, lv_palette_main(LV_PALETTE_GREEN), -20);
     lv_meter_set_indicator_start_value(meter2, meter2_indic[2], 70);
     lv_meter_set_indicator_end_value(meter2, meter2_indic[2], 99);
 
@@ -702,7 +705,7 @@ static void analytics_create(lv_obj_t * parent)
 
     /*Add a special circle to the needle's pivot*/
     lv_obj_set_style_pad_hor(meter3, 10, 0);
-    lv_obj_set_style_size(meter3, 10, 10, LV_PART_INDICATOR);
+    lv_obj_set_style_size(meter3, 10, LV_PART_INDICATOR);
     lv_obj_set_style_radius(meter3, LV_RADIUS_CIRCLE, LV_PART_INDICATOR);
     lv_obj_set_style_bg_opa(meter3, LV_OPA_COVER, LV_PART_INDICATOR);
     lv_obj_set_style_bg_color(meter3, lv_palette_darken(LV_PALETTE_GREY, 4), LV_PART_INDICATOR);
@@ -710,38 +713,39 @@ static void analytics_create(lv_obj_t * parent)
     lv_obj_set_style_outline_width(meter3, 3, LV_PART_INDICATOR);
     lv_obj_set_style_text_color(meter3, lv_palette_darken(LV_PALETTE_GREY, 1), LV_PART_TICKS);
 
-    lv_meter_set_scale_range(meter3, 10, 60, 220, 360 - 220);
-    lv_meter_set_scale_ticks(meter3, 21, 3, 17, lv_color_white());
-    lv_meter_set_scale_major_ticks(meter3, 4, 4, 22, lv_color_white(), 15);
+    scale = lv_meter_add_scale(meter3);
+    lv_meter_set_scale_range(meter3, scale, 10, 60, 220, 360 - 220);
+    lv_meter_set_scale_ticks(meter3, scale, 21, 3, 17, lv_color_white());
+    lv_meter_set_scale_major_ticks(meter3, scale, 4, 4, 22, lv_color_white(), 15);
 
-    indic = lv_meter_add_arc(meter3, 10, lv_palette_main(LV_PALETTE_RED), 0);
+    indic = lv_meter_add_arc(meter3, scale, 10, lv_palette_main(LV_PALETTE_RED), 0);
     lv_meter_set_indicator_start_value(meter3, indic, 0);
     lv_meter_set_indicator_end_value(meter3, indic, 20);
 
-    indic = lv_meter_add_scale_lines(meter3, lv_palette_darken(LV_PALETTE_RED, 3), lv_palette_darken(LV_PALETTE_RED,
-                                                                                                     3), true, 0);
+    indic = lv_meter_add_scale_lines(meter3, scale, lv_palette_darken(LV_PALETTE_RED, 3), lv_palette_darken(LV_PALETTE_RED,
+                                                                                                            3), true, 0);
     lv_meter_set_indicator_start_value(meter3, indic, 0);
     lv_meter_set_indicator_end_value(meter3, indic, 20);
 
-    indic = lv_meter_add_arc(meter3, 12, lv_palette_main(LV_PALETTE_BLUE), 0);
+    indic = lv_meter_add_arc(meter3, scale, 12, lv_palette_main(LV_PALETTE_BLUE), 0);
     lv_meter_set_indicator_start_value(meter3, indic, 20);
     lv_meter_set_indicator_end_value(meter3, indic, 40);
 
-    indic = lv_meter_add_scale_lines(meter3, lv_palette_darken(LV_PALETTE_BLUE, 3),
+    indic = lv_meter_add_scale_lines(meter3, scale, lv_palette_darken(LV_PALETTE_BLUE, 3),
                                      lv_palette_darken(LV_PALETTE_BLUE, 3), true, 0);
     lv_meter_set_indicator_start_value(meter3, indic, 20);
     lv_meter_set_indicator_end_value(meter3, indic, 40);
 
-    indic = lv_meter_add_arc(meter3, 10, lv_palette_main(LV_PALETTE_GREEN), 0);
+    indic = lv_meter_add_arc(meter3, scale, 10, lv_palette_main(LV_PALETTE_GREEN), 0);
     lv_meter_set_indicator_start_value(meter3, indic, 40);
     lv_meter_set_indicator_end_value(meter3, indic, 60);
 
-    indic = lv_meter_add_scale_lines(meter3, lv_palette_darken(LV_PALETTE_GREEN, 3),
+    indic = lv_meter_add_scale_lines(meter3, scale, lv_palette_darken(LV_PALETTE_GREEN, 3),
                                      lv_palette_darken(LV_PALETTE_GREEN, 3), true, 0);
     lv_meter_set_indicator_start_value(meter3, indic, 40);
     lv_meter_set_indicator_end_value(meter3, indic, 60);
 
-    indic = lv_meter_add_needle_line(meter3, 4, lv_palette_darken(LV_PALETTE_GREY, 4), -25);
+    indic = lv_meter_add_needle_line(meter3, scale, 4, lv_palette_darken(LV_PALETTE_GREY, 4), -25);
 
     lv_obj_t * mbps_label = lv_label_create(meter3);
     lv_label_set_text(mbps_label, "-");
@@ -806,7 +810,7 @@ void shop_create(lv_obj_t * parent)
     lv_chart_set_type(chart3, LV_CHART_TYPE_BAR);
     lv_chart_set_div_line_count(chart3, 6, 0);
     lv_chart_set_point_count(chart3, 7);
-    lv_obj_add_event(chart3, shop_chart_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(chart3, shop_chart_event_cb, LV_EVENT_ALL, NULL);
 
     ser4 = lv_chart_add_series(chart3, lv_theme_get_color_primary(chart3), LV_CHART_AXIS_PRIMARY_Y);
     lv_chart_set_next_value(chart3, ser4, lv_rand(60, 90));
@@ -985,7 +989,7 @@ static void color_changer_create(lv_obj_t * parent)
         lv_obj_set_style_radius(c, LV_RADIUS_CIRCLE, 0);
         lv_obj_set_style_opa(c, LV_OPA_TRANSP, 0);
         lv_obj_set_size(c, 20, 20);
-        lv_obj_add_event(c, color_event_cb, LV_EVENT_ALL, &palette[i]);
+        lv_obj_add_event_cb(c, color_event_cb, LV_EVENT_ALL, &palette[i]);
         lv_obj_clear_flag(c, LV_OBJ_FLAG_SCROLL_ON_FOCUS);
     }
 
@@ -994,7 +998,7 @@ static void color_changer_create(lv_obj_t * parent)
     lv_obj_set_style_bg_color(btn, lv_color_white(), LV_STATE_CHECKED);
     lv_obj_set_style_pad_all(btn, 10, 0);
     lv_obj_set_style_radius(btn, LV_RADIUS_CIRCLE, 0);
-    lv_obj_add_event(btn, color_changer_event_cb, LV_EVENT_ALL, color_cont);
+    lv_obj_add_event_cb(btn, color_changer_event_cb, LV_EVENT_ALL, color_cont);
     lv_obj_set_style_shadow_width(btn, 0, 0);
     lv_obj_set_style_bg_img_src(btn, LV_SYMBOL_TINT, 0);
 
@@ -1208,7 +1212,6 @@ static void ta_event_cb(lv_event_t * e)
             lv_obj_set_height(tv, LV_VER_RES - lv_obj_get_height(kb));
             lv_obj_clear_flag(kb, LV_OBJ_FLAG_HIDDEN);
             lv_obj_scroll_to_view_recursive(ta, LV_ANIM_OFF);
-            lv_indev_wait_release(lv_event_get_param(e));
         }
     }
     else if(code == LV_EVENT_DEFOCUSED) {
@@ -1221,6 +1224,7 @@ static void ta_event_cb(lv_event_t * e)
     else if(code == LV_EVENT_READY || code == LV_EVENT_CANCEL) {
         lv_obj_set_height(tv, LV_VER_RES);
         lv_obj_add_flag(kb, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_state(ta, LV_STATE_FOCUSED);
         lv_indev_reset(NULL, ta);   /*To forget the last clicked object to make it focusable again*/
     }
 }
@@ -1242,7 +1246,7 @@ static void birthday_event_cb(lv_event_t * e)
                 else  lv_obj_set_size(calendar, 300, 330);
                 lv_calendar_set_showed_date(calendar, 1990, 01);
                 lv_obj_align(calendar, LV_ALIGN_CENTER, 0, 30);
-                lv_obj_add_event(calendar, calendar_event_cb, LV_EVENT_ALL, ta);
+                lv_obj_add_event_cb(calendar, calendar_event_cb, LV_EVENT_ALL, ta);
 
                 lv_calendar_header_dropdown_create(calendar);
             }
@@ -1338,7 +1342,7 @@ static void chart_event_cb(lv_event_t * e)
 
         /*Add the faded area before the lines are drawn */
         else if(dsc->part == LV_PART_ITEMS) {
-#if LV_USE_DRAW_MASKS
+#if LV_DRAW_COMPLEX
             /*Add  a line mask that keeps the area below the line*/
             if(dsc->p1 && dsc->p2) {
                 lv_draw_mask_line_param_t line_mask_param;

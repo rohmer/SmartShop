@@ -98,16 +98,15 @@ The changes are recorded in [CHANGELOG.md](/CHANGELOG).
 Before v8 the last minor release of each major series was supported for 1 year.
 Starting from v8, every minor release is supported for 1 year.
 
-| Version | Release date | Support end  | Active |
-| ------- | ------------ | ------------ | ------ |
-| v5.3    | Feb 1, 2019  | Feb 1, 2020  | No     |
-| v6.1    | Nov 26, 2019 | Nov 26, 2020 | No     |
-| v7.11   | Mar 16, 2021 | Mar 16, 2022 | No     |
-| v8.0    | 1 Jun, 2021  | 1 Jun, 2022  | No     |
-| v8.1    | 10 Nov, 2021 | 10 Nov, 2022 | No     |
-| v8.2    | 31 Jan, 2022 | 31 Jan, 2023 | Yes    |
-| v8.3    | 6 July, 2022 | 6 July, 2023 | Yes    |
-| v9.0    | In progress  |              |        |
+| Version | Release date | Support end | Active |
+|---------|--------------|-------------|--------|
+| v5.3    | Feb 1, 2019  |Feb 1, 2020  | No     |
+| v6.1    | Nov 26, 2019 |Nov 26, 2020 | No     |
+| v7.11   | Mar 16, 2021 |Mar 16, 2022 | No     |
+| v8.0    | 1 Jun, 2021  |1 Jun, 2022  | Yes    |
+| v8.1    | 10 Nov, 2021 |10 Nov, 2022 | Yes    |
+| v8.2    | 31 Jan, 2022 |31 Jan, 2023 | Yes    |
+| v8.3    | In progress  |             |        |
 
 ## FAQ
 
@@ -124,7 +123,7 @@ Every MCU which is capable of driving a display via parallel port, SPI, RGB inte
 
 This includes:
 - "Common" MCUs like STM32F, STM32H, NXP Kinetis, LPC, iMX, dsPIC33, PIC32, SWM341 etc.
-- Bluetooth, GSM, Wi-Fi modules like Nordic NRF, Espressif ESP32 and Raspberry Pi Pico W
+- Bluetooth, GSM, Wi-Fi modules like Nordic NRF and Espressif ESP32
 - Linux with frame buffer device such as /dev/fb0. This includes Single-board computers like the Raspberry Pi
 - Anything else with a strong enough MCU and a peripheral to drive a display
 
@@ -144,7 +143,7 @@ See the [Porting](/porting/display) section to learn more.
 
 ### LVGL doesn't start, randomly crashes or nothing is drawn on the display. What can be the problem?
 - Try increasing `LV_MEM_SIZE`.
-- Be sure `lv_disp_t`, `lv_indev_t` and `lv_fs_drv_t` are global or `static`.
+- Be sure `lv_disp_drv_t`, `lv_indev_drv_t` and `lv_fs_drv_t` are global or `static`.
 - Be sure your display works without LVGL. E.g. paint it to red on start up.
 - Enable [Logging](porting/log)
 - Enable asserts in `lv_conf.h` (`LV_USE_ASSERT_...`)
@@ -170,9 +169,9 @@ Probably there a bug in your display driver. Try the following code without usin
 lv_color_t buf[BUF_W * BUF_H];
 lv_color_t * buf_p = buf;
 uint16_t x, y;
-for(y = 0; y < BUF_H; y++) {
+for(y = 0; y &lt; BUF_H; y++) {
     lv_color_t c = lv_color_mix(LV_COLOR_BLUE, LV_COLOR_RED, (y * 255) / BUF_H);
-    for(x = 0; x < BUF_W; x++){
+    for(x = 0; x &lt; BUF_W; x++){
         (*buf_p) =  c;
         buf_p++;
     }
@@ -189,6 +188,9 @@ my_flush_cb(NULL, &a, buf);
 ### Why do I see nonsense colors on the screen?
 Probably LVGL's color format is not compatible with your display's color format. Check `LV_COLOR_DEPTH` in *lv_conf.h*.
 
+If you are using 16-bit colors with SPI (or another byte-oriented interface) you probably need to set `LV_COLOR_16_SWAP  1` in *lv_conf.h*.
+It swaps the upper and lower bytes of the pixels.
+
 ### How to speed up my UI?
 - Turn on compiler optimization and enable cache if your MCU has it
 - Increase the size of the display buffer
@@ -200,7 +202,7 @@ Probably LVGL's color format is not compatible with your display's color format.
 ### How to reduce flash/ROM usage?
 You can disable all the unused features (such as animations, file system, GPU etc.) and object types in *lv_conf.h*.
 
-If you are using GCC/CLANG you can add `-fdata-sections -ffunction-sections` compiler flags and `--gc-sections` linker flag to remove unused functions and variables from the final binary. If possible, add the `-flto` compiler flag to enable link-time-optimisation together with `-Os` for GCC or `-Oz` for CLANG.
+If you are using GCC/CLANG you can add `-fdata-sections -ffunction-sections` compiler flags and `--gc-sections` linker flag to remove unused functions and variables from the final binary. If possible, add the `-flto` compiler flag to enable link-time-optimisation together with `-Os` for GCC or `-Oz` for CLANG. 
 
 ### How to reduce the RAM usage
 - Lower the size of the *Display buffer*

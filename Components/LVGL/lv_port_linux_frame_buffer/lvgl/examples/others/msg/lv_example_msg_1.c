@@ -15,16 +15,16 @@ void lv_example_msg_1(void)
     /*Create a slider in the center of the display*/
     lv_obj_t * slider = lv_slider_create(lv_scr_act());
     lv_obj_center(slider);
-    lv_obj_add_event(slider, slider_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
+    lv_obj_add_event_cb(slider, slider_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
 
     /*Create a label below the slider*/
     lv_obj_t * label = lv_label_create(lv_scr_act());
-    lv_obj_add_event(label, label_event_cb, LV_EVENT_MSG_RECEIVED, NULL);
+    lv_obj_add_event_cb(label, label_event_cb, LV_EVENT_MSG_RECEIVED, NULL);
     lv_label_set_text(label, "0%");
     lv_obj_align(label, LV_ALIGN_CENTER, 0, 30);
 
     /*Subscribe the label to a message. Also use the user_data to set a format string here.*/
-    lv_msg_subscribe_obj(MSG_NEW_TEMPERATURE, label, "%d °C");
+    lv_msg_subsribe_obj(MSG_NEW_TEMPERATURE, label, "%d °C");
 }
 
 static void slider_event_cb(lv_event_t * e)

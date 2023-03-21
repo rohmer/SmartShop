@@ -2,6 +2,12 @@
 import usys as sys
 import lvgl as lv
 import display_driver
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
 
 # Create an image from the png file
 try:
@@ -39,7 +45,7 @@ a1.set_var(img)
 a1.set_custom_exec_cb(lambda a,val: set_angle(img,val))
 a1.set_values(0, 3600)
 a1.set_time(5000)
-a1.set_repeat_count(lv.ANIM_REPEAT_INFINITE)
+a1.set_repeat_count(lv.ANIM_REPEAT.INFINITE)
 lv.anim_t.start(a1)
 
 a2 = lv.anim_t()
@@ -49,7 +55,7 @@ a2.set_custom_exec_cb(lambda a,val: set_zoom(img,val))
 a2.set_values(128, 256)
 a2.set_time(5000)
 a2.set_playback_time(3000)
-a2.set_repeat_count(lv.ANIM_REPEAT_INFINITE)
+a2.set_repeat_count(lv.ANIM_REPEAT.INFINITE)
 lv.anim_t.start(a2)
 
 

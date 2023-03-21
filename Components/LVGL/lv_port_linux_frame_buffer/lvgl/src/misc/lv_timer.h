@@ -88,7 +88,7 @@ static inline LV_ATTRIBUTE_TIMER_HANDLER uint32_t lv_timer_handler_run_in_period
 }
 
 /**
- * Create an "empty" timer. It needs to be initialized with at least
+ * Create an "empty" timer. It needs to initialized with at least
  * `lv_timer_set_cb` and `lv_timer_set_period`
  * @return pointer to the created timer
  */
@@ -120,7 +120,7 @@ void lv_timer_pause(lv_timer_t * timer);
 void lv_timer_resume(lv_timer_t * timer);
 
 /**
- * Set the callback to the timer (the function to call periodically)
+ * Set the callback the timer (the function to call periodically)
  * @param timer pointer to a timer
  * @param timer_cb the function to call periodically
  */
@@ -171,16 +171,6 @@ uint8_t lv_timer_get_idle(void);
  * @return the next timer or NULL if there is no more timer
  */
 lv_timer_t * lv_timer_get_next(lv_timer_t * timer);
-
-/**
- * Get the user_data passed when the timer was created
- * @param timer pointer to the lv_timer
- * @return pointer to the user_data
- */
-static inline void * lv_timer_get_user_data(lv_timer_t * timer)
-{
-    return timer->user_data;
-}
 
 /**********************
  *      MACROS

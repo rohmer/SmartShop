@@ -1,3 +1,10 @@
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
+
 # Create an image from the png file
 try:
     with open('../../assets/img_star.png','rb') as f:
@@ -13,7 +20,7 @@ img_star_argb = lv.img_dsc_t({
 
 def event_cb(e):
     code = e.get_code()
-    obj = e.get_target_obj()
+    obj = e.get_target()
     dsc = lv.obj_draw_part_dsc_t.__cast__(e.get_param())
     if code == lv.EVENT.DRAW_PART_BEGIN:
         # Change the draw descriptor the 2nd button
@@ -32,7 +39,7 @@ def event_cb(e):
         # Change the draw descriptor the 3rd button
 
         elif dsc.id == 2:
-            dsc.rect_dsc.radius = lv.RADIUS_CIRCLE
+            dsc.rect_dsc.radius = lv.RADIUS.CIRCLE
             if obj.get_selected_btn() == dsc.id:
                 dsc.rect_dsc.bg_color = lv.palette_darken(lv.PALETTE.RED, 3)
             else:
@@ -69,6 +76,6 @@ def event_cb(e):
 # Add custom drawer to the button matrix to c
 #
 btnm = lv.btnmatrix(lv.scr_act())
-btnm.add_event(event_cb, lv.EVENT.ALL, None)
+btnm.add_event_cb(event_cb, lv.EVENT.ALL, None)
 btnm.center()
 

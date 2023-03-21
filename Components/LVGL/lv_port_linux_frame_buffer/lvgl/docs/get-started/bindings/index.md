@@ -8,7 +8,5 @@
 
    micropython
    cpp
-   pikascript
-   javascript
 ```
 

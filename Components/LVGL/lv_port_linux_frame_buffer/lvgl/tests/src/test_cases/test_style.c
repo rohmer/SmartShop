@@ -11,7 +11,6 @@ static void obj_set_height_helper(void * obj, int32_t height)
 
 void test_gradient_vertical_misalignment(void)
 {
-    /* Tests gradient caching as the height of widget changes.*/
     lv_obj_t * obj = lv_obj_create(lv_scr_act());
     lv_obj_set_style_bg_grad_dir(obj, LV_GRAD_DIR_VER, 0);
     lv_obj_set_style_bg_grad_color(obj, lv_color_hex(0xff0000), 0);
@@ -27,16 +26,16 @@ void test_gradient_vertical_misalignment(void)
     lv_anim_init(&a);
     lv_anim_set_var(&a, obj);
     lv_anim_set_exec_cb(&a, obj_set_height_helper);
-    lv_anim_set_time(&a, 1000);
-    lv_anim_set_playback_time(&a, 1000);
+    lv_anim_set_time(&a, 3000);
+    lv_anim_set_playback_time(&a, 3000);
     lv_anim_set_repeat_count(&a, 100);
     lv_anim_set_values(&a, 0, 300);
     lv_anim_start(&a);
 
     uint32_t i;
-    for(i = 0; i < 100; i++) {
+    for(i = 0; i < 1000; i++) {
         lv_timer_handler();
-        lv_tick_inc(73); /*Use a not round number to cover more anim states */
+        lv_tick_inc(100);
         usleep(1000);
     }
 }
@@ -78,7 +77,7 @@ void test_inherit_meta(void)
     lv_obj_t * grandchild = lv_label_create(child);
     lv_obj_set_style_text_color(parent, lv_color_hex(0xff0000), LV_PART_MAIN);
     lv_obj_set_local_style_prop_meta(child, LV_STYLE_TEXT_COLOR, LV_STYLE_PROP_META_INHERIT, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL_COLOR(lv_color_hex(0xff0000), lv_obj_get_style_text_color(grandchild, LV_PART_MAIN));
+    TEST_ASSERT_EQUAL_HEX(lv_color_hex(0xff0000).full, lv_obj_get_style_text_color(grandchild, LV_PART_MAIN).full);
 }
 
 void test_id_meta_overrun(void)
@@ -104,51 +103,7 @@ void test_inherit_meta_with_lower_precedence_style(void)
     lv_style_set_text_color(&style, lv_color_hex(0xffffff));
     lv_obj_set_local_style_prop_meta(child, LV_STYLE_TEXT_COLOR, LV_STYLE_PROP_META_INHERIT, LV_PART_MAIN);
     lv_obj_add_style(child, &style, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL_COLOR(lv_color_hex(0xff0000), lv_obj_get_style_text_color(grandchild, LV_PART_MAIN));
-}
-
-const lv_style_const_prop_t const_style_props[] = {
-    LV_STYLE_CONST_WIDTH(51),
-    LV_STYLE_CONST_HEIGHT(50),
-    LV_STYLE_CONST_PROPS_END
-};
-
-LV_STYLE_CONST_INIT(const_style, const_style_props);
-
-void test_const_style(void)
-{
-    lv_obj_t * obj = lv_obj_create(lv_scr_act());
-    lv_obj_add_style(obj, &const_style, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL(51, lv_obj_get_style_width(obj, LV_PART_MAIN));
-    TEST_ASSERT_EQUAL(50, lv_obj_get_style_height(obj, LV_PART_MAIN));
-}
-
-void test_style_replacement(void)
-{
-    /*Define styles*/
-    lv_style_t style_red;
-    lv_style_t style_blue;
-
-    lv_style_init(&style_red);
-    lv_style_set_bg_color(&style_red, lv_color_hex(0xff0000));
-
-    lv_style_init(&style_blue);
-    lv_style_set_bg_color(&style_blue, lv_color_hex(0x0000ff));
-
-    /*Create object with style*/
-    lv_obj_t * obj = lv_obj_create(lv_scr_act());
-    lv_obj_add_style(obj, &style_red, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL_COLOR(lv_color_hex(0xff0000), lv_obj_get_style_bg_color(obj, LV_PART_MAIN));
-
-    /*Replace style successfully*/
-    bool replaced = lv_obj_replace_style(obj, &style_red, &style_blue, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL(true, replaced);
-    TEST_ASSERT_EQUAL_COLOR(lv_color_hex(0x0000ff), lv_obj_get_style_bg_color(obj, LV_PART_MAIN));
-
-    /*Failed replacement (already replaced)*/
-    replaced = lv_obj_replace_style(obj, &style_red, &style_blue, LV_PART_MAIN);
-    TEST_ASSERT_EQUAL(false, replaced);
-    TEST_ASSERT_EQUAL_COLOR(lv_color_hex(0x0000ff), lv_obj_get_style_bg_color(obj, LV_PART_MAIN));
+    TEST_ASSERT_EQUAL_HEX(lv_color_hex(0xff0000).full, lv_obj_get_style_text_color(grandchild, LV_PART_MAIN).full);
 }
 
 #endif

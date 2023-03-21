@@ -2,6 +2,12 @@
 import usys as sys
 import lvgl as lv
 import display_driver
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
 
 # Create an image from the png file
 try:
@@ -22,7 +28,7 @@ def create_slider(color):
     slider.set_size(10, 200)
     slider.set_style_bg_color(color, lv.PART.KNOB)
     slider.set_style_bg_color(color.color_darken(lv.OPA._40), lv.PART.INDICATOR)
-    slider.add_event(slider_event_cb, lv.EVENT.VALUE_CHANGED, None)
+    slider.add_event_cb(slider_event_cb, lv.EVENT.VALUE_CHANGED, None)
     return slider
 
 def slider_event_cb(e):
@@ -56,7 +62,7 @@ img1 = lv.img(lv.scr_act())
 img1.set_src(img_cogwheel_argb)
 img1.align(lv.ALIGN.RIGHT_MID, -20, 0)
 
-intense_slider.send_event(lv.EVENT.VALUE_CHANGED, None)
+lv.event_send(intense_slider, lv.EVENT.VALUE_CHANGED, None)
 
 
 

@@ -1,7 +1,13 @@
+from imagetools import get_png_info, open_png
 
 def ofs_y_anim(img, v):
     img.set_offset_y(v)
     # print(img,v)
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
 
 # Create an image from the png file
 try:
@@ -39,7 +45,7 @@ a.set_var(img)
 a.set_values(0, 100)
 a.set_time(3000)
 a.set_playback_time(500)
-a.set_repeat_count(lv.ANIM_REPEAT_INFINITE)
+a.set_repeat_count(lv.ANIM_REPEAT.INFINITE)
 a.set_custom_exec_cb(lambda a,val: ofs_y_anim(img,val))
 lv.anim_t.start(a)
 

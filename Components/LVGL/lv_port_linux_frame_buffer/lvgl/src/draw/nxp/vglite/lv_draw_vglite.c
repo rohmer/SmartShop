@@ -41,6 +41,10 @@
 #include "lv_draw_vglite_arc.h"
 #include "lv_vglite_buf.h"
 
+#if LV_COLOR_DEPTH != 32
+    #include "../../../core/lv_refr.h"
+#endif
+
 /*********************
  *      DEFINES
  *********************/
@@ -127,10 +131,12 @@ void lv_draw_vglite_ctx_deinit(lv_disp_drv_t * drv, lv_draw_ctx_t * draw_ctx)
  * the target pixel format is ARGB8565 which is not supported by the GPU.
  * In this case, the VG-Lite callbacks should fallback to SW rendering.
  */
-static inline bool need_argb8565_support(lv_draw_ctx_t * draw_ctx)
+static inline bool need_argb8565_support()
 {
 #if LV_COLOR_DEPTH != 32
-    if(draw_ctx->render_with_alpha)
+    lv_disp_t * disp = _lv_refr_get_disp_refreshing();
+
+    if(disp->driver->screen_transp == 1)
         return true;
 #endif
 
@@ -154,7 +160,7 @@ static void lv_draw_vglite_blend(lv_draw_ctx_t * draw_ctx, const lv_draw_sw_blen
     if(dsc->opa <= (lv_opa_t)LV_OPA_MIN)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_blend_basic(draw_ctx, dsc);
         return;
     }
@@ -207,7 +213,7 @@ static void lv_draw_vglite_img_decoded(lv_draw_ctx_t * draw_ctx, const lv_draw_i
     if(dsc->opa <= (lv_opa_t)LV_OPA_MIN)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_img_decoded(draw_ctx, dsc, coords, map_p, cf);
         return;
     }
@@ -267,7 +273,7 @@ static void lv_draw_vglite_line(lv_draw_ctx_t * draw_ctx, const lv_draw_line_dsc
     if(point1->x == point2->x && point1->y == point2->y)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_line(draw_ctx, dsc, point1, point2);
         return;
     }
@@ -304,7 +310,7 @@ static void lv_draw_vglite_line(lv_draw_ctx_t * draw_ctx, const lv_draw_line_dsc
 
 static void lv_draw_vglite_rect(lv_draw_ctx_t * draw_ctx, const lv_draw_rect_dsc_t * dsc, const lv_area_t * coords)
 {
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_rect(draw_ctx, dsc, coords);
         return;
     }
@@ -316,11 +322,11 @@ static void lv_draw_vglite_rect(lv_draw_ctx_t * draw_ctx, const lv_draw_rect_dsc
     vglite_dsc.bg_img_opa = 0;
     vglite_dsc.border_opa = 0;
     vglite_dsc.outline_opa = 0;
-#if LV_USE_DRAW_MASKS
+#if LV_DRAW_COMPLEX
     /* Draw the shadow with CPU */
     lv_draw_sw_rect(draw_ctx, &vglite_dsc, coords);
     vglite_dsc.shadow_opa = 0;
-#endif /*LV_USE_DRAW_MASKS*/
+#endif /*LV_DRAW_COMPLEX*/
 
     /* Draw the background */
     vglite_dsc.bg_opa = dsc->bg_opa;
@@ -469,7 +475,7 @@ static void lv_draw_vglite_arc(lv_draw_ctx_t * draw_ctx, const lv_draw_arc_dsc_t
 {
     bool done = false;
 
-#if LV_USE_DRAW_MASKS
+#if LV_DRAW_COMPLEX
     if(dsc->opa <= (lv_opa_t)LV_OPA_MIN)
         return;
     if(dsc->width == 0)
@@ -477,7 +483,7 @@ static void lv_draw_vglite_arc(lv_draw_ctx_t * draw_ctx, const lv_draw_arc_dsc_t
     if(start_angle == end_angle)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_arc(draw_ctx, dsc, center, radius, start_angle, end_angle);
         return;
     }
@@ -493,7 +499,7 @@ static void lv_draw_vglite_arc(lv_draw_ctx_t * draw_ctx, const lv_draw_arc_dsc_t
                                        &rel_clip_area, dsc) == LV_RES_OK);
     if(!done)
         VG_LITE_LOG_TRACE("VG-Lite draw arc failed. Fallback.");
-#endif/*LV_USE_DRAW_MASKS*/
+#endif/*LV_DRAW_COMPLEX*/
 
     if(!done)
         lv_draw_sw_arc(draw_ctx, dsc, center, radius, start_angle, end_angle);

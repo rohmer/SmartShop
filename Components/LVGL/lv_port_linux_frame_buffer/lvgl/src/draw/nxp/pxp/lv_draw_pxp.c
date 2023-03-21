@@ -36,6 +36,10 @@
 #if LV_USE_GPU_NXP_PXP
 #include "lv_draw_pxp_blend.h"
 
+#if LV_COLOR_DEPTH != 32
+    #include "../../../core/lv_refr.h"
+#endif
+
 /*********************
  *      DEFINES
  *********************/
@@ -100,10 +104,12 @@ void lv_draw_pxp_ctx_deinit(lv_disp_drv_t * drv, lv_draw_ctx_t * draw_ctx)
  * the target pixel format is ARGB8565 which is not supported by the GPU.
  * In this case, the PXP callbacks should fallback to SW rendering.
  */
-static inline bool need_argb8565_support(lv_draw_ctx_t * draw_ctx)
+static inline bool need_argb8565_support()
 {
 #if LV_COLOR_DEPTH != 32
-    if(draw_ctx->render_with_alpha)
+    lv_disp_t * disp = _lv_refr_get_disp_refreshing();
+
+    if(disp->driver->screen_transp == 1)
         return true;
 #endif
 
@@ -122,7 +128,7 @@ static void lv_draw_pxp_blend(lv_draw_ctx_t * draw_ctx, const lv_draw_sw_blend_d
     if(dsc->opa <= (lv_opa_t)LV_OPA_MIN)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_blend_basic(draw_ctx, dsc);
         return;
     }
@@ -167,7 +173,7 @@ static void lv_draw_pxp_img_decoded(lv_draw_ctx_t * draw_ctx, const lv_draw_img_
     if(dsc->opa <= (lv_opa_t)LV_OPA_MIN)
         return;
 
-    if(need_argb8565_support(draw_ctx)) {
+    if(need_argb8565_support()) {
         lv_draw_sw_img_decoded(draw_ctx, dsc, coords, map_p, cf);
         return;
     }
@@ -190,7 +196,7 @@ static void lv_draw_pxp_img_decoded(lv_draw_ctx_t * draw_ctx, const lv_draw_img_
     lv_coord_t src_height = lv_area_get_height(coords);
 
     bool has_mask = lv_draw_mask_is_any(&blend_area);
-    bool has_scale = (dsc->zoom != LV_ZOOM_NONE);
+    bool has_scale = (dsc->zoom != LV_IMG_ZOOM_NONE);
     bool has_rotation = (dsc->angle != 0);
     bool unsup_rotation = false;
 

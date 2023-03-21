@@ -5,8 +5,8 @@ A file system is identified by an assigned drive letter.
 For example, if an SD card is associated with the letter `'S'`, a file can be reached using `"S:path/to/file.txt"`.
 
 ## Ready to use drivers
-
-LVGL contains prepared drivers for the API of POSIX, standard C, Windows, and [FATFS](http://elm-chan.org/fsw/ff/00index_e.html). Learn more [here](/libs/fsdrv). 
+The [lv_fs_if](https://github.com/lvgl/lv_fs_if) repository contains prepared drivers using POSIX, standard C and the [FATFS](http://elm-chan.org/fsw/ff/00index_e.html) API.
+See its [README](https://github.com/lvgl/lv_fs_if#readme) for the details.
 
 ## Adding a driver
 
@@ -110,7 +110,7 @@ lv_fs_dir_close(&dir);
 
 ## Use drives for images
 
-[Image](/widgets/img) objects can be opened from files too (besides variables stored in the compiled program).
+[Image](/widgets/core/img) objects can be opened from files too (besides variables stored in the compiled program).
 
 To use files in image widgets the following callbacks are required:
 - open

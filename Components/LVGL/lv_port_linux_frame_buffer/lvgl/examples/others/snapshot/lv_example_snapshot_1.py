@@ -1,5 +1,11 @@
 import gc
 import lvgl as lv
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
 
 # Measure memory usage
 gc.enable()
@@ -24,13 +30,13 @@ img_star = lv.img_dsc_t({
 })
 
 def event_cb(e, snapshot_obj):
-    img = e.get_target_obj()
+    img = e.get_target()
 
     if snapshot_obj:
         # no need to free the old source for snapshot_obj, gc will free it for us.
 
         # take a new snapshot, overwrite the old one
-        dsc = lv.snapshot_take(img.get_parent(), lv.COLOR_FORMAT.NATIVE_ALPHA)
+        dsc = lv.snapshot_take(img.get_parent(), lv.img.CF.TRUE_COLOR_ALPHA)
         snapshot_obj.set_src(dsc)
 
     gc.collect()
@@ -61,5 +67,5 @@ for i in range(4):
     img.set_style_bg_opa(lv.OPA.COVER, 0)
     img.set_style_transform_zoom(400, lv.STATE.PRESSED)
     img.add_flag(img.FLAG.CLICKABLE)
-    img.add_event(lambda e: event_cb(e, snapshot_obj), lv.EVENT.PRESSED, None)
-    img.add_event(lambda e: event_cb(e, snapshot_obj), lv.EVENT.RELEASED, None)
+    img.add_event_cb(lambda e: event_cb(e, snapshot_obj), lv.EVENT.PRESSED, None)
+    img.add_event_cb(lambda e: event_cb(e, snapshot_obj), lv.EVENT.RELEASED, None)

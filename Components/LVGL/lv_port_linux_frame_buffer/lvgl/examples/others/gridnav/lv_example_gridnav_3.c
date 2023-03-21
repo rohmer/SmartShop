@@ -4,7 +4,7 @@
 static void cont_sub_event_cb(lv_event_t * e)
 {
     uint32_t k = lv_event_get_key(e);
-    lv_obj_t * obj = lv_event_get_target(e);
+    lv_obj_t * obj = lv_event_get_current_target(e);
     if(k == LV_KEY_ENTER) {
         lv_group_focus_obj(obj);
     }
@@ -72,7 +72,7 @@ void lv_example_gridnav_3(void)
     /*Only the container needs to be in a group*/
     lv_group_add_obj(lv_group_get_default(), cont_sub2);
 
-    lv_obj_add_event(cont_sub2, cont_sub_event_cb, LV_EVENT_KEY, NULL);
+    lv_obj_add_event_cb(cont_sub2, cont_sub_event_cb, LV_EVENT_KEY, NULL);
 
     /*Use flex here, but works with grid or manually placed objects as well*/
     lv_obj_set_flex_flow(cont_sub2, LV_FLEX_FLOW_ROW_WRAP);

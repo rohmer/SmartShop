@@ -1,3 +1,10 @@
+from imagetools import get_png_info, open_png
+
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
+
 anim_imgs = [None]*3
 # Create an image from the png file
 try:
@@ -40,7 +47,7 @@ animimg0 = lv.animimg(lv.scr_act())
 animimg0.center()
 animimg0.set_src(anim_imgs, 3)
 animimg0.set_duration(1000)
-animimg0.set_repeat_count(lv.ANIM_REPEAT_INFINITE)
+animimg0.set_repeat_count(lv.ANIM_REPEAT.INFINITE)
 animimg0.start()
 
 

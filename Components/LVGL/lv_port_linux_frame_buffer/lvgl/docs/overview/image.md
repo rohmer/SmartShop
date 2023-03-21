@@ -104,11 +104,11 @@ static lv_img_dsc_t my_img_dsc = {
 
 If the color format is `LV_IMG_CF_TRUE_COLOR_ALPHA` you can set `data_size` like `80 * 60 * LV_IMG_PX_SIZE_ALPHA_BYTE`.
 
-Another (possibly simpler) option to create and display an image at run-time is to use the [Canvas](/widgets/canvas) object.
+Another (possibly simpler) option to create and display an image at run-time is to use the [Canvas](/widgets/core/canvas) object.
 
 ### Use images
 
-The simplest way to use an image in LVGL is to display it with an [lv_img](/widgets/img) object:
+The simplest way to use an image in LVGL is to display it with an [lv_img](/widgets/core/img) object:
 
 ```c
 lv_obj_t * icon = lv_img_create(lv_scr_act(), NULL);
@@ -316,42 +316,6 @@ Let's say you have loaded a PNG image into a `lv_img_dsc_t my_png` variable and 
 
 To do this, use `lv_img_cache_invalidate_src(&my_png)`. If `NULL` is passed as a parameter, the whole cache will be cleaned.
 
-### Custom cache algorithm
-If you want to implement your own cache algorithm, you can refer to the following code to replace the LVGL built-in image cache manager:
-```c
-static _lv_img_cache_entry_t * my_img_cache_open(const void * src, lv_color_t color, int32_t frame_id)
-{
-  ...
-}
-
-static void my_img_cache_set_size(uint16_t new_entry_cnt)
-{
-  ...
-}
-
-static void my_img_cache_invalidate_src(const void * src)
-{
-  ...
-}
-
-void my_img_cache_init(void)
-{
-  /* Before replacing the image cache manager,
-   * you should ensure that all caches are cleared to prevent memory leaks.
-   */
-  lv_img_cache_invalidate_src(NULL);
-
-  /*Initialize image cache manager.*/
-  lv_img_cache_manager_t manager;
-  lv_img_cache_manager_init(&manager);
-  manager.open_cb = my_img_cache_open;
-  manager.set_size_cb = my_img_cache_set_size;
-  manager.invalidate_src_cb = my_img_cache_invalidate_src;
-
-  /*Apply image cache manager to LVGL.*/
-  lv_img_cache_manager_apply(&manager);
-}
-```
 
 ## API
 

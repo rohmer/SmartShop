@@ -32,20 +32,9 @@ class Lv_Roller_3():
             fs_drv = lv.fs_drv_t()
             fs_driver.fs_register(fs_drv, 'S')
             print("montserrat-22 not enabled in lv_conf.h, dynamically loading the font")
-    
-        # get the directory in which the script is running
-        try:
-            script_path = __file__[:__file__.rfind('/')] if __file__.find('/') >= 0 else '.'
-        except NameError:
-            print("Could not find script path")
-            script_path = ''
-        if script_path != '':
-            try:
-                font_montserrat_22 = lv.font_load("S:" + script_path + "/../../assets/font/montserrat-22.fnt")
-                roller1.set_style_text_font(font_montserrat_22,lv.PART.SELECTED)        
-            except:
-                print("Cannot load font file montserrat-22.fnt")
-                
+            font_montserrat_22 = lv.font_load("S:" + "../../assets/font/montserrat-22.fnt")
+            roller1.set_style_text_font(font_montserrat_22,lv.PART.SELECTED)
+
         roller1.set_options("\n".join([
             "January",
             "February",
@@ -62,12 +51,12 @@ class Lv_Roller_3():
 
         roller1.center()
         roller1.set_visible_row_count(3)
-        roller1.add_event(self.mask_event_cb, lv.EVENT.ALL, None)
+        roller1.add_event_cb(self.mask_event_cb, lv.EVENT.ALL, None)
 
     def mask_event_cb(self,e):
 
         code = e.get_code()
-        obj = e.get_target_obj()
+        obj = e.get_target()
 
         if code == lv.EVENT.COVER_CHECK:
             e.set_cover_res(lv.COVER_RES.MASKED)

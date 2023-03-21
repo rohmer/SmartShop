@@ -11,7 +11,6 @@
 #include "lv_mem.h"
 #include "lv_ll.h"
 #include "lv_gc.h"
-#include "lv_printf.h"
 
 /*********************
  *      DEFINES
@@ -142,12 +141,12 @@ LV_ATTRIBUTE_TIMER_HANDLER uint32_t lv_timer_handler(void)
 
     already_running = false; /*Release the mutex*/
 
-    TIMER_TRACE("finished (%" LV_PRIu32 " ms until the next timer call)", time_till_next);
+    TIMER_TRACE("finished (%d ms until the next timer call)", time_till_next);
     return time_till_next;
 }
 
 /**
- * Create an "empty" timer. It needs to be initialized with at least
+ * Create an "empty" timer. It needs to initialized with at least
  * `lv_timer_set_cb` and `lv_timer_set_period`
  * @return pointer to the created timer
  */
@@ -186,7 +185,7 @@ lv_timer_t * lv_timer_create(lv_timer_cb_t timer_xcb, uint32_t period, void * us
 }
 
 /**
- * Set the callback to the timer (the function to call periodically)
+ * Set the callback the timer (the function to call periodically)
  * @param timer pointer to a timer
  * @param timer_cb the function to call periodically
  */
@@ -204,7 +203,7 @@ void lv_timer_del(lv_timer_t * timer)
     _lv_ll_remove(&LV_GC_ROOT(_lv_timer_ll), timer);
     timer_deleted = true;
 
-    lv_free(timer);
+    lv_mem_free(timer);
 }
 
 /**
@@ -312,9 +311,7 @@ static bool lv_timer_exec(lv_timer_t * timer)
         timer->last_run = lv_tick_get();
         TIMER_TRACE("calling timer callback: %p", *((void **)&timer->timer_cb));
         if(timer->timer_cb && original_repeat_count != 0) timer->timer_cb(timer);
-        if(!timer_deleted) TIMER_TRACE("timer callback %p finished", *((void **)&timer->timer_cb));
-        else TIMER_TRACE("timer callback finished");
-
+        TIMER_TRACE("timer callback %p finished", *((void **)&timer->timer_cb));
         LV_ASSERT_MEM_INTEGRITY();
         exec = true;
     }

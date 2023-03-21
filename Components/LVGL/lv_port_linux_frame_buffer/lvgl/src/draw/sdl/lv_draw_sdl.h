@@ -16,9 +16,9 @@ extern "C" {
  *********************/
 #include "../../lv_conf_internal.h"
 
-#if LV_USE_DRAW_SDL
+#if LV_USE_GPU_SDL
 
-#include LV_DRAW_SDL_INCLUDE_PATH
+#include LV_GPU_SDL_INCLUDE_PATH
 
 #include "../lv_draw.h"
 #include "../../core/lv_disp.h"
@@ -57,13 +57,13 @@ typedef struct {
  * GLOBAL PROTOTYPES
  **********************/
 
-void lv_draw_sdl_init_ctx(lv_disp_t * disp_drv, lv_draw_ctx_t * draw_ctx);
+void lv_draw_sdl_init_ctx(lv_disp_drv_t * disp_drv, lv_draw_ctx_t * draw_ctx);
 
 /**
  * @brief Free caches
  *
  */
-void lv_draw_sdl_deinit_ctx(lv_disp_t * disp_drv, lv_draw_ctx_t * draw_ctx);
+void lv_draw_sdl_deinit_ctx(lv_disp_drv_t * disp_drv, lv_draw_ctx_t * draw_ctx);
 
 SDL_Texture * lv_draw_sdl_create_screen_texture(SDL_Renderer * renderer, lv_coord_t hor, lv_coord_t ver);
 
@@ -87,7 +87,7 @@ SDL_Texture * lv_draw_sdl_create_screen_texture(SDL_Renderer * renderer, lv_coor
  *      MACROS
  **********************/
 
-#endif /*LV_USE_DRAW_SDL*/
+#endif /*LV_USE_GPU_SDL*/
 
 #ifdef __cplusplus
 } /*extern "C"*/

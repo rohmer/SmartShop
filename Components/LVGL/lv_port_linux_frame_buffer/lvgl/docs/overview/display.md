@@ -25,14 +25,14 @@ By default, the last created (and only) display is used.
 If you pass `NULL` as `disp` parameter to display related functions the default display will usually be used.
 E.g. `lv_disp_trig_activity(NULL)` will trigger a user activity on the default display. (See below in [Inactivity](#Inactivity)).
 
-### Duplicate display
+### Mirror display
 
-To duplicate the image of a display to another display, you don't need to the use multi-display support. Just transfer the buffer received in `flush_cb` to the other display too.
+To mirror the image of a display to another display, you don't need to use multi-display support. Just transfer the buffer received in `drv.flush_cb` to the other display too.
 
 ### Split image
 You can create a larger virtual display from an array of smaller ones. You can create it as below:
 1. Set the resolution of the displays to the large display's resolution.
-2. In `flush_cb`, truncate and modify the `area` parameter for each display.
+2. In `drv.flush_cb`, truncate and modify the `area` parameter for each display.
 3. Send the buffer's content to each real display with the truncated area.
 
 ## Screens
@@ -47,7 +47,7 @@ Be sure not to confuse displays and screens:
 Screens can be considered the highest level containers which have no parent.
 A screen's size is always equal to its display and their origin is (0;0). Therefore, a screen's coordinates can't be changed, i.e. `lv_obj_set_pos()`, `lv_obj_set_size()` or similar functions can't be used on screens.
 
-A screen can be created from any object type but the two most typical types are [Base object](/widgets/obj) and [Image](/widgets/img) (to create a wallpaper).
+A screen can be created from any object type but the two most typical types are [Base object](/widgets/obj) and [Image](/widgets/core/img) (to create a wallpaper).
 
 To create a screen, use `lv_obj_t * scr = lv_<type>_create(NULL, copy)`. `copy` can be an existing screen copied into the new screen.
 
@@ -57,17 +57,18 @@ Screens can be deleted with `lv_obj_del(scr)`, but ensure that you do not delete
 
 ### Transparent screens
 
-Usually, the opacity of the screen is `LV_OPA_COVER` to provide a solid background for its children. If this is not the case (opacity &lt; 100%) the display's `bottom_layer` will be visible.
-If the bottom layer's opacity is also not `LV_OPA_COVER` LVGL has no solid background to draw.
+Usually, the opacity of the screen is `LV_OPA_COVER` to provide a solid background for its children. If this is not the case (opacity &lt; 100%) the display's background color or image will be visible.
+See the [Display background](#display-background) section for more details. If the display's background opacity is also not `LV_OPA_COVER` LVGL has no solid background to draw.
 
-This configuration (transparent screen and display) could be used to create for example OSD menus where a video is played on a lower layer, and a menu is overlaid on an upper layer.
+This configuration (transparent screen and display) could be used to create for example OSD menus where a video is played on a lower layer, and a menu is overlayed on an upper layer.
 
-To properly render the screen the display's color format needs to be set to one with alpha channel.
+To handle transparent displays, special (slower) color mixing algorithms need to be used by LVGL so this feature needs to enabled with `LV_COLOR_SCREEN_TRANSP` in `lv_conf.h`.
+The Alpha channel of 32-bit colors will be 0 where there are no objects and 255 where there are solid objects.
 
 In summary, to enable transparent screens and displays for OSD menu-like UIs:
-- Set the screen's `bg_opa` to transparent: `lv_obj_set_style_local_bg_opa(lv_scr_act(), LV_OPA_TRANSP, 0)`
-- Set the bottom layer's `bg_opa` to transparent: `lv_obj_set_style_local_bg_opa(lv_bottom_layer(), LV_OPA_TRANSP, 0)`
-- Set a color format with alpha channel. E.g. `lv_disp_set_color_format(disp, LV_COLOR_FORMAT_NATIVE_ALPHA)`
+- Enable `LV_COLOR_SCREEN_TRANSP` in `lv_conf.h`
+- Set the screen's opacity to `LV_OPA_TRANSP` e.g. with `lv_obj_set_style_local_bg_opa(lv_scr_act(), LV_OBJMASK_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_TRANSP)`
+- Set the display opacity to `LV_OPA_TRANSP` with `lv_disp_set_bg_opa(NULL, LV_OPA_TRANSP);`
 
 ## Features of displays
 

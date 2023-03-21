@@ -2,13 +2,18 @@
 
 ## Types of input devices
 
-To create an input device use
+To register an input device an `lv_indev_drv_t` variable has to be initialized. **Be sure to register at least one display before you register any input devices.**
 
 ```c
 /*Register at least one display before you register any input devices*/
-lv_indev_t * indev = lv_indev_create();
-lv_indev_set_type(indev, LV_INDEV_TYPE_...);   /*See below.*/
-lv_indev_set_read_cb(indev, read_cb);  /*See below.*/
+lv_disp_drv_register(&disp_drv);
+
+static lv_indev_drv_t indev_drv;
+lv_indev_drv_init(&indev_drv);      /*Basic initialization*/
+indev_drv.type =...                 /*See below.*/
+indev_drv.read_cb =...              /*See below.*/
+/*Register the driver in LVGL and save the created input device object*/
+lv_indev_t * my_indev = lv_indev_drv_register(&indev_drv);
 ```
 
 The `type` member can be:
@@ -25,10 +30,12 @@ Visit [Input devices](/overview/indev) to learn more about input devices in gene
 Input devices that can click points on the screen belong to this category.
 
 ```c
-lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER);
+indev_drv.type = LV_INDEV_TYPE_POINTER;
+indev_drv.read_cb = my_input_read;
+
 ...
 
-void my_input_read(lv_indev_t * indev, lv_indev_data_t*data)
+void my_input_read(lv_indev_drv_t * drv, lv_indev_data_t*data)
 {
   if(touchpad_pressed) {
     data->point.x = touchpad_x;
@@ -40,25 +47,25 @@ void my_input_read(lv_indev_t * indev, lv_indev_data_t*data)
 }
 ```
 
-To set a mouse cursor use `lv_indev_set_cursor(indev, &img_cursor)`.
+To set a mouse cursor use `lv_indev_set_cursor(my_indev, &img_cursor)`. (`my_indev` is the return value of `lv_indev_drv_register`)
 
 ### Keypad or keyboard
 
 Full keyboards with all the letters or simple keypads with a few navigation buttons belong here.
 
 To use a keyboard/keypad:
-- Register a `read_cb` function and use `LV_INDEV_TYPE_KEYPAD` type.
+- Register a `read_cb` function with `LV_INDEV_TYPE_KEYPAD` type.
 - An object group has to be created: `lv_group_t * g = lv_group_create()` and objects have to be added to it with `lv_group_add_obj(g, obj)`
-- The created group has to be assigned to an input device: `lv_indev_set_group(indev, g)`
+- The created group has to be assigned to an input device: `lv_indev_set_group(my_indev, g)` (`my_indev` is the return value of `lv_indev_drv_register`)
 - Use `LV_KEY_...` to navigate among the objects in the group. See `lv_core/lv_group.h` for the available keys.
 
 ```c
-
-lv_indev_set_type(indev, LV_INDEV_TYPE_KEYPAD);
+indev_drv.type = LV_INDEV_TYPE_KEYPAD;
+indev_drv.read_cb = keyboard_read;
 
 ...
 
-void keyboard_read(lv_indev_t * indev, lv_indev_data_t*data){
+void keyboard_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
   data->key = last_key();            /*Get the last pressed or released key*/
 
   if(key_pressed()) data->state = LV_INDEV_STATE_PRESSED;
@@ -84,11 +91,12 @@ To use an *Encoder* (similarly to the *Keypads*) the objects should be added to 
 
 
 ```c
-lv_indev_set_type(indev, LV_INDEV_TYPE_ENCODER);
+indev_drv.type = LV_INDEV_TYPE_ENCODER;
+indev_drv.read_cb = encoder_read;
 
 ...
 
-void encoder_read(lv_indev_t * indev, lv_indev_data_t*data){
+void encoder_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
   data->enc_diff = enc_get_new_moves();
 
   if(enc_pressed()) data->state = LV_INDEV_STATE_PRESSED;
@@ -106,16 +114,15 @@ You need to have 3 buttons available:
 - `LV_KEY_RIGHT` will simulate turning encoder right
 - other keys will be passed to the focused widget
 
-
 If you hold the keys it will simulate an encoder advance with period specified in `indev_drv.long_press_repeat_time`.
 
 ```c
-
-lv_indev_set_type(indev, LV_INDEV_TYPE_ENCODER);
+indev_drv.type = LV_INDEV_TYPE_ENCODER;
+indev_drv.read_cb = encoder_with_keys_read;
 
 ...
 
-void encoder_with_keys_read(lv_indev_t * indev, lv_indev_data_t*data){
+void encoder_with_keys_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
   data->key = last_key();            /*Get the last pressed or released key*/
                                      /* use LV_KEY_ENTER for encoder press */
   if(key_pressed()) data->state = LV_INDEV_STATE_PRESSED;
@@ -138,12 +145,12 @@ To assign buttons to coordinates use `lv_indev_set_button_points(my_indev, point
 ```
 
 ```c
-
-lv_indev_set_type(indev, LV_INDEV_TYPE_BUTTON);
+indev_drv.type = LV_INDEV_TYPE_BUTTON;
+indev_drv.read_cb = button_read;
 
 ...
 
-void button_read(lv_indev_t * indev, lv_indev_data_t*data){
+void button_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
     static uint32_t last_btn = 0;   /*Store the last pressed button*/
     int btn_pr = my_btn_read();     /*Get the ID (0,1,2...) of the pressed button*/
     if(btn_pr >= 0) {               /*Is there a button press? (E.g. -1 indicated no button was pressed)*/
@@ -161,16 +168,16 @@ void button_read(lv_indev_t * indev, lv_indev_data_t*data){
 
 ### Parameters
 
-The default value of the following parameters can be changed in `lv_indev_t`:
+The default value of the following parameters can be changed in `lv_indev_drv_t`:
 - `scroll_limit` Number of pixels to slide before actually scrolling the object.
 - `scroll_throw`  Scroll throw (momentum) slow-down in [%]. Greater value means faster slow-down.
 - `long_press_time` Press time to send `LV_EVENT_LONG_PRESSED` (in milliseconds)
 - `long_press_repeat_time` Interval of sending `LV_EVENT_LONG_PRESSED_REPEAT` (in milliseconds)
-- `read_timer` pointer to the `lv_timer` which reads the input device. Its parameters can be changed by `lv_timer_...()` functions. `LV_DEF_REFR_PERIOD` in `lv_hal_disp.h` sets the default read period.
+- `read_timer` pointer to the `lv_timer` which reads the input device. Its parameters can be changed by `lv_timer_...()` functions. `LV_INDEV_DEF_READ_PERIOD` in `lv_conf.h` sets the default read period.
 
 ### Feedback
 
-Besides `read_cb` a `feedback_cb` callback can be also specified in `lv_indev_t`.
+Besides `read_cb` a `feedback_cb` callback can be also specified in `lv_indev_drv_t`.
 `feedback_cb` is called when any type of event is sent by the input devices (independently of its type). This allows generating feedback for the user, e.g. to play a sound on `LV_EVENT_CLICKED`.
 
 
@@ -193,7 +200,7 @@ Setting the `data->continue_reading` flag will tell LVGL there is more data to r
 
 ```eval_rst
 
-.. doxygenfile:: lv_indev.h
+.. doxygenfile:: lv_hal_indev.h
   :project: lvgl
 
 ```

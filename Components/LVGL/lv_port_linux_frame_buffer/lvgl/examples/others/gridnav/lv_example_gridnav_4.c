@@ -19,7 +19,7 @@ void lv_example_gridnav_4(void)
 
     lv_obj_t * list = lv_list_create(lv_scr_act());
     lv_gridnav_add(list, LV_GRIDNAV_CTRL_ROLLOVER);
-    lv_obj_align(list, LV_ALIGN_LEFT_MID, 10, 0);
+    lv_obj_align(list, LV_ALIGN_LEFT_MID, 0, 10);
     lv_group_add_obj(lv_group_get_default(), list);
 
     uint32_t i;
@@ -34,12 +34,12 @@ void lv_example_gridnav_4(void)
 
         lv_snprintf(buf, sizeof(buf), "File %d", i + 1);
         lv_obj_t * item = lv_list_add_btn(list, LV_SYMBOL_FILE, buf);
-        lv_obj_add_event(item, event_handler, LV_EVENT_CLICKED, NULL);
+        lv_obj_add_event_cb(item, event_handler, LV_EVENT_CLICKED, NULL);
         lv_group_remove_obj(item);  /*The default group adds it automatically*/
     }
 
     lv_obj_t * btn = lv_btn_create(lv_scr_act());
-    lv_obj_align(btn, LV_ALIGN_RIGHT_MID, -10, 0);
+    lv_obj_align(btn, LV_ALIGN_RIGHT_MID, 0, -10);
     lv_obj_t * label = lv_label_create(btn);
     lv_label_set_text(label, "Button");
 }

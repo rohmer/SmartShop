@@ -76,7 +76,7 @@ static void line_event_cb(lv_event_t * e)
 void test_line_should_update_extra_draw_size_based_on_style(void)
 {
     /* Setup an event handler for line extra draw size event */
-    lv_obj_add_event(line, line_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(line, line_event_cb, LV_EVENT_ALL, NULL);
     /* Trigger the extra draw size event */
     lv_obj_refresh_ext_draw_size(line);
 
@@ -90,30 +90,6 @@ void test_line_should_update_extra_draw_size_based_on_style(void)
     lv_obj_refresh_ext_draw_size(line);
 
     TEST_ASSERT_EQUAL(final_extra_draw_size, _lv_obj_get_ext_draw_size(line));
-}
-
-
-void test_line_basic_render(void)
-{
-    static lv_point_t points[] = { {5, 5},
-        {100, 5},    /*Horizontal*/
-        {100, 100},  /*Vertical*/
-        {120, 5},    /*Steep*/
-        {200, 20},   /*Flat*/
-    };
-    uint16_t point_cnt = (uint16_t) sizeof(points) / sizeof(lv_point_t);
-    lv_line_set_points(line, points, point_cnt);
-    lv_obj_set_pos(line, 10, 10);
-
-
-    line = lv_line_create(active_screen);
-    lv_line_set_points(line, points, point_cnt);
-    lv_obj_set_pos(line, 400, 0);
-    lv_obj_set_style_line_width(line, 5, LV_PART_MAIN);
-    lv_obj_set_style_line_dash_gap(line, 3, LV_PART_MAIN);
-    lv_obj_set_style_line_dash_width(line, 10, LV_PART_MAIN);
-
-    TEST_ASSERT_EQUAL_SCREENSHOT("line_1.png");
 }
 
 #endif

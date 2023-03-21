@@ -1,3 +1,9 @@
+from imagetools import get_png_info, open_png
+# Register PNG image decoder
+decoder = lv.img.decoder_create()
+decoder.info_cb = get_png_info
+decoder.open_cb = open_png
+
 # Create an image from the png file
 try:
     with open('../assets/img_cogwheel_argb.png', 'rb') as f:
@@ -26,7 +32,7 @@ style.set_border_color(lv.palette_main(lv.PALETTE.BLUE))
 
 style.set_img_recolor(lv.palette_main(lv.PALETTE.BLUE))
 style.set_img_recolor_opa(lv.OPA._50)
-style.set_transform_angle(300)
+# style.set_transform_angle(300)
 
 # Create an object with the new style
 obj = lv.img(lv.scr_act())

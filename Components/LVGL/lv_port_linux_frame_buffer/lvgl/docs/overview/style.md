@@ -117,7 +117,7 @@ The following predefined parts exist in LVGL:
 - `LV_PART_CUSTOM_FIRST` Custom part identifiers can be added starting from here.
 
 
-For example a [Slider](/widgets/slider) has three parts:
+For example a [Slider](/widgets/core/slider) has three parts:
 - Background
 - Indicator
 - Knob
@@ -176,7 +176,7 @@ Styles can be built as `const` too to save RAM:
 const lv_style_const_prop_t style1_props[] = {
    LV_STYLE_CONST_WIDTH(50),
    LV_STYLE_CONST_HEIGHT(50),
-   LV_STYLE_CONST_PROPS_END
+   LV_STYLE_PROP_INV,
 };
 
 LV_STYLE_CONST_INIT(style1, style1_props);
@@ -201,19 +201,6 @@ Using `lv_obj_add_style`:
 ```c
 lv_obj_add_style(btn, &style_btn, 0);      				  /*Default button style*/
 lv_obj_add_style(btn, &btn_red, LV_STATE_PRESSED);  /*Overwrite only some colors to red when pressed*/
-```
-
-### Replace styles
-To replace a specific style of an object use `lv_obj_replace_style(obj, old_style, new_style, selector)`. This function
-will only replace `old_style` with `new_style` if the `selector` matches the `selector` used in `lv_obj_add_style`.
-Both styles, i.e. `old_style` and `new_style`, must not be `NULL` (for adding and removing separate functions exist).
-If the combination of `old_style` and `selector` exists multiple times in `obj`'s styles, all occurrences will be
-replaced. The return value of the function indicates whether at least one successful replacement took place.
-
-Using `lv_obj_replace_style`:
-```c
-lv_obj_add_style(btn, &style_btn, 0);                      /*Add a button style*/
-lv_obj_replace_style(btn, &style_btn, &new_style_btn, 0);  /*Replace the button style with a different one*/
 ```
 
 ### Remove styles

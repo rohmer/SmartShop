@@ -9,7 +9,7 @@ You should read this first to get a general impression and read the detailed [Po
 Instead of porting LVGL to embedded hardware straight away, it's highly recommended to get started in a simulator first.
 
 LVGL is ported to many IDEs to be sure you will find your favorite one.
-Go to the [Simulators](/get-started/platforms/pc-simulator) section to get ready-to-use projects that can be run on your PC.
+Go to the [Simulators](/get-started/pc-simulator) section to get ready-to-use projects that can be run on your PC.
 This way you can save the time of porting for now and get some experience with LVGL immediately.
 
 ## Add LVGL into your project
@@ -26,12 +26,12 @@ Alternatively, configure `LV_TICK_CUSTOM` (see `lv_conf.h`) so that LVGL can ret
 The buffer size can be set freely but 1/10 screen size is a good starting point.
 ```c
 static lv_disp_draw_buf_t draw_buf;
-static lv_color_t buf1[MY_DISP_HOR_RES * MY_DISP_VER_RES / 10];                        /*Declare a buffer for 1/10 screen size*/
-lv_disp_draw_buf_init(&draw_buf, buf1, NULL, MY_DISP_HOR_RES * MY_DISP_VER_RES / 10);  /*Initialize the display buffer.*/
+static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES / 10];                        /*Declare a buffer for 1/10 screen size*/
+lv_disp_draw_buf_init(&draw_buf, buf1, NULL, MY_DISP_HOR_RES * MY_DISP_VER_SER / 10);  /*Initialize the display buffer.*/
 ```
 - Implement and register a function which can copy the rendered image to an area of your display:
 ```c
-static lv_disp_t disp_drv;        /*Descriptor of a display driver*/
+static lv_disp_drv_t disp_drv;        /*Descriptor of a display driver*/
 lv_disp_drv_init(&disp_drv);          /*Basic initialization*/
 disp_drv.flush_cb = my_disp_flush;    /*Set your driver function*/
 disp_drv.draw_buf = &draw_buf;        /*Assign the buffer to the display*/
@@ -39,7 +39,7 @@ disp_drv.hor_res = MY_DISP_HOR_RES;   /*Set the horizontal resolution of the dis
 disp_drv.ver_res = MY_DISP_VER_RES;   /*Set the vertical resolution of the display*/
 lv_disp_drv_register(&disp_drv);      /*Finally register the driver*/
 
-void my_disp_flush(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p)
+void my_disp_flush(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * color_p)
 {
     int32_t x, y;
     /*It's a very slow but simple implementation.
@@ -57,13 +57,13 @@ void my_disp_flush(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_
 ```
 - Implement and register a function which can read an input device. E.g. for a touchpad:
 ```c
-static lv_indev_t indev_drv;           /*Descriptor of a input device driver*/
+static lv_indev_drv_t indev_drv;           /*Descriptor of a input device driver*/
 lv_indev_drv_init(&indev_drv);             /*Basic initialization*/
 indev_drv.type = LV_INDEV_TYPE_POINTER;    /*Touch pad is a pointer-like device*/
 indev_drv.read_cb = my_touchpad_read;      /*Set your driver function*/
 lv_indev_drv_register(&indev_drv);         /*Finally register the driver*/
 
-void my_touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
+void my_touchpad_read(lv_indev_t * indev, lv_indev_data_t * data)
 {
     /*`touchpad_is_pressed` and `touchpad_get_xy` needs to be implemented by you*/
     if(touchpad_is_pressed()) {
@@ -115,7 +115,7 @@ Along with the basic attributes, widgets can have type specific parameters which
 lv_slider_set_value(slider1, 70, LV_ANIM_ON);
 ```
 
-To see the full API visit the documentation of the widgets or the related header file (e.g. [lvgl/src/widgets/slider/lv_slider.h](https://github.com/lvgl/lvgl/blob/master/src/widgets/slider/lv_slider.h)).
+To see the full API visit the documentation of the widgets or the related header file (e.g. [lvgl/src/widgets/lv_slider.h](https://github.com/lvgl/lvgl/blob/master/src/widgets/lv_slider.h)).
 
 
 
@@ -126,7 +126,7 @@ You can assign one or more callbacks to an object which will be called if the ob
 A callback is assigned like this:
 
 ```c
-lv_obj_add_event(btn, btn_event_cb, LV_EVENT_CLICKED, NULL); /*Assign a callback to the button*/
+lv_obj_add_event_cb(btn, btn_event_cb, LV_EVENT_CLICKED, NULL); /*Assign a callback to the button*/
 
 ...
 
@@ -152,7 +152,7 @@ To learn all features of the events go to the [Event overview](/overview/event) 
 
 ### Parts
 Widgets might be built from one or more *parts*. For example, a button has only one part called `LV_PART_MAIN`.
-However, a [Slider](/widgets/slider) has `LV_PART_MAIN`, `LV_PART_INDICATOR` and `LV_PART_KNOB`.
+However, a [Slider](/widgets/core/slider) has `LV_PART_MAIN`, `LV_PART_INDICATOR` and `LV_PART_KNOB`.
 
 By using parts you can apply different styles to sub-elements of a widget. (See below)
 
@@ -251,7 +251,7 @@ The theme for your application is a compile time configuration set in `lv_conf.h
 ```
 
 ## Micropython
-Learn more about [Micropython](/get-started/bindings/micropython).
+Learn more about [Micropython](/get-started/micropython).
 ```python
 # Create a Button and a Label
 scr = lv.obj()

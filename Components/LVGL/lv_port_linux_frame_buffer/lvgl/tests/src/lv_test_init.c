@@ -2,7 +2,6 @@
 #if LV_BUILD_TEST
 #include "lv_test_init.h"
 #include "lv_test_indev.h"
-#include "../../src/misc/lv_malloc_builtin.h"
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +11,7 @@
 #define VER_RES 480
 
 static void hal_init(void);
-static void dummy_flush_cb(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p);
+static void dummy_flush_cb(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p);
 
 lv_indev_t * lv_test_mouse_indev;
 lv_indev_t * lv_test_keypad_indev;
@@ -29,44 +28,50 @@ void lv_test_init(void)
 
 void lv_test_deinit(void)
 {
-#if LV_USE_BUILTIN_MALLOC
-    lv_mem_deinit_builtin();
-#endif
+    lv_mem_deinit();
 }
 
 static void hal_init(void)
 {
-    lv_disp_t * disp = lv_disp_create(HOR_RES, VER_RES);
-    lv_disp_set_draw_buffers(disp, disp_buf1, NULL, HOR_RES * VER_RES, LV_DISP_RENDER_MODE_FULL);
-    lv_disp_set_flush_cb(disp, dummy_flush_cb);
+    static lv_disp_draw_buf_t draw_buf;
 
+    lv_disp_draw_buf_init(&draw_buf, disp_buf1, NULL, HOR_RES * VER_RES);
 
-    lv_test_mouse_indev = lv_indev_create();
-    lv_indev_set_type(lv_test_mouse_indev, LV_INDEV_TYPE_POINTER);
-    lv_indev_set_read_cb(lv_test_mouse_indev,  lv_test_mouse_read_cb);
+    static lv_disp_drv_t disp_drv;
+    lv_disp_drv_init(&disp_drv);
+    disp_drv.draw_buf = &draw_buf;
+    disp_drv.flush_cb = dummy_flush_cb;
+    disp_drv.hor_res = HOR_RES;
+    disp_drv.ver_res = VER_RES;
+    lv_disp_drv_register(&disp_drv);
 
-    lv_test_keypad_indev = lv_indev_create();
-    lv_indev_set_type(lv_test_keypad_indev, LV_INDEV_TYPE_KEYPAD);
-    lv_indev_set_read_cb(lv_test_keypad_indev,  lv_test_keypad_read_cb);
+    static lv_indev_drv_t indev_mouse_drv;
+    lv_indev_drv_init(&indev_mouse_drv);
+    indev_mouse_drv.type = LV_INDEV_TYPE_POINTER;
+    indev_mouse_drv.read_cb = lv_test_mouse_read_cb;
+    lv_test_mouse_indev = lv_indev_drv_register(&indev_mouse_drv);
 
-    lv_test_encoder_indev = lv_indev_create();
-    lv_indev_set_type(lv_test_encoder_indev, LV_INDEV_TYPE_ENCODER);
-    lv_indev_set_read_cb(lv_test_encoder_indev,  lv_test_encoder_read_cb);
+    static lv_indev_drv_t indev_keypad_drv;
+    lv_indev_drv_init(&indev_keypad_drv);
+    indev_keypad_drv.type = LV_INDEV_TYPE_KEYPAD;
+    indev_keypad_drv.read_cb = lv_test_keypad_read_cb;
+    lv_test_keypad_indev = lv_indev_drv_register(&indev_keypad_drv);
+
+    static lv_indev_drv_t indev_encoder_drv;
+    lv_indev_drv_init(&indev_encoder_drv);
+    indev_encoder_drv.type = LV_INDEV_TYPE_ENCODER;
+    indev_encoder_drv.read_cb = lv_test_encoder_read_cb;
+    lv_test_encoder_indev = lv_indev_drv_register(&indev_encoder_drv);
 }
 
-static void dummy_flush_cb(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p)
+static void dummy_flush_cb(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
     LV_UNUSED(area);
     LV_UNUSED(color_p);
 
-    for(int y = area->y1; y <= area->y2; y++) {
-        for(int x = area->x1; x <= area->x2; x++) {
-            test_fb[y * HOR_RES + x] = *color_p;
-            color_p++;
-        }
-    }
+    memcpy(test_fb, color_p, lv_area_get_size(area) * sizeof(lv_color_t));
 
-    lv_disp_flush_ready(disp);
+    lv_disp_flush_ready(disp_drv);
 }
 
 uint32_t custom_tick_get(void)
