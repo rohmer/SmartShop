@@ -44,7 +44,6 @@ file(GLOB_RECURSE src1
 )
     
 add_library(microhttpd SHARED  
-    ${src1}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection.c 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/connection.h 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/microhttpd/reason_phrase.c 
