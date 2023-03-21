@@ -11,10 +11,6 @@ cp -R Scheduler-master/*.h /usr/local/include
 /bin/bash build-scripts/date.sh
 /bin/bash build-scripts/archive.sh
 /bin/bash build-scripts/uuid.sh
-
-#libwpa
-if [ ! -d /tmp/wpa.build ]; then
-	mkdir /tmp/wpa.build
-fi
-cd /tmp/wpa.build
-
+/bin/bash build-scripts/wpa.sh
+/bin/bash build-scripts/md5.sh
+/bin/bash build-scripts/oatpp.sh
