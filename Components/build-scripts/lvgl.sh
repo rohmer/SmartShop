@@ -1,6 +1,6 @@
 #!/bin/bash
 #LVGL
-bdir=$(pwd)/..
+bdir=$(pwd)
 printf "$bdir\n"
 if [ ! -d /tmp/lvgl.build ]; then
 	mkdir  /tmp/lvgl.build

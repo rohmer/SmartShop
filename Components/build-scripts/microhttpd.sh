@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bdir=$(pwd)/..
+bdir=$(pwd)
 
 apt install libgnutls28-dev libguntls30 -y
 if [ ! -d /tmp/microhttpd.build ]; then

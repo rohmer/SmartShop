@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bdir=$(pwd)/..
+bdir=$(pwd)
 if [ ! -d /tmp/nettle.build ]; then
 	mkdir /tmp/nettle.build
 fi
