@@ -31,6 +31,7 @@
       </FileMasks>
       <TransferNewFilesOnly>true</TransferNewFilesOnly>
       <IncludeSubdirectories>true</IncludeSubdirectories>
+      <SelectedDirectories />
       <DeleteDisappearedFiles>false</DeleteDisappearedFiles>
       <ApplyGlobalExclusionList>true</ApplyGlobalExclusionList>
     </MainSourceTransferCommand>
@@ -52,7 +53,10 @@
       </Version>
     </ToolchainID>
     <ProjectFile>ZeroConf.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <RemoteBuildEnvironment>
+      <Records />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
     <BuildAsRoot>false</BuildAsRoot>
   </Build>
