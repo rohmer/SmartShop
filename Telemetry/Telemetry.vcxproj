@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>sigar;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -119,9 +119,6 @@
     <None Include="Telemetry-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\sigar-master\sigar\sigar.vcxproj">
-      <Project>{21c413e6-0d8e-4b89-9512-0b684c91170f}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>

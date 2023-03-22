@@ -66,9 +66,9 @@
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>sqlite3;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>sqlite3;oatpp;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -111,9 +111,6 @@
     <ClCompile Include="Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
-      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

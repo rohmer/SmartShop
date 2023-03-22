@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>sqlite3;sigar;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -114,12 +114,6 @@
     <None Include="TelemetryAgent-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\sigar-master\sigar\sigar.vcxproj">
-      <Project>{21c413e6-0d8e-4b89-9512-0b684c91170f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
-      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>

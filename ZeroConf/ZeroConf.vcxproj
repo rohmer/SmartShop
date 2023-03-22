@@ -66,9 +66,9 @@
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>cjson;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -118,9 +118,6 @@
     <None Include="ZeroConf-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>
