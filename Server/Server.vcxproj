@@ -64,7 +64,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>=/usr/lib/arm-linux-gnueabihf;=/usr/local/lib/arm-linux-gnueabihf;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;httpserver;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -106,45 +106,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Client\Client.vcxproj">
       <Project>{34c2fa0e-ff32-4016-8048-a1b0925d6596}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
-      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\libuuid-master\libuuid\libuuid.vcxproj">
-      <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\libwpa\libwpa.vcxproj">
-      <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
-      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
-      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\md5-master\MD5\MD5.vcxproj">
-      <Project>{9500ad59-5d75-4d02-82f6-8948b7788191}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
-      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\pigpio-master\pigpio\pigpio.vcxproj">
-      <Project>{979f690b-674f-4d69-99be-a8b2af3df50e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\sigar-master\sigar\sigar.vcxproj">
-      <Project>{21c413e6-0d8e-4b89-9512-0b684c91170f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
-      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
-      <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\WebServer\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
-      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>

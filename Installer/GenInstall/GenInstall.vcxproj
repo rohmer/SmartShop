@@ -63,9 +63,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>icudata;dl;lzma;bz2;xml2;pthread;z;icuuc;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>zstd;lz4;cjson;archive;nettle;acl;lzma;bz2;z;xml2;pthread;dl;icuuc;icudata;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -102,15 +102,6 @@
     <ClInclude Include="Options.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\libuuid-master\libuuid\libuuid.vcxproj">
-      <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\md5-master\MD5\MD5.vcxproj">
-      <Project>{9500ad59-5d75-4d02-82f6-8948b7788191}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\InstallLib\InstallLib.vcxproj">
       <Project>{bcf8ca05-423d-4f70-a11a-311d09fdfe5c}</Project>
     </ProjectReference>

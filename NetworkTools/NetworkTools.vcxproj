@@ -66,9 +66,9 @@
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>wpa;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -103,11 +103,6 @@
   <ItemGroup>
     <None Include="NetworkTools-Debug.vgdbsettings" />
     <None Include="NetworkTools-Release.vgdbsettings" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Components\libwpa\libwpa.vcxproj">
-      <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

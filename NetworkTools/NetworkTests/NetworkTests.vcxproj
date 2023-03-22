@@ -62,8 +62,8 @@
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>sqlite3;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>wpa;sqlite3;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -98,9 +98,6 @@
     <None Include="NetworkTests-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\libwpa\libwpa.vcxproj">
-      <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\NetworkTools.vcxproj">
       <Project>{6ac720e3-988c-48c5-bdb6-093bf8ceaa7b}</Project>
     </ProjectReference>

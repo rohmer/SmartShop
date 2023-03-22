@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt install liblz4-dev libzstd-dev libacl1-dev -y
+
 bdir=$(pwd)
 if [ ! -d /tmp/bzip2.build ]; then
 	mkdir /tmp/bzip2.build

@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>lvgl;lv_drivers;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -109,14 +109,6 @@
   <ItemGroup>
     <None Include="UIWidget-Debug.vgdbsettings" />
     <None Include="UIWidget-Release.vgdbsettings" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
-      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
-      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UIWidget.cpp" />

@@ -168,6 +168,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CMakeLists.txt = CMakeLists.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{129B80A9-5A3E-4FE1-9CCA-47DB07A49CDE}"
+	ProjectSection(SolutionItems) = preProject
+		Components\install_components.sh = Components\install_components.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build-scripts", "build-scripts", "{F76DDFD0-FC46-46FC-87D3-6C68FC163404}"
+	ProjectSection(SolutionItems) = preProject
+		Components\build-scripts\archive.sh = Components\build-scripts\archive.sh
+		Components\build-scripts\base64.sh = Components\build-scripts\base64.sh
+		Components\build-scripts\bzip.sh = Components\build-scripts\bzip.sh
+		Components\build-scripts\cjson.sh = Components\build-scripts\cjson.sh
+		Components\build-scripts\cxxopts.sh = Components\build-scripts\cxxopts.sh
+		Components\build-scripts\date.sh = Components\build-scripts\date.sh
+		Components\build-scripts\httpserver.sh = Components\build-scripts\httpserver.sh
+		Components\build-scripts\lvgl.sh = Components\build-scripts\lvgl.sh
+		Components\build-scripts\md5.sh = Components\build-scripts\md5.sh
+		Components\build-scripts\microhttpd.sh = Components\build-scripts\microhttpd.sh
+		Components\build-scripts\nettle.sh = Components\build-scripts\nettle.sh
+		Components\build-scripts\oatpp.sh = Components\build-scripts\oatpp.sh
+		Components\build-scripts\pigpio.sh = Components\build-scripts\pigpio.sh
+		Components\build-scripts\sigar.sh = Components\build-scripts\sigar.sh
+		Components\build-scripts\sqlite3.sh = Components\build-scripts\sqlite3.sh
+		Components\build-scripts\sqliteorm.sh = Components\build-scripts\sqliteorm.sh
+		Components\build-scripts\uuid.sh = Components\build-scripts\uuid.sh
+		Components\build-scripts\wiringx.sh = Components\build-scripts\wiringx.sh
+		Components\build-scripts\wpa.sh = Components\build-scripts\wpa.sh
+		Components\build-scripts\zeroconf.sh = Components\build-scripts\zeroconf.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -177,7 +206,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -185,7 +213,6 @@ Global
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -217,7 +244,6 @@ Global
 		{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{3A81DBC7-F1C6-4673-93E0-2A0F84A90FAE}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{979F690B-674F-4D69-99BE-A8B2AF3DF50E}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -241,7 +267,6 @@ Global
 		{987900E1-40FB-4A3C-8D94-F52882F56FD2}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{987900E1-40FB-4A3C-8D94-F52882F56FD2}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -249,7 +274,6 @@ Global
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{B43C6936-5D16-4821-8FAB-8B3101BB12E2}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -257,7 +281,6 @@ Global
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{3B0F9500-0318-4ED8-8256-D6603CE7A3B3}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{D6D294F0-B266-4B74-8E55-C7ABEF25896C}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{D6D294F0-B266-4B74-8E55-C7ABEF25896C}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{D6D294F0-B266-4B74-8E55-C7ABEF25896C}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{D6D294F0-B266-4B74-8E55-C7ABEF25896C}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{D6D294F0-B266-4B74-8E55-C7ABEF25896C}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -281,7 +304,6 @@ Global
 		{EFB7F748-EEF2-449B-B678-6455E8C8D991}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{EFB7F748-EEF2-449B-B678-6455E8C8D991}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{3425C9B5-C028-43C6-882A-BB47AA97D14A}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{3425C9B5-C028-43C6-882A-BB47AA97D14A}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{3425C9B5-C028-43C6-882A-BB47AA97D14A}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{3425C9B5-C028-43C6-882A-BB47AA97D14A}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{3425C9B5-C028-43C6-882A-BB47AA97D14A}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -297,7 +319,6 @@ Global
 		{BCF8CA05-423D-4F70-A11A-311D09FDFE5C}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{BCF8CA05-423D-4F70-A11A-311D09FDFE5C}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{9500AD59-5D75-4D02-82F6-8948B7788191}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{9500AD59-5D75-4D02-82F6-8948B7788191}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{9500AD59-5D75-4D02-82F6-8948B7788191}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{9500AD59-5D75-4D02-82F6-8948B7788191}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{9500AD59-5D75-4D02-82F6-8948B7788191}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -329,7 +350,6 @@ Global
 		{B36B94D5-DF68-417A-8D41-6C3DDF81B9C0}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{B36B94D5-DF68-417A-8D41-6C3DDF81B9C0}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -409,7 +429,6 @@ Global
 		{1CB8A2FF-1006-4625-93DF-1A1815198317}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{1CB8A2FF-1006-4625-93DF-1A1815198317}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{C76F6C21-B13D-4E2D-8A9D-975FD84269F3}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -449,7 +468,6 @@ Global
 		{34C2FA0E-FF32-4016-8048-A1B0925D6596}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{34C2FA0E-FF32-4016-8048-A1B0925D6596}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -457,7 +475,6 @@ Global
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{E450FD90-29D3-4BBA-8378-0AA2A3008635}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{F713BC2F-3A0A-45CC-AEFF-19C157E7A374}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -497,7 +514,6 @@ Global
 		{84EDD844-855D-4AF2-A301-03AC9028CD97}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{84EDD844-855D-4AF2-A301-03AC9028CD97}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{5D3C6F40-8C2F-450F-839F-99206E669162}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{5D3C6F40-8C2F-450F-839F-99206E669162}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{5D3C6F40-8C2F-450F-839F-99206E669162}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{5D3C6F40-8C2F-450F-839F-99206E669162}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{5D3C6F40-8C2F-450F-839F-99206E669162}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -521,7 +537,6 @@ Global
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{0B364821-3FB8-4F19-9D0B-68D7F384C65A}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{21C413E6-0D8E-4B89-9512-0B684C91170F}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{21C413E6-0D8E-4B89-9512-0B684C91170F}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{21C413E6-0D8E-4B89-9512-0B684C91170F}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -553,7 +568,6 @@ Global
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{AA54AB8F-C3AC-46D2-81E7-7F9DD1EDC668}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
-		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -615,6 +629,8 @@ Global
 		{49820EB2-A9A6-4E20-B180-BDAAD51CB9AB} = {2CBAFA6F-50F9-4691-835C-57F32DF679AE}
 		{C8826DF9-20DD-49DF-AA65-16729F7B94F8} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
+		{129B80A9-5A3E-4FE1-9CCA-47DB07A49CDE} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
+		{F76DDFD0-FC46-46FC-87D3-6C68FC163404} = {129B80A9-5A3E-4FE1-9CCA-47DB07A49CDE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

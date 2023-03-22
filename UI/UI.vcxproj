@@ -68,7 +68,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>wpa;lvgl;lvgl_drivers;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>wpa;lvgl;lv_drivers;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -126,7 +126,6 @@
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dlclass.cpp" />
     <ClCompile Include="Images\noWifi.c" />
     <ClCompile Include="Images\Wifi1.c" />
     <ClCompile Include="Images\Wifi2.c" />

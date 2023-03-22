@@ -30,4 +30,4 @@ private:
     std::shared_ptr<shared_obj> shared;
 };
 
-//#include "dlclass.cpp"
+#include "dlclass.cpp"
