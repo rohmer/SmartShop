@@ -104,9 +104,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UI.vcxproj">
-      <Project>{efb7f748-eef2-449b-b678-6455e8c8d991}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\UIWidget\UIWidget.vcxproj">
       <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>

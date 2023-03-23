@@ -10,7 +10,8 @@ void NodeWidget::Init()
 
 NodeWidget::~NodeWidget()
 {
-	lv_obj_del_async(nodeWidgetContainer);
+	if(baseObject!=NULL)
+		lv_obj_del_async(baseObject);
 }
 
 void NodeWidget::SetID(std::string id)
@@ -33,16 +34,16 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		this->height = height;
 		verticalQuarters = height / 4;
 		horizontalQuarters = width / 4;
-		nodeWidgetContainer = lv_obj_create(parent);
-		baseObject = nodeWidgetContainer;
-		lv_obj_set_layout(nodeWidgetContainer, LV_LAYOUT_FLEX);
-		lv_obj_set_flex_flow(nodeWidgetContainer, LV_FLEX_FLOW_ROW);
-		lv_obj_set_size(nodeWidgetContainer, width, height);
-		lv_obj_set_align(nodeWidgetContainer, LV_ALIGN_TOP_LEFT);
+		baseObject = lv_obj_create(parent);
+		lv_obj_set_layout(baseObject, LV_LAYOUT_FLEX);
+		lv_obj_set_flex_flow(baseObject, LV_FLEX_FLOW_ROW);
+		lv_obj_set_size(baseObject, width, height);
+		lv_obj_set_align(baseObject, LV_ALIGN_TOP_LEFT);
+		//lv_obj_set_pos(baseObject, x, y);
 		// Set layout
-		lv_obj_t *leftPanel = lv_obj_create(nodeWidgetContainer);
+		lv_obj_t *leftPanel = lv_obj_create(baseObject);
 		lv_obj_set_flex_flow(leftPanel, LV_FLEX_FLOW_COLUMN);
-		lv_obj_t *rightQuarterPanel = lv_obj_create(nodeWidgetContainer);
+		lv_obj_t *rightQuarterPanel = lv_obj_create(baseObject);
 		lv_obj_set_size(rightQuarterPanel, horizontalQuarters*2, height);
 		lv_obj_set_flex_flow(rightQuarterPanel, LV_FLEX_FLOW_COLUMN);
 		lv_obj_set_size(leftPanel, horizontalQuarters * 2, height);
@@ -52,7 +53,7 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		lv_style_set_shadow_width(&style_shadow, 10);
 		lv_style_set_shadow_spread(&style_shadow, 5);
 		lv_style_set_shadow_color(&style_shadow, lv_palette_main(LV_PALETTE_BLUE));
-		lv_obj_add_style(nodeWidgetContainer, &style_shadow, 0);
+		lv_obj_add_style(baseObject, &style_shadow, 0);
 		
 		// TODO: Create containers to hold icon and LED for each of the visuals in the right container
 		// We have 3 items, so lets set them to 3rds
@@ -148,7 +149,8 @@ void NodeWidget::drawIcon()
 // the class factories
 
 extern "C" UIWidget* create() {
-	return new NodeWidget();
+	NodeWidget *nw = new NodeWidget();
+	return ((UIWidget *)nw);
 }
 
 extern "C" void destroy(UIWidget* p) {

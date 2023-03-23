@@ -35,7 +35,7 @@
     #define LV_MEM_SIZE (128U * 1024U*32U)          /*[bytes]*/
 
     /*Size of the memory expand for `lv_malloc()` in bytes*/
-    #define LV_MEM_POOL_EXPAND_SIZE 0
+    #define LV_MEM_POOL_EXPAND_SIZE 32U * 1024U;
 
     /*Set an address for the memory pool instead of allocating it as a normal array. Can be in external SRAM too.*/
     #define LV_MEM_ADR 0     /*0: unused*/
@@ -299,7 +299,7 @@
  *With other image decoders (e.g. PNG or JPG) caching save the continuous open/decode of images.
  *However the opened images consume additional RAM.
  *0: to disable caching*/
-#define LV_IMG_CACHE_DEF_SIZE 5200000
+#define LV_IMG_CACHE_DEF_SIZE 0
 
 
 /*Number of stops allowed per gradient. Increase this to allow more stops.

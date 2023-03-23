@@ -7,3 +7,6 @@
 
 // Defines if nodes will automatically be allowed in
 #define DEFAULT_AUTH true
+
+// Disables the built in telemetry agent for the Server, define to turn off
+#undef DISABLE_TELEMETRY_AGENT

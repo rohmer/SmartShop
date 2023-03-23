@@ -5,9 +5,6 @@ DeviceManager *DeviceManager::instance = NULL;
 DeviceManager::DeviceManager()
 	: log(Logger::GetInstance())
 {
-	int v = gpioInitialise();
-	if (v < 0)
-		log->LogC("Failed to initialize GPIO");
 	scheduler = new Bosma::Scheduler(16);
 	loadConfig();
 	updateThread = new std::thread([this]{updateLoop(); });
@@ -37,9 +34,26 @@ void DeviceManager::scheduleSensor(Sensor *s)
 	
 void DeviceManager::AddDevice(DeviceBase *device)
 {
+	if (!init && device->GetBus() != eDeviceBus::NA)
+	{
+		int i=gpioInitialise();
+		if (i < 0)
+			log->LogC("Failed to init GPIO");
+	}
 	devices.push_back(device);
 	DeviceConfig dc = device->GetConfig();
-	std::string devID = md5(device->GetName());
+	std::string devName = device->GetName();
+	
+	std::string devID;
+	unsigned char result[MD5_DIGEST_LENGTH];
+	MD5((unsigned char*)devName.c_str(), devName.size(), result);
+	std::ostringstream sout;
+	sout << std::hex << std::setfill('0');
+	for (long long c : result)
+	{
+		sout << std::setw(2) << (long long)c;
+	}
+	devID = sout.str();
 	if (deviceConfigs.find(dc.GetName()) != deviceConfigs.end())
 	{
 		dc = deviceConfigs[dc.GetName()];

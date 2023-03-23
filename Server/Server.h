@@ -10,6 +10,7 @@
 #include "../ZeroConf/Capabilities.h"
 #include "Settings.h"
 #include "../DeviceRegistration/RegistrationEndpoint.h"
+#include "../Device/TelemetryAgent/TelemetryAgent.h"
 
 class Server
 {

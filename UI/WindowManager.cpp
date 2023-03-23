@@ -28,6 +28,8 @@ WindowManager *WindowManager::GetInstance()
 
 void WindowManager::Init()
 {
+	pluginManager->LoadPlugins();
+	
 	lv_init();
 	fbdev_init();
 	
@@ -37,6 +39,7 @@ void WindowManager::Init()
 	disp_drv.flush_cb   = fbdev_flush;
 	disp_drv.hor_res    = WIDTH;
 	disp_drv.ver_res    = HEIGHT;
+	lv_disp_drv_register(&disp_drv);
 	lv_disp_drv_register(&disp_drv);
 	
 	evdev_init();
@@ -48,7 +51,6 @@ void WindowManager::Init()
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });
-	pluginManager->LoadPlugins();
 	
 	// Define the widget size
 	// We are going 5, 5 tall

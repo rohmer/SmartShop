@@ -8,6 +8,10 @@ Logger::Logger()
 	rolling->set_level(spdlog::level::trace);
 	logPtr = std::make_shared<spdlog::logger>("SmartShop");
 	logPtr->sinks().push_back(rolling);
+#ifdef DEBUG
+	auto console = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+	logPtr->sinks().push_back(console);
+#endif
 }
 
 Logger::~Logger()

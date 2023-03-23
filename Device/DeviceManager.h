@@ -8,6 +8,7 @@
 #include <vector>
 #include <Scheduler.h>
 #include "cJSON.h"
+#include <openssl/md5.h>
 
 #include "DeviceBase.h"
 #include "Sensor.h"
@@ -57,4 +58,5 @@ private:
 	bool storeConfig();
 	bool loadConfig();
 	bool shutdown = false;
+	bool init = false;
 };

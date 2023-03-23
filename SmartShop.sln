@@ -206,6 +206,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -213,6 +214,7 @@ Global
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{E408EBBB-8991-43A7-8697-E4BD377BDCF2}.Release|VisualGDB.ActiveCfg = Release|VisualGDB

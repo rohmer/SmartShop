@@ -42,7 +42,7 @@ MainWindow::MainWindow(uint widgetWidth, uint widgetHeight)
 	logTable = new LogTable(tabView, logTab);
 	uint width = lv_obj_get_width(lv_tabview_get_content(tabView));
 	uint height = lv_obj_get_height(lv_tabview_get_content(tabView));
-	//nodeWidgetManager = new NodeWidgetManager(nodeTab, width, height);
+	nodeWidgetManager = new NodeWidgetManager(nodeTab, width, height);
 }
 
 // TODO Make this a standard thread.  This is a mess of statics

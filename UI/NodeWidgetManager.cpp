@@ -13,6 +13,7 @@ NodeWidgetManager::NodeWidgetManager(lv_obj_t *windowPane, uint width, uint heig
 {
 	nodeWidth = width / NODE_COLUMNS - (10*NODE_COLUMNS);
 	nodeHeight = height / NODE_ROWS - 50 - (10*NODE_ROWS);
+	lv_obj_set_flex_flow(windowPane, LV_FLEX_FLOW_ROW_WRAP);
 }
 
 std::vector<std::string> NodeWidgetManager::CheckNew()
@@ -33,17 +34,17 @@ std::vector<std::string> NodeWidgetManager::CheckNew()
 
 UIWidget *NodeWidgetManager::CreateNodeWidget(std::string nodeID)
 {
-	int px, py;
-	px = nodePosition  % 5;
-	if (nodePosition > 5)
-		py = nodePosition / 5;
+	/*int px, py;
+	px = nodePosition  % 3;
+	if (nodePosition > 3)
+		py = nodePosition / 3;
 	else
 		py = 0;
 	int x, y;
 	if (px == 0)
-		x = 5;
+		x = 15;
 	else
-		x = (px*(nodeWidth + 10));
+		x = (px*(nodeWidth + 25));
 	if (py == 0)
 		y = 5;
 	else
@@ -52,10 +53,15 @@ UIWidget *NodeWidgetManager::CreateNodeWidget(std::string nodeID)
 	// SO now we have our dimensions:
 	// x,y starting point
 	// nodWidth, nodeHeight the size
-	
-	std::shared_ptr<NodeWidget> nw = std::static_pointer_cast<NodeWidget>(pluginManager->WidgetFactory("NodeWidget"));
+	*/
+	//std::shared_ptr<UIWidget> base = pluginManager->WidgetFactory("NodeWidget");
+	std::shared_ptr<NodeWidget> nw = std::dynamic_pointer_cast<NodeWidget>(pluginManager->WidgetFactory("NodeWidget"));
 	nw->SetID(nodeID);
-	nw->Draw(drawSurface, false, nodeWidth, nodeHeight, x, y);
+	nw->Draw(drawSurface, false, nodeWidth, nodeHeight, -1, -1);
+	std::stringstream ss;
+	ss << "Creating node: " << nw->GetName() << " at (" << x << "," << y << ")";
+	log->LogI(ss.str());
 	nodeObjects.emplace(nodeID,nw);
 	knownNodes.emplace(nodeID,false);
+	nodePosition++;
 }

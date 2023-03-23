@@ -13,6 +13,7 @@ public:
 	NodeWidget()
 		: UIWidget("ALL", "NodeWidget")
 	{
+		baseObject = NULL;
 	}
 	~NodeWidget();
 	
@@ -28,7 +29,6 @@ private:
 	std::string hostID;
 	bool authorized;
 	int deviceType, cpuCount;
-	lv_obj_t *nodeWidgetContainer;
 	
 	lv_obj_t *hardDiskIcon, *hardDiskLed;
 	lv_obj_t *logIcon, *logLed;

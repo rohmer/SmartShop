@@ -52,6 +52,10 @@ Server::Server()
 	
 	deviceManager = DeviceManager::GetInstance();
 	restServer->Start();
+#ifndef DISABLE_TELEMETRY_AGENT
+	deviceManager->AddDevice(new TelemetryAgent());
+#endif
+	deviceManager->AddServerEndpoint("localhost");
 }
 
 int main(int argc, char *argv[])
@@ -61,7 +65,6 @@ int main(int argc, char *argv[])
 	WindowManager *wm = WindowManager::GetInstance();
 #endif 
 
-		
 	wm->Init();
 	while (true)
 	{
