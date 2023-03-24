@@ -10,13 +10,13 @@
 #include <vector>
 #include <Scheduler.h>
 #include "cJSON.h"
-#include <openssl/md5.h>
 
 #include "DeviceBase.h"
 #include "Sensor.h"
 #include "DeviceConfig.h"
 #include "../Logger/Logger.h"
 #include "../HashLib/HashLib.h"
+#include "../EventEndpoint/EndpointClient/EndpointClient.h"
 
 #include "pigpio.h"
 
@@ -32,7 +32,7 @@ public:
 	std::vector<DeviceBase*> GetDeviceByBus(eDeviceBus deviceBus);
 	
 	std::vector<std::string> GetServerEndpoints();
-	void AddServerEndpoint(std::string server);
+	void AddServerEndpoint(std::string server, uint port);
 	
 	std::vector<DeviceBase*> GetAllDevices();
 	
@@ -61,4 +61,5 @@ private:
 	bool loadConfig();
 	bool shutdown = false;
 	bool init = false;
+	EndpointClient *endpointClient = NULL;
 };

@@ -28,8 +28,15 @@ DeviceManager *DeviceManager::GetInstance()
 void DeviceManager::scheduleSensor(Sensor *s)
 {
 	std::vector<SensorEvent> events = s->PollSensor();
-	for (std::vector<SensorEvent>::iterator it = events.begin(); it != events.end(); ++it)
-		it->StoreToDB();	
+	for (int i=0; i<events.size(); i++)
+	{
+		events[i].StoreToDB();	
+		// Send to server at this point
+		if (endpointClient != NULL)
+		{
+			endpointClient->SendEvent(events[i]);
+		}
+	}
 }
 	
 void DeviceManager::AddDevice(DeviceBase *device)
@@ -71,14 +78,15 @@ void DeviceManager::AddDevice(DeviceBase *device)
 	deviceByName[dc.GetName()] = device;
 	
 	if (dc.GetDeviceType() == eDeviceType::SENSOR)
-	{
-		DeviceBase *s = (DeviceBase *)device;
-		if (s != nullptr)
+	{	
+		if (device != nullptr)
 		{
-			uint16_t pollingInterval = s->GetPollingInterval();
-			scheduler->every(std::chrono::seconds(pollingInterval), [s,this]()
+			Sensor *s = dynamic_cast<Sensor *>(device);
+			uint16_t pollingInterval = device->GetPollingInterval();
+			scheduler->every(std::chrono::seconds(pollingInterval),
+				[s, this]()
 				{
-					scheduleSensor((Sensor*)s);
+					scheduleSensor(s);
 				});
 		}
 	}
@@ -211,8 +219,10 @@ std::vector<std::string> DeviceManager::GetServerEndpoints()
 	return serverEndpoints;
 }
 
-void DeviceManager::AddServerEndpoint(std::string Server)
+void DeviceManager::AddServerEndpoint(std::string Server, uint port)
 {
+	if (endpointClient == NULL)
+		endpointClient = EndpointClient::GetInstance();
 	bool found = false;
 	for (std::vector<std::string>::iterator it = serverEndpoints.begin();
 		it != serverEndpoints.end();
@@ -233,6 +243,7 @@ void DeviceManager::AddServerEndpoint(std::string Server)
 		}
 	}
 	serverEndpoints.push_back(Server);
+	endpointClient->AddServer(Server, port);
 	std::stringstream ss;
 	ss << "Server: " << Server << " regiestered";
 	log->LogI(ss.str());

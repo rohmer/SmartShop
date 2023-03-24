@@ -118,13 +118,15 @@ void DeviceConfig::DeleteConfigItem(std::string name)
 {
 	if (!HasConfigItem(name))
 		return;
-	std::vector<DeviceConfigItem> tmp;
-	for (std::vector<DeviceConfigItem>::iterator it = items.begin(); it != items.end(); it++)
-		tmp.push_back(*it);
-	items.clear();
-	
-	for (std::vector<DeviceConfigItem>::iterator it = tmp.begin(); it != items.end(); it++)
-		items.push_back(*it);
+	int pos = -1;
+	for (int i = 0; i < items.size(); i++)
+		if (std::strcmp(items[i].GetName().c_str(), name.c_str()) == 0)
+		{
+			pos = i;
+			break;
+		}
+	if(pos!=-1)
+		items.erase(items.begin() + pos);
 }
 
 cJSON *DeviceConfig::ToJSON()

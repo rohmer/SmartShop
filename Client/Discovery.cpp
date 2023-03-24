@@ -39,7 +39,7 @@ void Discovery::discoveryLoop()
 				if (it->GetCapabilities().HasCap(Capabilities::CAP_SERVER))
 				{					
 					Logger::GetInstance()->AddLogServerSink(it->GetIPAddr(), it->GetCapabilities().GetComPort());
-					DeviceManager::GetInstance()->AddServerEndpoint(it->GetIPAddr());
+					DeviceManager::GetInstance()->AddServerEndpoint(it->GetIPAddr(), it->GetCapabilities().GetComPort());
 				}
 			}
 		}

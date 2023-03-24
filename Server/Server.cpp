@@ -53,9 +53,10 @@ Server::Server()
 	deviceManager = DeviceManager::GetInstance();
 	restServer->Start();
 #ifndef DISABLE_TELEMETRY_AGENT
-	deviceManager->AddDevice(new TelemetryAgent());
+
+	deviceManager->AddDevice(new TelemetryAgent("TelemetryAgent","TelemetryAgent",10));
 #endif
-	deviceManager->AddServerEndpoint("localhost");
+	deviceManager->AddServerEndpoint("localhost", HTTP_PORT);
 }
 
 int main(int argc, char *argv[])

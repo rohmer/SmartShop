@@ -17,7 +17,12 @@ EndpointClient *EndpointClient::GetInstance()
 	return instance;
 }
 
-void EndpointClient::Init(std::string server, uint port)
+void EndpointClient::SendEvent(SensorEvent event)
+{
+	events.push(event);
+}
+
+void EndpointClient::AddServer(std::string server, uint port)
 {
 	shutdown = false;
 	threadObj = new std::thread([this]{eventLoop(); });
@@ -39,7 +44,8 @@ void EndpointClient::Init(std::string server, uint port)
 	auto requestExecutor = client::HttpRequestExecutor::createShared(connectionPool,retryPolicy);
 	
 	auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared();
-	client = EndpointClientAPI::createShared(requestExecutor,objectMapper);
+	std::shared_ptr<EndpointClientAPI>client = EndpointClientAPI::createShared(requestExecutor,objectMapper);
+	clients.push_back(client);
 }
 
 void EndpointClient::eventLoop()
@@ -58,18 +64,22 @@ void EndpointClient::sendEvents()
 {
 	while (events.size() > 0)
 	{
-		SensorEvent se = events.top();
-		events.pop();
-		try
+		for (int i = 0; i < clients.size(); i++)
 		{
-			std::string body = JSON::Print(se.ToJSON());
-			std::string ret = client->doPost(body)->readBodyToString();	
-		}
-		catch (std::exception &e)
-		{
-			std::stringstream ss;
-			ss << "Exception sending event to server: " << server << ", exception: " << e.what();
-			log->LogC(ss.str());
+			SensorEvent se = events.top();
+			events.pop();
+			std::shared_ptr<EndpointClientAPI> client = clients[i];
+			try
+			{
+				std::string body = JSON::Print(se.ToJSON());
+				std::string ret = client->doPost(body)->readBodyToString();	
+			}
+			catch (std::exception &e)
+			{
+				std::stringstream ss;
+				ss << "Exception sending event to server, exception: " << e.what();
+				log->LogC(ss.str());
+			}
 		}
 	}
 }

@@ -20,8 +20,8 @@ class EndpointClient
 public:
 	static EndpointClient *GetInstance();
 	~EndpointClient();
-	void Init(std::string server, uint port);
-	
+	void AddServer(std::string server, uint port);
+	void SendEvent(SensorEvent event);
 private:
 	static EndpointClient *instance;
 	EndpointClient();
@@ -37,5 +37,5 @@ private:
 	std::thread *threadObj;
 	std::stack<SensorEvent> events;
 	
-	std::shared_ptr<EndpointClientAPI> client;
+	std::vector<std::shared_ptr<EndpointClientAPI>> clients;
 };
