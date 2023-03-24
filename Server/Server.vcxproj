@@ -146,6 +146,9 @@
     <ProjectReference Include="..\EventEndpoint\EventEndpoint.vcxproj">
       <Project>{9d0cb1e3-6ca1-4202-92c5-73a55dd70651}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Installer\AddFileToPkg\AddFileToPkg.vcxproj">
       <Project>{c50f957d-66a9-4d4e-9212-06037cdf227c}</Project>
     </ProjectReference>
