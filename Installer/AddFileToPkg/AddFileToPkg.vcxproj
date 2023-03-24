@@ -101,6 +101,11 @@
   <ItemGroup>
     <ClInclude Include="Options.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

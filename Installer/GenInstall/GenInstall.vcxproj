@@ -102,6 +102,9 @@
     <ClInclude Include="Options.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\InstallLib\InstallLib.vcxproj">
       <Project>{bcf8ca05-423d-4f70-a11a-311d09fdfe5c}</Project>
     </ProjectReference>

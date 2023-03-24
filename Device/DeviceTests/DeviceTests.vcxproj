@@ -113,6 +113,9 @@
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>

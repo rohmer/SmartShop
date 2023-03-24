@@ -149,6 +149,9 @@
     <ProjectReference Include="..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
       <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>

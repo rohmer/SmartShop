@@ -140,6 +140,9 @@
     <ProjectReference Include="..\..\Device\PCA9685Device\PCA9685Device.vcxproj">
       <Project>{46e51758-271d-4e3e-b941-c52d6e8c8037}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>

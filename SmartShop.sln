@@ -197,6 +197,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build-scripts", "build-scri
 		Components\build-scripts\zeroconf.sh = Components\build-scripts\zeroconf.sh
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashLib", "HashLib\HashLib.vcxproj", "{8B833F2F-1586-4A1D-AB65-947B473F61D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -576,6 +578,14 @@ Global
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{EA10ABF4-F776-4AA3-AE14-B47505F860E3}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8B833F2F-1586-4A1D-AB65-947B473F61D1}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

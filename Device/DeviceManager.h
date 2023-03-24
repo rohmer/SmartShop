@@ -2,9 +2,11 @@
 
 #include <filesystem>
 #include <fstream>
+#include <hash_map>
 #include <string>
 #include <map>
 #include <thread>
+#include <unordered_map>
 #include <vector>
 #include <Scheduler.h>
 #include "cJSON.h"
@@ -14,7 +16,7 @@
 #include "Sensor.h"
 #include "DeviceConfig.h"
 #include "../Logger/Logger.h"
-#include "../Components/md5-master/md5.h"
+#include "../HashLib/HashLib.h"
 
 #include "pigpio.h"
 

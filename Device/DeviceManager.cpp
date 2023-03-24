@@ -43,17 +43,8 @@ void DeviceManager::AddDevice(DeviceBase *device)
 	devices.push_back(device);
 	DeviceConfig dc = device->GetConfig();
 	std::string devName = device->GetName();
+	std::string devID = HashLib::ComputeHash(devName);
 	
-	std::string devID;
-	unsigned char result[MD5_DIGEST_LENGTH];
-	MD5((unsigned char*)devName.c_str(), devName.size(), result);
-	std::ostringstream sout;
-	sout << std::hex << std::setfill('0');
-	for (long long c : result)
-	{
-		sout << std::setw(2) << (long long)c;
-	}
-	devID = sout.str();
 	if (deviceConfigs.find(dc.GetName()) != deviceConfigs.end())
 	{
 		dc = deviceConfigs[dc.GetName()];
@@ -72,7 +63,7 @@ void DeviceManager::AddDevice(DeviceBase *device)
 		log->LogW(ss.str());
 		std::stringstream s;
 		s << device->GetName() << deviceByType.size();
-		devID = md5(s.str());
+		devID = HashLib::ComputeHash(s.str());
 	}
 	dc.SetDeviceID(devID);
 	deviceByBus[dc.GetDeviceBus()].push_back(device);
