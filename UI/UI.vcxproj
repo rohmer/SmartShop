@@ -59,7 +59,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/LVGL/lv_port_linux_frame_buffer;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB../Components/rapidjson-master/include/rapidjson/msinttypes;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/oatpp-master/src;../Components/cJSON-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/LVGL/lv_port_linux_frame_buffer;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB../Components/rapidjson-master/include/rapidjson/msinttypes;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/oatpp-master/src;../Components/cJSON-master;../Components/cpp-base64-master;../Components/spdlog-1.x/include/spdlog;../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -67,9 +67,9 @@
       <SupportExceptions>true</SupportExceptions>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>wpa;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>

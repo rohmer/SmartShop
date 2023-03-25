@@ -1,8 +1,9 @@
 #include "SensorEvent.h"
 
-SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::string hostID, time_t eventTime)
+SensorEvent::SensorEvent(std::string sensorName, std::string hostname, std::string hostID, time_t eventTime, time_t groupNum)
 	: sensorName(sensorName)
 {
+	groupID = groupNum;
 	if (hostname.size() == 0)
 	{
 		char hostname[1024];
@@ -229,7 +230,7 @@ SensorEvent SensorEvent::GetFromDB(unsigned int eventID)
 	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(where(c(&DBEventData::ID) == eventID));
 	if (evts.size() == 0)
 		return SensorEvent();
-	SensorEvent se(evts[0].SensorName, evts[0].Hostname, evts[0].HostID, evts[0].EventTime);
+	SensorEvent se(evts[0].SensorName, evts[0].Hostname, evts[0].HostID, evts[0].EventTime, evts[0].EventGroup);
 
 	std::vector<DBBinaryData> binDat = DB::GetInstance()->GetStorage()->get_all<DBBinaryData>(where(c(&DBBinaryData::EventID) == eventID));
 	for (std::vector<DBBinaryData>::iterator it = binDat.begin(); it != binDat.end(); ++it)
@@ -283,6 +284,7 @@ void SensorEvent::StoreToDB()
 	evt.SensorName = sensorName;
 	evt.EventTime = eventTime;
 	evt.HostID = hostID;
+	evt.EventGroup = groupID;
 	evt.ID = -1;
 	try
 	{
@@ -353,6 +355,58 @@ void SensorEvent::StoreToDB()
 			Logger::GetInstance()->LogC(ss.str());
 		}
 	}
+}
+
+unsigned long SensorEvent::StoreGroupToDB(std::vector<SensorEvent> sensorEventGroup)
+{
+	if (sensorEventGroup.size() == 0)
+		return 0;
+	unsigned long grpNum = sensorEventGroup[0].GetEventTime();
+	for (int i = 0; i < sensorEventGroup.size(); i++)
+	{
+		sensorEventGroup[i].SetGroupID(grpNum);
+		sensorEventGroup[i].StoreToDB();
+	}
+	return grpNum;
+}
+
+SensorEvent SensorEvent::GetLatestFromDB(std::string Hostname, std::string EventName)
+{
+	using namespace sqlite_orm;
+	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(
+		where(
+			c(&DBEventData::Hostname)==Hostname and 
+			c(&DBEventData::SensorName)==EventName
+		), 
+		order_by(&DBEventData::EventTime), 
+		limit(1)
+		);
+	
+	if(evts.size()>=1) // this should only be 1/0 but..  to be safe
+	{
+		return GetFromDB(evts[0].ID);
+	} else
+	{
+		return SensorEvent();
+	}				
+}
+
+std::vector<SensorEvent> SensorEvent::GetLatestGroupFromDB(std::string Hostname, std::string EventName)
+{
+	std::vector<SensorEvent> ret;
+	SensorEvent se = GetLatestFromDB(Hostname, EventName);
+	if (std::strcmp(se.hostname.c_str(), Hostname.c_str()) != 0)
+		return ret;
+	using namespace sqlite_orm;
+	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(
+		where(
+			c(&DBEventData::EventGroup) == se.GetGroupID()
+		));
+	for (int i = 0; i < evts.size(); i++)
+	{
+		ret.push_back(GetFromDB(evts[i].ID));
+	}
+	return ret;
 }
 
 SensorEvent::~SensorEvent()

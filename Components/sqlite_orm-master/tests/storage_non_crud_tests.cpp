@@ -1,5 +1,5 @@
 #include <sqlite_orm/sqlite_orm.h>
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 using namespace sqlite_orm;
 
@@ -10,7 +10,7 @@ TEST_CASE("explicit from") {
 
 #ifndef SQLITE_ORM_AGGREGATE_NSDMI_SUPPORTED
         User() = default;
-        User(int id, std::string name) : id{id}, name{move(name)} {}
+        User(int id, std::string name) : id{id}, name{std::move(name)} {}
 #endif
     };
     auto storage = make_storage(
@@ -58,6 +58,20 @@ TEST_CASE("explicit from") {
     REQUIRE(expected == rows);
 }
 
+TEST_CASE("update_all") {
+    struct Record {
+        int id = 0;
+        std::string name;
+    };
+    auto storage = make_storage(
+        {},
+        make_table("records", make_column("id", &Record::id, primary_key()), make_column("name", &Record::name)));
+    storage.sync_schema();
+    auto vars = dynamic_set(storage);
+    vars.push_back(assign(&Record::name, "Bob"));
+    storage.update_all(vars, where(is_equal(&Record::id, 10)));
+}
+
 TEST_CASE("update set null") {
 
     struct User {
@@ -66,7 +80,7 @@ TEST_CASE("update set null") {
 
 #ifndef SQLITE_ORM_AGGREGATE_NSDMI_SUPPORTED
         User() = default;
-        User(int id, decltype(name) name) : id{id}, name{move(name)} {}
+        User(int id, decltype(name) name) : id{id}, name{std::move(name)} {}
 #endif
     };
 
@@ -113,7 +127,7 @@ TEST_CASE("InsertRange") {
 
 #ifndef SQLITE_ORM_AGGREGATE_PAREN_INIT_SUPPORTED
         Object() = default;
-        Object(int id, std::string name) : id{id}, name{move(name)} {}
+        Object(int id, std::string name) : id{id}, name{std::move(name)} {}
 #endif
     };
 
@@ -123,7 +137,7 @@ TEST_CASE("InsertRange") {
 
 #ifndef SQLITE_ORM_AGGREGATE_PAREN_INIT_SUPPORTED
         ObjectWithoutRowid() = default;
-        ObjectWithoutRowid(int id, std::string name) : id{id}, name{move(name)} {}
+        ObjectWithoutRowid(int id, std::string name) : id{id}, name{std::move(name)} {}
 #endif
     };
 
@@ -185,7 +199,7 @@ TEST_CASE("InsertRange") {
 }
 
 TEST_CASE("Select") {
-    sqlite3 *db;
+    sqlite3* db;
     auto dbFileName = "test.db";
     auto rc = sqlite3_open(dbFileName, &db);
     REQUIRE(rc == SQLITE_OK);
@@ -196,11 +210,11 @@ TEST_CASE("Select") {
                "AFTER_WORD            TEXT     NOT NULL,"
                "OCCURANCES            INT      NOT NULL);";
 
-    char *errMsg = nullptr;
+    char* errMsg = nullptr;
     rc = sqlite3_exec(db, sql, nullptr, nullptr, &errMsg);
     REQUIRE(rc == SQLITE_OK);
 
-    sqlite3_stmt *stmt;
+    sqlite3_stmt* stmt;
 
     //  delete previous words. This command is excess in travis or other docker based CI tools
     //  but it is required on local machine
@@ -263,9 +277,9 @@ TEST_CASE("Select") {
             throw std::runtime_error(sqlite3_errmsg(db));
         }
         REQUIRE(sqlite3_column_int(stmt, 0) == firstId);
-        REQUIRE(::strcmp((const char *)sqlite3_column_text(stmt, 1), "best") == 0);
-        REQUIRE(::strcmp((const char *)sqlite3_column_text(stmt, 2), "behaviour") == 0);
-        REQUIRE(::strcmp((const char *)sqlite3_column_text(stmt, 3), "hey") == 0);
+        REQUIRE(::strcmp((const char*)sqlite3_column_text(stmt, 1), "best") == 0);
+        REQUIRE(::strcmp((const char*)sqlite3_column_text(stmt, 2), "behaviour") == 0);
+        REQUIRE(::strcmp((const char*)sqlite3_column_text(stmt, 3), "hey") == 0);
         REQUIRE(sqlite3_column_int(stmt, 4) == 5);
         sqlite3_finalize(stmt);
     }
@@ -311,7 +325,7 @@ TEST_CASE("Select") {
     REQUIRE(rawTuples.size() == 1);
 
     {
-        auto &firstTuple = rawTuples.front();
+        auto& firstTuple = rawTuples.front();
         REQUIRE(std::get<0>(firstTuple) == firstId);
         REQUIRE(std::get<1>(firstTuple) == "best");
         REQUIRE(std::get<2>(firstTuple) == "behaviour");
@@ -323,7 +337,7 @@ TEST_CASE("Select") {
     REQUIRE(rawTuples.size() == 1);
 
     {
-        auto &secondTuple = rawTuples.front();
+        auto& secondTuple = rawTuples.front();
         REQUIRE(std::get<0>(secondTuple) == secondId);
         REQUIRE(std::get<1>(secondTuple) == "corruption");
         REQUIRE(std::get<2>(secondTuple) == "blood");
@@ -377,13 +391,13 @@ TEST_CASE("Replace query") {
 
 #ifndef SQLITE_ORM_AGGREGATE_PAREN_INIT_SUPPORTED
         Object() = default;
-        Object(int id, std::string name) : id{id}, name{move(name)} {}
+        Object(int id, std::string name) : id{id}, name{std::move(name)} {}
 #endif
     };
 
     struct User {
 
-        User(int id_, std::string name_) : id(id_), name(move(name_)) {}
+        User(int id_, std::string name_) : id(id_), name(std::move(name_)) {}
 
         int getId() const {
             return this->id;
@@ -398,7 +412,7 @@ TEST_CASE("Replace query") {
         }
 
         void setName(std::string name_) {
-            this->name = move(name_);
+            this->name = std::move(name_);
         }
 
       private:
@@ -498,7 +512,7 @@ TEST_CASE("Remove all") {
 }
 
 TEST_CASE("Explicit insert") {
-    using Catch::Matchers::Contains;
+    using Catch::Matchers::ContainsSubstring;
 
     struct User {
         int id;
@@ -509,7 +523,7 @@ TEST_CASE("Explicit insert") {
 
     class Visit {
       public:
-        const int &id() const {
+        const int& id() const {
             return _id;
         }
 
@@ -517,7 +531,7 @@ TEST_CASE("Explicit insert") {
             _id = newValue;
         }
 
-        const time_t &createdAt() const {
+        const time_t& createdAt() const {
             return _createdAt;
         }
 
@@ -525,7 +539,7 @@ TEST_CASE("Explicit insert") {
             _createdAt = newValue;
         }
 
-        const int &usedId() const {
+        const int& usedId() const {
             return _usedId;
         }
 
@@ -587,7 +601,8 @@ TEST_CASE("Explicit insert") {
         SECTION("one column") {
             User user4;
             user4.name = "Egor";
-            REQUIRE_THROWS_WITH(storage.insert(user4, columns(&User::name)), Contains("NOT NULL constraint failed"));
+            REQUIRE_THROWS_WITH(storage.insert(user4, columns(&User::name)),
+                                ContainsSubstring("NOT NULL constraint failed"));
         }
     }
     SECTION("visit") {
@@ -620,7 +635,7 @@ TEST_CASE("Explicit insert") {
             visit3.setId(10);
             SECTION("getter") {
                 REQUIRE_THROWS_WITH(storage.insert(visit3, columns(&Visit::id)),
-                                    Contains("NOT NULL constraint failed"));
+                                    ContainsSubstring("NOT NULL constraint failed"));
             }
         }
     }

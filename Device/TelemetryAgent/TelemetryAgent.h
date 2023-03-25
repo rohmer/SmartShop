@@ -1,11 +1,10 @@
-#
+#pragma once
 
 #include <string>
 #include <vector>
 
 #include "../DeviceBase.h"
 #include "../Sensor.h"
-#include "../../Logger/Logger.h"
 #include "../../Telemetry/Telemetry.h"
 
 class TelemetryAgent : public DeviceBase, public Sensor

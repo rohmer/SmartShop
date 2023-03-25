@@ -1,5 +1,5 @@
 #include <sqlite_orm/sqlite_orm.h>
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 using namespace sqlite_orm;
 
@@ -55,6 +55,6 @@ TEST_CASE("statement_serializer update_all") {
         update_all(set(c(&Contact::phone) = select(&Customer::phone, from<Customer>(), where(c(&Customer::id) == 1))));
     auto value = serialize(statement, context);
     decltype(value) expected =
-        R"(UPDATE "contacts" SET "phone" = (SELECT "customers"."Phone" FROM "customers" WHERE (("CustomerId" = 1))))";
+        R"(UPDATE "contacts" SET "phone" = (SELECT "customers"."Phone" FROM "customers" WHERE (("customers"."CustomerId" = 1))))";
     REQUIRE(value == expected);
 }

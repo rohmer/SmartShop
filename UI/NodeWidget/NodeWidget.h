@@ -3,8 +3,9 @@
 #include <lvgl.h>
 #include "../../DB/DB.h"
 #include "../../Logger/LogMsg.h"
-
+#include "../../SensorEvent/SensorEvent.h"
 #include "../UIWidget/UIWidget.h"
+
 extern "C" UIWidget *Factory();
 
 class NodeWidget : public UIWidget
@@ -30,9 +31,9 @@ private:
 	bool authorized;
 	int deviceType, cpuCount;
 	
-	lv_obj_t *hardDiskIcon, *hardDiskLed;
-	lv_obj_t *logIcon, *logLed;
-	lv_obj_t *tempIconObject, *tempLed;
+	lv_obj_t *hardDiskIcon, *hardDiskLed, *hardDiskLabel;
+	lv_obj_t *logIcon, *logLed, *logLabel;
+	lv_obj_t *tempIconObject, *tempLed, *tempLabel;
 	lv_obj_t *hostnameLabel, *ipLabel, *cpuCountLabel, *deviceTypeLabel, *authLabel;
 	void drawIcon();
 	void drawMaximixed();

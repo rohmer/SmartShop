@@ -32,7 +32,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 	{
 		if (telemetry.cpu.tempC >= tempCrit) 
 		{
-			SensorEvent tempEvent("TelemetryAgent");
+			SensorEvent tempEvent(name);
 			tempEvent.AddEventData(FloatData("CPUTemp", telemetry.cpu.tempC));
 			tempEvent.AddEventData(StringData("Severity", "CRIT"));
 			ret.push_back(tempEvent);
@@ -40,14 +40,14 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		else
 			if (telemetry.cpu.tempC >= tempWarn)
 		{
-			SensorEvent tempEvent("TelemetryAgent");
+			SensorEvent tempEvent(name);
 			tempEvent.AddEventData(FloatData("CPUTemp", telemetry.cpu.tempC));
 			tempEvent.AddEventData(StringData("Severity", "WARN"));
 			ret.push_back(tempEvent);
 		}
 		else
 		{
-			SensorEvent tempEvent("TelemetryAgent");
+			SensorEvent tempEvent(name);
 			tempEvent.AddEventData(FloatData("CPUTemp", telemetry.cpu.tempC));
 			tempEvent.AddEventData(StringData("Severity", "INFO"));
 			ret.push_back(tempEvent);
@@ -60,7 +60,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		float free = 100.0 - it->usedPct;
 		if (free <= diskCrit)
 		{
-			SensorEvent diskEvent("TelemetryAgent");
+			SensorEvent diskEvent(name);
 			diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
 			diskEvent.AddEventData(FloatData("PctFree", free));
 			diskEvent.AddEventData(StringData("Severity", "CRIT"));
@@ -70,7 +70,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		{
 			if (free <= diskWarn)
 			{
-				SensorEvent diskEvent("TelemetryAgent");
+				SensorEvent diskEvent(name);
 				diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
 				diskEvent.AddEventData(FloatData("PctFree", free));
 				diskEvent.AddEventData(StringData("Severity", "WARN"));
@@ -78,7 +78,7 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 			}
 			else
 			{
-				SensorEvent diskEvent("TelemetryAgent");
+				SensorEvent diskEvent(name);
 				diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
 				diskEvent.AddEventData(FloatData("PctFree", free));
 				diskEvent.AddEventData(StringData("Severity", "INFO"));

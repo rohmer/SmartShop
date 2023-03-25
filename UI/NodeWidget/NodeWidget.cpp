@@ -144,6 +144,19 @@ void NodeWidget::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16
 
 void NodeWidget::drawIcon()
 {
+	// First get the data from the telemetry sensor event for this node
+	SensorEvent se = SensorEvent::GetLatestFromDB(hostname, "TelemetryAgent");
+	if (se.GetHostname().length() != 0)
+	{
+		int fsPct = 150;
+		int fsSev = 0;		// 0 = green, 1 yellow, 2 red
+		float temp = 0;
+		int tempSev = 0;
+		
+		
+	}
+	
+	// Need to get the logs next and find the worst one in the past 24 hours
 	
 }
 // the class factories

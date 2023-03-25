@@ -1,5 +1,5 @@
 #include <sqlite_orm/sqlite_orm.h>
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 using namespace sqlite_orm;
 
@@ -30,6 +30,20 @@ TEST_CASE("index") {
         auto storage = make_storage({}, make_index("name_index", indexed_column(&User::name)), table);
         REQUIRE_NOTHROW(storage.sync_schema());
     }
+#ifdef SQLITE_ENABLE_JSON1
+    SECTION("json implicit") {
+        auto storage =
+            make_storage({}, make_index<User>("name_index", json_extract<bool>(&User::name, "$.field")), table);
+        REQUIRE_NOTHROW(storage.sync_schema());
+    }
+    SECTION("json explicit") {
+        auto storage =
+            make_storage({},
+                         make_index<User>("name_index", indexed_column(json_extract<bool>(&User::name, "$.field"))),
+                         table);
+        REQUIRE_NOTHROW(storage.sync_schema());
+    }
+#endif  //   SQLITE_ENABLE_JSON1
     SECTION("collate") {
         auto storage = make_storage({}, make_index("name_index", indexed_column(&User::name).collate("binary")), table);
         REQUIRE_NOTHROW(storage.sync_schema());
@@ -48,7 +62,7 @@ TEST_CASE("index") {
 
 #ifdef SQLITE_ORM_OPTIONAL_SUPPORTED
 TEST_CASE("filtered index") {
-    using Catch::Matchers::Contains;
+    using Catch::Matchers::ContainsSubstring;
 
     struct Test {
         std::optional<int> field1 = 0;
@@ -62,7 +76,7 @@ TEST_CASE("filtered index") {
         REQUIRE_NOTHROW(storage.sync_schema());
 
         storage.insert(Test{1, std::nullopt});
-        REQUIRE_THROWS_WITH(storage.insert(Test{1, std::nullopt}), Contains("constraint failed"));
+        REQUIRE_THROWS_WITH(storage.insert(Test{1, std::nullopt}), ContainsSubstring("constraint failed"));
     }
     SECTION("2") {
         auto storage = make_storage(
@@ -91,7 +105,7 @@ TEST_CASE("Compound index") {
 
 #ifndef SQLITE_ORM_AGGREGATE_NSDMI_SUPPORTED
         User() = default;
-        User(int id, std::string name) : id{id}, name{move(name)} {}
+        User(int id, std::string name) : id{id}, name{std::move(name)} {}
 #endif
     };
     auto table = make_table("users", make_column("id", &User::id), make_column("name", &User::name));

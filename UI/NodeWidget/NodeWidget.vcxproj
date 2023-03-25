@@ -60,7 +60,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/sqlite_orm-master/include/sqlite_orm;../../Components/oatpp-master/src;../../Components/spdlog-1.x/include;../../Components/cJSON-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/sqlite_orm-master/include/sqlite_orm;../../Components/oatpp-master/src;../../Components/spdlog-1.x/include;../../Components/cJSON-master;../../Components/cpp-base64-master;../../Components/spdlog-1.x/include/spdlog;../../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -117,6 +117,12 @@
     <None Include="NodeWidget-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SensorEvent\SensorEvent.vcxproj">
+      <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\UIWidget\UIWidget.vcxproj">
       <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>

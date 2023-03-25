@@ -10,4 +10,5 @@ public:
 	std::string Hostname;
 	unsigned long EventTime;
 	std::string HostID;
+	unsigned long EventGroup;
 };

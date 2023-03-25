@@ -22,8 +22,18 @@ public:
 	SensorEvent()
 	{
 	}
-	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID = "", time_t eventTime = 0);
+	SensorEvent(std::string sensorName, std::string hostname = "", std::string hostID = "", time_t eventTime = 0, time_t groupNum=0);
 	~SensorEvent();
+
+	time_t GetGroupID()
+	{
+		return groupID;
+	}
+	
+	void SetGroupID(time_t id)
+	{
+		groupID = id;
+	}
 	
 	std::string GetHostname()
 	{
@@ -68,8 +78,12 @@ public:
 	void AddEventData(SwitchData sensorEvent);
 	void AddEventData(VectorData sensorEvent);
 	
+	static SensorEvent GetLatestFromDB(std::string Hostname, std::string EventName);
+	static std::vector<SensorEvent> GetLatestGroupFromDB(std::string Hostname, std::string EventName);
+	
+	static unsigned long StoreGroupToDB(std::vector<SensorEvent> sensorEventGroup);
 private:
 	std::string hostname, sensorName, hostID;
-	time_t eventTime;
+	time_t eventTime, groupID = 0;
 	std::vector<SensorDataBase*> sensorData;
 };

@@ -1,8 +1,9 @@
 #include <sqlite_orm/sqlite_orm.h>
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 using namespace sqlite_orm;
 
+#if SQLITE_VERSION_NUMBER >= 3024000
 TEST_CASE("upsert_clause") {
     using internal::serialize;
     struct Vocabulary {
@@ -102,3 +103,4 @@ TEST_CASE("upsert_clause") {
     }
     REQUIRE(value == expected);
 }
+#endif

@@ -1,4 +1,7 @@
-cmake_minimum_required (VERSION 3.2)
+cmake_minimum_required (VERSION 3.16)
+
+# note: find_package(SQLite3 REQUIRED) already done in top-level CMakeLists
+FetchContent_MakeAvailable(Catch2)
 
 option(SQLITE_ORM_OMITS_CODECVT "Omits codec testing" OFF)
 
@@ -24,8 +27,10 @@ add_executable(unit_tests
     static_tests/aggregate_function_return_types.cpp
     static_tests/core_function_return_types.cpp
     static_tests/column_result_t.cpp
+    static_tests/alias.cpp
     static_tests/is_primary_key_insertable.cpp
     static_tests/is_column_with_insertable_primary_key.cpp
+    static_tests/operators_adl.cpp
     tuple_iteration.cpp
     sync_schema_tests.cpp
     tests.cpp
@@ -84,6 +89,7 @@ add_executable(unit_tests
     statement_serializer_tests/bindables.cpp
     statement_serializer_tests/ast/upsert_clause.cpp
     statement_serializer_tests/ast/excluded.cpp
+    statement_serializer_tests/ast/set.cpp
     statement_serializer_tests/arithmetic_operators.cpp
     statement_serializer_tests/base_types.cpp
     statement_serializer_tests/collate.cpp
@@ -126,6 +132,7 @@ add_executable(unit_tests
     row_id.cpp
     trigger_tests.cpp
     ast_iterator_tests.cpp
+    table_name_collector.cpp
     pointer_passing_interface.cpp
 )
 
@@ -141,29 +148,28 @@ if (MSVC)
     if (MSVC_VERSION LESS_EQUAL 1900)
         target_compile_options(unit_tests PUBLIC
             # C4503: decorated name length exceeded
-            /wd"4503"
+            /wd4503
             # C4800: forcing value to bool (performance warning)
-            /wd"4800")
+            /wd4800)
     else()
         target_compile_options(unit_tests PUBLIC
             # warning-level 4
             /W4
             # C4127: conditional expression is constant
-            /wd"4127"
+            /wd4127
             # C4456: declaration of 'symbol' hides previous local declaration
-            /wd"4456"
+            /wd4456
             # C4458: declaration of 'symbol' hides class member
-            /wd"4458")
+            /wd4458)
     endif()
 endif()
 
 target_precompile_headers(unit_tests PRIVATE
     <sqlite_orm/sqlite_orm.h>
-    <catch2/catch.hpp>)
-# tests.cpp contains CATCH_CONFIG_MAIN
-set_source_files_properties(tests.cpp PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
+    <catch2/catch_all.hpp>)
 
-target_link_libraries(unit_tests PRIVATE sqlite_orm Catch2::Catch2)
+# note: sqlite3 already linked in top-level CMakeLists
+target_link_libraries(unit_tests PRIVATE sqlite_orm Catch2::Catch2WithMain)
 
 add_test(NAME "All_in_one_unit_test"
     COMMAND unit_tests

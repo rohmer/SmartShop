@@ -279,5 +279,8 @@
     <None Include="SensorEventTests-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
+    <ClCompile Include="SensorEventServerDBTests.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

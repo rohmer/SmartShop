@@ -5,6 +5,7 @@
 #include "SensorEvent.h"
 #include "cJSON.h"
 #include "JSON.h"
+#include "../Device/TelemetryAgent/TelemetryAgent.h"
 #include <CppUTest/CommandLineTestRunner.h>
 TEST_GROUP(SwitchTests)
 {
@@ -313,6 +314,7 @@ TEST(DBTests, EventTestStore)
 
 TEST(DBTests, GetEventsFromDB)
 {
+	DB::GetInstance();
 	using namespace sqlite_orm;
 	
 	DB::GetInstance("Test.db");
