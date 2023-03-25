@@ -6,7 +6,8 @@
 class VectorData : public SensorDataBase
 {
 public:
-	VectorData(float X=0,
+	VectorData(std::string Name,
+		float X=0,
 		float Y=0,
 		float Z=0,
 		float Roll=0,

@@ -39,7 +39,7 @@ void SensorEvent::AddEventData(BinaryData sensorEvent)
 
 void SensorEvent::AddEventData(ColorData sensorEvent)
 {
-	sensorData.push_back(new ColorData(sensorEvent.GetRed(), sensorEvent.GetGreen(),sensorEvent.GetBlue(),sensorEvent.GetAlpha()));
+	sensorData.push_back(new ColorData(sensorEvent.GetName(),sensorEvent.GetRed(), sensorEvent.GetGreen(),sensorEvent.GetBlue(),sensorEvent.GetAlpha()));
 }
 
 void SensorEvent::AddEventData(FloatData sensorEvent)
@@ -59,12 +59,13 @@ void SensorEvent::AddEventData(StringData sensorEvent)
 
 void SensorEvent::AddEventData(SwitchData sensorEvent)
 {
-	sensorData.push_back(new SwitchData(sensorEvent.GetSwitchID(), sensorEvent.GetValue()));
+	sensorData.push_back(new SwitchData(sensorEvent.GetName(),sensorEvent.GetSwitchID(), sensorEvent.GetValue()));
 }
 
 void SensorEvent::AddEventData(VectorData sensorEvent) 
 {
 	sensorData.push_back(new VectorData(
+		sensorEvent.GetName(),
 		sensorEvent.GetX(),
 		sensorEvent.GetY(),
 		sensorEvent.GetZ(),
@@ -241,7 +242,7 @@ SensorEvent SensorEvent::GetFromDB(unsigned int eventID)
 	std::vector<DBColorData> colDat = DB::GetInstance()->GetStorage()->get_all<DBColorData>(where(c(&DBColorData::EventID) == eventID));
 	for (std::vector<DBColorData>::iterator it = colDat.begin(); it != colDat.end(); ++it)
 	{
-		ColorData cd = ColorData(it->Red, it->Green, it->Blue, it->Alpha);
+		ColorData cd = ColorData(evts[0].SensorName, it->Red, it->Green, it->Blue, it->Alpha);
 		se.AddEventData(cd);
 	}
 	std::vector<DBFloatData> floatDat = DB::GetInstance()->GetStorage()->get_all<DBFloatData>(where(c(&DBFloatData::EventID) == eventID));
@@ -265,13 +266,13 @@ SensorEvent SensorEvent::GetFromDB(unsigned int eventID)
 	std::vector<DBSwitchData> swDat = DB::GetInstance()->GetStorage()->get_all<DBSwitchData>(where(c(&DBSwitchData::EventID) == eventID));
 	for (std::vector<DBSwitchData>::iterator it = swDat.begin(); it != swDat.end(); ++it)
 	{
-		SwitchData sd = SwitchData(it->SwitchID, it->Value);
+		SwitchData sd = SwitchData(evts[0].SensorName, it->SwitchID, it->Value);
 		se.AddEventData(sd);
 	}
 	std::vector<DBVectorData> vecDat = DB::GetInstance()->GetStorage()->get_all<DBVectorData>(where(c(&DBVectorData::EventID) == eventID));
 	for (std::vector<DBVectorData>::iterator it = vecDat.begin(); it != vecDat.end(); ++it)
 	{
-		VectorData vd =VectorData(it->X, it->Y, it->Z, it->Roll, it->Heading, it->Pitch);
+		VectorData vd = VectorData(evts[0].SensorName, it->X, it->Y, it->Z, it->Roll, it->Heading, it->Pitch);
 		se.AddEventData(vd);
 	}
 	return se;

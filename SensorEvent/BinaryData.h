@@ -38,5 +38,5 @@ public:
 	
 	
 private:
-	std::string name, data;
+	std::string  data;
 };

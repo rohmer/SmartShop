@@ -19,9 +19,15 @@ enum eSensorDataTypes
 class SensorDataBase
 {
 public:
-	SensorDataBase(eSensorDataTypes dataType)
+	SensorDataBase(eSensorDataTypes dataType, std::string name="")
 	{
 		this->dataType = dataType;
+		this->name = name;
+	}
+	
+	std::string GetName()
+	{
+		return name;
 	}
 	
 	eSensorDataTypes GetDataType(cJSON *json)
@@ -59,4 +65,5 @@ public:
 	
 protected:
 	eSensorDataTypes dataType;
+	std::string name;
 };

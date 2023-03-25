@@ -2,9 +2,9 @@
 
 BinaryData::BinaryData(std::string Name, std::string Data)
 	: SensorDataBase(eSensorDataTypes::BINARY)
-	, name(Name)
 	, data(Data)
 {
+	name = Name;
 }
 
 cJSON *BinaryData::ToJSON()

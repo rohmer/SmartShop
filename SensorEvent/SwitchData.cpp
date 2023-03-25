@@ -1,10 +1,11 @@
 #include "SwitchData.h"
 
-SwitchData::SwitchData(uint switchID, bool value) :
+SwitchData::SwitchData(std::string Name, uint switchID, bool value) :
 	SensorDataBase(eSensorDataTypes::SWITCH),
 	id(switchID),
 	val(value)
 {
+	name = Name;
 }
 
 void SwitchData::SetSwitchID(uint switchID)
@@ -34,6 +35,8 @@ cJSON *SwitchData::ToJSON()
 	cJSON *ctype = cJSON_CreateNumber(dataType);
 	cJSON *cid = cJSON_CreateNumber(id);
 	cJSON *cvalue = cJSON_CreateBool(val);
+	
+	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "type", ctype);
 	cJSON_AddItemToObject(ret, "id", cid);
 	cJSON_AddItemToObject(ret, "value", cvalue);
@@ -44,7 +47,11 @@ SwitchData SwitchData::FromJSON(cJSON *doc)
 {
 	unsigned int id;
 	bool value = false;
-	
+	std::string name;
+	if (cJSON_HasObjectItem(doc, "name"))
+	{
+		name = cJSON_GetObjectItem(doc, "name")->valuestring;
+	}
 	if (cJSON_HasObjectItem(doc,"id"))
 	{
 		id = cJSON_GetObjectItem(doc,"id")->valueint;
@@ -54,7 +61,7 @@ SwitchData SwitchData::FromJSON(cJSON *doc)
 		value = cJSON_GetObjectItem(doc, "value")->valueint;
 	}
 	
-	return SwitchData(id, value);
+	return SwitchData(name, id, value);
 }
 
 void SwitchData::StoreToDB(unsigned long eventID)

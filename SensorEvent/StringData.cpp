@@ -2,9 +2,9 @@
 
 StringData::StringData(std::string Name, std::string Value)
 	: SensorDataBase(eSensorDataTypes::STRING)
-	, name(Name)
 	, value(Value)
 {
+	name = Name;
 }
 
 cJSON *StringData::ToJSON()

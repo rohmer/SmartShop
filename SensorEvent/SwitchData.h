@@ -6,7 +6,7 @@
 class SwitchData : public SensorDataBase
 {
 public:
-	SwitchData(uint switchID, bool value);
+	SwitchData(std::string Name, uint switchID, bool value);
 	
 	cJSON *ToJSON();
 	static SwitchData FromJSON(cJSON *JSON);

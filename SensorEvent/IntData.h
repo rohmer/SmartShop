@@ -32,7 +32,6 @@ public:
 	void StoreToDB(unsigned long eventID);
 	
 private:	
-	std::string name;
 	long value;
 };
 	

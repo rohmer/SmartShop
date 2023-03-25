@@ -7,7 +7,7 @@
 class ColorData : public SensorDataBase
 {
 public:
-	ColorData(float R = 0, float G = 0, float B = 0, float A = 0);
+	ColorData(std::string Name, float R = 0, float G = 0, float B = 0, float A = 0);
 	cJSON *ToJSON();
 	static ColorData FromJSON(cJSON *JSON);
 	

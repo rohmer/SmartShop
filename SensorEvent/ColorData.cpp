@@ -1,12 +1,13 @@
 #include "ColorData.h"
 
-ColorData::ColorData(float Red, float Green, float Blue, float Alpha)
+ColorData::ColorData(std::string Name, float Red, float Green, float Blue, float Alpha)
 	: SensorDataBase(eSensorDataTypes::COLOR)
 	, r(Red)
 	, g(Green)
 	, b(Blue)
 	, a(Alpha)
 {
+	name = Name;
 }
 
 cJSON *ColorData::ToJSON()
@@ -17,6 +18,7 @@ cJSON *ColorData::ToJSON()
 	cJSON *blue = cJSON_CreateNumber(b);
 	cJSON *alpha = cJSON_CreateNumber(a);
 
+	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "r", red);
 	cJSON_AddItemToObject(ret, "g", green);
 	cJSON_AddItemToObject(ret, "b", blue);
@@ -28,6 +30,11 @@ cJSON *ColorData::ToJSON()
 ColorData ColorData::FromJSON(cJSON *json)
 {
 	float red=0, green=0, blue=0, alpha=0;
+	std::string name;
+	if (cJSON_HasObjectItem(json, "name"))
+	{
+		name = cJSON_GetObjectItem(json, "name")->valuestring;
+	}
 	if (cJSON_HasObjectItem(json, "r"))
 	{
 		red = cJSON_GetObjectItem(json, "r")->valuedouble;
@@ -44,7 +51,7 @@ ColorData ColorData::FromJSON(cJSON *json)
 	{
 		alpha = cJSON_GetObjectItem(json, "a")->valuedouble;
 	}
-	return ColorData(red, green, blue, alpha);
+	return ColorData(name, red, green, blue, alpha);
 }
 
 void ColorData::StoreToDB(unsigned long eventID)

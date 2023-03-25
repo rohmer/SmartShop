@@ -2,14 +2,16 @@
 
 IntData::IntData(std::string Name, long Value)
 	: SensorDataBase(eSensorDataTypes::INTEGER)
-	, name(Name)
 	, value(Value)
 {
+	name = Name;
 }
 
 cJSON *IntData::ToJSON()
 {
 	cJSON *ret = cJSON_CreateObject();
+	
+	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "type", cJSON_CreateNumber(eSensorDataTypes::INTEGER));
 	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "value", cJSON_CreateNumber(value));

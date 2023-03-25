@@ -1,6 +1,6 @@
 #include "VectorData.h"
 
-VectorData::VectorData(float X, float Y, float Z, float Roll, float Heading, float Pitch)
+VectorData::VectorData(std::string Name, float X, float Y, float Z, float Roll, float Heading, float Pitch)
 	: SensorDataBase(eSensorDataTypes::VECTOR)
 	, x(X)
 	, y(Y)
@@ -9,6 +9,7 @@ VectorData::VectorData(float X, float Y, float Z, float Roll, float Heading, flo
 	, pitch(Pitch)
 	, heading(Heading)
 {
+	name = Name;
 }
 
 cJSON *VectorData::ToJSON()
@@ -22,6 +23,8 @@ cJSON *VectorData::ToJSON()
 	cJSON *jpitch = cJSON_CreateNumber(pitch);
 	cJSON *jheading = cJSON_CreateNumber(heading);
 
+	
+	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "type", ctype);
 	cJSON_AddItemToObject(ret, "x", jx);
 	cJSON_AddItemToObject(ret, "y", jy);
@@ -35,6 +38,11 @@ cJSON *VectorData::ToJSON()
 VectorData VectorData::FromJSON(cJSON *json)
 {
 	float jX = 0, jY = 0, jZ = 0, jRoll = 0, jPitch = 0, jHeading = 0;
+	std::string name;
+	if (cJSON_HasObjectItem(json, "name"))
+	{
+		name = cJSON_GetObjectItem(json, "name")->valuestring;
+	}
 	if (cJSON_HasObjectItem(json, "x"))
 	{
 		jX = cJSON_GetObjectItem(json, "x")->valuedouble;
@@ -60,7 +68,7 @@ VectorData VectorData::FromJSON(cJSON *json)
 		jHeading = cJSON_GetObjectItem(json, "heading")->valuedouble;
 	}
 	
-	return VectorData(jX, jY, jZ, jRoll, jHeading, jPitch);
+	return VectorData(name, jX, jY, jZ, jRoll, jHeading, jPitch);
 }
 
 void VectorData::StoreToDB(unsigned long eventID)

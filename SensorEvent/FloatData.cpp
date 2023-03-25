@@ -2,14 +2,15 @@
 
 FloatData::FloatData(std::string Name, float Value)
 	: SensorDataBase(eSensorDataTypes::FLOAT)
-	, name(Name)
 	, value(Value)
 {
+	name = Name;
 }
 
 cJSON *FloatData::ToJSON()
 {
 	cJSON *ret = cJSON_CreateObject();
+	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "type", cJSON_CreateNumber(eSensorDataTypes::FLOAT));
 	cJSON_AddItemToObject(ret, "name", cJSON_CreateString(name.c_str()));
 	cJSON_AddItemToObject(ret, "value", cJSON_CreateNumber(value));
