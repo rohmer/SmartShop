@@ -59,7 +59,7 @@ if (WITH_SOCKS)
 	add_definitions("-DWITH_SOCKS")
 endif (WITH_SOCKS)
 
-option(WITH_SRV "Include SRV lookup support?" OFF)
+option(WITH_SRV "Include SRV lookup support?" ON)
 
 option(WITH_STATIC_LIBRARIES "Build static versions of the libmosquitto/pp libraries?" OFF)
 option(WITH_PIC "Build the static library with PIC (Position Independent Code) enabled archives?" OFF)
@@ -115,7 +115,7 @@ option(WITH_CLIENTS "Build clients?" ON)
 option(WITH_BROKER "Build broker?" ON)
 option(WITH_APPS "Build apps?" ON)
 option(WITH_PLUGINS "Build plugins?" ON)
-option(DOCUMENTATION "Build documentation?" ON)
+option(DOCUMENTATION "Build documentation?" OFF)
 
 add_subdirectory(lib)
 if (WITH_CLIENTS)
