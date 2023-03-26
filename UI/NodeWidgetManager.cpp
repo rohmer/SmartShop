@@ -29,32 +29,12 @@ std::vector<std::string> NodeWidgetManager::CheckNew()
 			nodesToBeCreated.push_back(it->CPUID);
 		}
 	}
+	Update();
 	return nodesToBeCreated;
 }
 
 UIWidget *NodeWidgetManager::CreateNodeWidget(std::string nodeID)
 {
-	/*int px, py;
-	px = nodePosition  % 3;
-	if (nodePosition > 3)
-		py = nodePosition / 3;
-	else
-		py = 0;
-	int x, y;
-	if (px == 0)
-		x = 15;
-	else
-		x = (px*(nodeWidth + 25));
-	if (py == 0)
-		y = 5;
-	else
-		y = (py*(nodeHeight + 10));
-	
-	// SO now we have our dimensions:
-	// x,y starting point
-	// nodWidth, nodeHeight the size
-	*/
-	//std::shared_ptr<UIWidget> base = pluginManager->WidgetFactory("NodeWidget");
 	std::shared_ptr<NodeWidget> nw = std::dynamic_pointer_cast<NodeWidget>(pluginManager->WidgetFactory("NodeWidget"));
 	nw->SetID(nodeID);
 	nw->Draw(drawSurface, false, nodeWidth, nodeHeight, -1, -1);
@@ -64,4 +44,14 @@ UIWidget *NodeWidgetManager::CreateNodeWidget(std::string nodeID)
 	nodeObjects.emplace(nodeID,nw);
 	knownNodes.emplace(nodeID,false);
 	nodePosition++;
+}
+
+void NodeWidgetManager::Update()
+{
+	for (std::map<std::string, std::shared_ptr<NodeWidget>>::iterator it = nodeObjects.begin();
+		it != nodeObjects.end();
+		++it)
+	{
+		it->second->Update();
+	}
 }

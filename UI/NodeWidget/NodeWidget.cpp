@@ -142,22 +142,177 @@ void NodeWidget::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16
 	}
 }
 
+void NodeWidget::Update()
+{
+	if (!maximized)
+		drawIcon();
+}
+	
 void NodeWidget::drawIcon()
 {
 	// First get the data from the telemetry sensor event for this node
-	SensorEvent se = SensorEvent::GetLatestFromDB(hostname, "TelemetryAgent");
-	if (se.GetHostname().length() != 0)
+	std::vector<SensorEvent> events = SensorEvent::GetLatestGroupFromDB(hostname, "TelemetryAgent");
+	if (events.size() == 0)
+		return;
+	
+	float fsPct = 100;
+	int fsSev = 0;		// 0 Green, 1 Yellow, 2 Red
+	float temp = 0.0f;
+	int tmpPct = 0;
+	
+	for (int i = 0; i < events.size(); i++)
 	{
-		int fsPct = 150;
-		int fsSev = 0;		// 0 = green, 1 yellow, 2 red
-		float temp = 0;
-		int tempSev = 0;
-		
-		
+		SensorEvent se = events[i];
+		std::vector<SensorDataBase*> sdlist = se.GetEventData();
+		bool isTemp=false;
+		bool isFs=false;
+		for (int j = 0; j < sdlist.size(); j++)
+		{
+			SensorDataBase *sd = sdlist[j];
+			if (std::strcmp(sd->GetName().c_str(), "Filesystem") == 0)
+			{
+				isFs = true;
+				isTemp = false;
+			}
+			if (std::strcmp(sd->GetName().c_str(), "CPUTemp")==0)
+			{
+				isTemp = true;
+				isFs = false;
+			}
+		}
+		if (isTemp)
+		{
+			for (int j = 0; j < sdlist.size(); j++)
+			{
+				SensorDataBase *sd = sdlist[j];
+				if (std::strcmp(sd->GetName().c_str(), "CPUTemp") == 0)
+				{
+					FloatData *fd = (FloatData*)(sd);
+					if (fd != NULL)
+					{
+						temp = fd->GetValue();
+					}
+				}
+				if (std::strcmp(sd->GetName().c_str(), "Severity") == 0)
+				{
+					StringData *strd = (StringData*)(sd);
+					if (strd != NULL)
+					{
+						if (std::strcmp(strd->GetValue().c_str(), "INFO") == 0)
+							tmpPct = 0;
+						if (std::strcmp(strd->GetValue().c_str(), "WARN") == 0)
+							tmpPct = 1;
+						if (std::strcmp(strd->GetValue().c_str(), "CRIT") == 0)
+							tmpPct = 2;						
+					}
+				}
+			}
+		}
+		if (isFs)
+		{
+			bool rootFS = false;
+			int sev = 0;
+			float pctFree = 0.0f;
+			for (int j = 0; j < sdlist.size(); j++)
+			{
+				SensorDataBase *sd = sdlist[j];
+				if (std::strcmp(sd->GetName().c_str(), "Filesystem")==0)
+				{
+					StringData *strd = (StringData*)sd;
+					if (std::strcmp(strd->GetName().c_str(), "/"))
+					{
+						rootFS = true;
+					}
+				}
+				if (std::strcmp(sd->GetName().c_str(), "Severity")==0)
+				{
+					StringData *sdat = (StringData*)(sd);
+					if (sdat != NULL)
+					{
+						if (std::strcmp(sdat->GetValue().c_str(),"INFO")== 0)
+							sev = 0;
+						if (std::strcmp(sdat->GetValue().c_str(), "WARN") == 0)
+							sev = 1;
+						if (std::strcmp(sdat->GetValue().c_str(), "CRIT") == 0)
+							sev = 2;						
+					}
+				}
+				if (std::strcmp(sd->GetName().c_str(), "PctFree")==0)
+				{
+					FloatData *fd = (FloatData*)(sd);
+					pctFree = fd->GetValue();
+				}
+			}
+			if (rootFS)
+			{
+				fsPct = pctFree;
+				fsSev = sev;
+			}
+		}
 	}
 	
-	// Need to get the logs next and find the worst one in the past 24 hours
+	switch (tmpPct)
+	{
+	case 0:
+		lv_led_set_color(tempLed, lv_palette_main(LV_PALETTE_GREEN));
+		break;
+	case 1:
+		lv_led_set_color(tempLed, lv_palette_main(LV_PALETTE_YELLOW));
+		break;
+	case 2:
+		lv_led_set_color(tempLed, lv_palette_main(LV_PALETTE_RED));
+		break;
+	}
 	
+	switch (fsSev)
+	{
+	case 0:
+		lv_led_set_color(hardDiskLed, lv_palette_main(LV_PALETTE_GREEN));
+		break;
+	case 1:
+		lv_led_set_color(hardDiskLed, lv_palette_main(LV_PALETTE_YELLOW));
+		break;
+	case 2:
+		lv_led_set_color(hardDiskLed, lv_palette_main(LV_PALETTE_RED));
+		break;
+		
+	}
+	// Need to get the logs next and find the worst one in the past 24 hours
+	const auto p1 = std::chrono::system_clock::now();
+	time_t dtime=std::chrono::duration_cast<std::chrono::seconds>(
+                   p1.time_since_epoch()).count()-(24*60*60);
+	using namespace sqlite_orm;
+	std::vector<LogMsg> logs = DB::GetInstance()->GetStorage()->get_all<LogMsg>(
+			where(
+				c(&LogMsg::HostID)==hostname and
+				c(&LogMsg::Timestamp)>dtime
+			)
+		);
+	int logSev = 0;
+	for (int i = 0; i < logs.size(); i++)
+	{
+		if (logs[i].Severity == 2)
+		{
+			logSev = 2;
+			break;
+		}
+		if (logs[i].Severity == 1)
+		{
+			logSev = 1;
+		}
+	}
+	switch (logSev)
+	{
+	case 0:
+		lv_led_set_color(logLed, lv_palette_main(LV_PALETTE_GREEN));
+		break;
+	case 1:
+		lv_led_set_color(logLed, lv_palette_main(LV_PALETTE_YELLOW));
+		break;
+	case 2:
+		lv_led_set_color(logLed, lv_palette_main(LV_PALETTE_RED));
+		break;
+	}
 }
 // the class factories
 

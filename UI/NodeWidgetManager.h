@@ -15,6 +15,7 @@ public:
 	NodeWidgetManager(lv_obj_t *windowPane, uint width, uint height);
 	UIWidget *CreateNodeWidget(std::string nodeID);
 	std::vector<std::string> CheckNew();
+	void Update();
 	
 private:
 	std::map<std::string, bool> knownNodes;  // NodeID, If node is created

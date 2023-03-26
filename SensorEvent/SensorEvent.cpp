@@ -379,7 +379,7 @@ SensorEvent SensorEvent::GetLatestFromDB(std::string Hostname, std::string Event
 			c(&DBEventData::Hostname)==Hostname and 
 			c(&DBEventData::SensorName)==EventName
 		), 
-		order_by(&DBEventData::EventTime), 
+		order_by(&DBEventData::EventTime).desc(), 
 		limit(1)
 		);
 	

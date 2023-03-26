@@ -28,10 +28,12 @@ DeviceManager *DeviceManager::GetInstance()
 void DeviceManager::scheduleSensor(Sensor *s)
 {
 	std::vector<SensorEvent> events = s->PollSensor();
-	
+	unsigned long id;
+	if (events.size() > 0)
+		id = events[0].GetEventTime();
 	for (int i=0; i<events.size(); i++)
 	{
-		events[i].SetGroupID(events[i].GetGroupID());
+		events[i].SetGroupID(id);
 		events[i].StoreToDB();	
 		// Send to server at this point
 		if (endpointClient != NULL)
