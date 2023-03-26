@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LibrarySearchDirectories>=/lib/arm-linux-gnueabihf/pulseaudio;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>pthread;dl;crypto;ssl;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>pthread;dl;crypto;ssl;atomic;cjson;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -104,12 +104,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
-      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

@@ -67,7 +67,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>cjson;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />

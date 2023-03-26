@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;httpserver;oatpp;cjson;cpp-base64;uuid;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -104,27 +104,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\cpp-base64-master\cpp-base64\cpp-base64.vcxproj">
-      <Project>{3b0f9500-0318-4ed8-8256-d6603ce7a3b3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\libuuid-master\libuuid\libuuid.vcxproj">
-      <Project>{3425c9b5-c028-43c6-882a-bb47aa97d14a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\oatpp-master\oatpp\oatpp.vcxproj">
-      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\sqlite3\sqlite3\sqlite3.vcxproj">
-      <Project>{c76f6c21-b13d-4e2d-8a9d-975fd84269f3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\WebServer\libhttpserver-master\libhttpserver\libhttpserver.vcxproj">
-      <Project>{f713bc2f-3a0a-45cc-aeff-19c157e7a374}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\WebServer\libmicrohttpd-0.9.75\libmicrohttpd\libmicrohttpd.vcxproj">
-      <Project>{e450fd90-29d3-4bba-8378-0aa2a3008635}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

@@ -13,14 +13,14 @@ TEST_GROUP(SwitchTests)
 
 TEST(SwitchTests, CreateSwitchEvent)
 {
-	SwitchData sd = SwitchData(0, true);
+	SwitchData sd = SwitchData("test",0, true);
 	CHECK(sd.GetValue() == true);
 	CHECK(sd.GetSwitchID() == 0);
 }
 
 TEST(SwitchTests, ToJSON)
 {
-	SwitchData sd = SwitchData(1, false);
+	SwitchData sd = SwitchData("test", 1, false);
 	cJSON *doc = sd.ToJSON();
 
 	
@@ -50,7 +50,7 @@ TEST_GROUP(VectorTests)
 
 TEST(VectorTests, CreateVectorTest)
 {
-	VectorData vd(1, 2, 3, 4, 5, 6);
+	VectorData vd("test", 1, 2, 3, 4, 5, 6);
 	CHECK(vd.GetX() == 1);
 	CHECK(vd.GetY() == 2);
 	CHECK(vd.GetZ() == 3);
@@ -61,7 +61,7 @@ TEST(VectorTests, CreateVectorTest)
 
 TEST(VectorTests, ToJSON)
 {
-	VectorData vd(1, 2, 3, 4, 5, 6);
+	VectorData vd("test", 1, 2, 3, 4, 5, 6);
 	cJSON *json = vd.ToJSON();
 	CHECK(cJSON_HasObjectItem(json, "x"));
 	CHECK(cJSON_GetObjectItem(json, "x")->valuedouble == 1);	
@@ -102,7 +102,7 @@ TEST_GROUP(ColorTests)
 
 TEST(ColorTests, CreateColorTest)
 {
-	ColorData cd(1, 2, 3, 4);
+	ColorData cd("test", 1, 2, 3, 4);
 	CHECK(cd.GetRed() == 1);
 	CHECK(cd.GetGreen() == 2);
 	CHECK(cd.GetBlue() == 3);
@@ -111,7 +111,7 @@ TEST(ColorTests, CreateColorTest)
 
 TEST(ColorTests, ToJSON)
 {
-	ColorData cd(1, 2, 3, 4);
+	ColorData cd("test", 1, 2, 3, 4);
 	cJSON *json = cd.ToJSON();
 	CHECK(cJSON_HasObjectItem(json, "r"));
 	CHECK(cJSON_GetObjectItem(json, "r")->valuedouble == 1);
@@ -280,21 +280,22 @@ TEST(DBTests, FloatTest)
 TEST(DBTests, ColorTest)
 {
 	DB::GetInstance("SmartShop.db");
-	ColorData cd(1.0f, 1.0f, 1.0f, 1.0f);
+	ColorData cd("test", .0f, 1.0f, 1.0f, 1.0f);
 	cd.StoreToDB(4);
 }
 
 TEST(DBTests, SwitchTest)
 {
 	DB::GetInstance("SmartShop.db");
-	SwitchData sd(1, true);
+	SwitchData sd("test", 1, true);
 	sd.StoreToDB(5);
 }
 
 TEST(DBTests, VectorTest)
 {
 	DB::GetInstance("SmartShop.db");
-	VectorData vd(1.0f,
+	VectorData vd("test",
+		1.0f,
 		1.0f,
 		1.0f,
 		1.0f,
@@ -306,9 +307,9 @@ TEST(DBTests, VectorTest)
 TEST(DBTests, EventTestStore)
 {
 	SensorEvent se("TestEvent");
-	se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
-	se.AddEventData(SwitchData(3, true));
-	se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
+	se.AddEventData(ColorData("test", 1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(SwitchData("test", 3, true));
+	se.AddEventData(VectorData("test", 1, 2, 3, 4, 5, 6));
 	se.StoreToDB();
 }
 
@@ -323,9 +324,9 @@ TEST(DBTests, GetEventsFromDB)
 		std::stringstream eventName;
 		eventName << "TestEvent" << i;
 		SensorEvent se(eventName.str());
-		se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
-		se.AddEventData(SwitchData(3, true));
-		se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
+		se.AddEventData(ColorData("test", 1.0, 1.0, 1.0, 1.0));
+		se.AddEventData(SwitchData("test", 3, true));
+		se.AddEventData(VectorData("test", 1, 2, 3, 4, 5, 6));
 		se.StoreToDB();		
 	}
 	std::vector<DBEventData> evts = DB::GetInstance()->GetStorage()->get_all<DBEventData>(sqlite_orm::limit(25));
@@ -352,7 +353,7 @@ TEST_GROUP(FullEvent)
 TEST(FullEvent, SingleDataPoint)
 {
 	SensorEvent se("TestSensor");
-	ColorData cd=ColorData(1.0f, 1.0f, 1.0f, 1.0f);
+	ColorData cd = ColorData("test", 1.0f, 1.0f, 1.0f, 1.0f);
 	se.AddEventData(cd);
 	
 	cJSON *j = se.ToJSON();
@@ -383,9 +384,9 @@ TEST(FullEvent, SingleDataPoint)
 TEST(FullEvent, MultipleDataPoints)
 {
 	SensorEvent se("TestEvent");
-	se.AddEventData(ColorData(1.0, 1.0, 1.0, 1.0));
-	se.AddEventData(SwitchData(3, true));
-	se.AddEventData(VectorData(1, 2, 3, 4, 5, 6));
+	se.AddEventData(ColorData("test", 1.0, 1.0, 1.0, 1.0));
+	se.AddEventData(SwitchData("test", 3, true));
+	se.AddEventData(VectorData("test", 1, 2, 3, 4, 5, 6));
 	cJSON *j = se.ToJSON();
 	
 	std::string json = JSON::Print(j);

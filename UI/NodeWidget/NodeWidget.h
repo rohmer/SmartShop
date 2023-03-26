@@ -5,6 +5,7 @@
 #include "../../Logger/LogMsg.h"
 #include "../../SensorEvent/SensorEvent.h"
 #include "../UIWidget/UIWidget.h"
+#include "sqlite_orm.h"
 
 extern "C" UIWidget *Factory();
 

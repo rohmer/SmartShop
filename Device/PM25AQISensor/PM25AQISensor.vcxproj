@@ -67,7 +67,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>cjson;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -114,9 +114,6 @@
     <None Include="PM25AQISensor-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
