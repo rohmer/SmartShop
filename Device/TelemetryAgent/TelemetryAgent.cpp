@@ -7,17 +7,20 @@ TelemetryAgent::TelemetryAgent(
 	float TempWarning,
 	float TempCrit,
 	float DiskPctWarn,
-	float DiskPctCrit)
+	float DiskPctCrit,
+	bool OnlyReportRootFS)
 	: DeviceBase(Name, Description, eDeviceType::SENSOR, eDeviceBus::NA, PollingInterval)
 	, tempWarn(TempWarning)
 	, tempCrit(TempCrit)
 	, diskWarn(DiskPctWarn)
 	, diskCrit(DiskPctCrit)
+	, onlyRootFS(OnlyReportRootFS)
 {
 	config.AddConfigItem(DeviceConfigItem("TempWarn", TempWarning));
 	config.AddConfigItem(DeviceConfigItem("TempCrit", TempCrit));
 	config.AddConfigItem(DeviceConfigItem("DiskPctWarn", DiskPctWarn));
 	config.AddConfigItem(DeviceConfigItem("DiskPctCrit", DiskPctCrit));
+	config.AddConfigItem(DeviceConfigItem("RootFSOnly", OnlyReportRootFS));
 	if (tempWarn > tempCrit)
 		tempWarn = tempCrit;
 	if (diskWarn > diskCrit)
@@ -26,6 +29,12 @@ TelemetryAgent::TelemetryAgent(
 
 std::vector<SensorEvent> TelemetryAgent::PollSensor()
 {
+	tempCrit = config.GetConfigItem("TempCrit").GetFloatVal();
+	tempWarn = config.GetConfigItem("TempWarn").GetFloatVal();
+	diskCrit = config.GetConfigItem("DiskPctCrit").GetFloatVal();
+	diskWarn = config.GetConfigItem("DiskPctWarn").GetFloatVal();
+	onlyRootFS = config.GetConfigItem("RootFSOnly").GetBoolVal();
+	
 	std::vector<SensorEvent> ret;
 	sTelemetryReturn telemetry = Telemetry::GetTelemetryStats(10, 0);
 	if (tempWarn != 0 && tempCrit != 0)
@@ -57,32 +66,35 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 		it != telemetry.fileSystems.end();
 		++it)
 	{
-		float free = 100.0 - it->usedPct;
-		if (free <= diskCrit)
-		{
-			SensorEvent diskEvent(name);
-			diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
-			diskEvent.AddEventData(FloatData("PctFree", free));
-			diskEvent.AddEventData(StringData("Severity", "CRIT"));
-			ret.push_back(diskEvent);
-		}
-		else
-		{
-			if (free <= diskWarn)
+		if (!onlyRootFS || std::strcmp(it->filesystem.c_str(), "/"))
+		{			
+			float free = 100.0 - it->usedPct;
+			if (free <= diskCrit)
 			{
 				SensorEvent diskEvent(name);
 				diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
 				diskEvent.AddEventData(FloatData("PctFree", free));
-				diskEvent.AddEventData(StringData("Severity", "WARN"));
+				diskEvent.AddEventData(StringData("Severity", "CRIT"));
 				ret.push_back(diskEvent);
 			}
 			else
 			{
-				SensorEvent diskEvent(name);
-				diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
-				diskEvent.AddEventData(FloatData("PctFree", free));
-				diskEvent.AddEventData(StringData("Severity", "INFO"));
-				ret.push_back(diskEvent);
+				if (free <= diskWarn)
+				{
+					SensorEvent diskEvent(name);
+					diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
+					diskEvent.AddEventData(FloatData("PctFree", free));
+					diskEvent.AddEventData(StringData("Severity", "WARN"));
+					ret.push_back(diskEvent);
+				}
+				else
+				{
+					SensorEvent diskEvent(name);
+					diskEvent.AddEventData(StringData("Filesystem", it->filesystem));
+					diskEvent.AddEventData(FloatData("PctFree", free));
+					diskEvent.AddEventData(StringData("Severity", "INFO"));
+					ret.push_back(diskEvent);
+				}
 			}
 		}
 	}

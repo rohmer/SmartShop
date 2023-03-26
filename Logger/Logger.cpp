@@ -11,7 +11,7 @@ Logger::Logger()
 #ifdef DEBUG
 	auto console = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 	logPtr->sinks().push_back(console);
-#endif
+#endif	
 }
 
 Logger::~Logger()
@@ -61,6 +61,62 @@ void Logger::Init(
 	}
 	for (int i = 0; i < logPtr->sinks().size(); i++)
 		logPtr->sinks()[i].get()->set_level(logLevel);
+}
+
+void Logger::Update(
+	bool useSTDIO, 
+	bool useDB, 
+	bool useREST, 
+	ELogLevel stdioLevel, 
+	ELogLevel dbLevel, 
+	ELogLevel restLevel,
+	uint restServerPort,
+	std::vector<std::string> restServers)
+{
+	logPtr->sinks().clear();
+	if (useREST)
+	{		
+		auto sink = std::make_shared<log_sync_mt>();
+		switch (restLevel)
+		{
+		case ELogLevel::INFO:
+			sink->set_level(spdlog::level::trace);
+			break;
+		case ELogLevel::WARN:
+			sink->set_level(spdlog::level::warn);
+			break;
+		case ELogLevel::CRITICAL:
+			sink->set_level(spdlog::level::critical);
+		}
+		this->servers.clear();
+		for (int i = 0; i < restServers.size(); i++)
+		{
+			this->servers.emplace(restServers[i], restServerPort);
+			sink->AddClient(restServers[i], restServerPort);
+		}
+		logPtr->sinks().push_back(sink);		
+	}
+	if (useSTDIO)
+	{
+		auto console = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+		logPtr->sinks().push_back(console);
+	}
+	if (useDB)
+	{
+		auto sink = std::make_shared<db_sink_mt>();	
+		switch (dbLevel)
+		{
+		case ELogLevel::INFO:
+			sink->set_level(spdlog::level::trace);
+			break;
+		case ELogLevel::WARN:
+			sink->set_level(spdlog::level::warn);
+			break;
+		case ELogLevel::CRITICAL:
+			sink->set_level(spdlog::level::critical);
+		}
+		logPtr->sinks().push_back(sink);	
+	}
 }
 
 Logger *Logger::GetInstance()

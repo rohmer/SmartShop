@@ -36,7 +36,16 @@ public:
 	void Init(std::map<std::string,uint>servers, bool hasServer = true, uint ServerPort = 8080, bool isServer = false, spdlog::level::level_enum logLevel = LOGLEVEL);
 	void Init(bool hasServers=false, uint ServerPort=8080,bool isServer = false, spdlog::level::level_enum logLevel = LOGLEVEL);
 
-	
+	void Update(
+		bool useSTDIO, 
+		bool useDB, 
+		bool useREST, 
+		ELogLevel stdioLevel, 
+		ELogLevel dbLevel, 
+		ELogLevel restLevel,
+		uint restServerPort,
+		std::vector<std::string> restServers);
+		
 private:
 	Logger();
 	static Logger *instance;

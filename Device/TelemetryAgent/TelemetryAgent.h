@@ -17,11 +17,13 @@ public:
 		float TempWarning=50.0,
 		float TempCrit=60.0,
 		float DiskPctWarn=60.0,
-		float DiskPctCrit=75.0);	
+		float DiskPctCrit=75.0,
+		bool OnlyReportRootFS=true);	
 	
 	std::vector<SensorEvent> PollSensor() override;
 
 private:
 	float tempWarn, tempCrit, diskWarn, diskCrit;
+	bool onlyRootFS;
 };
 	

@@ -54,9 +54,14 @@ template<typename Mutex>
 				auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared();
 				std::shared_ptr<RemoteSyncAPI> client = RemoteSyncAPI::createShared(requestExecutor, objectMapper);
 				clients.emplace(clientAddr, client);
-			}
-			
+			}			
 		}
+		
+		void ClearClients()
+		{
+			clients.clear();
+		}
+		
 	protected:
 		void sink_it_(const spdlog::details::log_msg &msg) override
 		{

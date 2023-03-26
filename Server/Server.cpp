@@ -9,7 +9,7 @@ Server::Server()
 	
 	DB::GetInstance("SmartShop.db");
 	log = Logger::GetInstance();
-	log->Init();
+	log->Init(false,8080,true);
 	
 	restServer = new RESTServer(HTTP_PORT);
 	try
