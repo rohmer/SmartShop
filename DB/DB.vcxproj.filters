@@ -56,6 +56,9 @@
     <ClInclude Include="DBDevice.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="dbstat.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="DB-Debug.vgdbsettings" />

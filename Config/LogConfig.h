@@ -10,6 +10,10 @@
 class LogConfig
 {
 public:
+	LogConfig()
+	{
+	}
+		
 	LogConfig(bool useSTDIO,
 		ELogLevel stdioLevel,
 		bool useREST,

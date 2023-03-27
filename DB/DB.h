@@ -17,7 +17,7 @@
 #include "DBDeviceConfigItem.h"
 #include "DBInstall.h"
 #include "DBDevice.h"
-#include "DB.h"
+#include "dbstat.h"
 #include "../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h"
 
 inline auto initCoreStorage(const std::string &path)
@@ -114,7 +114,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("ipAddress", &DBDevice::IPAddress),
 			make_column("cpuCount", &DBDevice::CPUCount),
 			make_column("deviceType", &DBDevice::DeviceType),			
-			make_column("auth", &DBDevice::isAuth))
+			make_column("auth", &DBDevice::isAuth))	
 		);
 }
 	
@@ -157,6 +157,17 @@ public:
 		storage->update<DBDevice>(d);
 	}
 
+	ulong GetTableSize(std::string table)
+	{
+		using namespace sqlite_orm;
+		/*std::vector<dbstat> rows = storage->get_all<dbstat>(where(c(&dbstat::name) == table));
+		ulong total = 0;
+		for (int i = 0; i < rows.size(); i++)
+			total += rows[i].pgsize;
+		return total;*/
+		return 0;
+	}
+	
 private:
 	DB(std::string path = "");
 	static DB* instance;	

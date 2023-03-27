@@ -11,7 +11,8 @@ Server::Server()
 	log = Logger::GetInstance();
 	log->Init(false,8080,true);
 	
-	restServer = new RESTServer(HTTP_PORT);
+	restServer = RESTServer::GetInstance(HTTP_PORT, SERVER_THREADS);
+	
 	try
 	{
 		logEndpoint = new LogEndpoint();

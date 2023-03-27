@@ -7,7 +7,8 @@ Client::Client() :
 	dm(DeviceManager::GetInstance())
 {
 	shutdown = false;
-	restServer = new RESTServer(8080);
+	restServer = RESTServer::GetInstance(SERVER_PORT, SERVER_THREADS);
+	
 	ConfigEndpoint *cfgEP = new ConfigEndpoint();
 	restServer->RegisterResource("/config", (httpserver::http_resource *)cfgEP);
 	

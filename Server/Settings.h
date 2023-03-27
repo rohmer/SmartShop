@@ -1,6 +1,8 @@
 #pragma once
 
 #define HTTP_PORT 8080
+#define SERVER_THREADS 16
+
 #define APP_NAME "SmartShop Server"
 
 #define USE_UI

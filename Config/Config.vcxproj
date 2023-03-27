@@ -39,14 +39,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/cJSON-master;../DB;../RaspUtils;../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/cJSON-master;../DB;../RaspUtils;../Components/oatpp-master/src;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>cjson;sqlite3;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>cjson;sqlite3;oatpp;httpserver;microhttpd;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -59,23 +59,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="DBConfig.cpp" />
     <ClCompile Include="LogConfig.cpp" />
+    <ClCompile Include="ServerConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
+    <ClInclude Include="DBConfig.h" />
     <ClInclude Include="LogConfig.h" />
+    <ClInclude Include="ServerConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Config-Debug.vgdbsettings" />
     <None Include="Config-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\oatpp-master\oatpp\oatpp.vcxproj">
-      <Project>{5d3c6f40-8c2f-450f-839f-99206e669162}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
@@ -87,6 +85,9 @@
     </ProjectReference>
     <ProjectReference Include="..\RaspUtils\RaspUtils.vcxproj">
       <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\RESTServer\RESTServer.vcxproj">
+      <Project>{9a686d10-8a01-45fc-9fee-d819530a4de9}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
