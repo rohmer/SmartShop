@@ -14,6 +14,8 @@ public:
 	{
 	}
 		
+	LogConfig(DeviceConfig dc);
+		
 	LogConfig(bool useSTDIO,
 		ELogLevel stdioLevel,
 		bool useREST,

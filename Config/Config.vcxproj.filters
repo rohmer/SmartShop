@@ -27,6 +27,12 @@
     <ClCompile Include="DBConfig.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Caps.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TelemetryAgentConfig.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -39,6 +45,12 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DBConfig.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Caps.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TelemetryAgentConfig.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

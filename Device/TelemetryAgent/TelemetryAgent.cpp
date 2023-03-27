@@ -1,5 +1,30 @@
 #include "TelemetryAgent.h"
 
+TelemetryAgent::TelemetryAgent(DeviceConfig dc) :
+	DeviceBase("Telemetry Agent", 
+		"Agent for getting metrics about the underlying device", 
+		eDeviceType::SENSOR, 
+		eDeviceBus::NA, 300)
+{
+	UpdateConfig(dc);
+}
+
+void TelemetryAgent::UpdateConfig(DeviceConfig dc)
+{
+	if (dc.HasConfigItem("TempWarn"))
+		tempWarn = dc.GetConfigItem("TempWarn").GetFloatVal();
+	if (dc.HasConfigItem("PollingInterval"))
+		SetPollingInterval(dc.GetConfigItem("PollingInterval").GetLongVal());
+	if (dc.HasConfigItem("TempCrit"))
+		tempCrit = dc.GetConfigItem("TempCrit").GetFloatVal();
+	if (dc.HasConfigItem("DiskPctWarn"))
+		diskWarn = dc.GetConfigItem("DiskPctWarn").GetFloatVal();
+	if (dc.HasConfigItem("DiskPctCrit"))
+		diskCrit = dc.GetConfigItem("DiskPctCrit").GetFloatVal();
+	if (dc.HasConfigItem("RootFSOnly"))
+		onlyRootFS = dc.GetConfigItem("RootFSOnly").GetBoolVal();
+}
+
 TelemetryAgent::TelemetryAgent(
 	std::string Name,
 	std::string Description,

@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Init.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -100,12 +101,16 @@
     <None Include="Server-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Init.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="Settings.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\Client.vcxproj">
       <Project>{34c2fa0e-ff32-4016-8048-a1b0925d6596}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Config\Config.vcxproj">
+      <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
     </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>

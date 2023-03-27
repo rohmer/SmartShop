@@ -19,7 +19,7 @@ RESTServer::RESTServer(unsigned int port, uint threads)
 void RESTServer::Update(uint ServerPort, uint ServerThreads)
 {
 	Logger::GetInstance()->LogI("Reconfiguring REST Server");
-	if (ws->is_running())
+	if (ws!=NULL && ws->is_running())
 		ws->stop();
 	delete(ws);
 	ws=new httpserver::webserver(httpserver::create_webserver(ServerPort).max_connections(ServerThreads));

@@ -57,6 +57,14 @@ bool Config::LoadConfig(std::string configFile)
 	{
 		serverConfig = ServerConfig::FromJSON(cJSON_GetObjectItem(json, "server"));
 	}
+	if (cJSON_HasObjectItem(json, "caps"))
+	{
+		caps = Caps::FromJSON(cJSON_GetObjectItem(json, "caps"));
+	}
+	if (cJSON_HasObjectItem(json, "tAgent"))
+	{
+		taConfig = TelemetryAgentConfig::FromJSON(cJSON_GetObjectItem(json, "tAgent"));
+	}
 	try
 	{
 		cJSON_Delete(json);
@@ -82,7 +90,8 @@ bool Config::SaveConfig(std::string configFile)
 	cJSON_AddItemToObject(json, "db", dbConfig.ToJSON());
 	cJSON_AddItemToObject(json, "log", logConfig.ToJSON());
 	cJSON_AddItemToObject(json, "server", serverConfig.ToJSON());
-	
+	cJSON_AddItemToObject(json, "caps", caps.ToJSON());
+	cJSON_AddItemToObject(json, "tAgent", taConfig.ToJSON());
 	std::stringstream ss;
 	ss << JSON::Print(json);
 	out << ss.str();
@@ -90,4 +99,50 @@ bool Config::SaveConfig(std::string configFile)
 	std::stringstream ls;
 	ls << "Wrote config file to: " << configFile;
 	Logger::GetInstance()->LogI(ls.str());
+}
+
+DeviceConfig Config::GetLogConfig()
+{
+	DeviceConfig dc("Log Settings", "Log setttings for node",NA,GENERIC);
+	std::vector<DeviceConfigItem> items = logConfig.ToDeviceConfig();
+	for (int i = 0; i<items.size(); i++)
+		dc.AddConfigItem(items[i]);
+	return dc;
+}
+DeviceConfig Config::GetServerConfig()
+{
+	DeviceConfig dc("Server Settings", "Server setttings for node",NA,GENERIC);
+	std::vector<DeviceConfigItem> items = serverConfig.ToDeviceConfig();
+	for (int i = 0; i < items.size(); i++)
+		dc.AddConfigItem(items[i]);
+	return dc;
+
+}
+
+DeviceConfig Config::GetDBConfig()
+{
+	DeviceConfig dc("DB Settings", "Database setttings for node", NA, GENERIC);
+	std::vector<DeviceConfigItem> items = dbConfig.ToDeviceConfig();
+	for (int i = 0; i < items.size(); i++)
+		dc.AddConfigItem(items[i]);
+	return dc;
+
+}
+DeviceConfig Config::GetCapsConfig()
+{
+	DeviceConfig dc("Capability Settings", "Capability setttings for node", NA, GENERIC);
+	std::vector<DeviceConfigItem> items = caps.ToDeviceConfig();
+	for (int i = 0; i < items.size(); i++)
+		dc.AddConfigItem(items[i]);
+	return dc;
+
+}
+DeviceConfig Config::GetTelemetryAgentConfig()
+{
+	DeviceConfig dc("Telemetry Agent Settings", "Telemetry Agent setttings for node", NA, GENERIC);
+	std::vector<DeviceConfigItem> items = taConfig.ToDeviceConfig();
+	for (int i = 0; i < items.size(); i++)
+		dc.AddConfigItem(items[i]);
+	return dc;
+
 }

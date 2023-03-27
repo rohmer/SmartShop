@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#include "../DeviceBase.h"
-#include "../Sensor.h"
 #include "../../Telemetry/Telemetry.h"
+#include "../Sensor.h"
+#include "../DeviceBase.h"
 
 class TelemetryAgent : public DeviceBase, public Sensor
 {
@@ -20,8 +20,12 @@ public:
 		float DiskPctCrit=75.0,
 		bool OnlyReportRootFS=true);	
 	
+	TelemetryAgent(DeviceConfig dc);
+	
 	std::vector<SensorEvent> PollSensor() override;
-
+	
+	void UpdateConfig(DeviceConfig dc) override;
+	
 private:
 	float tempWarn, tempCrit, diskWarn, diskCrit;
 	bool onlyRootFS;

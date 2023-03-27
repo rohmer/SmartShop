@@ -19,6 +19,40 @@ LogConfig::LogConfig(bool useSTDIO,
 {
 }
 
+LogConfig::LogConfig(DeviceConfig dc)
+{
+	ret.push_back(DeviceConfigItem("stdioLog", useSTDIO));
+	ret.push_back(DeviceConfigItem("stdioLogLev", (long)stdioLevel));
+	ret.push_back(DeviceConfigItem("dbLog", useDBLog));
+	ret.push_back(DeviceConfigItem("dbLogLev", (long)dbLogLevel));
+	ret.push_back(DeviceConfigItem("restLog", useRESTLog));
+	ret.push_back(DeviceConfigItem("restLogLev", (long)restLogLevel));
+	ret.push_back(DeviceConfigItem("restServerPort", (long)restServerPort));
+	
+	if (dc.HasConfigItem("stdioLog"))
+		useSTDIO = dc.GetConfigItem("stdioLog").GetBoolVal();
+	if (dc.HasConfigItem("stdioLogLev"))
+		stdioLevel = (ELogLevel)dc.GetConfigItem("stdioLogLev").GetLongVal();
+	if (dc.HasConfigItem("dbLog"))
+		useDBLog = dc.GetConfigItem("dbLog").GetBoolVal();
+	if (dc.HasConfigItem("dbLogLev"))
+		dbLogLevel = (ELogLevel)dc.GetConfigItem("dbLogLevel").GetLongVal();
+	if (dc.HasConfigItem("restLog"))
+		useRESTLog = dc.GetConfigItem("restLog").GetBoolVal();
+	if (dc.HasConfigItem("restLogLev"))
+		restLogLevel = (ELogLevel)dc.GetConfigItem("restLogLev").GetLongVal();
+	if (dc.HasConfigItem("restServerPort"))
+		restServerPort = dc.GetConfigItem("restServerPort").GetLongVal();
+	if (dc.HasConfigItem("restServers"))
+	{
+		std::string rss = dc.GetConfigItem("restServers").GetStringVal();
+		std::istringstream iss(rss);
+		std::string token;
+		while (std::getline(iss, token, ','))
+			restServers.push_back(token);		
+	}
+}
+
 cJSON *LogConfig::ToJSON()
 {
 	cJSON *ret = cJSON_CreateObject();
@@ -215,3 +249,4 @@ void LogConfig::Update(DeviceConfig dc)
 		restServerPort,
 		restServers);	
 }
+

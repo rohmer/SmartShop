@@ -39,14 +39,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../Components/cJSON-master;../DB;../RaspUtils;../Components/oatpp-master/src;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/cJSON-master;../DB;../RaspUtils;../Components/oatpp-master/src;../Components/WebServer/libhttpserver-master/src;../Components/WebServer/libmicrohttpd-0.9.75/src/include;../Components/cpp-base64-master;../Components/Scheduler-master;../Components/spdlog-1.x/include/spdlog;../Components/sigar-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>cjson;sqlite3;oatpp;httpserver;microhttpd;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>cjson;sqlite3;oatpp;httpserver;microhttpd;sigar;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -58,16 +58,20 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Caps.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBConfig.cpp" />
     <ClCompile Include="LogConfig.cpp" />
     <ClCompile Include="ServerConfig.cpp" />
+    <ClCompile Include="TelemetryAgentConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Caps.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DBConfig.h" />
     <ClInclude Include="LogConfig.h" />
     <ClInclude Include="ServerConfig.h" />
+    <ClInclude Include="TelemetryAgentConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Config-Debug.vgdbsettings" />
@@ -80,6 +84,9 @@
     <ProjectReference Include="..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
+      <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
     </ProjectReference>
@@ -88,6 +95,9 @@
     </ProjectReference>
     <ProjectReference Include="..\RESTServer\RESTServer.vcxproj">
       <Project>{9a686d10-8a01-45fc-9fee-d819530a4de9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ZeroConf\ZeroConf.vcxproj">
+      <Project>{d6d294f0-b266-4b74-8e55-c7abef25896c}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

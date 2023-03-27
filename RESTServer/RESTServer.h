@@ -35,7 +35,7 @@ private:
 	RESTServer(unsigned int port, uint threads);
 	static RESTServer *instance;
 	
-	httpserver::webserver *ws;
+	httpserver::webserver *ws=NULL;
 	Logger *log;
 	std::map<std::string, httpserver::http_resource*> resources;
 };

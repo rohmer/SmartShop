@@ -14,6 +14,8 @@ public:
 		uint serverPort=8080,
 		uint serverThreads=16);
 	
+	ServerConfig(DeviceConfig dc);
+	
 	static ServerConfig FromJSON(cJSON *json);
 	cJSON *ToJSON();
 	

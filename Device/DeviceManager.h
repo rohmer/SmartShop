@@ -11,13 +11,12 @@
 #include <Scheduler.h>
 #include "cJSON.h"
 
-#include "DeviceBase.h"
-#include "Sensor.h"
 #include "DeviceConfig.h"
 #include "../Logger/Logger.h"
 #include "../HashLib/HashLib.h"
 #include "../EventEndpoint/EndpointClient/EndpointClient.h"
-
+#include "DeviceBase.h"
+#include "Sensor.h"
 #include "pigpio.h"
 
 class DeviceManager

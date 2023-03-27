@@ -8,6 +8,14 @@ ServerConfig::ServerConfig(
 {
 }
 
+ServerConfig::ServerConfig(DeviceConfig dc)
+{
+	if (dc.HasConfigItem("serverThreads"))
+		serverThreads = dc.GetConfigItem("serverThreads").GetLongVal();
+	if (dc.HasConfigItem("serverPort"))
+		serverPort = dc.GetConfigItem("serverPort").GetLongVal();
+}
+
 ServerConfig ServerConfig::FromJSON(cJSON *json)
 {
 	uint threads=8, port=8080;
