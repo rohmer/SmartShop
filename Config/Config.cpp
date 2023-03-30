@@ -22,6 +22,12 @@ Config *Config::GetInstance()
 	return instance;
 }
 
+void Config::AddDeviceConfig(DeviceConfig dc)
+{
+	configs.emplace(dc.GetName(), dc);
+	SaveConfig();
+}
+
 bool Config::LoadConfig(std::string configFile)
 {
 	confFile = configFile;
@@ -133,7 +139,9 @@ bool Config::SaveConfig(std::string configFile)
 		return false;
 	}
 	
-	cJSON *json;
+	cJSON *json = cJSON_CreateObject();;
+	cJSON *cap = configs["Capabilities Config"].ToJSON();
+	cJSON_AddItemToObject(json, "Capabilities", cap);
 	cJSON_AddItemToObject(json,
 		"Capabilities",
 		configs["Capabilties Config"].ToJSON());

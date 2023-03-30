@@ -31,6 +31,9 @@ public:
 	};
 	
 	static Config *GetInstance();
+	
+	void AddDeviceConfig(DeviceConfig dc);
+		
 	bool LoadConfig(std::string configFile="config.json");
 	bool SaveConfig(std::string configFile="");
 	
