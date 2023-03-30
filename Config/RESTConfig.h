@@ -2,15 +2,15 @@
 
 #include <string>
 #include "../../Device/DeviceConfig.h"
-
-class LogConfig
+#include "../../RaspUtils/CPUInfo.h"
+class RESTConfig
 {
 public:
-	LogConfig();
-
+	RESTConfig();
+	
 	static std::string GetName()
 	{
-		return "Logger Configuration";
+		return "REST Config";
 	}
 	
 	DeviceConfig dc;

@@ -3,14 +3,14 @@
 #include <string>
 #include "../../Device/DeviceConfig.h"
 
-class LogConfig
+class TAConfig
 {
 public:
-	LogConfig();
+	TAConfig();
 
 	static std::string GetName()
 	{
-		return "Logger Configuration";
+		return "Telemetry Agent";
 	}
 	
 	DeviceConfig dc;

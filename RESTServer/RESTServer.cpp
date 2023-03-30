@@ -55,6 +55,7 @@ bool RESTServer::RegisterResource(std::string path, httpserver::http_resource *r
 	resources.emplace(path, resource);
 	if (ws->register_resource(path, resource))
 	{
+		resources.emplace(path, resource);
 		std::stringstream ss;
 		ss << "Registered: " << path << " resource";
 		Logger::GetInstance()->LogI(ss.str());

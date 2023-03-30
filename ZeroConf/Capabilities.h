@@ -4,6 +4,7 @@
 #include <vector>
 #include "cJSON.h"
 #include "../RaspUtils/CPUInfo.h"
+#include "../Device/DeviceConfig.h"
 
 class Capabilities
 {
@@ -16,6 +17,8 @@ public:
 	};
 	
 	Capabilities();
+	Capabilities(DeviceConfig dc);
+	void Update(DeviceConfig dc);
 	void AddCap(eCaps Capability);
 	bool HasCap(eCaps Capability);
 	

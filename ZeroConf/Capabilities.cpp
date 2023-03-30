@@ -4,6 +4,30 @@ Capabilities::Capabilities()
 {
 }
 
+Capabilities::Capabilities(DeviceConfig dc)
+{
+	Update(dc);
+}
+
+void Capabilities::Update(DeviceConfig dc)
+{
+	capabilities.clear();
+	if (dc.HasConfigItem("UI"))
+	{
+		if (dc.GetConfigItem("UI").GetBoolVal())
+			capabilities.push_back(eCaps::CAP_UI);
+	}
+	if (dc.HasConfigItem("CLIENT"))
+	{
+		if (dc.GetConfigItem("CLIENT").GetBoolVal())
+			capabilities.push_back(eCaps::CAP_CLIENT);
+	}
+	if (dc.HasConfigItem("SERVER"))
+	{
+		if (dc.GetConfigItem("SERVER").GetBoolVal())
+			capabilities.push_back(eCaps::CAP_SERVER);
+	}
+}
 void Capabilities::AddCap(eCaps capabilitiy)
 {
 	bool exists = false;
@@ -75,3 +99,4 @@ Capabilities Capabilities::FromJSON(cJSON *json)
 	}
 	return caps;
 }
+

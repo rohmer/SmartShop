@@ -2,10 +2,13 @@
 
 #define HTTP_PORT 8080
 #define SERVER_THREADS 16
+#define USE_SERVER
+#define USE_UI
+
+#define DEFAULT_CONFIG_NAME "Config.json"
+
 
 #define APP_NAME "SmartShop Server"
-
-#define USE_UI
 
 // Defines if nodes will automatically be allowed in
 #define DEFAULT_AUTH true

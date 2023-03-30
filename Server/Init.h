@@ -13,14 +13,16 @@
 #include "../Device/TelemetryAgent/TelemetryAgent.h"
 #include "../DB/DB.h"
 #include "../Config/Config.h"
-#include "../Config/LogConfig.h"
-#include "../Config/ServerConfig.h"
+#include "../../EventEndpoint/EventEndpoint.h"
+#include "../../LogEndpoint/LogEndpoint.h"
+#include "../../DeviceRegistration/RegistrationEndpoint.h"
 
 class Init
 {
 public:
-	bool InitServer();
+	static bool InitServer();
 	
 private:
 	static bool isInit;
+	static Config *config;
 };

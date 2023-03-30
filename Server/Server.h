@@ -11,6 +11,8 @@
 #include "Settings.h"
 #include "../DeviceRegistration/RegistrationEndpoint.h"
 #include "../Device/TelemetryAgent/TelemetryAgent.h"
+#include "../Config/Config.h"
+#include "Init.h"
 
 class Server
 {

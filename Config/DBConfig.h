@@ -1,24 +1,17 @@
 #pragma once
 
 #include <string>
-#include <vector>
-
-#include "cJSON/cJSON.h"
-#include "../Device/DeviceConfig.h"
+#include "../../Device/DeviceConfig.h"
 
 class DBConfig
 {
 public:
-	DBConfig(ulong maxLogSize = 52428800, ulong maxSensorSize = 524288000);
+	DBConfig();
 	
-	static DBConfig FromJSON(cJSON *json);
-	cJSON *ToJSON();
+	static std::string GetName()
+	{
+		return "Database Config";
+	}
 	
-	std::vector<DeviceConfigItem> ToDeviceConfig();
-	void Update(DeviceConfig dc);
-	
-private:
-	ulong maxLogSize = 52428800;
-	ulong maxSensorSize = 524288000;
+	DeviceConfig dc;
 };
-	

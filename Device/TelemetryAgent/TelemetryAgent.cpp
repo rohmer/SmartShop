@@ -6,11 +6,14 @@ TelemetryAgent::TelemetryAgent(DeviceConfig dc) :
 		eDeviceType::SENSOR, 
 		eDeviceBus::NA, 300)
 {
+	enabled = true;
 	UpdateConfig(dc);
 }
 
 void TelemetryAgent::UpdateConfig(DeviceConfig dc)
 {
+	if (dc.HasConfigItem("Enabled"))
+		enabled = dc.GetConfigItem("Enabled").GetBoolVal();
 	if (dc.HasConfigItem("TempWarn"))
 		tempWarn = dc.GetConfigItem("TempWarn").GetFloatVal();
 	if (dc.HasConfigItem("PollingInterval"))
@@ -54,6 +57,9 @@ TelemetryAgent::TelemetryAgent(
 
 std::vector<SensorEvent> TelemetryAgent::PollSensor()
 {
+	if (!enabled)
+		return std::vector<SensorEvent>();
+	
 	tempCrit = config.GetConfigItem("TempCrit").GetFloatVal();
 	tempWarn = config.GetConfigItem("TempWarn").GetFloatVal();
 	diskCrit = config.GetConfigItem("DiskPctCrit").GetFloatVal();

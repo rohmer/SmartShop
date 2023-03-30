@@ -29,5 +29,6 @@ public:
 private:
 	float tempWarn, tempCrit, diskWarn, diskCrit;
 	bool onlyRootFS;
+	bool enabled;
 };
 	

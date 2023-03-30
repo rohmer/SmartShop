@@ -3,14 +3,14 @@
 #include <string>
 #include "../../Device/DeviceConfig.h"
 
-class LogConfig
+class CapabilitiesConfig
 {
 public:
-	LogConfig();
-
+	CapabilitiesConfig();
+	
 	static std::string GetName()
 	{
-		return "Logger Configuration";
+		return "Capabilties Config";
 	}
 	
 	DeviceConfig dc;

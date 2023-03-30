@@ -18,19 +18,19 @@
     <ClCompile Include="Config.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="CapabilitiesConfig.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
     <ClCompile Include="LogConfig.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="ServerConfig.cpp">
+    <ClCompile Include="RESTConfig.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="DBConfig.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Caps.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="TelemetryAgentConfig.cpp">
+    <ClCompile Include="TAConfig.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,19 +38,19 @@
     <ClInclude Include="Config.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="CapabilitiesConfig.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
     <ClInclude Include="LogConfig.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="ServerConfig.h">
+    <ClInclude Include="RESTConfig.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DBConfig.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Caps.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="TelemetryAgentConfig.h">
+    <ClInclude Include="TAConfig.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

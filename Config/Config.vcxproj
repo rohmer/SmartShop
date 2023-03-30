@@ -58,20 +58,20 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Caps.cpp" />
+    <ClCompile Include="CapabilitiesConfig.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBConfig.cpp" />
     <ClCompile Include="LogConfig.cpp" />
-    <ClCompile Include="ServerConfig.cpp" />
-    <ClCompile Include="TelemetryAgentConfig.cpp" />
+    <ClCompile Include="RESTConfig.cpp" />
+    <ClCompile Include="TAConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Caps.h" />
+    <ClInclude Include="CapabilitiesConfig.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DBConfig.h" />
     <ClInclude Include="LogConfig.h" />
-    <ClInclude Include="ServerConfig.h" />
-    <ClInclude Include="TelemetryAgentConfig.h" />
+    <ClInclude Include="RESTConfig.h" />
+    <ClInclude Include="TAConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Config-Debug.vgdbsettings" />
