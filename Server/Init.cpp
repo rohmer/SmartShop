@@ -69,6 +69,6 @@ bool Init::InitServer()
 	
 	Logger::GetInstance()->LogI("6 - ZeroConfig service running");
 	
-	
+	Logger::GetInstance()->LogI("Initalization Complete");
 	
 }
