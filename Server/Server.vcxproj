@@ -118,9 +118,6 @@
     <ProjectReference Include="..\DeviceRegistration\DeviceRegistration.vcxproj">
       <Project>{38ce80f5-298b-4ee9-91bb-7fd5081f44ff}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\DeviceRegistration\DeviceRegistrationTests\DeviceRegistrationTests.vcxproj">
-      <Project>{8b8e57e5-4cc0-4d96-8323-753949aabd24}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Device\AHTX0Sensor\AHTX0Sensor.vcxproj">
       <Project>{1cb8a2ff-1006-4625-93df-1a1815198317}</Project>
     </ProjectReference>

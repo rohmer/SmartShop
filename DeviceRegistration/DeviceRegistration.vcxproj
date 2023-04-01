@@ -104,6 +104,9 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Config\Config.vcxproj">
+      <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

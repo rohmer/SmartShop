@@ -6,10 +6,10 @@
 
 enum eConfigDataType
 {
-	C_BOOL,
-	C_LONG,
-	C_STR,
-	C_FLOAT
+	C_BOOL=0,
+	C_LONG=1,
+	C_STR=3,
+	C_FLOAT=4
 };
 
 class DeviceConfigItem

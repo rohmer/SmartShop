@@ -1,4 +1,5 @@
 #include "HostRegistration.h"
+Config HostRegistration::config;
 
 HostRegistration::HostRegistration():
 	cpuID(CPUInfo::GetCPUID()),
@@ -9,23 +10,19 @@ HostRegistration::HostRegistration():
 	ipAddress = CPUInfo::GetIPAddress();
 }
 
-void HostRegistration::AddDevice(DeviceBase *device)
-{
-	sDevice devReg;
-	devReg.deviceBus = device->GetBus();
-	devReg.deviceConfig = device->GetConfig();
-	devReg.deviceDescription = device->GetDescription();
-	devReg.deviceName = device->GetName();
-	devReg.deviceType = device->GetType();
-	devices.push_back(devReg);
-}
-
-HostRegistration::HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount, std::string ipAddress)
+HostRegistration::HostRegistration(
+	std::string hostname, 
+	std::string cpuID, 
+	EPIType deviceType, 
+	uint cpuCount, 
+	std::string ipAddress,
+	bool auth)
 	: cpuCount(cpuCount)
 	, hostname(hostname)
 	, cpuID(cpuID)
 	, deviceType(deviceType)
 	, ipAddress(ipAddress)
+	, isAuth(auth)
 {
 }
 
@@ -37,13 +34,7 @@ cJSON *HostRegistration::ToJSON()
 	cJSON_AddItemToObject(json, "cpus", cJSON_CreateNumber(cpuCount));
 	cJSON_AddItemToObject(json, "hosttype", cJSON_CreateNumber(deviceType));
 	cJSON_AddItemToObject(json, "ip", cJSON_CreateString(ipAddress.c_str()));
-	cJSON *devArr = cJSON_CreateArray();
-	for (int i = 0; i < devices.size(); i++)
-	{
-		cJSON *j = deviceToJSON(devices[i]);
-		cJSON_AddItemToArray(devArr, j);
-	}
-	cJSON_AddItemToObject(json, "devices", devArr);	
+	cJSON_AddItemToObject(json, "config", config.ToJSON());	
 	return json;
 }
 
@@ -73,61 +64,80 @@ HostRegistration HostRegistration::FromJSON(cJSON *json)
 	{
 		ip = cJSON_GetObjectItem(json, "ip")->valuestring;		
 	}
-	HostRegistration hr(hostname, cpuid, deviceType, cpuCount, ip);
-	if (cJSON_HasObjectItem(json, "devices"))
+	if (cJSON_HasObjectItem(json, "config"))
 	{
-		cJSON *arr = cJSON_GetObjectItem(json, "devices");
-		if (cJSON_IsArray(arr))
-		{
-			cJSON *dc;
-			cJSON_ArrayForEach(dc, arr)
-			{
-				sDevice dev = deviceFromJSON(dc);
-				hr.addDevReg(dev);
-			}
-		}
+		config = Config::FromJSON(cJSON_GetObjectItem(json, "config"));	
 	}
+	HostRegistration hr(hostname, cpuid, deviceType, cpuCount, ip);
+	
 	return hr;
 }
 
-void HostRegistration::addDevReg(sDevice dev)
+bool HostRegistration::StoreToDB()
 {
-	devices.push_back(dev);
+	using namespace sqlite_orm;
+	long id;
+	try
+	{
+		auto dev = DB::GetInstance()->GetStorage()->get_pointer<DBDevice>(where(c(&DBDevice::CPUID) == cpuID));
+		if (dev == NULL)
+		{
+			id = -1;
+		}
+		else
+		{
+			id = dev->ID;
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Exception storing host registration to db: " << e.what();
+		Logger::GetInstance()->LogC(ss.str());
+		return false;
+	}
+	DBDevice dev;
+	dev.CPUCount = cpuCount;
+	dev.CPUID = cpuID;
+	dev.DeviceType = deviceType;
+	dev.Hostname = hostname;
+	if (id != -1)
+		dev.ID = id;
+	dev.IPAddress = ipAddress;
+	dev.isAuth = isAuth;
+	if (id != -1)
+	{
+		DB::GetInstance()->GetStorage()->update(dev);
+	}
+	else
+	{
+		id = DB::GetInstance()->GetStorage()->insert<DBDevice>(dev);
+	}
+	
+	std::vector<DeviceConfig> devices = GetDevices();
+	for (std::vector<DeviceConfig>::iterator it = devices.begin();
+		it != devices.end();
+		++it)
+	{
+		it->ToDB();
+	}
+	
+	return true;
 }
 
-cJSON *HostRegistration::deviceToJSON(sDevice device)
+HostRegistration HostRegistration::FromDB(std::string cpuID)
 {
-	cJSON *json = cJSON_CreateObject();
-	cJSON_AddItemToObject(json, "bus", cJSON_CreateNumber(device.deviceBus));
-	cJSON_AddItemToObject(json, "type", cJSON_CreateNumber(device.deviceType));
-	cJSON_AddItemToObject(json, "name", cJSON_CreateString(device.deviceName.c_str()));
-	cJSON_AddItemToObject(json, "desc", cJSON_CreateString(device.deviceDescription.c_str()));
-	cJSON_AddItemToObject(json, "config", device.deviceConfig.ToJSON());
-	return json;
-}
-
-HostRegistration::sDevice HostRegistration::deviceFromJSON(cJSON *json)
-{
-	sDevice device;
-	if (cJSON_HasObjectItem(json, "bus"))
+	using namespace sqlite_orm;
+	auto hostReg = DB::GetInstance()->GetStorage()->get_pointer<DBDevice>(where(c(&DBDevice::CPUID) == cpuID));
+	if (hostReg == NULL)
 	{
-		device.deviceBus = (eDeviceBus)cJSON_GetObjectItem(json, "bus")->valueint;
+		return HostRegistration();
 	}
-	if (cJSON_HasObjectItem(json, "type"))
-	{
-		device.deviceType = (eDeviceType)cJSON_GetObjectItem(json, "type")->valueint;
-	}
-	if (cJSON_HasObjectItem(json, "name"))
-	{
-		device.deviceName = cJSON_GetObjectItem(json, "name")->valuestring;
-	}
-	if (cJSON_HasObjectItem(json, "desc"))
-	{
-		device.deviceDescription = cJSON_GetObjectItem(json, "desc")->valuestring;
-	}
-	if (cJSON_HasObjectItem(json, "config"))
-	{
-		device.deviceConfig = DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "config"));
-	}
-	return device;
+	HostRegistration reg(hostReg->Hostname, hostReg->CPUID, (EPIType)hostReg->DeviceType, hostReg->CPUCount, hostReg->IPAddress, hostReg->isAuth);
+	
+	std::vector<DeviceConfig> dc = DeviceConfig::FromDB(hostReg->CPUID);
+	for(int i=0; i<dc.size(); i++)
+		reg.AddDevice(dc[i]);
+	
+		
 }

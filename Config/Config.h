@@ -31,7 +31,7 @@ public:
 	};
 	
 	static Config *GetInstance();
-	
+	Config();
 	void AddDeviceConfig(DeviceConfig dc);
 		
 	bool LoadConfig(std::string configFile="config.json");
@@ -65,10 +65,14 @@ public:
 
 	EConfigSetResult SetConfigVariable(std::string ConfigName, std::string VariableName, std::string value);
 	
+	static Config FromJSON(cJSON *json);
+	cJSON *ToJSON();
+	
+	std::vector<DeviceConfig> GetDevices();
+	
 private:
 	static Config *instance;
-	Config() noexcept;
 	std::string confFile;
 	
-	std::map<std::string, DeviceConfig> configs;
+	std::map<std::string, DeviceConfig> configs, devices;
 };

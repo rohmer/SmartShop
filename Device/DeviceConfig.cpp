@@ -260,5 +260,60 @@ bool DeviceConfig::ToDB()
 	{
 		return false;
 	}
-	
+}
+
+std::vector<DeviceConfig> DeviceConfig::FromDB(std::string CPUID)
+{
+	using namespace sqlite_orm;
+	std::vector<DeviceConfig> ret;
+	std::vector<DBDeviceConfig> dbdev=DB::GetInstance()->GetStorage()->get_all<DBDeviceConfig>(where(c(&DBDeviceConfig::CPUID)==CPUID));
+	for (std::vector<DBDeviceConfig>::iterator it = dbdev.begin();
+		it != dbdev.end();
+		++it)
+	{
+		std::vector<DBDeviceConfigItem> dcis = DB::GetInstance()->GetStorage()->get_all<DBDeviceConfigItem>
+			(where(c(&DBDeviceConfigItem::DeviceID) == it->DeviceID));
+		// Next create the DeviceConfigItems in a vector and pass it to the DC constructor
+		std::vector<DeviceConfigItem> deviceConfigs;
+		for (std::vector<DBDeviceConfigItem>::iterator it = dcis.begin();
+			it != dcis.end();
+			++it)
+		{
+			DeviceConfigItem dci;
+			switch (it->DataType)
+			{
+			case eConfigDataType::C_BOOL:
+				{
+					if (std::strcmp(it->Value.c_str(), "1") == 0)
+						dci = DeviceConfigItem(it->Name, true, it->ReadOnly);
+					else
+						dci = DeviceConfigItem(it->Name, false, it->ReadOnly);
+					break;
+				}
+			case eConfigDataType::C_FLOAT:
+				{
+					float val = std::atof(it->Value.c_str());
+					dci = DeviceConfigItem(it->Name, val, it->ReadOnly);
+					break;
+				}
+			case eConfigDataType::C_LONG:
+				{
+					long val = std::atol(it->Value.c_str());
+					dci = DeviceConfigItem(it->Name, val, it->ReadOnly);
+				}
+			}
+			deviceConfigs.push_back(dci);
+		}
+		std::stringstream ss;
+		ss << it->ID;
+		DeviceConfig dc(
+			it->DeviceName,
+			it->DeviceDescription,
+			(eDeviceBus)it->DeviceBus, 
+			(eDeviceType)it->DeviceType, 
+			deviceConfigs, 
+			it->Hostname, 
+			ss.str());
+		ret.push_back(dc);
+	}
 }

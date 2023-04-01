@@ -2,25 +2,17 @@
 
 #include <string>
 #include <vector>
+#include <sqlite_orm.h>
 
 #include "CPUInfo.h"
 #include "DeviceBase.h"
+#include "../../Config/Config.h"
+
 
 class HostRegistration
 {
-public:
-	struct sDevice
-	{
-	public:
-		eDeviceBus deviceBus;
-		eDeviceType deviceType;
-		std::string deviceName;
-		std::string deviceDescription;
-		DeviceConfig deviceConfig;
-	};
-	
+public:	
 	HostRegistration();
-	void AddDevice(DeviceBase *device);
 	
 	cJSON *ToJSON();
 	static HostRegistration FromJSON(cJSON *json);
@@ -44,27 +36,38 @@ public:
 		return cpuCount;
 	}
 	
-	std::vector<sDevice> GetDevices()
+	std::vector<DeviceConfig> GetDevices()
 	{
-		return devices;
+		return config.GetDevices();
+	}
+	
+	void AddDevice(DeviceConfig dc)
+	{
+		config.AddDeviceConfig(dc);
 	}
 	
 	std::string GetIPAddress()
 	{
 		return ipAddress;
 	}
+	
+	bool GetIsAuth()
+	{
+		return isAuth;
+	}
+	
+	bool StoreToDB();
+	
+	static HostRegistration FromDB(std::string cpuID);
+	
 private:
-	HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount, std::string ipAddr);
+	HostRegistration(std::string hostname, std::string cpuID, EPIType deviceType, uint cpuCount, std::string ipAddr, bool auth=false);
 	
 	std::string cpuID;
 	std::string hostname;
 	EPIType deviceType;
 	uint cpuCount;
 	std::string ipAddress;
-	
-	std::vector<sDevice> devices;
-	
-	cJSON *deviceToJSON(sDevice device);
-	static sDevice deviceFromJSON(cJSON *json);
-	void addDevReg(sDevice device);
+	static Config config;
+	bool isAuth = false;
 };

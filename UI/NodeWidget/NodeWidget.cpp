@@ -34,7 +34,7 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		this->height = height;
 		verticalQuarters = height / 4;
 		horizontalQuarters = width / 4;
-		baseObject = lv_obj_create(parent);
+		baseObject = lv_btn_create(parent);
 		lv_obj_set_layout(baseObject, LV_LAYOUT_FLEX);
 		lv_obj_set_flex_flow(baseObject, LV_FLEX_FLOW_ROW);
 		lv_obj_set_size(baseObject, width, height);

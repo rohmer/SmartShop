@@ -43,8 +43,8 @@ TEST(HostRegistration, RegistrationToJSON)
 TEST(HostRegistration, RegistrationWithDevicesToJSON)
 {
 	HostRegistration hr;
-	hr.AddDevice(new AHTX0Sensor());
-	hr.AddDevice(new MCP9808Sensor());
+	//hr.AddDevice(new AHTX0Sensor());
+	//hr.AddDevice(new MCP9808Sensor());
 	
 	cJSON *json = hr.ToJSON();
 	std::cout << JSON::Print(json);

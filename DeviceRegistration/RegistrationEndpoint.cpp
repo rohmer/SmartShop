@@ -38,9 +38,8 @@ std::shared_ptr<httpserver::http_response> RegistrationEndpoint::render_POST(con
 		}
 		for (int i = 0; i < hr.GetDevices().size(); i++)
 		{
-			HostRegistration::sDevice dev = hr.GetDevices()[i];
-			dev.deviceConfig.ToDB();
-			
+			DeviceConfig dc = hr.GetDevices()[i];
+			dc.ToDB();
 		}
 	}
 	catch (std::exception &e)
@@ -51,4 +50,24 @@ std::shared_ptr<httpserver::http_response> RegistrationEndpoint::render_POST(con
 		return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("Error storing registration", 406, "text/plain"));				
 	}
 	return std::shared_ptr<httpserver::string_response>(new httpserver::string_response("OK", 200));
+}
+
+std::shared_ptr<httpserver::http_response> RegistrationEndpoint::render_GET(const httpserver::http_request &request)
+{
+	using namespace sqlite_orm;
+	std::vector<DBDevice> regs = DB::GetInstance()->GetStorage()->get_all<DBDevice>();
+	
+	cJSON *ret = cJSON_CreateObject();
+	cJSON *hosts = cJSON_CreateArray();
+	for (std::vector<DBDevice>::iterator it = regs.begin();
+		it != regs.end();
+		++it)
+	{
+		HostRegistration hr = HostRegistration::FromDB(it->CPUID);
+		cJSON_AddItemToArray(hosts, hr.ToJSON());
+	}
+	
+	cJSON_AddItemToObject(ret, "hosts", hosts);
+	std::string str = JSON::Print(ret);
+	return std::shared_ptr<httpserver::string_response>(new httpserver::string_response(str, 200));
 }

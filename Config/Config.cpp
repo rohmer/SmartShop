@@ -1,7 +1,7 @@
 #include "Config.h"
 Config *Config::instance = NULL;
 
-Config::Config() noexcept 
+Config::Config() 
 {
 	LogConfig logConfig;
 	configs.emplace(LogConfig::GetName(), logConfig.dc);
@@ -24,7 +24,10 @@ Config *Config::GetInstance()
 
 void Config::AddDeviceConfig(DeviceConfig dc)
 {
-	configs.emplace(dc.GetName(), dc);
+	if (configs.find(dc.GetName())!= configs.end())
+		configs[dc.GetName()] = dc;
+	else
+		devices.emplace(dc.GetName(), dc);
 	SaveConfig();
 }
 
@@ -125,6 +128,55 @@ bool Config::LoadConfig(std::string configFile)
 	return true;
 }
 
+Config Config::FromJSON(cJSON *json)
+{
+	Config config;
+	if (cJSON_HasObjectItem(json, "Capabilities"))
+	{		
+		config.AddDeviceConfig(DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "Capabilities")));
+	}
+	if (cJSON_HasObjectItem(json, "LogConfig"))
+	{
+		config.AddDeviceConfig(DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "LogConfig")));
+	}
+	if (cJSON_HasObjectItem(json, "DBConfig"))
+	{		
+		config.AddDeviceConfig(DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "DBConifg")));
+	}
+	if (cJSON_HasObjectItem(json, "RESTConfig"))
+	{
+		config.AddDeviceConfig(DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "RESTConifg")));
+	}
+	if (cJSON_HasObjectItem(json, "TelemetryAgent"))
+	{
+		config.AddDeviceConfig(DeviceConfig::FromJSON(cJSON_GetObjectItem(json, "TelemetryAgent")));
+	}
+	if (cJSON_HasObjectItem(json, "Devices"))
+	{
+		cJSON *devArr = cJSON_GetObjectItem(json, "Devices");
+		if (cJSON_IsArray(devArr))
+		{
+			cJSON *it;
+			cJSON_ArrayForEach(it, devArr)
+			{
+				config.AddDeviceConfig(DeviceConfig::FromJSON(it));
+			}
+		}
+		else
+		{
+			Logger::GetInstance()->LogW("Malformed JSON, Devices should be an array");
+		}
+	}
+	try
+	{
+		cJSON_Delete(json);
+	}
+	catch (const std::exception&)
+	{
+	}
+	return config;
+}
+
 bool Config::SaveConfig(std::string configFile)
 {
 	if (configFile.length() == 0)
@@ -154,6 +206,15 @@ bool Config::SaveConfig(std::string configFile)
 	cJSON_AddItemToObject(json,
 		"TelemetryAgent",
 		configs["Telemetry Agent"].ToJSON());
+	cJSON *devArr = cJSON_CreateArray();
+	for (std::map<std::string, DeviceConfig>::iterator it = devices.begin();
+		it != devices.end();
+		++it)
+	{
+		cJSON_AddItemToArray(devArr,it->second.ToJSON());
+	}
+	cJSON_AddItemToObject(json, "Devices", devArr);
+	
 	std::string jstr = JSON::Print(json);
 	
 	out << jstr;
@@ -166,6 +227,39 @@ bool Config::SaveConfig(std::string configFile)
 	{		
 	}
 	return true;
+}
+
+cJSON *Config::ToJSON()
+{
+	cJSON *json = cJSON_CreateObject(); 
+	;
+	cJSON *cap = configs["Capabilities Config"].ToJSON();
+	cJSON_AddItemToObject(json, "Capabilities", cap);
+	cJSON_AddItemToObject(json,
+		"Capabilities",
+		configs["Capabilties Config"].ToJSON());
+	cJSON_AddItemToObject(json,
+		"DBConfig", 
+		configs["Database Config"].ToJSON());
+	cJSON_AddItemToObject(json,
+		"LogConfig", 
+		configs["Logger Configuration"].ToJSON());
+	cJSON_AddItemToObject(json,
+		"RESTConfig", 
+		configs["REST Config"].ToJSON());
+	cJSON_AddItemToObject(json,
+		"TelemetryAgent",
+		configs["Telemetry Agent"].ToJSON());
+	cJSON *devArr = cJSON_CreateArray();
+	for (std::map<std::string, DeviceConfig>::iterator it = devices.begin();
+		it != devices.end();
+		++it)
+	{
+		cJSON_AddItemToArray(devArr, it->second.ToJSON());
+	}
+	cJSON_AddItemToObject(json, "Devices", devArr);
+	
+	return json;
 }
 
 std::vector<std::string> Config::GetRestLogServers()
@@ -287,4 +381,19 @@ Config::EConfigSetResult Config::SetConfigVariable(std::string ConfigName,
 		}
 	}
 	return Config::eSUCCESS;
+}
+
+std::vector<DeviceConfig> Config::GetDevices()
+{
+	std::vector<DeviceConfig> dev;
+	for (std::map<std::string, DeviceConfig>::iterator it = configs.begin();
+		it != configs.end();
+		++it)
+		dev.push_back(it->second);
+	for (std::map<std::string, DeviceConfig>::iterator it = devices.begin();
+		it != devices.end();
+		++it)
+		dev.push_back(it->second);
+	return dev;
+	
 }
