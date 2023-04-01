@@ -5,7 +5,7 @@ DeviceBase::DeviceBase(std::string Name, std::string Description, eDeviceType de
 	, desc(Description)
 	, dType(deviceType)
 	, dBus(deviceBus)
-	, config(DeviceConfig())
+	, config(DeviceConfig(Name,Description,deviceBus,deviceType))
 	, log(Logger::GetInstance())
 {
 	if (pollingInterval >= 0)

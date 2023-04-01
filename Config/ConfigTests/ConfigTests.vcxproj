@@ -1,17 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|ARM">
-      <Configuration>Debug</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|VisualGDB">
       <Configuration>Debug</Configuration>
       <Platform>VisualGDB</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|ARM">
-      <Configuration>Release</Configuration>
-      <Platform>ARM</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|VisualGDB">
       <Configuration>Release</Configuration>
@@ -20,15 +12,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{8B8E57E5-4CC0-4D96-8323-753949AABD24}</ProjectGuid>
+    <ProjectGuid>{14B39C69-6749-4FA8-A9E2-0D23D54AC61D}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -41,18 +31,7 @@
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <GNUConfigurationType>Debug</GNUConfigurationType>
-    <TestFrameworkPropertyListFile>$(ProjectDir)TestFramework.props</TestFrameworkPropertyListFile>
-    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
-    <TestFrameworkPropertyListFile>$(ProjectDir)TestFramework.props</TestFrameworkPropertyListFile>
-    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TestFrameworkPropertyListFile>$(ProjectDir)TestFramework.props</TestFrameworkPropertyListFile>
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
@@ -60,37 +39,17 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/spdlog-1.x/include;../../Components/sqlite_orm-master/include/sqlite_orm;../../DB;../../Device;../../RaspUtils;../../Components/spdlog-1.x/include/spdlog;../../Components/cpp-base64-master;../../Components/oatpp-master/src;../../Components/cJSON-master;../../Components/Scheduler-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;../../Components/cJSON-master;../../Components/oatpp-master/src;../../DB;../../RaspUtils;../../Components/cpp-base64-master;../../Components/sigar-master/include;../../Components/Scheduler-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;httpserver;oatpp;cjson;cpp-base64;uuid;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <ClCompile>
-      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/spdlog-1.x/include;../../Components/sqlite_orm-master/include/sqlite_orm;../../DB;../../Device;../../RaspUtils;../../Components/spdlog-1.x/include/spdlog;../../Components/cpp-base64-master;../../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <CLanguageStandard>
-      </CLanguageStandard>
-    </ClCompile>
-    <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript>
-      </LinkerScript>
-      <AdditionalOptions>
-      </AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
@@ -98,12 +57,10 @@
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <ClCompile>
-      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-    </ClCompile>
-  </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
+      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>
@@ -113,14 +70,8 @@
     <ProjectReference Include="..\..\Device\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Device\MCP9808Sensor\MCP9808Sensor.vcxproj">
-      <Project>{f49a6e32-d71e-4f45-98a4-658c44a39beb}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Device\PCA9685Device\PCA9685Device.vcxproj">
-      <Project>{46e51758-271d-4e3e-b941-c52d6e8c8037}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\HashLib\HashLib.vcxproj">
-      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    <ProjectReference Include="..\..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
+      <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
@@ -128,19 +79,22 @@
     <ProjectReference Include="..\..\RaspUtils\RaspUtils.vcxproj">
       <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\SensorEvent\SensorEvent.vcxproj">
-      <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    <ProjectReference Include="..\..\Telemetry\Telemetry.vcxproj">
+      <Project>{5fa409de-9298-4d96-96bd-22d6ead9a61e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\DeviceRegistration.vcxproj">
-      <Project>{38ce80f5-298b-4ee9-91bb-7fd5081f44ff}</Project>
+    <ProjectReference Include="..\..\ZeroConf\ZeroConf.vcxproj">
+      <Project>{d6d294f0-b266-4b74-8e55-c7abef25896c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Config.vcxproj">
+      <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
-    <ClCompile Include="DeviceRegistrationTests.cpp" />
-    <ClCompile Include="DeviceRegistrationTestsTests.cpp" />
+    <ClCompile Include="ConfigTests.cpp" />
+    <ClCompile Include="ConfigTestsTests.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineArguments.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineTestRunner.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\JUnitTestOutput.cpp" />
@@ -222,7 +176,7 @@
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupportPlugin.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupport_c.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\OrderedTest.h" />
-    <None Include="DeviceRegistrationTests-Debug.vgdbsettings" />
-    <None Include="DeviceRegistrationTests-Release.vgdbsettings" />
+    <None Include="ConfigTests-Debug.vgdbsettings" />
+    <None Include="ConfigTests-Release.vgdbsettings" />
   </ItemGroup>
 </Project>

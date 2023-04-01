@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "cJSON/cJSON.h"
+#include "../Device/DeviceManager.h"
 #include "../Device/DeviceConfig.h"
 #include "../RaspUtils/JSON.h"
 
@@ -33,9 +34,10 @@ public:
 	static Config *GetInstance();
 	Config();
 	void AddDeviceConfig(DeviceConfig dc);
-		
+	void AddDeviceConfigs(DeviceManager *dm=NULL);
+	
 	bool LoadConfig(std::string configFile="config.json");
-	bool SaveConfig(std::string configFile="");
+	bool SaveConfig(std::string configFile="config.json");
 	
 	DeviceConfig GetLogConfig()
 	{
@@ -70,6 +72,8 @@ public:
 	
 	std::vector<DeviceConfig> GetDevices();
 	
+	DeviceConfig GetDeviceConfig(std::string name);
+
 private:
 	static Config *instance;
 	std::string confFile;

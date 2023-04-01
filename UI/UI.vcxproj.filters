@@ -62,14 +62,14 @@
     <ClInclude Include="LogTable.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowManager.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="NodeWidgetManager.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="PluginManager.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Resource files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

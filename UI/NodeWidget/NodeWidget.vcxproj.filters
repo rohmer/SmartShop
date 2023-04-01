@@ -30,9 +30,15 @@
     <ClCompile Include="Images\logfile.c">
       <Filter>Images</Filter>
     </ClCompile>
+    <ClCompile Include="NodeWidgetMaximized.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NodeWidget.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeWidgetMaximized.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

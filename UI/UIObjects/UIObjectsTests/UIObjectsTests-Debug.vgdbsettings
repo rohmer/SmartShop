@@ -9,32 +9,10 @@
     </CustomSourceDirectories>
     <AutoProgramSPIFFSPartition>true</AutoProgramSPIFFSPartition>
     <DeploymentHost>
-      <HostName>build</HostName>
-      <Transport>Alias</Transport>
-      <UserName />
+      <HostName>octopi.local</HostName>
+      <Transport>SSH</Transport>
+      <UserName>pi</UserName>
     </DeploymentHost>
-    <MainSourceTransferCommand>
-      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <LocalDirectory>$(ProjectDir)</LocalDirectory>
-      <RemoteDirectory>/tmp/VisualGDB/$(ProjectDirUnixStyle)</RemoteDirectory>
-      <FileMasks>
-        <string>*.cpp</string>
-        <string>*.h</string>
-        <string>*.hpp</string>
-        <string>*.c</string>
-        <string>*.cc</string>
-        <string>*.cxx</string>
-        <string>*.mak</string>
-        <string>Makefile</string>
-        <string>*.txt</string>
-        <string>*.cmake</string>
-      </FileMasks>
-      <TransferNewFilesOnly>true</TransferNewFilesOnly>
-      <IncludeSubdirectories>true</IncludeSubdirectories>
-      <SelectedDirectories />
-      <DeleteDisappearedFiles>false</DeleteDisappearedFiles>
-      <ApplyGlobalExclusionList>true</ApplyGlobalExclusionList>
-    </MainSourceTransferCommand>
     <AllowChangingHostForMainCommands>false</AllowChangingHostForMainCommands>
     <SkipBuildIfNoSourceFilesChanged>false</SkipBuildIfNoSourceFilesChanged>
     <IgnoreFileTransferErrors>false</IgnoreFileTransferErrors>
@@ -52,7 +30,7 @@
         <Revision>1</Revision>
       </Version>
     </ToolchainID>
-    <ProjectFile>NodeWidget.vcxproj</ProjectFile>
+    <ProjectFile>UIObjectsTests.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
     </RemoteBuildEnvironment>
@@ -80,10 +58,16 @@
   <UserDefinedVariables />
   <ImportedPropertySheets />
   <CodeSense>
-    <Enabled>Unknown</Enabled>
+    <Enabled>True</Enabled>
     <ExtraSettings>
       <HideErrorsInSystemHeaders>true</HideErrorsInSystemHeaders>
       <SupportLightweightReferenceAnalysis>true</SupportLightweightReferenceAnalysis>
+      <DiscoverySettings>
+        <Mode>Enabled</Mode>
+        <SearchInProjectDir>true</SearchInProjectDir>
+        <SearchInSourceDirs>true</SearchInSourceDirs>
+        <SearchInIncludeSubdirs>true</SearchInIncludeSubdirs>
+      </DiscoverySettings>
       <CheckForClangFormatFiles>true</CheckForClangFormatFiles>
       <FormattingEngine xsi:nil="true" />
     </ExtraSettings>
@@ -92,6 +76,7 @@
     </CodeAnalyzerSettings>
   </CodeSense>
   <Configurations />
+  <CommonSettingsFile>UIObjectsTests.vgdbsettings</CommonSettingsFile>
   <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
@@ -137,7 +122,7 @@
     </LaunchGDBSettings>
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>
     <SuppressArgumentVariablesCheck>false</SuppressArgumentVariablesCheck>
-    <DeploymentTargetPath>/tmp/UI/$(TargetFileName)</DeploymentTargetPath>
+    <DeploymentTargetPath>/tmp/$(TargetFileName)</DeploymentTargetPath>
     <X11WindowMode>Local</X11WindowMode>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
     <RunGDBUnderSudo>false</RunGDBUnderSudo>

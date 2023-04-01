@@ -31,6 +31,38 @@ void Config::AddDeviceConfig(DeviceConfig dc)
 	SaveConfig();
 }
 
+void Config::AddDeviceConfigs(DeviceManager *dm)
+{
+	if (dm == NULL)
+		dm = DeviceManager::GetInstance();
+	std::vector<DeviceBase*> dev = dm->GetAllDevices();
+	for (int i = 0; i < dev.size(); i++)
+	{
+		if (dev[i] == NULL)
+		{
+			Logger::GetInstance()->LogW("Null found in device list on DeviceManager");
+		}
+		else
+		{
+			devices.emplace(dev[i]->GetName(), dev[i]->GetConfig());
+		}
+	}
+	SaveConfig();
+}
+
+DeviceConfig Config::GetDeviceConfig(std::string DeviceName)
+{
+	if (devices.find(DeviceName) == devices.end())
+	{
+		std::stringstream ss;
+		ss << DeviceName << " not registered to the DeviceManager";
+		Logger::GetInstance()->LogW(ss.str());
+		return DeviceConfig();
+	}
+	
+	return devices[DeviceName];
+}
+
 bool Config::LoadConfig(std::string configFile)
 {
 	confFile = configFile;

@@ -66,9 +66,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>lvgl;lv_drivers;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -108,9 +108,11 @@
     <ClCompile Include="Images\logfile.c" />
     <ClCompile Include="Images\tempIcon.c" />
     <ClCompile Include="NodeWidget.cpp" />
+    <ClCompile Include="NodeWidgetMaximized.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NodeWidget.h" />
+    <ClInclude Include="NodeWidgetMaximized.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NodeWidget-Debug.vgdbsettings" />

@@ -136,6 +136,8 @@ cJSON *DeviceConfig::ToJSON()
 	cJSON_AddItemToObject(obj, "type", cJSON_CreateNumber(deviceType));
 	cJSON_AddItemToObject(obj, "devid", cJSON_CreateString(deviceID.c_str()));	
 	cJSON_AddItemToObject(obj, "hostid", cJSON_CreateString(hostID.c_str()));
+	cJSON_AddItemToObject(obj, "name", cJSON_CreateString(name.c_str()));
+	cJSON_AddItemToObject(obj, "desc", cJSON_CreateString(desc.c_str()));
 	cJSON *arr = cJSON_CreateArray();
 	for (std::vector<DeviceConfigItem>::iterator it = items.begin(); it != items.end(); it++)
 		cJSON_AddItemToArray(arr, it->ToJSON());
