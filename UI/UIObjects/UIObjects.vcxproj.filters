@@ -18,9 +18,27 @@
     <ClCompile Include="InputField.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="DropListBox.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="NumericSlider.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputField.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DropListBox.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="NumericSlider.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
