@@ -215,6 +215,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI Objects", "UI Objects", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UIObjectsTests", "UI\UIObjects\UIObjectsTests\UIObjectsTests.vcxproj", "{6DD5834D-5D97-45C5-8004-01CA5153638C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "marisaTrie", "Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj", "{D304C571-0AE0-40A5-B010-1D9384421DFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -1078,6 +1080,22 @@ Global
 		{6DD5834D-5D97-45C5-8004-01CA5153638C}.RelWithDebInfo|ARM.Build.0 = Release|VisualGDB
 		{6DD5834D-5D97-45C5-8004-01CA5153638C}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{6DD5834D-5D97-45C5-8004-01CA5153638C}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Debug|ARM.ActiveCfg = Debug|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Debug|ARM.Build.0 = Debug|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.MinSizeRel|ARM.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.MinSizeRel|ARM.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Release|ARM.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Release|ARM.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.RelWithDebInfo|ARM.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.RelWithDebInfo|ARM.Build.0 = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{D304C571-0AE0-40A5-B010-1D9384421DFB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1143,6 +1161,7 @@ Global
 		{89D59F12-892B-407A-90B2-92DF952C0668} = {1E869CCD-13B6-4023-8627-F32FD20B6214}
 		{1E869CCD-13B6-4023-8627-F32FD20B6214} = {2E3451D1-F988-428F-BF85-85D932BC141C}
 		{6DD5834D-5D97-45C5-8004-01CA5153638C} = {1E869CCD-13B6-4023-8627-F32FD20B6214}
+		{D304C571-0AE0-40A5-B010-1D9384421DFB} = {13F29B1F-DD99-416B-8EE4-3BC2FE07CCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF29E9C-B254-4DA7-800B-0156C11A7D13}

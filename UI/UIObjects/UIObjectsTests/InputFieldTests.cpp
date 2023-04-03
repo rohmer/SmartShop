@@ -61,3 +61,35 @@ TEST(InputFieldTests, CreateStringInputInitializer)
 	
 }
 
+TEST(InputFieldTests, CreateMultiStringInputInitializer)
+{
+	setupDisplay();
+	InputField strInputField(lv_scr_act(), "Create Multi String Input Initializer", InputField::E_STRING, "Value", 400, 300, 500, 60, 100);
+	
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	shutdown = true;
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
+}
+
+TEST(InputFieldTests, CreateIntegerInputInitalizer)
+{
+	setupDisplay();
+	InputField strInputField(lv_scr_act(), "Create Integer Input Initializer", InputField::InputField::E_INTEGER, "123", 400, 300, 500, 60, 100);
+	
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	shutdown = true;
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
+}
+
+TEST(InputFieldTests, CreateFloatInputInitalizer)
+{
+	setupDisplay();
+	InputField strInputField(lv_scr_act(), "Create Float Input Initializer", InputField::InputField::E_FLOAT, "123.0", 400, 300, 500, 60, 100);
+	
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	shutdown = true;
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
+}
