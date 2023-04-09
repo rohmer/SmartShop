@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{D304C571-0AE0-40A5-B010-1D9384421DFB}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../include;../lib;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="marisaTrie-Debug.vgdbsettings" />
+    <None Include="marisaTrie-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\marisa\agent.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\io\mapper.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\io\reader.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\io\writer.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\trie\louds-trie.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\trie\tail.cc" />
+    <ClCompile Include="..\lib\marisa\grimoire\vector\bit-vector.cc" />
+    <ClCompile Include="..\lib\marisa\keyset.cc" />
+    <ClCompile Include="..\lib\marisa\trie.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\marisa\grimoire\algorithm.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\algorithm\sort.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\intrin.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\io.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\io\mapper.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\io\reader.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\io\writer.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\cache.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\config.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\entry.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\header.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\history.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\key.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\louds-trie.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\range.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\state.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\trie\tail.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector\bit-vector.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector\flat-vector.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector\pop-count.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector\rank-index.h" />
+    <ClInclude Include="..\lib\marisa\grimoire\vector\vector.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
