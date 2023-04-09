@@ -8,8 +8,9 @@
 #include <thread>
 #include <unistd.h>
 
+#include <SDL2/SDL.h>
 #include <lvgl.h>
-#include <display/fbdev.h>
+#include <sdl/sdl_gpu.h>
 #include <indev/evdev.h>
 
 #include "../Logger/Logger.h"

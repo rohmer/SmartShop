@@ -151,7 +151,7 @@
 #endif
 
 /*Use SDL renderer API*/
-#define LV_USE_DRAW_SDL 0
+#define LV_USE_DRAW_SDL 1
 #if LV_USE_DRAW_SDL
     #define LV_DRAW_SDL_INCLUDE_PATH <SDL2/SDL.h>
     /*Texture cache size, 8MB by default*/

@@ -91,12 +91,12 @@
 
 /* Hardware accelerated SDL driver */
 #ifndef USE_SDL_GPU
-# define USE_SDL_GPU 0
+# define USE_SDL_GPU 1
 #endif
 
 #if USE_SDL || USE_SDL_GPU
-#  define SDL_HOR_RES     480
-#  define SDL_VER_RES     320
+#  define SDL_HOR_RES     1920
+#  define SDL_VER_RES     1024
 
 /* Scale window by this factor (useful when simulating small screens) */
 #  define SDL_ZOOM        1

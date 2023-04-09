@@ -64,7 +64,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>=/usr/lib/arm-linux-gnueabihf;=/usr/local/lib/arm-linux-gnueabihf;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>dl;pthread;gnutls;gmp;nettle;unistring;hogweed;TASN1;p11-kit;idn2;ffi;microhttpd;sqlite3;atomic;httpserver;ssl;crypto;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>pthread;dl;httpserver;gnutls;atomic;nettle;ssl;nettle;gmp;unistring;hogweed;tasn1;p11-kit;idn2;ffi;vchiq_arm;vcos;bcm_host;SDL2;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
@@ -108,6 +108,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Client\Client.vcxproj">
       <Project>{34c2fa0e-ff32-4016-8048-a1b0925d6596}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
+      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Config\Config.vcxproj">
       <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
