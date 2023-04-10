@@ -74,10 +74,15 @@ class AdvKeyboard
 	bool imeEvent = false;
 	bool suggestionsEnabled = false;
 	marisa::Trie *trie=NULL;
-
+	marisa::Agent agent;
+	marisa::Keyset keySet;
+	
 	static void keyboard_event_cb(lv_event_t *e);
 	static void suggestion_event_cb(lv_event_t *e);
 	static std::string reverseString(std::string s);
+
+	bool charIsTerminator(char c);
+	std::vector<char> terminators;
 
 	struct sSugButtonData
 	{

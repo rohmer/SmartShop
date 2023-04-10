@@ -260,6 +260,10 @@ bool AdvKeyboard::LoadDictionary(std::string dictionary)
 	{
 		trie = new marisa::Trie();
 		trie->mmap(dictionary.c_str());
+		terminators.push_back('.');
+		terminators.push_back('?');
+		terminators.push_back('!');
+		terminators.push_back(';');
 		if(trie!=NULL)
 			return true;
 	}
@@ -282,7 +286,8 @@ void AdvKeyboard::keyboard_event_cb(lv_event_t *e)
 std::string AdvKeyboard::reverseString(std::string s)
 {
 	int n = s.length();
-
+	if (n == 0)
+		return s;
 	// Swap character starting from two
 	// corners
 	for (int i = 0; i < n / 2; i++)
@@ -310,6 +315,14 @@ void AdvKeyboard::ime()
 	}
 }
 
+bool AdvKeyboard::charIsTerminator(char c)
+{
+	for (int i = 0; i < terminators.size(); i++)
+		if (c == terminators[i])
+			return true;
+	return false;
+}
+
 std::multimap<float, std::string, std::greater<float>>
 AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 {
@@ -319,74 +332,78 @@ AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 		return results;
 	if (trie == NULL)
 		return results;
+
+	// First we have to figure out is the a single word, the end of a bigram, trigram
+	// or is it a new word
 	
+	// First step, is previous char a terminator
 	int pos = cursorPos;
-	// Get the string up to where the cursor is
-	text = text.substr(0, pos);
+	int ngram = 0;
+	std::string searchString = "";
+	while (pos >= 0 && !charIsTerminator(text[pos]))
+		pos--;
+	if (pos == -1)
+	{
+		searchString = text.substr(0, cursorPos);
+	}
+	else
+	{
+		searchString = text.substr(pos, (cursorPos - pos));
+	}
 
-	if (text.length() == 0)
-		return results;
-
-	// Now we have what we are going to predict against, the next step
-	// is to split into words
-	// Note, for the time being this is puncuation naieve
-	int wordCtr = 2;
-	std::string words[3] = {"", "", ""};
-	bool nextWordPrediction = text[pos] == ' ';
-	while (pos >= 0 && !isalnum(text[pos]))
+	pos = searchString.length();
+	std::stringstream grams[3];
+	while (pos >= 0 && text[pos] == ' ')
 	{
 		pos--;
 	}
+	if (pos == -1)
+		return results;  // all we have is whitespace
 
+	int wordCtr = 2;
 	while (pos >= 0 && wordCtr >= 0)
 	{
-		std::stringstream word;
-		while (pos >= 0 && isalnum(text[pos]))
+		if (charIsTerminator(text[pos]))		// We dont do ngrams beyond a sentence
+			break;
+		if (text[pos] == ' ')
 		{
-			word << text[pos];
+			wordCtr--;
+			while (pos >= 0 && text[pos] == ' ')
+				pos--;
+		}
+		else
+		{
+			grams[wordCtr] << text[pos];
 			pos--;
 		}
-
-		words[wordCtr] = reverseString(word.str());
-		wordCtr--;
-		word.str("");
-	}
-
-	wordCtr = 2;
-	marisa::Agent agent;
-	marisa::Keyset keyset;
-	agent.set_query(words[2].c_str(), words[2].length());
 	
-	if (trie->lookup(agent))
-	{
-		results.emplace(std::pair<float, std::string>(0, words[2]));
 	}
-	while (words[wordCtr].length() > 0 && wordCtr>=0)
+	std::vector<std::string> checkPhrase;
+	;
+	for (int i = 0; i < 3; i++)
+		checkPhrase.push_back(reverseString(grams[i].str()));
+	std::stringstream ssPhrase;
+	for (int i = 0; i < 3; i++)
 	{
-		std::stringstream wstream;
-		for (int i = wordCtr; i <= 2; i++)
+		if (checkPhrase[i].length() > 0)
 		{
-			wstream << words[i];
-			if (i != 2)
-				wstream << " ";
+			if (ssPhrase.str().length() > 0)
+				ssPhrase << " " << checkPhrase[i];
+			else
+				ssPhrase << checkPhrase[i];
 		}
-		std::string word = wstream.str();
-		agent.set_query(word.c_str(), word.length());
-		int resultCt = 0;
-		while (trie->predictive_search(agent) && resultCt < 10)
-		{
-			keyset.push_back(agent.key());
-			resultCt++;
-		}		
-		wordCtr--;
 	}
-	const std::size_t end = std::min((size_t)5, keyset.size());
-	for (std::size_t i = 0; i < end; ++i)
+	agent.clear();
+	std::string toCheck = ssPhrase.str();
+	agent.set_query(toCheck.c_str(), toCheck.length());
+	int resCtr = 0;
+	keySet.reset();
+	while (trie->predictive_search(agent) && resCtr<10)
 	{
-		float weight = keyset[i].weight();
-		std::string gram = keyset[i].ptr();
-		results.emplace(keyset[i].weight(), gram.substr(0,keyset[i].length()));
-	}	
+		results.emplace(agent.key().weight(), agent.key().str());
+		resCtr++;
+	}
+	
 	return results;
 }
 

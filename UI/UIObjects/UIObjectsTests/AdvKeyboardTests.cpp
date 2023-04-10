@@ -51,15 +51,36 @@ void tickThread1()
 	}
 }
 
-TEST(AdvKeyboard, TextPrediction1)
+TEST(AdvKeyboard, TextPredictionBigram)
 {
 	AdvKeyboard advKeyboard(false);
 	CHECK(advKeyboard.LoadDictionary("dict.trie")==true);
-	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("dog", 3);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("the do", 5);
 	CHECK(results.size() > 0);
 	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
 		std::cout << it->second << "\t" << it->first << "\n";
 }
+
+TEST(AdvKeyboard, TextPredictionTrigram)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("the dogs ru", 5);
+	CHECK(results.size() > 0);
+	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
+		std::cout << it->second << "\t" << it->first << "\n";
+}
+
+TEST(AdvKeyboard, TextPredictionUnigram)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("Cali", 5);
+	CHECK(results.size() > 0);
+	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
+		std::cout << it->second << "\t" << it->first << "\n";
+}
+
 TEST(AdvKeyboard, CreateKeyboardWithDict)
 {
 	return;

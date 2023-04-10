@@ -9,7 +9,7 @@
       <UniqueIdentifier>{4e488467-45dc-42bd-a9f7-dd87ef998495}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource files">
+    <Filter Include="Source files\Resource files">
       <UniqueIdentifier>{041c8fc3-67eb-4a0d-bf90-b8c12494ed9c}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
