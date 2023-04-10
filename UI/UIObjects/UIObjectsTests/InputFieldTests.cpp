@@ -10,7 +10,7 @@ TEST_GROUP(InputFieldTests)
 {	
 };
 
-void setupDisplay()
+void setupDisplay1()
 {
 	if (init)
 		return;
@@ -52,7 +52,7 @@ void tickThread()
 
 TEST(InputFieldTests, CreateStringInputInitializer)
 {
-	setupDisplay();
+	setupDisplay1();
 	InputField strInputField(lv_scr_act(), "CreateStringInputInitializer", InputField::E_STRING, "Value", 200, 200, 300, 60, 100);
 	
 	std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -63,7 +63,7 @@ TEST(InputFieldTests, CreateStringInputInitializer)
 
 TEST(InputFieldTests, CreateMultiStringInputInitializer)
 {
-	setupDisplay();
+	setupDisplay1();
 	InputField strInputField(lv_scr_act(), "Create Multi String Input Initializer", InputField::E_STRING, "Value", 400, 300, 500, 60, 100);
 	
 	std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -74,7 +74,7 @@ TEST(InputFieldTests, CreateMultiStringInputInitializer)
 
 TEST(InputFieldTests, CreateIntegerInputInitalizer)
 {
-	setupDisplay();
+	setupDisplay1();
 	InputField strInputField(lv_scr_act(), "Create Integer Input Initializer", InputField::InputField::E_INTEGER, "123", 400, 300, 500, 60, 100);
 	
 	std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -85,7 +85,7 @@ TEST(InputFieldTests, CreateIntegerInputInitalizer)
 
 TEST(InputFieldTests, CreateFloatInputInitalizer)
 {
-	setupDisplay();
+	setupDisplay1();
 	InputField strInputField(lv_scr_act(), "Create Float Input Initializer", InputField::InputField::E_FLOAT, "123.0", 400, 300, 500, 60, 100);
 	
 	std::this_thread::sleep_for(std::chrono::seconds(1));

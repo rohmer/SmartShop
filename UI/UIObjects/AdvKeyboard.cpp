@@ -1,11 +1,21 @@
 #include "AdvKeyboard.h"
+lv_obj_t *AdvKeyboard::suggestions[4];
+
+AdvKeyboard::AdvKeyboard(bool imethread)
+{
+	if(imethread)
+		imeThread = new std::thread([this] { ime(); });
+	suggestionsEnabled = true;
+}
 
 AdvKeyboard::AdvKeyboard(
 	lv_obj_t *parent,
 	lv_obj_t *textArea,
 	uint x,
 	uint y,
-	std::string dictionary)
+	std::string dictionary,
+	bool IMEThread) :
+	textArea(textArea)
 {
 	keyboard = lv_keyboard_create(parent);
 	lv_obj_set_pos(keyboard, x, y);
@@ -20,7 +30,8 @@ AdvKeyboard::AdvKeyboard(
 
 	try
 	{
-		trie = LoadDictionary(dictionary);
+		if (!LoadDictionary(dictionary))
+			suggestionsEnabled = false;
 		if (trie==NULL || !trie->empty())
 			suggestionsEnabled = true;
 	}
@@ -29,6 +40,10 @@ AdvKeyboard::AdvKeyboard(
 	}
 	if (suggestionsEnabled)
 		lv_obj_add_event_cb(keyboard, keyboard_event_cb, LV_EVENT_VALUE_CHANGED, this);
+	if (IMEThread)
+	{
+		imeThread = new std::thread([this] { ime(); });
+	}
 }
 
 AdvKeyboard::AdvKeyboard(
@@ -36,7 +51,8 @@ AdvKeyboard::AdvKeyboard(
 	lv_obj_t *textArea,
 	uint x,
 	uint y,
-	marisa::Trie *dictionary) : trie(dictionary)
+	marisa::Trie *dictionary,
+	bool IMEThread) : trie(dictionary), textArea(textArea)
 {
 	keyboard = lv_keyboard_create(parent);
 	lv_obj_set_pos(keyboard, x, y);
@@ -53,12 +69,17 @@ AdvKeyboard::AdvKeyboard(
 		suggestionsEnabled = true;
 	if (suggestionsEnabled)
 		lv_obj_add_event_cb(keyboard, keyboard_event_cb, LV_EVENT_VALUE_CHANGED, this);
+	if (IMEThread)
+	{
+		imeThread = new std::thread([this] { ime(); });
+	}
 }
 
 AdvKeyboard::AdvKeyboard(lv_obj_t *parent,
 						 lv_obj_t *textArea,
 						 eKeyboardAlignment preferedAlignment,
-						 marisa::Trie *dictionary) : trie(dictionary)
+						 marisa::Trie *dictionary,
+						 bool IMEThread) : trie(dictionary), textArea(textArea)
 {
 	keyboard = lv_keyboard_create(parent);
 
@@ -129,13 +150,18 @@ AdvKeyboard::AdvKeyboard(lv_obj_t *parent,
 		suggestionsEnabled = true;
 	if (suggestionsEnabled)
 		lv_obj_add_event_cb(keyboard, keyboard_event_cb, LV_EVENT_VALUE_CHANGED, this);
+	if (IMEThread)
+	{
+		imeThread = new std::thread([this] { ime(); });
+	}
 }
 
 AdvKeyboard::AdvKeyboard(
 	lv_obj_t *parent,
 	lv_obj_t *textArea,
 	eKeyboardAlignment preferedAlignment,
-	std::string dictionary)
+	std::string dictionary, 
+	bool IMEThread) : textArea(textArea)
 {
 	keyboard = lv_keyboard_create(parent);
 
@@ -201,16 +227,25 @@ AdvKeyboard::AdvKeyboard(
 
 	lv_obj_set_layout(suggestionBar, LV_LAYOUT_FLEX);
 	lv_obj_set_flex_flow(suggestionBar, LV_FLEX_FLOW_ROW);
-	trie = LoadDictionary(dictionary);
-	
+	if (!LoadDictionary(dictionary))
+		suggestionsEnabled = false;
+
 	if (trie==NULL || !trie->empty())
 		suggestionsEnabled = true;
 	if (suggestionsEnabled)
 		lv_obj_add_event_cb(keyboard, keyboard_event_cb, LV_EVENT_VALUE_CHANGED, this);
+
+	if (IMEThread)
+	{
+		imeThread = new std::thread([this] { ime(); });
+	}
 }
 
 AdvKeyboard::~AdvKeyboard()
 {
+	shutdown = true;
+	if(imeThread!=NULL)
+		imeThread->join();
 	if (keyboard != NULL)
 		lv_obj_del_async(keyboard);
 	if (suggestionBar != NULL)
@@ -219,15 +254,16 @@ AdvKeyboard::~AdvKeyboard()
 		delete (trie);
 }
 
-marisa::Trie *AdvKeyboard::LoadDictionary(std::string dictionary)
+bool AdvKeyboard::LoadDictionary(std::string dictionary)
 {
 	if (std::filesystem::exists(dictionary))
 	{
-		marisa::Trie *trie = new marisa::Trie();
-		trie->load(dictionary.c_str());
-		return trie;
+		trie = new marisa::Trie();
+		trie->mmap(dictionary.c_str());
+		if(trie!=NULL)
+			return true;
 	}
-	return NULL;
+	return false;
 }
 
 void AdvKeyboard::keyboard_event_cb(lv_event_t *e)
@@ -236,98 +272,165 @@ void AdvKeyboard::keyboard_event_cb(lv_event_t *e)
 	if (ak == NULL)
 		return;
 
-	lv_obj_t *keyboard = lv_event_get_target(e);
-	lv_obj_t *textArea = lv_keyboard_get_textarea(keyboard);
-	marisa::Trie *trie = ak->GetDictionary();
-
-	std::string text(lv_textarea_get_text(textArea));
-	uint cursorPos = lv_textarea_get_cursor_pos(textArea);
-
-	std::string grams[3] = {"", "", ""};
-	int wordCt = 0;
-	std::string currentWord="";
-	while (wordCt < 3 && cursorPos > 0)
+	if (ak->HasIME())
 	{
-		if (text[cursorPos] != ' ')
-		{
-			currentWord += text[cursorPos];
-		}
-		else
-		{
-			if (currentWord.length() > 0)
-			{
-				grams[2 - wordCt] = currentWord;
-				currentWord = "";
-				wordCt++;
-			}
-		}
-		cursorPos--;
-		if (text[cursorPos] == '.' || text[cursorPos] == '?' || text[cursorPos] == '!')
-			wordCt = 3;
-	}
-	std::stringstream gramSS;
-	if (grams[0].length() > 0)
-	{
-		gramSS << reverseString(grams[0]) << ' ';
-	}
-	if (grams[1].length() > 0)
-	{
-		gramSS << reverseString(grams[1]) << ' ';
-	}
-	if (grams[2].length() > 0)
-	{
-		gramSS << reverseString(grams[2]) << ' ';
-	}
-	marisa::Agent agent;
-	marisa::Keyset keyset;
-	std::string lookup = gramSS.str();
-	try
-	{
-		agent.set_query(lookup.c_str(), lookup.length());
-	}
-	catch (const std::exception &)
-	{
-	}
-
-	int i = 0;
-	while (i < 4 && trie->predictive_search(agent))
-	{
-		keyset.push_back(agent.key());
-		i++;
-	}
-	if (keyset.empty())
-	{
-		for (int i = 0; i < 4; i++)
-			lv_obj_del_async(suggestions[i]);
-	}
-	else
-	{
-		size_t v = 4;
-		const std::size_t end = std::min(v, keyset.size());
-		for (int i = 0; i < end; ++i)
-		{
-			if (suggestions[i] == NULL)
-			{
-				suggestions[i] = lv_btn_create(ak->GetSuggestionBar());
-				lv_obj_set_size(suggestions[i],
-								lv_obj_get_width(ak->GetSuggestionBar()) / 5,
-								lv_obj_get_height(ak->GetSuggestionBar()) - 2);
-				lv_obj_set_layout(suggestions[i], LV_LAYOUT_FLEX);
-				lv_obj_set_flex_flow(suggestions[i], LV_FLEX_FLOW_ROW);
-				lv_obj_t *sugLabel = lv_label_create(suggestions[i]);
-				lv_label_set_text(sugLabel,keyset[i].ptr());
-				lv_obj_add_event_cb(suggestions[i], suggestion_event_cb, LV_EVENT_CLICKED, textArea);
-			}
-		}
-		for (int i = end; i < end; i++)
-			lv_obj_del_async(suggestions[i]);
+		ak->IMEEvent();
+		return;
 	}
 }
 
 std::string AdvKeyboard::reverseString(std::string s)
 {
-	std::stringstream ss;
-	for (int i = s.length(); i >= 0; i--)
-		ss << s[i];
-	return ss.str();
+	int n = s.length();
+
+	// Swap character starting from two
+	// corners
+	for (int i = 0; i < n / 2; i++)
+		std::swap(s[i], s[n - i - 1]);
+
+	return s;
+}
+
+void AdvKeyboard::suggestion_event_cb(lv_event_t *)
+{
+}
+
+void AdvKeyboard::ime()
+{
+	while (!shutdown)
+	{
+		if (imeEvent)
+		{
+			processSuggestions(
+				std::string(lv_textarea_get_text(textArea)),
+				lv_textarea_get_cursor_pos(textArea)
+			);
+		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
+	}
+}
+
+std::multimap<float, std::string, std::greater<float>>
+AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
+{
+	std::multimap<float, std::string, std::greater<float>> results;
+
+	if (!suggestionsEnabled)
+		return results;
+	if (trie == NULL)
+		return results;
+	
+	int pos = cursorPos;
+	// Get the string up to where the cursor is
+	text = text.substr(0, pos);
+
+	if (text.length() == 0)
+		return results;
+
+	// Now we have what we are going to predict against, the next step
+	// is to split into words
+	// Note, for the time being this is puncuation naieve
+	int wordCtr = 2;
+	std::string words[3] = {"", "", ""};
+	bool nextWordPrediction = text[pos] == ' ';
+	while (pos >= 0 && !isalnum(text[pos]))
+	{
+		pos--;
+	}
+
+	while (pos >= 0 && wordCtr >= 0)
+	{
+		std::stringstream word;
+		while (pos >= 0 && isalnum(text[pos]))
+		{
+			word << text[pos];
+			pos--;
+		}
+
+		words[wordCtr] = reverseString(word.str());
+		wordCtr--;
+		word.str("");
+	}
+
+	wordCtr = 2;
+	marisa::Agent agent;
+	marisa::Keyset keyset;
+	agent.set_query(words[2].c_str(), words[2].length());
+	
+	if (trie->lookup(agent))
+	{
+		results.emplace(std::pair<float, std::string>(0, words[2]));
+	}
+	while (words[wordCtr].length() > 0 && wordCtr>=0)
+	{
+		std::stringstream wstream;
+		for (int i = wordCtr; i <= 2; i++)
+		{
+			wstream << words[i];
+			if (i != 2)
+				wstream << " ";
+		}
+		std::string word = wstream.str();
+		agent.set_query(word.c_str(), word.length());
+		int resultCt = 0;
+		while (trie->predictive_search(agent) && resultCt < 10)
+		{
+			keyset.push_back(agent.key());
+			resultCt++;
+		}		
+		wordCtr--;
+	}
+	const std::size_t end = std::min((size_t)5, keyset.size());
+	for (std::size_t i = 0; i < end; ++i)
+	{
+		float weight = keyset[i].weight();
+		std::string gram = keyset[i].ptr();
+		results.emplace(keyset[i].weight(), gram.substr(0,keyset[i].length()));
+	}	
+	return results;
+}
+
+void AdvKeyboard::processSuggestions(std::string text, uint cursorPos)
+{
+	std::multimap<float, std::string, std::greater<float>> results;
+	results = GetSuggestions(text, cursorPos);
+
+	// At this point we have the sorted result list
+	if (results.size() <= 4)
+	{
+		for (int i = results.size(); i <= 4; i++)
+		{
+			lv_obj_del_async(suggestions[i - 1]);
+		}
+	}
+	if (results.size() == 0)
+		return;
+	uint sugCt = 4;
+	if (results.size() < 4)
+		sugCt = results.size();
+	int i = 0;
+	for(std::multimap<float,std::string, std::greater<float>>::iterator it=results.begin();
+		i<4 && it!=results.end();
+		++it)
+	{
+		lv_obj_t *label = NULL;
+		if (suggestions[i] == NULL)
+		{
+			suggestions[i] = lv_btn_create(suggestionBar);
+			lv_obj_t *sugLabel = lv_label_create(suggestions[i]);
+			lv_obj_set_align(sugLabel, LV_ALIGN_CENTER);
+			label = sugLabel;
+		}
+		else
+		{
+			// The suggestions will only have one child
+			label=lv_obj_get_child(suggestions[i], 0);
+		}
+		lv_label_set_text(label, it->second.c_str());
+		sSugButtonData data;
+		data.suggestion = it->second;
+		data.cursorPos = cursorPos;
+		lv_obj_add_event_cb(suggestions[i], suggestion_event_cb, LV_EVENT_CLICKED, &data);
+		i++;
+	}
 }

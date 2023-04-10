@@ -33,6 +33,7 @@
     <ProjectFile>UIObjectsTests.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
+      <EnvironmentSetupFiles />
     </RemoteBuildEnvironment>
     <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
@@ -41,7 +42,23 @@
   <CustomBuild>
     <PreSyncActions />
     <PreBuildActions />
-    <PostBuildActions />
+    <PostBuildActions>
+      <CustomActionBase xsi:type="FileTransferAction">
+        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <SourceHost>
+          <HostName>BuildMachine</HostName>
+          <Transport>BuiltinShortcut</Transport>
+        </SourceHost>
+        <DestinationHost>
+          <HostName>build</HostName>
+          <Transport>Alias</Transport>
+          <UserName />
+        </DestinationHost>
+        <SourceFilePath>$(BuildDir)\dict.trie</SourceFilePath>
+        <DestinationFilePath>/tmp/dict.trie</DestinationFilePath>
+        <OverwriteTrigger>Stat</OverwriteTrigger>
+      </CustomActionBase>
+    </PostBuildActions>
     <PreCleanActions />
     <PostCleanActions />
   </CustomBuild>
