@@ -12,6 +12,7 @@
 
 #include <marisa.h>
 
+#include "Dictionary.h"
 class AdvKeyboard
 {
   public:
@@ -57,7 +58,8 @@ class AdvKeyboard
 
 	bool HasIME() { return imeThread != NULL; }
 	void IMEEvent() { imeEvent = true; }
-
+	std::vector<std::string> GetNGrams(std::string text);
+	
 	std::multimap<float, std::string, std::greater<float>> GetSuggestions(std::string text, uint cursorPos);
 
   private:

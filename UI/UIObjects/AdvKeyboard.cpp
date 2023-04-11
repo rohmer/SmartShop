@@ -258,8 +258,7 @@ bool AdvKeyboard::LoadDictionary(std::string dictionary)
 {
 	if (std::filesystem::exists(dictionary))
 	{
-		trie = new marisa::Trie();
-		trie->mmap(dictionary.c_str());
+		trie = Dictionary::GetInstance(dictionary)->GetTrie();
 		terminators.push_back('.');
 		terminators.push_back('?');
 		terminators.push_back('!');
@@ -323,6 +322,81 @@ bool AdvKeyboard::charIsTerminator(char c)
 	return false;
 }
 
+std::vector<std::string> AdvKeyboard::GetNGrams(std::string text)
+{
+	int rightPointer = text.length() - 1;
+
+	std::vector<std::string> grams = {"", "", ""};
+
+	if (isspace(text[rightPointer]))
+	{
+		grams.erase(grams.begin());
+		while (isspace(text[rightPointer]) && rightPointer >= 0)
+			rightPointer--;
+	}
+	int leftPointer = rightPointer - 1;
+
+	int wordPtr = grams.size() - 1;
+	while (true)
+	{
+		if (leftPointer < 0)
+		{
+			grams[wordPtr] = text.substr(0, rightPointer+1);
+			break;
+		}
+		if (charIsTerminator(text[leftPointer]))
+		{
+			std::string tmp = text.substr(leftPointer + 1, rightPointer - leftPointer);
+			bool notSpace = true;
+			for (int i = 0; i < tmp.length(); i++)
+				if (isspace(tmp[i]))
+					notSpace = false;
+			if (notSpace)
+				grams[wordPtr] = tmp;
+			break;
+		}
+		if (isspace(text[leftPointer]))
+		{
+			if (rightPointer - leftPointer > 1)
+			{
+				grams[wordPtr] = text.substr(leftPointer + 1, rightPointer - leftPointer);
+				wordPtr--;
+				leftPointer--;
+
+				if (wordPtr < 0)
+					break;
+				while (leftPointer >= 0 && isspace(text[leftPointer]))
+				{
+					leftPointer--;
+					if (leftPointer < 0)
+						break;
+				}
+				rightPointer = leftPointer;
+			}
+		}
+		else
+		{
+			leftPointer--;
+		}
+	}
+
+	if (grams[1].length() == 0)
+	{
+		grams[0] = grams[2];
+		grams[1] = "";
+		grams[2] = "";
+	}
+	else if (grams[0].length() == 0)
+	{
+		grams[0] = grams[1];
+		grams[1] = grams[2];
+		grams[2] = "";
+	}
+
+
+	return grams;
+}
+
 std::multimap<float, std::string, std::greater<float>>
 AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 {
@@ -333,77 +407,12 @@ AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 	if (trie == NULL)
 		return results;
 
-	// First we have to figure out is the a single word, the end of a bigram, trigram
-	// or is it a new word
-	
-	// First step, is previous char a terminator
-	int pos = cursorPos;
-	int ngram = 0;
-	std::string searchString = "";
-	while (pos >= 0 && !charIsTerminator(text[pos]))
-		pos--;
-	if (pos == -1)
-	{
-		searchString = text.substr(0, cursorPos);
-	}
-	else
-	{
-		searchString = text.substr(pos, (cursorPos - pos));
-	}
 
-	pos = searchString.length();
-	std::stringstream grams[3];
-	while (pos >= 0 && text[pos] == ' ')
-	{
-		pos--;
-	}
-	if (pos == -1)
-		return results;  // all we have is whitespace
-
-	int wordCtr = 2;
-	while (pos >= 0 && wordCtr >= 0)
-	{
-		if (charIsTerminator(text[pos]))		// We dont do ngrams beyond a sentence
-			break;
-		if (text[pos] == ' ')
-		{
-			wordCtr--;
-			while (pos >= 0 && text[pos] == ' ')
-				pos--;
-		}
-		else
-		{
-			grams[wordCtr] << text[pos];
-			pos--;
-		}
-	
-	}
-	std::vector<std::string> checkPhrase;
-	;
-	for (int i = 0; i < 3; i++)
-		checkPhrase.push_back(reverseString(grams[i].str()));
-	std::stringstream ssPhrase;
-	for (int i = 0; i < 3; i++)
-	{
-		if (checkPhrase[i].length() > 0)
-		{
-			if (ssPhrase.str().length() > 0)
-				ssPhrase << " " << checkPhrase[i];
-			else
-				ssPhrase << checkPhrase[i];
-		}
-	}
-	agent.clear();
-	std::string toCheck = ssPhrase.str();
-	agent.set_query(toCheck.c_str(), toCheck.length());
-	int resCtr = 0;
-	keySet.reset();
-	while (trie->predictive_search(agent) && resCtr<10)
+	/*while (trie->predictive_search(agent)  && i<5)
 	{
 		results.emplace(agent.key().weight(), agent.key().str());
-		resCtr++;
-	}
-	
+		i++;
+	}*/
 	return results;
 }
 
