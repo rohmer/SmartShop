@@ -250,8 +250,6 @@ AdvKeyboard::~AdvKeyboard()
 		lv_obj_del_async(keyboard);
 	if (suggestionBar != NULL)
 		lv_obj_del_async(suggestionBar);
-	if (trie != NULL)
-		delete (trie);
 }
 
 bool AdvKeyboard::LoadDictionary(std::string dictionary)
@@ -357,22 +355,19 @@ std::vector<std::string> AdvKeyboard::GetNGrams(std::string text)
 		}
 		if (isspace(text[leftPointer]))
 		{
-			if (rightPointer - leftPointer > 1)
-			{
-				grams[wordPtr] = text.substr(leftPointer + 1, rightPointer - leftPointer);
-				wordPtr--;
-				leftPointer--;
+			grams[wordPtr] = text.substr(leftPointer + 1, rightPointer - leftPointer);
+			wordPtr--;
+			leftPointer--;
 
-				if (wordPtr < 0)
+			if (wordPtr < 0)
+				break;
+			while (leftPointer >= 0 && isspace(text[leftPointer]))
+			{
+				leftPointer--;
+				if (leftPointer < 0)
 					break;
-				while (leftPointer >= 0 && isspace(text[leftPointer]))
-				{
-					leftPointer--;
-					if (leftPointer < 0)
-						break;
-				}
-				rightPointer = leftPointer;
 			}
+			rightPointer = leftPointer;
 		}
 		else
 		{
@@ -397,6 +392,23 @@ std::vector<std::string> AdvKeyboard::GetNGrams(std::string text)
 	return grams;
 }
 
+std::vector<std::string> AdvKeyboard::wordSplit(std::string input)
+{
+	std::string delimiter = " ";
+
+	size_t pos = 0;
+	std::string token;
+	std::vector<std::string> ret;
+	while ((pos = input.find(delimiter)) != std::string::npos)
+	{
+		token = input.substr(0, pos);
+		ret.push_back(token);
+		input.erase(0, pos + delimiter.length());
+	}
+	ret.push_back(input);
+	return ret;
+}
+
 std::multimap<float, std::string, std::greater<float>>
 AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 {
@@ -406,13 +418,60 @@ AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 		return results;
 	if (trie == NULL)
 		return results;
-
-
-	/*while (trie->predictive_search(agent)  && i<5)
+	
+	// For now we are going to not deal with suggestions if the cursor is in
+	// the middle of a line of text
+	if (cursorPos < text.length())
 	{
-		results.emplace(agent.key().weight(), agent.key().str());
-		i++;
-	}*/
+		for (int i = cursorPos; i < text.length(); i++)
+			if (isspace(static_cast<unsigned char>(text[i])))
+				return results;
+	}
+	std::vector<std::string> grams = GetNGrams(text.substr(0, cursorPos));
+	if (grams.size() == 0)
+		return results;
+	agent.clear();
+	keySet.reset();
+	std::stringstream query;
+	for (int i = 0; i < grams.size(); i++)
+	{
+		if (i > 0)
+			query << " ";
+		query << grams[i];
+	}
+	std::string qstr = query.str();
+	agent.set_query(query.str());
+	bool nextWordPred = false;
+	if (cursorPos > 0)
+		if (isspace(text[cursorPos - 1]))
+			nextWordPred = true;
+	std::vector<std::string> sugs;
+	while (trie->predictive_search(agent) && results.size() <=5)
+	{
+		marisa::Key key = agent.key();
+		float weight = key.weight();
+		std::string suggestion = key.ptr();
+		std::vector<std::string> sGrams = wordSplit(suggestion);
+		if (nextWordPred)
+		{
+			if (grams.size() < 3 && sGrams.size() > grams.size() + 1)
+			{
+				std::string ssug = sGrams[grams.size()];
+				if (std::find(sugs.begin(), sugs.end(), ssug)==sugs.end())
+					results.emplace(key.weight(), ssug);
+			
+			}
+		}
+		else
+		{
+			if (grams.size() <= sGrams.size())
+			{
+				std::string ssug = sGrams[grams.size() - 1];
+				if (std::find(sugs.begin(), sugs.end(), ssug)==sugs.end())
+					results.emplace(key.weight(), ssug);
+			}
+		}
+	}
 	return results;
 }
 

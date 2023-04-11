@@ -69,7 +69,7 @@ TEST(AdvKeyboard, TextPredictionTrigram)
 {
 	AdvKeyboard advKeyboard(false);
 	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
-	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("the dogs ru", 5);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("I see t", 11);
 	CHECK(results.size() > 0);
 	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
 		std::cout << it->second << "\t" << it->first << "\n";
@@ -147,7 +147,27 @@ TEST(NGramSplit, CheckBigramSpaceAndSeperator)
 
 TEST(NGramSplit, TrigramSimple)
 {
-	
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("Now is the time for all grea");
+	if (strcmp(grams[2].c_str(), "grea") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[1]=='grea', received: '" << grams[2] << "'";
+		FAIL(ss.str().c_str());
+	}
+	if (strcmp(grams[1].c_str(), "all") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[1]=='all', received: '" << grams[1] << "'";
+		FAIL(ss.str().c_str());
+	}
+	if (strcmp(grams[0].c_str(), "for") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[0]=='for', received: '" << grams[0] << "'";
+		FAIL(ss.str().c_str());
+	}
 }
 
 TEST(AdvKeyboard, CreateKeyboardWithDict)

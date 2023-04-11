@@ -14,8 +14,15 @@ class Dictionary
 		if (instance == NULL)
 			instance = new Dictionary();
 		currentDict = DictionaryFile;
+		return instance;
 	}
 
+	~Dictionary()
+	{
+		if (trie != NULL)
+			delete (trie);
+	}
+	
 	marisa::Trie *GetTrie()
 	{
 		if (trie == NULL)
@@ -30,6 +37,7 @@ class Dictionary
 				loadedDict = currentDict;
 			}
 		}
+		return trie;
 	}
 
   private:

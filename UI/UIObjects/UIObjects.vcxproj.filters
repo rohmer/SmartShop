@@ -30,6 +30,9 @@
     <ClCompile Include="AdvKeyboard.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Dictionary.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputField.h">

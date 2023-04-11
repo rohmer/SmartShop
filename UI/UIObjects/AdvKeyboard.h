@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cctype>
 #include <cstdlib>
 #include <filesystem>
@@ -86,6 +87,8 @@ class AdvKeyboard
 	bool charIsTerminator(char c);
 	std::vector<char> terminators;
 
+	std::vector<std::string> wordSplit(std::string input);
+	
 	struct sSugButtonData
 	{
 	  public:
