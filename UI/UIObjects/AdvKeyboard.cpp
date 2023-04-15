@@ -250,16 +250,17 @@ AdvKeyboard::~AdvKeyboard()
 		lv_obj_del_async(keyboard);
 	if (suggestionBar != NULL)
 		lv_obj_del_async(suggestionBar);
-	if (trie != NULL)
-		delete (trie);
 }
 
 bool AdvKeyboard::LoadDictionary(std::string dictionary)
 {
 	if (std::filesystem::exists(dictionary))
 	{
-		trie = new marisa::Trie();
-		trie->mmap(dictionary.c_str());
+		trie = Dictionary::GetInstance(dictionary)->GetTrie();
+		terminators.push_back('.');
+		terminators.push_back('?');
+		terminators.push_back('!');
+		terminators.push_back(';');
 		if(trie!=NULL)
 			return true;
 	}
@@ -282,7 +283,8 @@ void AdvKeyboard::keyboard_event_cb(lv_event_t *e)
 std::string AdvKeyboard::reverseString(std::string s)
 {
 	int n = s.length();
-
+	if (n == 0)
+		return s;
 	// Swap character starting from two
 	// corners
 	for (int i = 0; i < n / 2; i++)
@@ -310,6 +312,103 @@ void AdvKeyboard::ime()
 	}
 }
 
+bool AdvKeyboard::charIsTerminator(char c)
+{
+	for (int i = 0; i < terminators.size(); i++)
+		if (c == terminators[i])
+			return true;
+	return false;
+}
+
+std::vector<std::string> AdvKeyboard::GetNGrams(std::string text)
+{
+	int rightPointer = text.length() - 1;
+
+	std::vector<std::string> grams = {"", "", ""};
+
+	if (isspace(text[rightPointer]))
+	{
+		grams.erase(grams.begin());
+		while (isspace(text[rightPointer]) && rightPointer >= 0)
+			rightPointer--;
+	}
+	int leftPointer = rightPointer - 1;
+
+	int wordPtr = grams.size() - 1;
+	while (true)
+	{
+		if (leftPointer < 0)
+		{
+			grams[wordPtr] = text.substr(0, rightPointer+1);
+			break;
+		}
+		if (charIsTerminator(text[leftPointer]))
+		{
+			std::string tmp = text.substr(leftPointer + 1, rightPointer - leftPointer);
+			bool notSpace = true;
+			for (int i = 0; i < tmp.length(); i++)
+				if (isspace(tmp[i]))
+					notSpace = false;
+			if (notSpace)
+				grams[wordPtr] = tmp;
+			break;
+		}
+		if (isspace(text[leftPointer]))
+		{
+			grams[wordPtr] = text.substr(leftPointer + 1, rightPointer - leftPointer);
+			wordPtr--;
+			leftPointer--;
+
+			if (wordPtr < 0)
+				break;
+			while (leftPointer >= 0 && isspace(text[leftPointer]))
+			{
+				leftPointer--;
+				if (leftPointer < 0)
+					break;
+			}
+			rightPointer = leftPointer;
+		}
+		else
+		{
+			leftPointer--;
+		}
+	}
+
+	if (grams[1].length() == 0)
+	{
+		grams[0] = grams[2];
+		grams[1] = "";
+		grams[2] = "";
+	}
+	else if (grams[0].length() == 0)
+	{
+		grams[0] = grams[1];
+		grams[1] = grams[2];
+		grams[2] = "";
+	}
+
+
+	return grams;
+}
+
+std::vector<std::string> AdvKeyboard::wordSplit(std::string input)
+{
+	std::string delimiter = " ";
+
+	size_t pos = 0;
+	std::string token;
+	std::vector<std::string> ret;
+	while ((pos = input.find(delimiter)) != std::string::npos)
+	{
+		token = input.substr(0, pos);
+		ret.push_back(token);
+		input.erase(0, pos + delimiter.length());
+	}
+	ret.push_back(input);
+	return ret;
+}
+
 std::multimap<float, std::string, std::greater<float>>
 AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 {
@@ -320,73 +419,59 @@ AdvKeyboard::GetSuggestions(std::string text, uint cursorPos)
 	if (trie == NULL)
 		return results;
 	
-	int pos = cursorPos;
-	// Get the string up to where the cursor is
-	text = text.substr(0, pos);
-
-	if (text.length() == 0)
+	// For now we are going to not deal with suggestions if the cursor is in
+	// the middle of a line of text
+	if (cursorPos < text.length())
+	{
+		for (int i = cursorPos; i < text.length(); i++)
+			if (isspace(static_cast<unsigned char>(text[i])))
+				return results;
+	}
+	std::vector<std::string> grams = GetNGrams(text.substr(0, cursorPos));
+	if (grams.size() == 0)
 		return results;
-
-	// Now we have what we are going to predict against, the next step
-	// is to split into words
-	// Note, for the time being this is puncuation naieve
-	int wordCtr = 2;
-	std::string words[3] = {"", "", ""};
-	bool nextWordPrediction = text[pos] == ' ';
-	while (pos >= 0 && !isalnum(text[pos]))
+	agent.clear();
+	keySet.reset();
+	std::stringstream query;
+	for (int i = 0; i < grams.size(); i++)
 	{
-		pos--;
+		if (i > 0)
+			query << " ";
+		query << grams[i];
 	}
-
-	while (pos >= 0 && wordCtr >= 0)
+	std::string qstr = query.str();
+	agent.set_query(query.str());
+	bool nextWordPred = false;
+	if (cursorPos > 0)
+		if (isspace(text[cursorPos - 1]))
+			nextWordPred = true;
+	std::vector<std::string> sugs;
+	while (trie->predictive_search(agent) && results.size() <=5)
 	{
-		std::stringstream word;
-		while (pos >= 0 && isalnum(text[pos]))
+		marisa::Key key = agent.key();
+		float weight = key.weight();
+		std::string suggestion = key.ptr();
+		std::vector<std::string> sGrams = wordSplit(suggestion);
+		if (nextWordPred)
 		{
-			word << text[pos];
-			pos--;
+			if (grams.size() < 3 && sGrams.size() > grams.size() + 1)
+			{
+				std::string ssug = sGrams[grams.size()];
+				if (std::find(sugs.begin(), sugs.end(), ssug)==sugs.end())
+					results.emplace(key.weight(), ssug);
+			
+			}
 		}
-
-		words[wordCtr] = reverseString(word.str());
-		wordCtr--;
-		word.str("");
-	}
-
-	wordCtr = 2;
-	marisa::Agent agent;
-	marisa::Keyset keyset;
-	agent.set_query(words[2].c_str(), words[2].length());
-	
-	if (trie->lookup(agent))
-	{
-		results.emplace(std::pair<float, std::string>(0, words[2]));
-	}
-	while (words[wordCtr].length() > 0 && wordCtr>=0)
-	{
-		std::stringstream wstream;
-		for (int i = wordCtr; i <= 2; i++)
+		else
 		{
-			wstream << words[i];
-			if (i != 2)
-				wstream << " ";
+			if (grams.size() <= sGrams.size())
+			{
+				std::string ssug = sGrams[grams.size() - 1];
+				if (std::find(sugs.begin(), sugs.end(), ssug)==sugs.end())
+					results.emplace(key.weight(), ssug);
+			}
 		}
-		std::string word = wstream.str();
-		agent.set_query(word.c_str(), word.length());
-		int resultCt = 0;
-		while (trie->predictive_search(agent) && resultCt < 10)
-		{
-			keyset.push_back(agent.key());
-			resultCt++;
-		}		
-		wordCtr--;
 	}
-	const std::size_t end = std::min((size_t)5, keyset.size());
-	for (std::size_t i = 0; i < end; ++i)
-	{
-		float weight = keyset[i].weight();
-		std::string gram = keyset[i].ptr();
-		results.emplace(keyset[i].weight(), gram.substr(0,keyset[i].length()));
-	}	
 	return results;
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cctype>
 #include <cstdlib>
 #include <filesystem>
@@ -12,6 +13,7 @@
 
 #include <marisa.h>
 
+#include "Dictionary.h"
 class AdvKeyboard
 {
   public:
@@ -57,7 +59,8 @@ class AdvKeyboard
 
 	bool HasIME() { return imeThread != NULL; }
 	void IMEEvent() { imeEvent = true; }
-
+	std::vector<std::string> GetNGrams(std::string text);
+	
 	std::multimap<float, std::string, std::greater<float>> GetSuggestions(std::string text, uint cursorPos);
 
   private:
@@ -74,11 +77,18 @@ class AdvKeyboard
 	bool imeEvent = false;
 	bool suggestionsEnabled = false;
 	marisa::Trie *trie=NULL;
-
+	marisa::Agent agent;
+	marisa::Keyset keySet;
+	
 	static void keyboard_event_cb(lv_event_t *e);
 	static void suggestion_event_cb(lv_event_t *e);
 	static std::string reverseString(std::string s);
 
+	bool charIsTerminator(char c);
+	std::vector<char> terminators;
+
+	std::vector<std::string> wordSplit(std::string input);
+	
 	struct sSugButtonData
 	{
 	  public:

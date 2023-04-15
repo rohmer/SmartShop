@@ -45,9 +45,9 @@
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>cJSON;sqlite3;oatpp;pigpio;pthread;dl;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -58,8 +58,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\cJSON-master\cJSON\cJSON.vcxproj">
-      <Project>{b43c6936-5d16-4821-8fab-8b3101bb12e2}</Project>
+    <ProjectReference Include="..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
+      <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
@@ -72,6 +72,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
       <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventEndpoint\EndpointClient\EndpointClient.vcxproj">
+      <Project>{aa54ab8f-c3ac-46d2-81e7-7f9dd1edc668}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>

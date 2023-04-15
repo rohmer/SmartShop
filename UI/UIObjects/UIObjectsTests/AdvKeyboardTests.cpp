@@ -10,6 +10,10 @@ TEST_GROUP(AdvKeyboard)
 {	
 }
 ;
+TEST_GROUP(NGramSplit)
+{
+}
+;
 
 void setupDisplay()
 {
@@ -51,15 +55,121 @@ void tickThread1()
 	}
 }
 
-TEST(AdvKeyboard, TextPrediction1)
+TEST(AdvKeyboard, TextPredictionBigram)
 {
 	AdvKeyboard advKeyboard(false);
 	CHECK(advKeyboard.LoadDictionary("dict.trie")==true);
-	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("dog", 3);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("the do", 5);
 	CHECK(results.size() > 0);
 	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
 		std::cout << it->second << "\t" << it->first << "\n";
 }
+
+TEST(AdvKeyboard, TextPredictionTrigram)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::multimap<float, std::string, std::greater<float>> results = advKeyboard.GetSuggestions("I see t", 11);
+	CHECK(results.size() > 0);
+	for (std::multimap<float, std::string, std::greater<float>>::iterator it = results.begin(); it != results.end(); ++it)
+		std::cout << it->second << "\t" << it->first << "\n";
+}
+
+TEST(NGramSplit, GetNGramsUnigramSimple)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("Cali");
+	CHECK_EQUAL(strcmp(grams[0].c_str(), "Cali"),0);
+	CHECK_EQUAL(grams[1].length(), 0);
+	CHECK_EQUAL(grams[2].length(), 0);
+}
+
+TEST(NGramSplit, GetNGramsUnigramWithTerminator)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("This is a test. Cali");
+	CHECK_EQUAL(strcmp(grams[0].c_str(), "Cali"), 0);
+	CHECK_EQUAL(grams[1].length(), 0);
+	CHECK_EQUAL(grams[2].length(), 0);
+}
+
+TEST(NGramSplit, GetNGramsUnigramWithTrailingSpace)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("This is a test. Cali ");
+	CHECK_EQUAL(strcmp(grams[0].c_str(), "Cali"), 0);
+	CHECK_EQUAL(grams[1].length(), 0);
+	CHECK_EQUAL(grams.size(), 2);;
+}
+
+TEST(NGramSplit, CheckBigramSimple)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("Great Cali");
+	if (strcmp(grams[1].c_str(), "Cali") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[1]=='Cali', received: '" << grams[1]<<"'";
+		FAIL(ss.str().c_str());
+	}
+	if (strcmp(grams[0].c_str(), "Great") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[0]=='Great', received: '" << grams[0]<<"'";
+		FAIL(ss.str().c_str());
+	}
+	CHECK_EQUAL(grams[2].length(), 0);
+}
+
+TEST(NGramSplit, CheckBigramSimpleWithSpace)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("Great Cali" );
+	CHECK_EQUAL(strcmp(grams[1].c_str(), "Cali"), 0);
+	CHECK_EQUAL(strcmp(grams[0].c_str(), "Great"), 0);
+}
+
+TEST(NGramSplit, CheckBigramSpaceAndSeperator)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("It was.  Great Cali ");
+	CHECK_EQUAL(strcmp(grams[1].c_str(), "Cali"), 0);
+	CHECK_EQUAL(strcmp(grams[0].c_str(), "Great"), 0);
+	CHECK_EQUAL(grams.size(), 2);
+}
+
+
+TEST(NGramSplit, TrigramSimple)
+{
+	AdvKeyboard advKeyboard(false);
+	CHECK(advKeyboard.LoadDictionary("dict.trie") == true);
+	std::vector<std::string> grams = advKeyboard.GetNGrams("Now is the time for all grea");
+	if (strcmp(grams[2].c_str(), "grea") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[1]=='grea', received: '" << grams[2] << "'";
+		FAIL(ss.str().c_str());
+	}
+	if (strcmp(grams[1].c_str(), "all") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[1]=='all', received: '" << grams[1] << "'";
+		FAIL(ss.str().c_str());
+	}
+	if (strcmp(grams[0].c_str(), "for") != 0)
+	{
+		std::stringstream ss;
+		ss << "Expected grams[0]=='for', received: '" << grams[0] << "'";
+		FAIL(ss.str().c_str());
+	}
+}
+
 TEST(AdvKeyboard, CreateKeyboardWithDict)
 {
 	return;

@@ -31,22 +31,23 @@ void WindowManager::Init()
 	pluginManager->LoadPlugins();
 	
 	lv_init();
-	
-	lv_disp_draw_buf_init(&disp_buf, &buf, NULL, DISP_BUF_SIZE);
-	lv_disp_drv_init(&disp_drv);
+	void * buf1 = lv_mem_alloc(SDL_HOR_RES * SDL_VER_RES * sizeof(lv_color_t));
+	lv_disp_draw_buf_init(&disp_buf, buf1, NULL, SDL_HOR_RES * SDL_VER_RES);
+	sdl_init();
+	sdl_disp_drv_init(&disp_drv, SDL_HOR_RES, SDL_VER_RES);;
 	disp_drv.draw_buf   = &disp_buf;
 	disp_drv.flush_cb   = sdl_display_flush;
-	disp_drv.hor_res    = WIDTH;
-	disp_drv.ver_res    = HEIGHT;
-	sdl_init();
-	sdl_disp_drv_init(&disp_drv, WIDTH, HEIGHT);
+	disp_drv.hor_res    = SDL_HOR_RES;
+	disp_drv.ver_res    = SDL_VER_RES;
+	lv_disp_t *disp=lv_disp_drv_register(&disp_drv);
+	
 	lv_disp_drv_register(&disp_drv);
 	evdev_init();
 	lv_indev_drv_init(&indev_drv);
 	indev_drv.type = LV_INDEV_TYPE_POINTER;
 
 	/*This function will be called periodically (by the library) to get the mouse position and state*/
-	indev_drv.read_cb = evdev_read;
+	indev_drv.read_cb = sdl_mouse_read;;
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread([this]{tickThread(); });

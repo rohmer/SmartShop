@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvKeyboard.h" />
+    <ClInclude Include="Dictionary.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="DropListBox.h" />
     <ClInclude Include="NumericSlider.h" />
@@ -70,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdvKeyboard.cpp" />
+    <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="DropListBox.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="NumericSlider.cpp" />

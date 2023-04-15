@@ -58,6 +58,9 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
+      <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\UIObjects.vcxproj">
       <Project>{89d59f12-892b-407a-90b2-92df952c0668}</Project>
     </ProjectReference>
