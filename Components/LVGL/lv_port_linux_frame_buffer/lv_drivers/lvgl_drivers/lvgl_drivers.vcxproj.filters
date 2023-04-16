@@ -13,6 +13,9 @@
       <UniqueIdentifier>{6ed43bea-397d-4505-a5e5-311e8a791688}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="CMake files">
+      <UniqueIdentifier>{5b8a1eff-28da-4c0a-b0fe-45bc4deeeec0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\display\drm.c">
@@ -168,10 +171,16 @@
   <ItemGroup>
     <None Include="lvgl_drivers-Debug.vgdbsettings" />
     <None Include="lvgl_drivers-Release.vgdbsettings" />
+    <None Include="toolchain-Debug.cmake">
+      <Filter>CMake files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt" />
     <Text Include="..\wayland\CMakeLists.txt" />
     <Text Include=".visualgdb\CodeDB\lvgl_drivers-Debug-VisualGDB\PreambleTimestamp.txt" />
+    <Text Include="CMakeLists.txt">
+      <Filter>Source files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

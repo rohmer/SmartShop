@@ -40,6 +40,7 @@
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
     <GNUTargetType>DynamicLibrary</GNUTargetType>
+    <ConfigurationType>Makefile</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
@@ -97,11 +98,13 @@
   <ItemGroup>
     <None Include="lvgl_drivers-Debug.vgdbsettings" />
     <None Include="lvgl_drivers-Release.vgdbsettings" />
+    <None Include="toolchain-Debug.cmake" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt" />
     <Text Include="..\wayland\CMakeLists.txt" />
     <Text Include=".visualgdb\CodeDB\lvgl_drivers-Debug-VisualGDB\PreambleTimestamp.txt" />
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\display\drm.c" />
