@@ -94,5 +94,6 @@ class AdvKeyboard
 	  public:
 		uint cursorPos;
 		std::string suggestion;
+		lv_obj_t *textBox;
 	};
 };

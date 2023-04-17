@@ -33,6 +33,9 @@
     <ClCompile Include="Dictionary.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="SpinBox.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputField.h">
@@ -51,6 +54,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Dictionary.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinBox.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

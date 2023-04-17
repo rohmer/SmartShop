@@ -67,6 +67,7 @@
     <ClInclude Include="InputField.h" />
     <ClInclude Include="DropListBox.h" />
     <ClInclude Include="NumericSlider.h" />
+    <ClInclude Include="SpinBox.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +76,7 @@
     <ClCompile Include="DropListBox.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="NumericSlider.cpp" />
+    <ClCompile Include="SpinBox.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>

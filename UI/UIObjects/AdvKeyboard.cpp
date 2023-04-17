@@ -293,8 +293,14 @@ std::string AdvKeyboard::reverseString(std::string s)
 	return s;
 }
 
-void AdvKeyboard::suggestion_event_cb(lv_event_t *)
+void AdvKeyboard::suggestion_event_cb(lv_event_t *e)
 {
+	sSugButtonData* sugData = (sSugButtonData*)lv_event_get_user_data(e);
+	std::stringstream ss;
+	ss << lv_textarea_get_text(sugData->textBox);
+	ss << sugData->suggestion;
+
+	lv_textarea_set_text(sugData->textBox, ss.str().c_str());
 }
 
 void AdvKeyboard::ime()
@@ -513,7 +519,15 @@ void AdvKeyboard::processSuggestions(std::string text, uint cursorPos)
 		}
 		lv_label_set_text(label, it->second.c_str());
 		sSugButtonData data;
+		data.textBox = textArea;
 		data.suggestion = it->second;
+		if (text[text.length()] == ' ')
+			cursorPos = text.length() + 1;
+		else
+		{
+			while (cursorPos > 0 && !isspace(text[cursorPos]))
+				cursorPos--;
+		}
 		data.cursorPos = cursorPos;
 		lv_obj_add_event_cb(suggestions[i], suggestion_event_cb, LV_EVENT_CLICKED, &data);
 		i++;

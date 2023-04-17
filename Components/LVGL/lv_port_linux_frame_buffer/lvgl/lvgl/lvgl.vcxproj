@@ -40,6 +40,7 @@
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
     <GNUTargetType>DynamicLibrary</GNUTargetType>
+    <ConfigurationType>Makefile</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
@@ -97,6 +98,7 @@
   <ItemGroup>
     <None Include="lvgl-Debug.vgdbsettings" />
     <None Include="lvgl-Release.vgdbsettings" />
+    <None Include="toolchain-Debug.cmake" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -450,5 +452,8 @@
     <ClInclude Include="..\src\widgets\lv_switch.h" />
     <ClInclude Include="..\src\widgets\lv_table.h" />
     <ClInclude Include="..\src\widgets\lv_textarea.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>
