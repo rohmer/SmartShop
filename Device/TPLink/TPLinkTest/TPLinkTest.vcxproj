@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{8206F7BD-4F00-4EFB-B689-F74930C4CF7D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <TestFrameworkPropertyListFile>$(ProjectDir)TestFramework.props</TestFrameworkPropertyListFile>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <TestFrameworkPropertyListFile>$(ProjectDir)TestFramework.props</TestFrameworkPropertyListFile>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>=/usr/include/cjson;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>cjson;sqlite3;dl;atomic;pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\EventEndpoint\EndpointClient\EndpointClient.vcxproj">
+      <Project>{aa54ab8f-c3ac-46d2-81e7-7f9dd1edc668}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HashLib\HashLib.vcxproj">
+      <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SensorEvent\SensorEvent.vcxproj">
+      <Project>{f53cf66a-b8c2-49ea-b3b2-a702e4a11384}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Device.vcxproj">
+      <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TPLink.vcxproj">
+      <Project>{7e15e7d4-9b65-4269-a2f1-9c9194db312e}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="TPLinkTest.cpp" />
+    <ClCompile Include="TPLinkTestTests.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineArguments.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineTestRunner.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\JUnitTestOutput.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\MemoryLeakDetector.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\MemoryLeakWarningPlugin.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\SimpleMutex.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\SimpleString.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TeamCityTestOutput.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestFailure.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestFilter.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestHarness_c.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestMemoryAllocator.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestOutput.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestPlugin.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestRegistry.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestResult.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\TestTestingFixture.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\Utest.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\SysprogsTestHooks.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\CodeMemoryReportFormatter.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\IEEE754ExceptionsPlugin.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MemoryReportAllocator.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MemoryReporterPlugin.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MemoryReportFormatter.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockActualCall.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockExpectedCall.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockExpectedCallsList.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockFailure.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockNamedValue.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupport.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupportPlugin.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupport_c.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\OrderedTest.cpp" />
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\Linux\UtestPlatform.cpp" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineArguments.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineTestRunner.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CppUTestConfig.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CppUTestGeneratedConfig.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\JUnitTestOutput.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\MemoryLeakDetector.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\MemoryLeakDetectorMallocMacros.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\MemoryLeakDetectorNewMacros.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\MemoryLeakWarningPlugin.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\PlatformSpecificFunctions.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\PlatformSpecificFunctions_c.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\SimpleMutex.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\SimpleString.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\StandardCLibrary.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TeamCityTestOutput.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestFailure.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestFilter.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestHarness.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestHarness_c.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestMemoryAllocator.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestOutput.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestPlugin.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestRegistry.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestResult.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\TestTestingFixture.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\Utest.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\UtestMacros.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\SysprogsTestHooks.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\CodeMemoryReportFormatter.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\GMock.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\GTest.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\GTestConvertor.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\IEEE754ExceptionsPlugin.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MemoryReportAllocator.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MemoryReporterPlugin.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MemoryReportFormatter.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockActualCall.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockCheckedActualCall.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockCheckedExpectedCall.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockExpectedCall.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockExpectedCallsList.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockFailure.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockNamedValue.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupport.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupportPlugin.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupport_c.h" />
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\OrderedTest.h" />
+    <None Include="TPLinkTest-Debug.vgdbsettings" />
+    <None Include="TPLinkTest-Release.vgdbsettings" />
+  </ItemGroup>
+</Project>

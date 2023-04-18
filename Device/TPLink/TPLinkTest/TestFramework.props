@@ -1,0 +1,15 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<TestFrameworkPath Condition="'$(TestFrameworkPath)' == ''">$(TESTFW_BASE)/com.sysprogs.unittest.CppUTest</TestFrameworkPath>
+		<TestFrameworkSubdirectory Condition="'$(TestFrameworkSubdirectory)' == ''">TestFramework</TestFrameworkSubdirectory>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(TESTFW_BASE)/com.sysprogs.unittest.CppUTest/include;$(TESTFW_BASE)/com.sysprogs.unittest.CppUTest/Platforms</AdditionalIncludeDirectories>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup>
+		<Link>
+		</Link>
+	</ItemDefinitionGroup>
+</Project>

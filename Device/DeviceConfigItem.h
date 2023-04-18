@@ -6,10 +6,11 @@
 
 enum eConfigDataType
 {
-	C_BOOL=0,
-	C_LONG=1,
-	C_STR=3,
-	C_FLOAT=4
+	C_BOOL = 0,
+	C_LONG = 1,
+	C_STR = 3,
+	C_FLOAT = 4,
+	C_ARRAY = 5
 };
 
 class DeviceConfigItem
@@ -63,6 +64,12 @@ public:
 		SetValue(value);
 	}
 
+	DeviceConfigItem(std::string name, std::vector<DeviceConfigItem> value, bool readOnly = false)
+	{
+		for (int i = 0; i < value.size(); i++)
+			arrayValues.push_back(value[i]);
+	}
+	
 	eConfigDataType GetDataType()
 	{
 		return dataType;
@@ -108,6 +115,23 @@ public:
 		dataType = eConfigDataType::C_BOOL;
 	}
 	
+	void AddArrayItem(DeviceConfigItem dci)
+	{
+		if (dataType == eConfigDataType::C_ARRAY)
+			arrayValues.push_back(dci);
+	}
+	
+	void ClearArrayItems()
+	{
+		if (dataType == eConfigDataType::C_ARRAY)
+			arrayValues.clear();
+	}
+	
+	std::vector<DeviceConfigItem> GetArrayValues()
+	{
+		return arrayValues;
+	}
+	
 	std::string GetStringVal()
 	{
 		return value;	
@@ -144,9 +168,18 @@ public:
 	{
 		cJSON *obj = cJSON_CreateObject();
 		cJSON_AddItemToObject(obj, "name", cJSON_CreateString(name.c_str()));
-		cJSON_AddItemToObject(obj, "value", cJSON_CreateString(value.c_str()));
+		if(dataType!=eConfigDataType::C_ARRAY)
+			cJSON_AddItemToObject(obj, "value", cJSON_CreateString(value.c_str()));
 		cJSON_AddItemToObject(obj, "ro", cJSON_CreateBool(readOnly));
 		cJSON_AddItemToObject(obj, "dataType", cJSON_CreateNumber(dataType));
+		if (dataType == eConfigDataType::C_ARRAY)
+		{
+			cJSON *arr = cJSON_CreateArray();
+			for (int i = 0; i < arrayValues.size(); i++)
+				cJSON_AddItemToArray(arr, arrayValues[i].ToJSON());
+			cJSON_AddItemToObject(obj, "value", arr);
+		}
+		
 		return obj;		
 	}
 	
@@ -160,7 +193,11 @@ public:
 		{
 			name = cJSON_GetObjectItem(obj, "name")->valuestring;			
 		}
-		if (cJSON_HasObjectItem(obj, "value"))
+		if (cJSON_HasObjectItem(obj, "dataType"))
+		{
+			dataType = (eConfigDataType)cJSON_GetObjectItem(obj, "dataType")->valueint;
+		}
+		if (cJSON_HasObjectItem(obj, "value") && dataType!=eConfigDataType::C_ARRAY)
 		{
 			value = cJSON_GetObjectItem(obj, "value")->valuestring;			
 		}
@@ -172,10 +209,7 @@ public:
 		{
 			value = cJSON_GetObjectItem(obj, "value")->valuestring;			
 		}
-		if (cJSON_HasObjectItem(obj, "dataType"))
-		{
-			dataType = (eConfigDataType)cJSON_GetObjectItem(obj, "dataType")->valueint;
-		}
+		
 		switch (dataType)
 		{
 		case C_LONG:
@@ -195,6 +229,23 @@ public:
 				float v = std::atof(value.c_str());
 				return DeviceConfigItem(name, v, ro);
 			}
+		case C_ARRAY:
+			{
+				if (cJSON_HasObjectItem(obj, "value"))
+				{
+					cJSON *arr = cJSON_GetObjectItem(obj, "value");
+					if (cJSON_IsArray(arr))
+					{
+						std::vector<DeviceConfigItem> dcis;
+						cJSON *itr = cJSON_CreateObject();
+						cJSON_ArrayForEach(itr, arr)
+						{
+							dcis.push_back(DeviceConfigItem::FromJSON(itr));
+						}
+						return DeviceConfigItem(name, dcis, ro);
+					}
+				}
+			}
 		default:
 			return DeviceConfigItem(name, value, ro);
 		}
@@ -205,6 +256,7 @@ private:
 	bool readOnly;
 	std::string value;
 	eConfigDataType dataType;	
+	std::vector<DeviceConfigItem> arrayValues;
 };
 
 
