@@ -1,53 +1,97 @@
 #include "TPLinkAPI.h"
 
 
-uint8_t *TPLinkAPI::encrypt(std::string input)
+uint8_t *TPLinkAPI::encode(size_t *outputLength, const char *message)
 {
-	uint8_t key = 0xab;
-	uint8_t *buffer = new uint8_t[input.length()];
-	for (int i = 0; i < input.length(); i++)
-	{
-		buffer[i] ^= key;
-		key = buffer[i];
+	size_t srcmsg_len;
+	uint8_t *d;
+	uint32_t temp;
+
+	if (message == NULL)
+		return NULL;
+
+	srcmsg_len = strlen(message);
+	*outputLength = srcmsg_len + 4;
+	d = (uint8_t *)calloc(1, *outputLength);
+	if (d == NULL)
+		return NULL;
+	if (!encrypt(d + 4, (uint8_t *) message, srcmsg_len)) {
+		free(d);
+		return NULL;
 	}
-	
-	return buffer;
+	temp = htonl(srcmsg_len);
+	memcpy(d, &temp, 4);
+
+	return d;
 }
 
-uint8_t *TPLinkAPI::encryptWithHeader(std::string input)
+bool TPLinkAPI::encrypt(uint8_t *d, const uint8_t *s, size_t len)
 {
-	uint8_t key = 0xab;
-	uint8_t *buffer = new uint8_t[input.length() + 4];
-	union u_int32
-	{
-		std::uint32_t inputVal;
-		std::uint8_t outputBytes[4];
-	};
-	u_int32 header;
-	header.inputVal = input.length();
-	for (int i = 0; i < 3; i++)
-	{
-		buffer[i] = header.outputBytes[i];
+	uint8_t key, temp;
+	size_t i;
+
+	if (d == NULL)
+		return false;
+	if (s == NULL)
+		return false;
+	if (len == 0)
+		return false;
+
+	key = 0xab;
+	for (i = 0; i < len; i++) {
+		temp = key ^ s[i];
+		key = temp;
+		d[i] = temp;
 	}
-	uint8_t *enc = encrypt(input);
-	for (int i = 0; i < input.length(); i++)
-	{
-		buffer[i + 4] = enc[i];
-	}
-	return buffer;
+	return true;
 }
 
-std::string TPLinkAPI::decrypt(std::string input)
+bool TPLinkAPI::decrypt(uint8_t *d, const uint8_t *s, size_t len)
 {
-	uint32_t sz = input.length();
-	std::stringstream ss;
-	uint8_t xorKey = 171;
-	for (int i = 0; i < sz; i++)
-	{
-		ss << (input[i] ^ xorKey);
-		xorKey = input[i];
+	uint8_t key, temp;
+	size_t i;
+
+	if (d == NULL)
+		return false;
+	if (s == NULL)
+		return false;
+	if (len == 0)
+		return false;
+
+	key = 0xab;
+	for (i = 0; i < len; i++) {
+		temp = key ^ s[i];
+		key = s[i];
+		d[i] = temp;
 	}
-	return ss.str();
+	return true;
+}
+
+uint8_t *TPLinkAPI::decode(const uint8_t *s, size_t s_len)
+{
+	uint32_t in_s_len;
+	uint8_t *outbuf;
+
+	if (s == NULL)
+		return NULL;
+	if (s_len <= 4)
+		return NULL;
+
+	memcpy(&in_s_len, s, 4);
+	in_s_len = ntohl(in_s_len);
+	if ((s_len - 4) < in_s_len) {
+		/* packet was cut short- adjust in_s_len */
+		in_s_len = s_len - 4;
+	}
+
+	outbuf = (uint8_t *)calloc(1, in_s_len + 1);
+
+	if (!decrypt((uint8_t *) outbuf, s + 4, in_s_len)) {
+		free(outbuf);
+		return NULL;
+	}
+
+	return outbuf;
 }
 
 std::vector<sTPLinkIOTDevice> TPLinkAPI::Discovery(uint timeout)
@@ -70,47 +114,28 @@ std::vector<sTPLinkIOTDevice> TPLinkAPI::Discovery(uint timeout)
 	{
 		Logger::GetInstance()->LogC("Set options");
 	}
-	if (setsockopt(sockFD,
-		SOL_SOCKET,
-		SO_REUSEADDR,
-		&trueflag,
-		sizeof trueflag) < 0)
-	{
-		Logger::GetInstance()->LogC("Set options");
-	}
 	
 		
 	memset(&s, '\0', sizeof(struct sockaddr_in));
 	s.sin_family = AF_INET;
 	s.sin_port = htons(BROADCAST_PORT);
 	s.sin_addr.s_addr = INADDR_BROADCAST; 
-
-	uint8_t *val=encryptWithHeader("get_sysinfo");
-	if (sendto(sockFD, val, sizeof(val), 15, (struct sockaddr *)&s, sizeof(struct sockaddr_in)) < 0)
+	size_t sz;
+		
+	if (sendto(sockFD, "", 0, sz, (struct sockaddr *)&s, sizeof(struct sockaddr_in)) < 0)
 		perror("sendto");
 	std::this_thread::sleep_for(std::chrono::seconds(1));
-	char buffer[1024];
-	struct sockaddr_in cliaddr;
-	socklen_t len = sizeof(cliaddr);
-	std::stringstream sstr;
-	while (true)
-	{				
-		bzero(buffer, sizeof(buffer));
-		int rval = recvfrom(sockFD,
-			(char *)buffer,
-			1024, 
-			MSG_DONTWAIT,
-			(struct sockaddr *) &cliaddr,
-			&len);
-		if (rval < 0)
-		{
-			break;
-		}
-		if (rval == 0)
-		{
-			break;
-		}
-		sstr << std::string( reinterpret_cast<char const*>(buffer), rval );
+	size_t msglen;
+	size_t recvsize = recv(sockFD, &msglen, sizeof(msglen), MSG_PEEK);
+	if (recvsize != sizeof(msglen)) {
+		return devices;
 	}
-	std::string decrypted = decrypt(sstr.str());
+	msglen = ntohl(msglen) + 4;
+	uint8_t *recvbuf;
+	recvbuf = (uint8_t *)calloc(1, (size_t) msglen);
+	recvsize = recv(sockFD, recvbuf, msglen, MSG_WAITALL);
+	close(sockFD);
+	uint8_t *msg = decode(recvbuf, msglen);
+	free(recvbuf);
+	
 }

@@ -50,10 +50,11 @@ private:
         uint8_t byte[4];
     } int32bit;
 
-	uint8_t *encrypt(std::string input);
-	uint8_t *encryptWithHeader(std::string input);
+	uint8_t *encode(size_t *outputLength, const char *message);
+	bool encrypt(uint8_t *d, const uint8_t *s, size_t len);
+	bool decrypt(uint8_t *d, const uint8_t *s, size_t len);
+	uint8_t *decode(const uint8_t *s, size_t len);
 	
 	int send(int socketFD, std::string msg, const struct sockaddr *s);
-	
-    std::string decrypt(std::string input);
+		
 };

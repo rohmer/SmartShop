@@ -154,7 +154,7 @@ char *hs100_send(const char *servaddr, const char *msg)
 		return NULL;
 	}
 	msglen = ntohl(msglen) + 4;
-	recvbuf = calloc(1, (size_t) msglen);
+	recvbuf = (uint8_t*)calloc(1, (size_t) msglen);
 	recvsize = recv(sock, recvbuf, msglen, MSG_WAITALL);
 	close(sock);
 	recvmsg = hs100_decode(recvbuf, msglen);
