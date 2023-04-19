@@ -58,11 +58,13 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="comm_socket.cpp" />
     <ClCompile Include="TPLink.cpp" />
     <ClCompile Include="TPLinkAPI.cpp" />
     <ClCompile Include="TPLinkDevice.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="comm_socket.h" />
     <ClInclude Include="TPLink.h" />
     <ClInclude Include="TPLinkAPI.h" />
     <ClInclude Include="TPLinkDevice.h" />

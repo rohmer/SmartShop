@@ -14,6 +14,8 @@
 
 #include <cJSON.h>
 #include "TPLinkDevice.h"
+#include "../../Logger/Logger.h"
+#include <thread>
 
 enum eTPLinkDeviceType
 {
@@ -48,6 +50,10 @@ private:
         uint8_t byte[4];
     } int32bit;
 
-    std::string encrypt(std::string input);
+	uint8_t *encrypt(std::string input);
+	uint8_t *encryptWithHeader(std::string input);
+	
+	int send(int socketFD, std::string msg, const struct sockaddr *s);
+	
     std::string decrypt(std::string input);
 };

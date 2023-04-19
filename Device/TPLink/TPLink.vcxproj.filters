@@ -14,4 +14,36 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TPLink.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLinkAPI.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLinkDevice.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="comm_socket.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TPLink.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLinkAPI.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLinkDevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="comm_socket.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TPLink-Debug.vgdbsettings" />
+    <None Include="TPLink-Release.vgdbsettings" />
+  </ItemGroup>
 </Project>

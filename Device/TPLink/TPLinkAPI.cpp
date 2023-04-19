@@ -1,26 +1,40 @@
 #include "TPLinkAPI.h"
 
 
-std::string TPLinkAPI::encrypt(std::string input)
+uint8_t *TPLinkAPI::encrypt(std::string input)
 {
-	uint8_t xorKey = 171;
-	uint32_t sz = input.length();
-	int32bit.integer = sz;
-	uint32_t outputLength = sz + sizeof(int32bit.integer);
-	uint8_t output[outputLength];
-	int headerSize = sizeof(int32bit.integer);
-	for (int i = 0; i < headerSize; i++) {
-		output[i] = int32bit.byte[headerSize - 1 - i];
-	}
-	for (int i = 0; i < sz; i++)
+	uint8_t key = 0xab;
+	uint8_t *buffer = new uint8_t[input.length()];
+	for (int i = 0; i < input.length(); i++)
 	{
-		output[i + headerSize] = input[i] ^ xorKey;
-		xorKey = output[i + headerSize];
+		buffer[i] ^= key;
+		key = buffer[i];
 	}
-	std::stringstream ss;
-	for (int i = 0; i < outputLength; i++)
-		ss << output[i];
-	return ss.str();
+	
+	return buffer;
+}
+
+uint8_t *TPLinkAPI::encryptWithHeader(std::string input)
+{
+	uint8_t key = 0xab;
+	uint8_t *buffer = new uint8_t[input.length() + 4];
+	union u_int32
+	{
+		std::uint32_t inputVal;
+		std::uint8_t outputBytes[4];
+	};
+	u_int32 header;
+	header.inputVal = input.length();
+	for (int i = 0; i < 3; i++)
+	{
+		buffer[i] = header.outputBytes[i];
+	}
+	uint8_t *enc = encrypt(input);
+	for (int i = 0; i < input.length(); i++)
+	{
+		buffer[i + 4] = enc[i];
+	}
+	return buffer;
 }
 
 std::string TPLinkAPI::decrypt(std::string input)
@@ -40,49 +54,63 @@ std::vector<sTPLinkIOTDevice> TPLinkAPI::Discovery(uint timeout)
 {
 	std::vector<sTPLinkIOTDevice> devices;
 	
-	struct sockaddr_in si_me, si_other;
+#define BROADCAST_PORT 9999u
+	struct sockaddr_in s;
 
-	int s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-
-	int broadcast = 1;
-	int reuse_port = 1;
-	int reuse_address = 1;
-
-	setsockopt(s, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof broadcast);
-	setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &reuse_address, sizeof(reuse_address));
-	memset(&si_me, 0, sizeof(si_me));
-
-	si_me.sin_family = AF_INET;
-	si_me.sin_port = htons(9999);
-	si_me.sin_addr.s_addr = INADDR_ANY;
-	::bind(s, (sockaddr *)&si_me, sizeof(sockaddr));
-	bool processing = true;
-
-	uint ctr = 0;
-	while (processing) {
-
-		char buf[1024];
-		unsigned slen = sizeof(sockaddr);
-
-		int n = recvfrom(s, buf, sizeof(buf) - 1, 0, (sockaddr *)&si_other, &slen);
-		
-		std::string response = decrypt(buf);
-		
-		try
-		{
-			cJSON *json = cJSON_Parse(response.c_str());
-			TPLinkDevice device = TPLinkDevice(json);
-			devices.push_back(sTPLinkIOTDevice(inet_ntoa((struct in_addr)si_other.sin_addr),eTPLinkDeviceType::SmartPlug));
-
-		}
-		catch (const std::exception&)
-		{
-			
-		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		ctr++;
-		if (ctr > timeout)
-			processing = false;
+	int sockFD = socket(AF_INET, SOCK_DGRAM, 0);
+    
+	if (sockFD < 0)
+		return devices;
+	int trueflag = 1;
+	if (setsockopt(sockFD,
+		SOL_SOCKET,
+		SO_BROADCAST,
+		&trueflag,
+		sizeof trueflag) < 0)
+	{
+		Logger::GetInstance()->LogC("Set options");
 	}
+	if (setsockopt(sockFD,
+		SOL_SOCKET,
+		SO_REUSEADDR,
+		&trueflag,
+		sizeof trueflag) < 0)
+	{
+		Logger::GetInstance()->LogC("Set options");
+	}
+	
+		
+	memset(&s, '\0', sizeof(struct sockaddr_in));
+	s.sin_family = AF_INET;
+	s.sin_port = htons(BROADCAST_PORT);
+	s.sin_addr.s_addr = INADDR_BROADCAST; 
 
+	uint8_t *val=encryptWithHeader("get_sysinfo");
+	if (sendto(sockFD, val, sizeof(val), 15, (struct sockaddr *)&s, sizeof(struct sockaddr_in)) < 0)
+		perror("sendto");
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	char buffer[1024];
+	struct sockaddr_in cliaddr;
+	socklen_t len = sizeof(cliaddr);
+	std::stringstream sstr;
+	while (true)
+	{				
+		bzero(buffer, sizeof(buffer));
+		int rval = recvfrom(sockFD,
+			(char *)buffer,
+			1024, 
+			MSG_DONTWAIT,
+			(struct sockaddr *) &cliaddr,
+			&len);
+		if (rval < 0)
+		{
+			break;
+		}
+		if (rval == 0)
+		{
+			break;
+		}
+		sstr << std::string( reinterpret_cast<char const*>(buffer), rval );
+	}
+	std::string decrypted = decrypt(sstr.str());
 }
