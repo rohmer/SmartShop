@@ -14,7 +14,8 @@ public:
 	TPLink(
 		std::string Name="TPLink Agent",
 		std::string Description="Agent to connect to TPLink Devices",
-		unsigned int PollingInterval=30);
+		int PolllingInterval=30);
+
 	
 	TPLink(DeviceConfig dc);
 	
@@ -22,5 +23,5 @@ public:
 	
 private:
 	Logger *log;
-	std::vector<sTPLinkIOTDevice> tpLinkDevices;
+	std::vector<std::shared_ptr<TPLink_Device>> tpLinkDevices;
 };

@@ -21,10 +21,28 @@
     <ClCompile Include="TPLinkAPI.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="TPLinkDevice.cpp">
+    <ClCompile Include="comm_socket.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="comm_socket.cpp">
+    <ClCompile Include="TPLink_Switch.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONTools.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLink_Device.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceFactory.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLink_DimmerSwitch.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLink_LightStrip.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TPLink_Bulb.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +53,28 @@
     <ClInclude Include="TPLinkAPI.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="TPLinkDevice.h">
+    <ClInclude Include="comm_socket.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="comm_socket.h">
+    <ClInclude Include="TPLink_Switch.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONTools.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLink_Device.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceFactory.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLink_DimmerSwitch.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLink_Bulb.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPLink_LightStrip.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,36 +13,21 @@
 #include <arpa/inet.h>
 
 #include <cJSON.h>
-#include "TPLinkDevice.h"
 #include "../../Logger/Logger.h"
 #include <thread>
-
-enum eTPLinkDeviceType
-{
-    SmartPlug = 0,
-    SmartSwitch = 1,
-    SmartBulb = 2,
-    SmartLightStrip = 3
-};
-
-struct sTPLinkIOTDevice
-{
-public:
-    sTPLinkIOTDevice(std::string IPAddress, eTPLinkDeviceType deviceType)
-        : IPAddress(IPAddress)
-        , DeviceType(deviceType)
-    {
-    }
-    std::string IPAddress;
-    eTPLinkDeviceType DeviceType;
-};
+#include "TPLink_Device.h"
+#include "DeviceFactory.h"
 
 class TPLinkAPI
 {
 public:
     TPLinkAPI() {};
-    std::vector<sTPLinkIOTDevice> Discovery(uint timeout = 30);
-
+    std::vector<std::shared_ptr<TPLink_Device>> Discovery(uint timeout = 30);
+	bool SetAlias(std::string host, std::string alias);
+	bool SetAlias(TPLink_Device host, std::string alias);
+	bool SetBrightness(std::string host, int brightness);
+	bool SetBrightness(TPLink_Device host, int brightness);
+	
 private:
      union
     {
@@ -50,11 +35,11 @@ private:
         uint8_t byte[4];
     } int32bit;
 
-	uint8_t *encode(size_t *outputLength, const char *message);
+	uint8_t *encode(size_t *outputLength, const char *message, bool addHeader=true);
 	bool encrypt(uint8_t *d, const uint8_t *s, size_t len);
 	bool decrypt(uint8_t *d, const uint8_t *s, size_t len);
 	uint8_t *decode(const uint8_t *s, size_t len);
 	
-	int send(int socketFD, std::string msg, const struct sockaddr *s);
-		
+	std::shared_ptr<TPLink_Device> parseResponse(std::string response, std::string ipAddr);
+	std::string sendCommand(uint8_t *cmd, size_t cmdLen, std::string host);
 };

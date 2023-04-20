@@ -59,15 +59,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="comm_socket.cpp" />
+    <ClCompile Include="DeviceFactory.cpp" />
+    <ClCompile Include="JSONTools.cpp" />
+    <ClCompile Include="TPLink_Bulb.cpp" />
+    <ClCompile Include="TPLink_Device.cpp" />
     <ClCompile Include="TPLink.cpp" />
     <ClCompile Include="TPLinkAPI.cpp" />
-    <ClCompile Include="TPLinkDevice.cpp" />
+    <ClCompile Include="TPLink_DimmerSwitch.cpp" />
+    <ClCompile Include="TPLink_LightStrip.cpp" />
+    <ClCompile Include="TPLink_Switch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="comm_socket.h" />
+    <ClInclude Include="DeviceFactory.h" />
+    <ClInclude Include="JSONTools.h" />
     <ClInclude Include="TPLink.h" />
     <ClInclude Include="TPLinkAPI.h" />
-    <ClInclude Include="TPLinkDevice.h" />
+    <ClInclude Include="TPLink_Bulb.h" />
+    <ClInclude Include="TPLink_Device.h" />
+    <ClInclude Include="TPLink_DimmerSwitch.h" />
+    <ClInclude Include="TPLink_LightStrip.h" />
+    <ClInclude Include="TPLink_Switch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TPLink-Debug.vgdbsettings" />
@@ -82,6 +94,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.vcxproj">
       <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Device.vcxproj">
       <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
