@@ -41,6 +41,13 @@ public:
 		int index, brightness;
 	};
 
+	bool IsDimmable() { return true; }
+	bool IsOn(uint switchNumber=0)
+	{
+		if (switchObjects.size() < switchNumber)
+			return switchObjects[switchNumber].state;
+		return false;
+	}
 private:
 	std::string feature, activeMode;
 	bool relayState, led_off;

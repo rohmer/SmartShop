@@ -47,6 +47,7 @@ public:
 	std::string GetIPAddress() { return ipAddr; }
 	eTPLinkDeviceType GetDeviceType() { return deviceType; }
 
+
 protected:
 	virtual bool parseJSON(cJSON* j);
 

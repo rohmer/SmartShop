@@ -32,4 +32,3 @@ bool TPLink_Device::parseJSON(cJSON *j)
 	if (tpType.length() > 0 && deviceID.length() > 0 && hwID.length() > 0 && oemID.length() > 0)
 		return true;
 }
-

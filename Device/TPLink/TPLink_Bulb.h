@@ -59,6 +59,15 @@ public:
 		int index, hue, saturation, color_temp, brightness;
 
 	};
+
+	bool IsDimmable() { return isDimmable; }
+	bool IsColor() { return isColor; }
+	bool IsVariableColorTemp() { return isVariableColorTemp; }
+	bool IsOn() { return lightState.isOn; }
+	int GetHue() { return hue; }
+	int GetSaturation() { return saturation; }
+	int GetBrightness() { return brightness; }
+	int GetColorTemp() { return color_temp; }
 private:
 	bool isDimmable, isColor, isVariableColorTemp, isFactory;
 	sLightState lightState;

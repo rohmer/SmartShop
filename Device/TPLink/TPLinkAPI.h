@@ -27,6 +27,20 @@ public:
 	bool SetAlias(TPLink_Device host, std::string alias);
 	bool SetBrightness(std::string host, int brightness);
 	bool SetBrightness(TPLink_Device host, int brightness);
+	bool RefreshItem(std::shared_ptr<TPLink_Device> &host);
+	bool TurnOn(std::shared_ptr<TPLink_Device> host);
+	bool TurnOn(std::string host);
+	bool TurnOff(std::shared_ptr<TPLink_Device> host);
+	bool TurnOff(std::string host);
+	bool SetHSV(std::string host, int hue, int saturation, int brightness);
+	bool SetHSV(std::shared_ptr<TPLink_Device> host, int hue, int saturation, int brightness);
+	
+	bool IsDimmable(std::shared_ptr<TPLink_Device> host);
+	bool IsColor(std::shared_ptr<TPLink_Device> host);
+	bool IsVariableColorTemp(std::shared_ptr<TPLink_Device> host);
+	bool IsOn(std::shared_ptr<TPLink_Device> host);
+	bool GetHSV(std::shared_ptr<TPLink_Device> host, int &h, int &s, int &v);
+	bool GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp);
 	
 private:
      union

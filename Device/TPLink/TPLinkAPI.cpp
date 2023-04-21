@@ -323,3 +323,248 @@ bool TPLinkAPI::SetBrightness(std::string host, int brightness)
 	}
 	return false;
 }
+
+bool TPLinkAPI::RefreshItem(std::shared_ptr<TPLink_Device> &device)
+{
+	std::stringstream cmd;
+	cmd << "{\"system\": {\"get_sysinfo\": null}}";
+	size_t length;
+	uint8_t *d;
+	d = encode(&length, cmd.str().c_str(), false);
+	std::string response = sendCommand(d, length, device->GetIPAddress());
+	cJSON *json = cJSON_Parse(response.c_str());
+	if (cJSON_HasObjectItem(json, "system"))
+	{
+		json = cJSON_GetObjectItem(json, "system");
+		if (cJSON_HasObjectItem(json, "get_sysinfo"))
+		{
+			json = cJSON_GetObjectItem(json, "get_sysinfo");
+			if (cJSON_HasObjectItem(json, "err_code"))
+			{
+				int errcode = cJSON_GetObjectItem(json, "err_code")->valueint;
+				if (errcode != 0)
+					return false;
+			}
+		}
+	}
+	device = parseResponse(response, device->GetIPAddress());
+	return true;
+}
+
+bool TPLinkAPI::TurnOn(std::shared_ptr<TPLink_Device> host)
+{
+	return TurnOn(host->GetIPAddress());
+}
+
+bool TPLinkAPI::TurnOn(std::string ipAddr)
+{
+	std::stringstream cmd;
+	cmd << "{\"system\":{\"set_relay_state\": {\"state\":1}}}";
+	size_t length;
+	uint8_t *d;
+	d = encode(&length, cmd.str().c_str(), false);
+	std::string response = sendCommand(d, length, ipAddr);
+	cJSON *json = cJSON_Parse(response.c_str());
+	if (cJSON_HasObjectItem(json, "system"))
+	{
+		json = cJSON_GetObjectItem(json, "system");
+		if (cJSON_HasObjectItem(json, "get_sysinfo"))
+		{
+			json = cJSON_GetObjectItem(json, "set_relay_state");
+			if (cJSON_HasObjectItem(json, "err_code"))
+			{
+				int errcode = cJSON_GetObjectItem(json, "err_code")->valueint;
+				if (errcode != 0)
+					return false;
+			}
+		}
+	}
+	return true;
+}
+	
+bool TPLinkAPI::TurnOff(std::shared_ptr<TPLink_Device> host)
+{
+	return TurnOff(host->GetIPAddress());
+}
+
+bool TPLinkAPI::TurnOff(std::string ipAddr)
+{
+	std::stringstream cmd;
+	cmd << "{\"system\":{\"set_relay_state\": {\"state\":0}}}";
+	size_t length;
+	uint8_t *d;
+	d = encode(&length, cmd.str().c_str(), false);
+	std::string response = sendCommand(d, length, ipAddr);
+	cJSON *json = cJSON_Parse(response.c_str());
+	if (cJSON_HasObjectItem(json, "system"))
+	{
+		json = cJSON_GetObjectItem(json, "system");
+		if (cJSON_HasObjectItem(json, "get_sysinfo"))
+		{
+			json = cJSON_GetObjectItem(json, "set_relay_state");
+			if (cJSON_HasObjectItem(json, "err_code"))
+			{
+				int errcode = cJSON_GetObjectItem(json, "err_code")->valueint;
+				if (errcode != 0)
+					return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool TPLinkAPI::IsColor(std::shared_ptr<TPLink_Device> host)
+{
+	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
+		return bulb->IsColor();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(host);
+		return bulb->IsColor();
+	}
+	return false;	
+}
+
+bool TPLinkAPI::IsDimmable(std::shared_ptr<TPLink_Device> host)
+{
+	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
+		return bulb->IsDimmable();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(host);
+		return bulb->IsDimmable();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartSwitchDimmer)
+	{
+		std::shared_ptr<TPLink_DimmerSwitch> bulb = std::static_pointer_cast<TPLink_DimmerSwitch>(host);
+		return bulb->IsDimmable();
+	}
+	return false;	
+}
+
+bool TPLinkAPI::IsVariableColorTemp(std::shared_ptr<TPLink_Device> dev)
+{
+	if (dev->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> device = std::static_pointer_cast<TPLink_Bulb>(dev);
+		return device->IsVariableColorTemp();
+	}
+	if (dev->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(dev);
+		return bulb->IsVariableColorTemp();
+	}
+	return false;
+}
+
+bool TPLinkAPI::IsOn(std::shared_ptr<TPLink_Device> host)
+{
+	RefreshItem(host);
+	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
+		return bulb->IsOn();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(host);
+		return bulb->IsOn();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartSwitch)
+	{
+		std::shared_ptr<TPLink_Switch> bulb = std::static_pointer_cast<TPLink_Switch>(host);
+		return bulb->IsOn();
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartSwitchDimmer)
+	{
+		std::shared_ptr<TPLink_DimmerSwitch> bulb = std::static_pointer_cast<TPLink_DimmerSwitch>(host);
+		return bulb->IsOn();
+	}
+}
+
+bool TPLinkAPI::GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp)
+{
+	if (IsVariableColorTemp(host))
+		return false;
+	if (!RefreshItem(host))
+		return false;
+	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
+		colorTemp = bulb->GetColorTemp();
+		return true;
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(host);
+		colorTemp = bulb->GetColorTemp();
+		return true;
+	}
+}
+bool TPLinkAPI::GetHSV(std::shared_ptr<TPLink_Device> host, int &h, int &s, int &v)
+{
+	if (!IsColor(host))
+		return false;
+	if (!RefreshItem(host))
+		return false;
+	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
+	{
+		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
+		h = bulb->GetHue();
+		s = bulb->GetSaturation();
+		v = bulb->GetBrightness();
+		return true;
+	}
+	if (host->GetDeviceType() == TPLink_Device::SmartLightStrip)
+	{
+		std::shared_ptr<TPLink_LightStrip> bulb = std::static_pointer_cast<TPLink_LightStrip>(host);
+		h = bulb->GetHue();
+		s = bulb->GetSaturation();
+		v = bulb->GetBrightness();
+		return true;
+	}
+	return false;
+}
+bool TPLinkAPI::SetHSV(std::shared_ptr<TPLink_Device> host,
+	int hue, 
+	int saturation, 
+	int brightness)
+{
+	if (!IsColor(host))
+		return false;
+	std::stringstream cmd;
+	int colorTemp;
+	GetColorTemp(host, colorTemp);
+	int of = 0;
+	if (IsOn(host))
+		of = 1;
+	cmd << "{\"smartlife.iot.smartbulb.lightingservice\": {\"transition_light_state\": {\"hue\": " << hue << ", \"saturation\": " << saturation << ", \"color_temp\": " << colorTemp << ", \"brightness\": " << brightness << ", ";
+	cmd << "\"on_off\": " << of << ", \"ignore_default\": 1}}}";
+
+	size_t length;
+	uint8_t *d;
+	d = encode(&length, cmd.str().c_str(), false);
+	std::string response = sendCommand(d, length, host->GetIPAddress());
+	cJSON *json = cJSON_Parse(response.c_str());
+	if (cJSON_HasObjectItem(json, "smartlife.iot.smartbulb.lightingservice"))
+	{
+		json = cJSON_GetObjectItem(json, "smartlife.iot.smartbulb.lightingservice");
+		if (cJSON_HasObjectItem(json, "transition_light_state"))
+		{
+			json = cJSON_GetObjectItem(json, "transition_light_state");
+			if (cJSON_HasObjectItem(json, "err_code"))
+			{
+				int errcode = cJSON_GetObjectItem(json, "err_code")->valueint;
+				if (errcode != 0)
+					return false;
+			}
+		}
+	}
+	return true;
+}

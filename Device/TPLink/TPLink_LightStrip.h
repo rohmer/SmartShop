@@ -61,6 +61,18 @@ public:
 		int index, hue, saturation, color_temp, brightness;
 
 	};
+	bool IsDimmable() { return isDimmable; }
+	bool IsColor() { return isColor; }
+	bool IsVariableColorTemp() { return isVariableColorTemp; }
+	bool IsOn()
+	{
+		return lightOnOff;
+	}
+	int GetHue() { return hue; }
+	int GetSaturation() { return saturation; }
+	int GetBrightness() { return brightness; }
+	int GetColorTemp() { return colorTemp; }
+
 private:
 	std::string  activeMode;
 	int brightness, length;
