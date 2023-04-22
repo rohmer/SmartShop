@@ -28,8 +28,8 @@ WindowManager *WindowManager::GetInstance()
 
 void WindowManager::Init()
 {
-	pluginManager->LoadPlugins();
-	
+	initalizePlugins();
+
 	lv_init();
 	void * buf1 = lv_mem_alloc(SDL_HOR_RES * SDL_VER_RES * sizeof(lv_color_t));
 	lv_disp_draw_buf_init(&disp_buf, buf1, NULL, SDL_HOR_RES * SDL_VER_RES);
@@ -100,4 +100,39 @@ lv_font_t* WindowManager::GetFont(std::string fontName, uint8_t fontSize)
 	return loadedFonts[ftDesc];
 }
 
+void WindowManager::initalizePlugins()
+{
+	pluginManager->LoadPlugins();
+	for (std::map<std::string, DLClass<UIWidget> *>::iterator it = pluginManager->GetLoadedPlugins().begin();
+		 it != pluginManager->GetLoadedPlugins().end();
+		 ++it)
+	{
+		std::shared_ptr<UIWidget> nw = std::dynamic_pointer_cast<UIWidget>(pluginManager->WidgetFactory(it->first));
 
+		std::vector<std::string> sensorInputs = nw->GetSensorInputs();
+		for (std::vector<std::string>::iterator eit = sensorInputs.begin(); eit!=sensorInputs.end(); ++eit)
+		{
+			if (eventToPlugin.find(*eit)!=eventToPlugin.end())
+			{
+				eventToPlugin[*eit].push_back(it->second);
+			}
+			else
+			{
+				eventToPlugin[*eit] = std::vector<DLClass<UIWidget> *>();
+				eventToPlugin[*eit].push_back(it->second);
+			}
+		}
+	}
+}
+
+void WindowManager::getActiveEventTypes()
+{
+	// Get a time 7 days ago
+	time_t searchTime = time(0) - (60 * 60 * 24 * 7);
+	using namespace sqlite_orm;
+	std::vector<DBEventData> events = DB::GetInstance("")->GetStorage()->get_all<DBEventData>(
+		distinct(&DBEventData::SensorName),
+		columns(&DBEventData::SensorName),
+		where(c(&DBEventData::EventTime) > searchTime));
+
+}

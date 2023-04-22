@@ -60,3 +60,8 @@ std::shared_ptr<UIWidget> PluginManager::WidgetFactory(std::string WidgetName)
 	
 	return loadedPlugins[WidgetName]->make_obj();	
 }
+
+std::map<std::string, DLClass<UIWidget> *> PluginManager::GetLoadedPlugins()
+{
+	return loadedPlugins;
+}

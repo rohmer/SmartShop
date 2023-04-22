@@ -19,6 +19,7 @@
 #include "UIWidget/UIWidget.h"
 #include "NodeWidgetManager.h"
 #include "PluginManager.h"
+#include "../DB/DB.h"
 
 class WindowManager
 {
@@ -29,6 +30,7 @@ public:
 	
 	bool LoadFont(std::string fontName, uint8_t fontSize, std::string filename);
 	lv_font_t* GetFont(std::string fontName, uint8_t fontSize);
+	void OnEvent(SensorEvent se);
 	
 private:
 	WindowManager();
@@ -38,6 +40,9 @@ private:
 	static lv_color_t buf[];
 	static lv_disp_draw_buf_t disp_buf;
 	static lv_indev_drv_t indev_drv;
+	
+	void getActiveEventTypes();
+	void initalizePlugins();
 	
 	Logger *log;
 	bool shutdown = false;
@@ -52,4 +57,6 @@ private:
 	
 	uint widgetWidth, widgetHeight;
 	PluginManager *pluginManager;
+
+	std::map<std::string, std::vector<DLClass<UIWidget> *>> eventToPlugin;
 };

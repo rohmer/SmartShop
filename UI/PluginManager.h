@@ -15,8 +15,10 @@ public:
 	void LoadPlugins();
 	
 	std::shared_ptr<UIWidget> WidgetFactory(std::string name);
-	
-private:
+
+	std::map<std::string, DLClass<UIWidget> *> GetLoadedPlugins();
+
+  private:
 	static PluginManager *instance;
 	PluginManager();
 	
