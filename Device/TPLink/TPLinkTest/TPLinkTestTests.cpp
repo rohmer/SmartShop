@@ -40,3 +40,15 @@ TEST(TPLinkAPI_Commands, Refresh)
 		CHECK(devices[i]->GetDeviceType() == t);
 	}
 }
+
+TEST(TPLinkAPI_Commands, GetWIFI)
+{
+	TPLinkAPI tplinkAPI;
+	std::vector<std::shared_ptr<TPLink_Device>> devices = tplinkAPI.Discovery();
+	
+	for (int i = 0; i < devices.size(); i++)
+	{
+		std::vector<TPLinkAPI::sWifiScanInfo> scanRes = tplinkAPI.GetWifiScanResults(devices[i]);
+		CHECK(scanRes.size() > 0);
+	}
+}

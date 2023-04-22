@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{7E15E7D4-9B65-4269-A2F1-9C9194DB312E}</ProjectGuid>
+    <ProjectGuid>{6B6882EF-351B-4BBF-94BB-6CBD85644D61}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -39,7 +39,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/cJSON-master;../../Components/cpp-base64-master;../../Components/oatpp-master/src;../../DB;../../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Components/cJSON-master;../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -58,50 +58,18 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ColorTemp.cpp" />
-    <ClCompile Include="comm_socket.cpp" />
-    <ClCompile Include="DeviceFactory.cpp" />
-    <ClCompile Include="JSONTools.cpp" />
-    <ClCompile Include="TPLink_Bulb.cpp" />
-    <ClCompile Include="TPLink_Device.cpp" />
-    <ClCompile Include="TPLink.cpp" />
-    <ClCompile Include="TPLinkAPI.cpp" />
-    <ClCompile Include="TPLink_DimmerSwitch.cpp" />
-    <ClCompile Include="TPLink_LightStrip.cpp" />
-    <ClCompile Include="TPLink_Switch.cpp" />
+    <ClCompile Include="TPLinkUI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorTemp.h" />
-    <ClInclude Include="comm_socket.h" />
-    <ClInclude Include="DeviceFactory.h" />
-    <ClInclude Include="JSONTools.h" />
-    <ClInclude Include="TPLink.h" />
-    <ClInclude Include="TPLinkAPI.h" />
-    <ClInclude Include="TPLink_Bulb.h" />
-    <ClInclude Include="TPLink_Device.h" />
-    <ClInclude Include="TPLink_DimmerSwitch.h" />
-    <ClInclude Include="TPLink_LightStrip.h" />
-    <ClInclude Include="TPLink_Switch.h" />
+    <ClInclude Include="TPLinkUI.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TPLink-Debug.vgdbsettings" />
-    <None Include="TPLink-Release.vgdbsettings" />
+    <None Include="TPLinkUI-Debug.vgdbsettings" />
+    <None Include="TPLinkUI-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Config\Config.vcxproj">
-      <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DB\DB.vcxproj">
-      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logger\Logger.vcxproj">
-      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\RaspUtils\RaspUtils.vcxproj">
-      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Device.vcxproj">
-      <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
+    <ProjectReference Include="..\UIWidget\UIWidget.vcxproj">
+      <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

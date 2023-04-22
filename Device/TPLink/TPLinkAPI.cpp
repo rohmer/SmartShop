@@ -190,8 +190,11 @@ std::vector<std::shared_ptr<TPLink_Device>> TPLinkAPI::Discovery(uint timeout)
 				std::string msg((char *)outbuf); 
 				std::string inet(tmpc);
 				std::shared_ptr<TPLink_Device> dev = parseResponse(msg, inet);
-				if (dev!=NULL)
+				if (dev != NULL)
+				{
+					dev->UpdateRefreshTime();
 					devices.push_back(dev);
+				}
 			}
 			if (isFirst)
 				isFirst = false;
@@ -326,6 +329,8 @@ bool TPLinkAPI::SetBrightness(std::string host, int brightness)
 
 bool TPLinkAPI::RefreshItem(std::shared_ptr<TPLink_Device> &device)
 {
+	if (device->GetRefreshTime() <= 30)
+		return true;
 	std::stringstream cmd;
 	cmd << "{\"system\": {\"get_sysinfo\": null}}";
 	size_t length;
@@ -348,6 +353,7 @@ bool TPLinkAPI::RefreshItem(std::shared_ptr<TPLink_Device> &device)
 		}
 	}
 	device = parseResponse(response, device->GetIPAddress());
+	device->UpdateRefreshTime();
 	return true;
 }
 
@@ -488,12 +494,13 @@ bool TPLinkAPI::IsOn(std::shared_ptr<TPLink_Device> host)
 	}
 }
 
-bool TPLinkAPI::GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp)
+bool TPLinkAPI::GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp, int &max, int &min)
 {
 	if (IsVariableColorTemp(host))
 		return false;
 	if (!RefreshItem(host))
 		return false;
+	ColorTemp::GetColorTempRange(host, min, max);
 	if (host->GetDeviceType() == TPLink_Device::SmartBulb)
 	{
 		std::shared_ptr<TPLink_Bulb> bulb = std::static_pointer_cast<TPLink_Bulb>(host);
@@ -507,6 +514,7 @@ bool TPLinkAPI::GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp
 		return true;
 	}
 }
+
 bool TPLinkAPI::GetHSV(std::shared_ptr<TPLink_Device> host, int &h, int &s, int &v)
 {
 	if (!IsColor(host))
@@ -540,7 +548,8 @@ bool TPLinkAPI::SetHSV(std::shared_ptr<TPLink_Device> host,
 		return false;
 	std::stringstream cmd;
 	int colorTemp;
-	GetColorTemp(host, colorTemp);
+	int min, max;
+	GetColorTemp(host, colorTemp, min, max);
 	int of = 0;
 	if (IsOn(host))
 		of = 1;
@@ -567,4 +576,44 @@ bool TPLinkAPI::SetHSV(std::shared_ptr<TPLink_Device> host,
 		}
 	}
 	return true;
+}
+
+std::vector<TPLinkAPI::sWifiScanInfo> 
+	TPLinkAPI::GetWifiScanResults(std::shared_ptr<TPLink_Device> host)
+{
+	std::vector<TPLinkAPI::sWifiScanInfo> ret;
+	std::stringstream cmd;
+	cmd << "{\"netif\":{\"get_scaninfo\":{\"refresh\":0,\"timeout\":5}}}";
+	size_t length;
+	uint8_t *d;
+	d = encode(&length, cmd.str().c_str(), false);
+	std::string response = sendCommand(d, length, host->GetIPAddress());
+	cJSON *json = cJSON_Parse(response.c_str());
+	if (cJSON_HasObjectItem(json, "netif"))
+	{
+		json = cJSON_GetObjectItem(json, "netif");
+		if (cJSON_HasObjectItem(json, "get_scaninfo"))
+		{
+			json = cJSON_GetObjectItem(json, "get_scaninfo");
+			if (cJSON_HasObjectItem(json, "ap_list"))
+			{
+				json = cJSON_GetObjectItem(json, "ap_list");
+				if (cJSON_IsArray(json))
+				{
+					cJSON *itr;
+					cJSON_ArrayForEach(itr, json)
+					{
+						sWifiScanInfo scanInfo;
+						if (cJSON_HasObjectItem(itr, "ssid"))
+							scanInfo.ssid = cJSON_GetObjectItem(itr, "ssid")->valuestring;
+						if (cJSON_HasObjectItem(itr, "key_type"))
+							scanInfo.key_type = cJSON_GetObjectItem(itr, "key_type")->valueint;
+						ret.push_back(scanInfo);
+					}
+					
+				}
+			}
+		}
+	}
+	return ret;
 }

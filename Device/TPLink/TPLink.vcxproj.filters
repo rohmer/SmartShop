@@ -45,6 +45,9 @@
     <ClCompile Include="TPLink_Bulb.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="ColorTemp.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TPLink.h">
@@ -75,6 +78,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="TPLink_LightStrip.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorTemp.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

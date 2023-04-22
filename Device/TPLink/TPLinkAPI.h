@@ -11,17 +11,24 @@
 #include <functional>
 #include <thread>
 #include <arpa/inet.h>
-
 #include <cJSON.h>
 #include "../../Logger/Logger.h"
 #include <thread>
 #include "TPLink_Device.h"
 #include "DeviceFactory.h"
+#include "ColorTemp.h"
 
 class TPLinkAPI
 {
 public:
-    TPLinkAPI() {};
+	struct sWifiScanInfo
+	{
+	public:
+		std::string ssid;
+		uint key_type;		
+	};
+	
+	TPLinkAPI() {};
     std::vector<std::shared_ptr<TPLink_Device>> Discovery(uint timeout = 30);
 	bool SetAlias(std::string host, std::string alias);
 	bool SetAlias(TPLink_Device host, std::string alias);
@@ -34,13 +41,17 @@ public:
 	bool TurnOff(std::string host);
 	bool SetHSV(std::string host, int hue, int saturation, int brightness);
 	bool SetHSV(std::shared_ptr<TPLink_Device> host, int hue, int saturation, int brightness);
-	
+	bool GetColorTemp(std::shared_ptr<TPLink_Device> host, int &temp, int &max, int &min);
+	bool SetColorTemp(std::shared_ptr<TPLink_Device> host, int temp);
 	bool IsDimmable(std::shared_ptr<TPLink_Device> host);
 	bool IsColor(std::shared_ptr<TPLink_Device> host);
 	bool IsVariableColorTemp(std::shared_ptr<TPLink_Device> host);
 	bool IsOn(std::shared_ptr<TPLink_Device> host);
 	bool GetHSV(std::shared_ptr<TPLink_Device> host, int &h, int &s, int &v);
-	bool GetColorTemp(std::shared_ptr<TPLink_Device> host, int &colorTemp);
+	bool TurnOnLED(std::shared_ptr<TPLink_Device> host);
+	bool TurnOffLED(std::shared_ptr<TPLink_Device> host);
+	
+	std::vector<sWifiScanInfo> GetWifiScanResults(std::shared_ptr<TPLink_Device> host);
 	
 private:
      union

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <chrono>
+#include <ctime>
 #include <string>
 #include <cJSON.h>
 #include "JSONTools.h"
@@ -47,6 +49,8 @@ public:
 	std::string GetIPAddress() { return ipAddr; }
 	eTPLinkDeviceType GetDeviceType() { return deviceType; }
 
+	int GetRefreshTime();
+	void UpdateRefreshTime();
 
 protected:
 	virtual bool parseJSON(cJSON* j);
@@ -60,5 +64,5 @@ protected:
 	bool isValid = false;
 	Logger* log;
 	eTPLinkDeviceType deviceType;
-
+	time_t lastUpdate =0;
 };

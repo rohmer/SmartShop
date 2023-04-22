@@ -32,3 +32,38 @@ void TPLink::UpdateConfig(DeviceConfig dc)
 		SetPollingInterval(dc.GetConfigItem("PollingInterval").GetLongVal());
 	
 }
+
+// The only events this sends is discovery events, everything else is 
+// handled by the ui
+
+std::vector<SensorEvent> TPLink::PollSensor()
+{
+	TPLinkAPI api;
+	std::vector<std::shared_ptr<TPLink_Device>> devList = api.Discovery();
+	
+	std::vector<SensorEvent> events;
+	for (std::vector<std::shared_ptr<TPLink_Device>>::iterator it = devList.begin();
+		it != devList.end(); ++it)
+	{
+		bool found = false;
+		for (std::vector<std::shared_ptr<TPLink_Device>>::iterator i2 = tpLinkDevices.begin();
+			i2 != tpLinkDevices.end(); ++i2)
+		{
+			if (strcmp(it->get()->GetHwID().c_str(), i2->get()->GetHwID().c_str()) == 0 &&
+				strcmp(it->get()->GetMACAddress().c_str(), i2->get()->GetMACAddress().c_str()) == 0)
+			{
+				found = true;
+				break;			
+			}
+		}
+		if (!found)
+		{
+			std::shared_ptr<TPLink_Device> dev = std::make_shared<TPLink_Device>(it->get());
+			tpLinkDevices.push_back(it->get());;
+			SensorEvent se("TPLink", it->get()->GetIPAddress(), it->get()->GetHwID());
+			se.AddEventData(IntData("Type", it->get()->GetDeviceType()));
+			events.push_back(se);
+		}
+	}
+	return events;
+}
