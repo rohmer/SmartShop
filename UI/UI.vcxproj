@@ -59,7 +59,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../Components/LVGL/lv_port_linux_frame_buffer;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB../Components/rapidjson-master/include/rapidjson/msinttypes;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/oatpp-master/src;../Components/cJSON-master;../Components/cpp-base64-master;../Components/spdlog-1.x/include/spdlog;../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Components/LVGL/lv_port_linux_frame_buffer;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../Components/spdlog-1.x/include;../Components/sqlite_orm-master/include/sqlite_orm;../DB../Components/rapidjson-master/include/rapidjson/msinttypes;../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../Components/libwpa/wpa_cli_oper;../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../Components/oatpp-master/src;../Components/cJSON-master;../Components/cpp-base64-master;../Components/spdlog-1.x/include/spdlog;../DB;../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers/sdl;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -67,9 +67,9 @@
       <SupportExceptions>true</SupportExceptions>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>wpa;lvgl;lv_drivers;SDL2;SDL2main;SDL2_gpu;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>wpa;SDL2;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -100,6 +100,12 @@
     <None Include="UI-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{0b284af8-2b53-4fb3-bd2c-baa0eb66b7cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lv_drivers\lv_drivers.vcxproj">
+      <Project>{77a73884-2341-4d25-b2be-b12e2a1c5f08}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.vcxproj">
       <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
     </ProjectReference>

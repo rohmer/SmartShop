@@ -11,8 +11,8 @@
 #include <SDL2/SDL.h>
 #include <lvgl.h>
 #include <sdl/sdl_gpu.h>
+#include <sdl/sdl.h>
 #include <indev/evdev.h>
-
 #include "../Logger/Logger.h"
 #include "Settings.h"
 #include "MainWindow.h"

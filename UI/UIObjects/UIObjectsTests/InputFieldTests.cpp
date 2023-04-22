@@ -27,12 +27,12 @@ void setupDisplay1()
 	lv_disp_drv_register(&disp_drv);
 	lv_disp_drv_register(&disp_drv);
 	
-	evdev_init();
+	//evdev_init();
 	lv_indev_drv_init(&indev_drv);
 	indev_drv.type = LV_INDEV_TYPE_POINTER;
 
 	/*This function will be called periodically (by the library) to get the mouse position and state*/
-	indev_drv.read_cb = evdev_read;
+	//indev_drv.read_cb = evdev_read;
 	lv_indev_drv_register(&indev_drv);
 	
 	runner = new std::thread(tickThread);

@@ -1,6 +1,6 @@
 /**
  * @file lv_drv_conf.h
- * Configuration file for v8.2.0
+ * Configuration file for v8.3.0
  */
 
 /*
@@ -91,8 +91,8 @@
 
 /* Hardware accelerated SDL driver */
 #ifndef USE_SDL_GPU
-# define LV_USE_SDL_GPU 1
-# define LV_USE_DRAW_SDL 1
+# define USE_SDL_GPU 1
+#define LV_USE_DRAW_SDL 1
 #endif
 
 #if USE_SDL || USE_SDL_GPU
@@ -104,7 +104,7 @@
 
 /* Used to test true double buffering with only address changing.
  * Use 2 draw buffers, bith with SDL_HOR_RES x SDL_VER_RES size*/
-#  define SDL_DOUBLE_BUFFERED 0
+#  define SDL_DOUBLE_BUFFERED 1
 
 /*Eclipse: <SDL2/SDL.h>    Visual Studio: <SDL.h>*/
 #  define SDL_INCLUDE_PATH    <SDL2/SDL.h>
@@ -440,7 +440,7 @@
  * Mouse or touchpad as evdev interface (for Linux based systems)
  *------------------------------------------------*/
 #ifndef USE_EVDEV
-#  define USE_EVDEV           1
+#  define USE_EVDEV           0
 #endif
 
 #ifndef USE_BSD_EVDEV
@@ -451,13 +451,13 @@
 #  define EVDEV_NAME   "/dev/input/event0"        /*You can use the "evtest" Linux tool to get the list of devices and test them*/
 #  define EVDEV_SWAP_AXES         0               /*Swap the x and y axes of the touchscreen*/
 
-#  define EVDEV_CALIBRATE         1               /*Scale and offset the touchscreen coordinates by using maximum and minimum values for each axis*/
+#  define EVDEV_CALIBRATE         0               /*Scale and offset the touchscreen coordinates by using maximum and minimum values for each axis*/
 
 #  if EVDEV_CALIBRATE
-#    define EVDEV_HOR_MIN   25 //3800                    /*If EVDEV_XXX_MIN > EVDEV_XXX_MAX the XXX axis is automatically inverted*/
-#    define EVDEV_HOR_MAX   16383 // 200
-#    define EVDEV_VER_MIN   45 //200
-#    define EVDEV_VER_MAX   9592 // 3800
+#    define EVDEV_HOR_MIN         0               /*to invert axis swap EVDEV_XXX_MIN by EVDEV_XXX_MAX*/
+#    define EVDEV_HOR_MAX      4096               /*"evtest" Linux tool can help to get the correct calibraion values>*/
+#    define EVDEV_VER_MIN         0
+#    define EVDEV_VER_MAX      4096
 #  endif  /*EVDEV_CALIBRATE*/
 #endif  /*USE_EVDEV*/
 

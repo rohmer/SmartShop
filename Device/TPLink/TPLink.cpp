@@ -58,8 +58,8 @@ std::vector<SensorEvent> TPLink::PollSensor()
 		}
 		if (!found)
 		{
-			std::shared_ptr<TPLink_Device> dev = std::make_shared<TPLink_Device>(it->get());
-			tpLinkDevices.push_back(it->get());;
+			std::shared_ptr<TPLink_Device> dev = *it;
+			tpLinkDevices.push_back(*it);;
 			SensorEvent se("TPLink", it->get()->GetIPAddress(), it->get()->GetHwID());
 			se.AddEventData(IntData("Type", it->get()->GetDeviceType()));
 			events.push_back(se);

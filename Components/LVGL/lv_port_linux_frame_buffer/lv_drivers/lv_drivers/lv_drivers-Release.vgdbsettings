@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <VisualGDBProjectSettings2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ConfigurationName>Debug</ConfigurationName>
+  <ConfigurationName>Release</ConfigurationName>
   <Project xsi:type="com.visualgdb.project.linux">
     <CustomSourceDirectories>
       <Directories />
@@ -9,32 +9,10 @@
     </CustomSourceDirectories>
     <AutoProgramSPIFFSPartition>true</AutoProgramSPIFFSPartition>
     <DeploymentHost>
-      <HostName>build</HostName>
-      <Transport>Alias</Transport>
-      <UserName />
+      <HostName>octopi.local</HostName>
+      <Transport>SSH</Transport>
+      <UserName>pi</UserName>
     </DeploymentHost>
-    <MainSourceTransferCommand>
-      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <LocalDirectory>$(ProjectDir)</LocalDirectory>
-      <RemoteDirectory>/tmp/VisualGDB/$(ProjectDirUnixStyle)</RemoteDirectory>
-      <FileMasks>
-        <string>*.cpp</string>
-        <string>*.h</string>
-        <string>*.hpp</string>
-        <string>*.c</string>
-        <string>*.cc</string>
-        <string>*.cxx</string>
-        <string>*.mak</string>
-        <string>Makefile</string>
-        <string>*.txt</string>
-        <string>*.cmake</string>
-      </FileMasks>
-      <TransferNewFilesOnly>true</TransferNewFilesOnly>
-      <IncludeSubdirectories>true</IncludeSubdirectories>
-      <SelectedDirectories />
-      <DeleteDisappearedFiles>false</DeleteDisappearedFiles>
-      <ApplyGlobalExclusionList>true</ApplyGlobalExclusionList>
-    </MainSourceTransferCommand>
     <AllowChangingHostForMainCommands>false</AllowChangingHostForMainCommands>
     <SkipBuildIfNoSourceFilesChanged>false</SkipBuildIfNoSourceFilesChanged>
     <IgnoreFileTransferErrors>false</IgnoreFileTransferErrors>
@@ -42,7 +20,7 @@
     <SkipDeploymentTests>false</SkipDeploymentTests>
     <MainSourceDirectoryForLocalBuilds>$(ProjectDir)</MainSourceDirectoryForLocalBuilds>
   </Project>
-  <Build xsi:type="com.visualgdb.build.cmake">
+  <Build xsi:type="com.visualgdb.build.msbuild">
     <BuildLogMode xsi:nil="true" />
     <ToolchainID>
       <ID>com.visualgdb.raspberry_pi</ID>
@@ -52,35 +30,10 @@
         <Revision>1</Revision>
       </Version>
     </ToolchainID>
-    <RelativeSourceDirectory />
-    <ConfigurationType>DEBUG</ConfigurationType>
-    <BinaryDirectory>Debug</BinaryDirectory>
-    <MakeCommandTemplate>
-      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <RemoteHost>
-        <HostName>BuildMachine</HostName>
-        <Transport>BuiltinShortcut</Transport>
-      </RemoteHost>
-      <Command>$(ToolchainMake)</Command>
-      <Arguments>$(ToolchainMakeArgs)</Arguments>
-      <WorkingDirectory>$(BuildDir)</WorkingDirectory>
-      <BackgroundMode xsi:nil="true" />
-    </MakeCommandTemplate>
-    <CMakeCommand>
-      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <RemoteHost>
-        <HostName>BuildMachine</HostName>
-        <Transport>BuiltinShortcut</Transport>
-      </RemoteHost>
-      <Command>$(SYSPROGS_CMAKE_PATH)</Command>
-      <BackgroundMode xsi:nil="true" />
-    </CMakeCommand>
-    <UpdateSourcesInCMakeFile>true</UpdateSourcesInCMakeFile>
-    <ExportCompileCommands>false</ExportCompileCommands>
-    <DisableToolchainFile>false</DisableToolchainFile>
-    <DeployAsRoot>false</DeployAsRoot>
-    <CMakeCleanMode>RemoveBuildDirectory</CMakeCleanMode>
-    <UseCCache>false</UseCCache>
+    <ProjectFile>lv_drivers.vcxproj</ProjectFile>
+    <ParallelJobCount>0</ParallelJobCount>
+    <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
+    <BuildAsRoot>false</BuildAsRoot>
   </Build>
   <CustomBuild>
     <PreSyncActions />
@@ -100,7 +53,6 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
-  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
@@ -113,8 +65,6 @@
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
-  <Configurations />
-  <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>

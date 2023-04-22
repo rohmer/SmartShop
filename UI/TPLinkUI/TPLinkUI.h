@@ -19,6 +19,12 @@ public:
 		: UIWidget("TPLink", "TP link")
 	{
 	}
+	
+	~TPLinkUI() override
+	{
+	}
+		
+	
 	void Init() override;
 	
 	void Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y) override;

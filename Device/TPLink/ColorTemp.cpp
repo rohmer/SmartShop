@@ -1,4 +1,5 @@
 #include "ColorTemp.h"
+std::map<std::string, std::pair<int, int>> ColorTemp::temps;
 
 bool ColorTemp::GetColorTempRange(std::shared_ptr<TPLink_Device> host, 
 	int &min, int &max)

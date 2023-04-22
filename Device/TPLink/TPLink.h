@@ -25,5 +25,5 @@ public:
 	
 private:
 	Logger *log;
-	std::vector<TPLink_Device> tpLinkDevices;
+	std::vector<std::shared_ptr<TPLink_Device>> tpLinkDevices;
 };

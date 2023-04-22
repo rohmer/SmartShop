@@ -33,8 +33,7 @@ void WindowManager::Init()
 	lv_init();
 	void * buf1 = lv_mem_alloc(SDL_HOR_RES * SDL_VER_RES * sizeof(lv_color_t));
 	lv_disp_draw_buf_init(&disp_buf, buf1, NULL, SDL_HOR_RES * SDL_VER_RES);
-	sdl_init();
-	sdl_disp_drv_init(&disp_drv, SDL_HOR_RES, SDL_VER_RES);;
+	sdl_init();		
 	disp_drv.draw_buf   = &disp_buf;
 	disp_drv.flush_cb   = sdl_display_flush;
 	disp_drv.hor_res    = SDL_HOR_RES;
@@ -103,8 +102,9 @@ lv_font_t* WindowManager::GetFont(std::string fontName, uint8_t fontSize)
 void WindowManager::initalizePlugins()
 {
 	pluginManager->LoadPlugins();
-	for (std::map<std::string, DLClass<UIWidget> *>::iterator it = pluginManager->GetLoadedPlugins().begin();
-		 it != pluginManager->GetLoadedPlugins().end();
+	std::map<std::string, DLClass<UIWidget> *> plugins = pluginManager->GetLoadedPlugins();
+	for (std::map<std::string, DLClass<UIWidget> *>::iterator it = plugins.begin();
+		 it != plugins.end();
 		 ++it)
 	{
 		std::shared_ptr<UIWidget> nw = std::dynamic_pointer_cast<UIWidget>(pluginManager->WidgetFactory(it->first));
@@ -114,11 +114,22 @@ void WindowManager::initalizePlugins()
 		{
 			if (eventToPlugin.find(*eit)!=eventToPlugin.end())
 			{
+#ifdef DEBUG
+				std::stringstream ss;
+				ss << "Added plugin: " << it->first << " to event: " << *eit;
+				Logger::GetInstance()->LogI(ss.str());
+#endif
 				eventToPlugin[*eit].push_back(it->second);
 			}
 			else
 			{
 				eventToPlugin[*eit] = std::vector<DLClass<UIWidget> *>();
+#ifdef DEBUG
+				std::stringstream ss;
+				ss << "Added plugin: " << it->first << " to event: " << *eit;
+				Logger::GetInstance()->LogI(ss.str());
+#endif
+
 				eventToPlugin[*eit].push_back(it->second);
 			}
 		}

@@ -110,10 +110,10 @@
       <Project>{34c2fa0e-ff32-4016-8048-a1b0925d6596}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
-      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
+      <Project>{0b284af8-2b53-4fb3-bd2c-baa0eb66b7cf}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lvgl_drivers\lvgl_drivers.vcxproj">
-      <Project>{f0e73d1b-2015-4f67-b3f4-bc90f5e79592}</Project>
+    <ProjectReference Include="..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lv_drivers\lv_drivers.vcxproj">
+      <Project>{77a73884-2341-4d25-b2be-b12e2a1c5f08}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Config\Config.vcxproj">
       <Project>{e1b83304-49c9-411b-9a60-5f98feafb417}</Project>
@@ -147,6 +147,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Device\TelemetryAgent\TelemetryAgent.vcxproj">
       <Project>{3cccb14f-7832-4c2c-b906-550ca0cc0fee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\TPLink\TPLink.vcxproj">
+      <Project>{7e15e7d4-9b65-4269-a2f1-9c9194db312e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\EventEndpoint\EndpointClient\EndpointClient.vcxproj">
       <Project>{aa54ab8f-c3ac-46d2-81e7-7f9dd1edc668}</Project>
@@ -204,6 +207,9 @@
     </ProjectReference>
     <ProjectReference Include="..\UI\StatusWidget\StatusWidget.vcxproj">
       <Project>{d4f10799-0fcf-41e5-9412-b414144a88e7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\TPLinkUI\TPLinkUI.vcxproj">
+      <Project>{6b6882ef-351b-4bbf-94bb-6cbd85644d61}</Project>
     </ProjectReference>
     <ProjectReference Include="..\UI\UI.vcxproj">
       <Project>{efb7f748-eef2-449b-b678-6455e8c8d991}</Project>

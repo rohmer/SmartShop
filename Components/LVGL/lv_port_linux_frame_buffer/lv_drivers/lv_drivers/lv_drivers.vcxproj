@@ -1,17 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|ARM">
-      <Configuration>Debug</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|VisualGDB">
       <Configuration>Debug</Configuration>
       <Platform>VisualGDB</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|ARM">
-      <Configuration>Release</Configuration>
-      <Platform>ARM</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|VisualGDB">
       <Configuration>Release</Configuration>
@@ -20,15 +12,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{F0E73D1B-2015-4F67-B3F4-BC90F5E79592}</ProjectGuid>
+    <ProjectGuid>{77A73884-2341-4D25-B2BE-B12E2A1C5F08}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -40,71 +30,41 @@
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
     <GNUTargetType>DynamicLibrary</GNUTargetType>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <GNUConfigurationType>Debug</GNUConfigurationType>
-    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
-    <GNUTargetType>DynamicLibrary</GNUTargetType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
     <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
     <GNUTargetType>DynamicLibrary</GNUTargetType>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>10.2.1/10.1/r1</ToolchainVersion>
-    <GNUTargetType>DynamicLibrary</GNUTargetType>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_CONF_H;LV_USE_DRAW_SDL;LV_USE_GPU_SDL;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../../lvgl;../..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE=1;LV_CONF_INCLUDE_SIMPLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
-      <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>SDL2;bcm_host;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>SDL2;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <CLanguageStandard>
-      </CLanguageStandard>
-      <CPPLanguageStandard>
-      </CPPLanguageStandard>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
-    <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript>
-      </LinkerScript>
-      <AdditionalOptions>
-      </AdditionalOptions>
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="lvgl_drivers-Debug.vgdbsettings" />
-    <None Include="lvgl_drivers-Release.vgdbsettings" />
-    <None Include="toolchain-Debug.cmake" />
+    <None Include="..\toolchain.cmake" />
+    <None Include="lv_drivers-Debug.vgdbsettings" />
+    <None Include="lv_drivers-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt" />
     <Text Include="..\wayland\CMakeLists.txt" />
-    <Text Include=".visualgdb\CodeDB\lvgl_drivers-Debug-VisualGDB\PreambleTimestamp.txt" />
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\display\drm.c" />
@@ -156,13 +116,7 @@
     <ClInclude Include="..\sdl\sdl_common.h" />
     <ClInclude Include="..\sdl\sdl_gpu.h" />
     <ClInclude Include="..\wayland\wayland.h" />
-    <ClInclude Include="..\win32drv\win32drv.h" />
     <ClInclude Include="..\win_drv.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\lvgl\lvgl\lvgl.vcxproj">
-      <Project>{e408ebbb-8991-43a7-8697-e4bd377bdcf2}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
