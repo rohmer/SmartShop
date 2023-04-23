@@ -8,6 +8,8 @@
 #include "../../Logger/Logger.h"
 #include "Defines.h"
 
+extern "C" DeviceBase *Factory();
+
 class MCP9808Sensor : public I2CDevice, public Sensor
 {
 public:

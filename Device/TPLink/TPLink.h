@@ -8,6 +8,8 @@
 
 #include "TPLinkAPI.h"
 
+extern "C" DeviceBase *Factory();
+
 class TPLink : public DeviceBase, public Sensor
 {
 public:	
@@ -22,7 +24,7 @@ public:
 	void UpdateConfig(DeviceConfig dc);
 	
 	std::vector<SensorEvent> PollSensor() override;
-	
+		
 private:
 	Logger *log;
 	std::vector<std::shared_ptr<TPLink_Device>> tpLinkDevices;

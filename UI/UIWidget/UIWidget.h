@@ -31,6 +31,10 @@ public:
 	    
     }
 
+	virtual void Update() 
+	{
+	}
+	
     int GetID()
     {
         return id;

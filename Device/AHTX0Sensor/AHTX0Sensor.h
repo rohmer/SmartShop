@@ -8,6 +8,8 @@
 #include "../I2CDevice.h"
 #include "../Sensor.h"
 
+extern "C" DeviceBase *Factory();
+
 class AHTX0Sensor : public I2CDevice, public Sensor
 {
 public:

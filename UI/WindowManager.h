@@ -57,6 +57,9 @@ private:
 	
 	uint widgetWidth, widgetHeight;
 	PluginManager *pluginManager;
-
-	std::map<std::string, std::vector<DLClass<UIWidget> *>> eventToPlugin;
+	
+	std::map<std::string, std::shared_ptr<UIWidget>> uiPlugins;
+	std::map < std::string, std::vector<std::shared_ptr<UIWidget>>> eventToPlugin;
+	
+	std::vector<std::string> getEventList(std::string s);
 };

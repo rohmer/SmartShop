@@ -58,4 +58,14 @@ std::vector<SensorEvent> PM25AQISensor::PollSensor()
 }
 
 
-	
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	PM25AQISensor *obj = new PM25AQISensor();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(PM25AQISensor *p) 
+{
+	delete p;
+}

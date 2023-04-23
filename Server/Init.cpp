@@ -47,8 +47,15 @@ bool Init::InitServer()
 	if (taConfig.GetConfigItem("Enabled").GetBoolVal())
 	{
 		DeviceManager *dm = DeviceManager::GetInstance();
-		dm->AddDevice(new TelemetryAgent(taConfig));		
-		Logger::GetInstance()->LogI("5 - Telemetry Agent configured and started");
+		if (!dm->AddDevice("Telemetery Agent"))
+		{
+			Logger::GetInstance()->LogC("Failed to load the Telemetry Agent");
+		}
+		else
+		{			
+			dm->GetDeviceByName("Telemetery Agent")->SetConfig(taConfig);
+			Logger::GetInstance()->LogI("5 - Telemetry Agent configured and started");
+		}
 	}
 	else
 	{

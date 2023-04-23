@@ -14,7 +14,7 @@ public:
 	
 	virtual std::vector<SensorEvent> PollSensor()
 	{
+		return (std::vector<SensorEvent>());
 	}		
-		
-
+	
 };

@@ -81,3 +81,15 @@ bool MCP9808Sensor::Wake()
 		return false;
 	return true;
 }
+
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	MCP9808Sensor *obj = new MCP9808Sensor();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(MCP9808Sensor *p) 
+{
+	delete p;
+}

@@ -56,6 +56,7 @@ void WindowManager::Init()
 	widgetWidth = WIDTH / 5-10;
 	widgetHeight = HEIGHT / 5 - 10;
 	mainWindow = new MainWindow(widgetWidth, widgetHeight);
+	getActiveEventTypes();
 	log->LogI("WindowManager Initalized");
 }
 
@@ -110,27 +111,32 @@ void WindowManager::initalizePlugins()
 		std::shared_ptr<UIWidget> nw = std::dynamic_pointer_cast<UIWidget>(pluginManager->WidgetFactory(it->first));
 
 		std::vector<std::string> sensorInputs = nw->GetSensorInputs();
-		for (std::vector<std::string>::iterator eit = sensorInputs.begin(); eit!=sensorInputs.end(); ++eit)
+		uiPlugins.emplace(nw->GetName(), nw);
+		for(int i=0; i<sensorInputs.size(); i++)
 		{
-			if (eventToPlugin.find(*eit)!=eventToPlugin.end())
+			std::string sensorInput = sensorInputs[i];
+			if (strcmp(sensorInput.c_str(), "SYSTEM") != 0)
 			{
+				if (eventToPlugin.find(sensorInput) != eventToPlugin.end())
+				{
 #ifdef DEBUG
-				std::stringstream ss;
-				ss << "Added plugin: " << it->first << " to event: " << *eit;
-				Logger::GetInstance()->LogI(ss.str());
+					std::stringstream ss;
+					ss << "Added plugin: " << it->first << " to event: " << sensorInput;
+					Logger::GetInstance()->LogI(ss.str());
 #endif
-				eventToPlugin[*eit].push_back(it->second);
-			}
-			else
-			{
-				eventToPlugin[*eit] = std::vector<DLClass<UIWidget> *>();
+					eventToPlugin[sensorInput].push_back(nw);
+				}
+				else
+				{
+					eventToPlugin[sensorInput] = std::vector<std::shared_ptr<UIWidget>>();
 #ifdef DEBUG
-				std::stringstream ss;
-				ss << "Added plugin: " << it->first << " to event: " << *eit;
-				Logger::GetInstance()->LogI(ss.str());
+					std::stringstream ss;
+					ss << "Added plugin: " << it->first << " to event: " << sensorInput;
+					Logger::GetInstance()->LogI(ss.str());
 #endif
 
-				eventToPlugin[*eit].push_back(it->second);
+					eventToPlugin[sensorInput].push_back(nw);
+				}
 			}
 		}
 	}
@@ -146,4 +152,40 @@ void WindowManager::getActiveEventTypes()
 		columns(&DBEventData::SensorName),
 		where(c(&DBEventData::EventTime) > searchTime));
 
+	std::vector<std::string> createdPlugins;
+	
+	for (std::vector<DBEventData>::iterator it = events.begin();
+		 it != events.end();
+		 ++it)
+	{
+		if (eventToPlugin.find(it->SensorName) != eventToPlugin.end())
+		{
+			for (std::vector<std::shared_ptr<UIWidget>>::iterator pii = eventToPlugin[it->SensorName].begin();
+				 pii != eventToPlugin[it->SensorName].end();
+				 ++pii)
+			{
+
+				bool created = false;
+				for (int i = 0; i < createdPlugins.size(); i++)
+				{
+					if (strcmp(pii->get()->GetName().c_str(), createdPlugins[i].c_str()) == 0)
+					{
+						created = true;
+						break;
+					}
+				}
+				if (!created)
+				{
+					createdPlugins.push_back(pii->get()->GetName().c_str());
+#ifdef DEBUG
+					std::stringstream ss;
+					ss << "Registering UI Plugin: " << pii->get()->GetName().c_str()<< " with MainWindow";
+					Logger::GetInstance()->LogI(ss.str());
+#endif
+					std::shared_ptr<UIWidget> widget = uiPlugins[it->SensorName];
+					mainWindow->AddEventWidget(widget);
+				}
+			}
+		}
+	}
 }

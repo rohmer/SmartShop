@@ -7,6 +7,8 @@
 #include "../I2CDevice.h"
 #include "../../Logger/Logger.h"
 
+extern "C" DeviceBase *Factory();
+
 class PM25AQISensor : public I2CDevice, public Sensor
 {
 public:

@@ -101,6 +101,7 @@
     <ClCompile Include="DeviceBase.cpp" />
     <ClCompile Include="DeviceConfig.cpp" />
     <ClCompile Include="DeviceManager.cpp" />
+    <ClCompile Include="DevicePluiginManager.cpp" />
     <ClCompile Include="GPIODevice.cpp" />
     <ClCompile Include="I2CDevice.cpp" />
   </ItemGroup>
@@ -110,6 +111,8 @@
     <ClInclude Include="DeviceConfigItem.h" />
     <ClInclude Include="DeviceEnums.h" />
     <ClInclude Include="DeviceManager.h" />
+    <ClInclude Include="DevicePluginManager.h" />
+    <ClInclude Include="dlclass.hpp" />
     <ClInclude Include="GPIODevice.h" />
     <ClInclude Include="GPIOPinDef.h" />
     <ClInclude Include="I2CDevice.h" />

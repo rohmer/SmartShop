@@ -13,6 +13,8 @@
 class GPIODevice : public DeviceBase
 {
 public:
+	GPIODevice(std::string Name, std::string Description, eDeviceType Type);
+	
 	GPIODevice(std::string Name, std::string Description, eDeviceType Type, GPIOPinDef devicePin);
 	GPIODevice(std::string Name, std::string Description, eDeviceType Type, GPIOPinDef devicePin, DeviceConfig config);
 	
@@ -23,6 +25,8 @@ public:
 	
 	bool SetValue(uint Pin, bool Value);
 	bool SetValue(bool Value);
+	
+	bool AddPin(unsigned short PinNumber, GPIOPinDef::ePinMode PinMode, GPIOPinDef::ePullupDown PullupOrDown = GPIOPinDef::PIN_PUD_OFF);
 	
 private:
 	std::vector<GPIOPinDef> pins;

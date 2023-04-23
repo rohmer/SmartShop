@@ -131,3 +131,15 @@ std::vector<SensorEvent> TelemetryAgent::PollSensor()
 	}
 	return ret;
 }
+
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	TelemetryAgent *obj = new TelemetryAgent();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(TelemetryAgent *p) 
+{
+	delete p;
+}

@@ -7,15 +7,14 @@ DeviceManager::DeviceManager()
 {
 	scheduler = new Bosma::Scheduler(16);
 	loadConfig();
+	pluginManager = DevicePluginManager::GetInstance();
+	pluginManager->LoadPlugins();
 	updateThread = new std::thread([this]{updateLoop(); });
 }
 
 DeviceManager::~DeviceManager()
 {
 	shutdown = true;
-	for (int i = 0; i < devices.size(); i++)
-		if (devices[i] != NULL)
-			delete(devices[i]);
 }
 
 DeviceManager *DeviceManager::GetInstance()
@@ -25,7 +24,7 @@ DeviceManager *DeviceManager::GetInstance()
 	return instance;
 }
 
-void DeviceManager::scheduleSensor(Sensor *s)
+void DeviceManager::scheduleSensor(std::shared_ptr<Sensor> s)
 {
 	std::vector<SensorEvent> events = s->PollSensor();
 	unsigned long id;
@@ -43,13 +42,22 @@ void DeviceManager::scheduleSensor(Sensor *s)
 	}
 }
 	
-void DeviceManager::AddDevice(DeviceBase *device)
+bool DeviceManager::AddDevice(std::string DeviceName)	
 {
+	std::shared_ptr<DeviceBase> device = pluginManager->DeviceFactory(DeviceName);
+	if (device == NULL)
+	{
+		std::stringstream ss;
+		ss << "Device with name: " << DeviceName << " is not found among the loaded devices";
+		log->LogW(ss.str());
+		return false;
+	}
 	if (!init && device->GetBus() != eDeviceBus::NA)
 	{
 		int i=gpioInitialise();
 		if (i < 0)
 			log->LogC("Failed to init GPIO");
+		return false;
 	}
 	devices.push_back(device);
 	DeviceConfig dc = device->GetConfig();
@@ -62,9 +70,9 @@ void DeviceManager::AddDevice(DeviceBase *device)
 		device->SetConfig(dc);
 	}
 	if (deviceByBus.find(dc.GetDeviceBus()) == deviceByBus.end())
-		deviceByBus[dc.GetDeviceBus()] = std::vector<DeviceBase *>();
+		deviceByBus[dc.GetDeviceBus()] = std::vector<std::shared_ptr<DeviceBase>>();
 	if (deviceByType.find(dc.GetDeviceType()) == deviceByType.end())
-		deviceByType[dc.GetDeviceType()] = std::vector<DeviceBase *>();
+		deviceByType[dc.GetDeviceType()] = std::vector<std::shared_ptr<DeviceBase>>();
 	
 	
 	if (deviceByName.find(dc.GetName()) != deviceByName.end())
@@ -85,7 +93,7 @@ void DeviceManager::AddDevice(DeviceBase *device)
 	{	
 		if (device != nullptr)
 		{
-			Sensor *s = dynamic_cast<Sensor *>(device);
+			std::shared_ptr<Sensor> s = std::dynamic_pointer_cast<Sensor>(device);
 			uint16_t pollingInterval = device->GetPollingInterval();
 			scheduler->every(std::chrono::seconds(pollingInterval),
 				[s, this]()
@@ -94,6 +102,7 @@ void DeviceManager::AddDevice(DeviceBase *device)
 				});
 		}
 	}
+	return true;
 }
 
 void DeviceManager::rescheduleSensors()
@@ -101,49 +110,61 @@ void DeviceManager::rescheduleSensors()
 	scheduler->ClearTasks();
 	if (deviceByType.find(eDeviceType::SENSOR) != deviceByType.end())
 	{
-		for (std::vector<DeviceBase*>::iterator it = deviceByType[eDeviceType::SENSOR].begin();
+		for (std::vector<std::shared_ptr<DeviceBase>>::iterator it = deviceByType[eDeviceType::SENSOR].begin();
 			it != deviceByType[eDeviceType::SENSOR].end();
 			++it)
 		{
-			Sensor *s = (Sensor *)*it;
-			uint16_t pollingInterval = ((DeviceBase*)s)->GetPollingInterval();
-			scheduler->every(std::chrono::seconds(pollingInterval),
-				[s, this]()
-				{
-					scheduleSensor(s);
-				});
+			std::shared_ptr<Sensor> s= std::dynamic_pointer_cast<Sensor>(*it);
+			if (s == NULL)
+			{
+				std::stringstream ss;
+				ss << "Failed to cast device (" << it->get()->GetName() << " to Sensor";
+				log->LogC(ss.str());
+			}
+			else
+			{				
+				uint16_t pollingInterval = it->get()->GetPollingInterval();
+				scheduler->every(std::chrono::seconds(pollingInterval),
+					[s, this]()
+					{
+						scheduleSensor(s);
+					});
+			}
 		}
 	}
 }
 
-std::vector<DeviceBase*> DeviceManager::GetDeviceByBus(eDeviceBus bus)
+std::vector<std::shared_ptr<DeviceBase>> DeviceManager::GetDeviceByBus(eDeviceBus bus)
 {
 	if (deviceByBus.find(bus) == deviceByBus.end())
-		deviceByBus[bus] = std::vector<DeviceBase*>();
+		deviceByBus[bus] = std::vector<std::shared_ptr<DeviceBase>>();
 	return deviceByBus[bus];
 }
 
-DeviceBase* DeviceManager::GetDeviceByName(std::string name)
+std::shared_ptr<DeviceBase> DeviceManager::GetDeviceByName(std::string name)
 {
 	if (deviceByName.find(name) == deviceByName.end())
 		return nullptr;
 	return deviceByName[name];
 }
 
-std::vector<DeviceBase*> DeviceManager::GetDeviceByType(eDeviceType dType)
+std::vector<std::shared_ptr<DeviceBase>> DeviceManager::GetDeviceByType(eDeviceType dType)
 {
 	if (deviceByType.find(dType) == deviceByType.end())
-		deviceByType[dType] = std::vector<DeviceBase*>();
+		deviceByType[dType] = std::vector<std::shared_ptr<DeviceBase>>();
 	return deviceByType[dType];
 }
 
-std::vector<DeviceBase *> DeviceManager::GetAllDevices()
+std::vector<std::shared_ptr<DeviceBase>> DeviceManager::GetAllDevices()
 {
-	std::vector<DeviceBase*> ret;
-	for (std::map<std::string, DeviceBase*>::iterator it = deviceByName.begin();
+	std::vector<std::shared_ptr<DeviceBase>> ret;
+	for (std::map<std::string, std::shared_ptr<DeviceBase>>::iterator it = deviceByName.begin();
 		it != deviceByName.end();
 		++it)
-		return ret;
+	{
+		ret.push_back(it->second);
+	}
+	return ret;
 }
 	
 bool DeviceManager::storeConfig()
@@ -152,7 +173,7 @@ bool DeviceManager::storeConfig()
 	{
 		cJSON *deviceConfigFile = cJSON_CreateObject();
 		cJSON *array = cJSON_CreateObject();
-		for (std::map<std::string, DeviceBase*>::iterator it = deviceByName.begin();
+		for (std::map<std::string, std::shared_ptr<DeviceBase>>::iterator it = deviceByName.begin();
 			it != deviceByName.end();
 			++it)
 		{
@@ -174,6 +195,7 @@ bool DeviceManager::storeConfig()
 	return true;
 }
 
+//TODO: Create and setup the devices from the config
 bool DeviceManager::loadConfig()
 {
 	try

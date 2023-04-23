@@ -314,8 +314,8 @@ void NodeWidget::drawIcon()
 		break;
 	}
 }
-// the class factories
 
+// the class factories
 extern "C" UIWidget* create() {
 	NodeWidget *nw = new NodeWidget();
 	return ((UIWidget *)nw);

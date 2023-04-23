@@ -31,7 +31,7 @@ Client::Client() :
 	
 	
 	
-	dm->AddDevice(new TelemetryAgent());
+	dm->AddDevice("Telemetry Agent");
 	
 	// From here you add your additional devices, configure them as you need, etc.
 	// They will get polled at their polling interval by the device manager, which also sends the  events to any discovered servers

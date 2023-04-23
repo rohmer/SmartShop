@@ -100,3 +100,15 @@ std::vector<SensorEvent> AHTX0Sensor::PollSensor()
 	return ret;
 	
 }
+
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	AHTX0Sensor *obj = new AHTX0Sensor();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(AHTX0Sensor * p) 
+{
+	delete p;
+}

@@ -30,6 +30,9 @@
     <ClCompile Include="I2CDevice.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="DevicePluiginManager.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeviceBase.h">
@@ -57,6 +60,12 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="I2CDevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dlclass.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DevicePluginManager.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

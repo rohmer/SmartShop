@@ -1,5 +1,10 @@
 #include "GPIODevice.h"
 
+GPIODevice::GPIODevice(std::string Name, std::string Description, eDeviceType Type)
+	: DeviceBase(Name, Description, Type, eDeviceBus::GPIO)
+{
+}
+
 GPIODevice::GPIODevice(std::string Name, std::string Description, eDeviceType Type, GPIOPinDef devicePin)
 	: DeviceBase(Name, Description, Type, eDeviceBus::GPIO)	
 {
@@ -153,4 +158,21 @@ bool GPIODevice::SetValue(bool Value)
 	if (v == 0)
 		return true;
 	return false;
+}
+
+bool GPIODevice::AddPin(unsigned short PinNumber, GPIOPinDef::ePinMode PinMode, GPIOPinDef::ePullupDown PullupOrDown)
+{
+	for (std::vector<GPIOPinDef>::iterator it = pins.begin();
+		it != pins.end();
+		++it)
+	{
+		if (it->Pin == PinNumber)
+		{
+			std::stringstream ss;
+			ss << "Pin(" << PinNumber << ") already defined as: " << PinMode << ", not reassinging";
+			log->LogW(ss.str());
+			return false;
+		}
+	}
+	pins.push_back(GPIOPinDef(PinNumber, PinMode, PullupOrDown));
 }

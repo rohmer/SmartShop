@@ -58,6 +58,10 @@ void StatusWidget::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint
 	
 }
 
+void StatusWidget::Update()
+{
+}
+
 // the class factories
 
 extern "C" UIWidget* create() {

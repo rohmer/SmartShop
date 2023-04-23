@@ -6,6 +6,8 @@
 #include "../../Logger/Logger.h"
 #include "../I2CDevice.h"
 
+extern "C" DeviceBase *Factory();
+
 class PCA9685Device : public I2CDevice
 {
 public:

@@ -35,7 +35,7 @@ void Config::AddDeviceConfigs(DeviceManager *dm)
 {
 	if (dm == NULL)
 		dm = DeviceManager::GetInstance();
-	std::vector<DeviceBase*> dev = dm->GetAllDevices();
+	std::vector<std::shared_ptr<DeviceBase>> dev = dm->GetAllDevices();
 	for (int i = 0; i < dev.size(); i++)
 	{
 		if (dev[i] == NULL)

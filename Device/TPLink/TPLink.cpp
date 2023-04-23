@@ -67,3 +67,15 @@ std::vector<SensorEvent> TPLink::PollSensor()
 	}
 	return events;
 }
+
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	TPLink *obj = new TPLink();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(TPLink* p) 
+{
+	delete p;
+}

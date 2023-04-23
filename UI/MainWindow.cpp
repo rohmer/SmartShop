@@ -109,3 +109,23 @@ void MainWindow::updateNodeWidgets()
 		nodeWidgetManager->CreateNodeWidget(*it);
 	}
 }
+
+void MainWindow::AddEventWidget(std::shared_ptr<UIWidget> widget)
+{
+	uint width = lv_obj_get_width(lv_tabview_get_content(tabView));
+	uint height = lv_obj_get_height(lv_tabview_get_content(tabView));
+	int nodeWidth = width / NODE_COLUMNS - (10 * NODE_COLUMNS);
+	int nodeHeight = height / NODE_ROWS - 50 - (10 * NODE_ROWS);
+	lv_obj_set_flex_flow(eventTab, LV_FLEX_FLOW_ROW_WRAP);
+	widget->Draw(eventTab, false, 0, 0, width, height);
+	eventWidgets.push_back(widget);
+}
+
+void MainWindow::updateEventWidgets()
+{
+	for (std::vector<std::shared_ptr<UIWidget>>::iterator it = eventWidgets.begin();
+		 it != eventWidgets.end();
+		 ++it)
+		it->get()->Update();
+	
+}

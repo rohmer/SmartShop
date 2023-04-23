@@ -9,6 +9,11 @@ void TPLinkUI::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16_t
 {
 }
 
+
+void TPLinkUI::Update()
+{
+}
+
 // the class factories
 
 extern "C" UIWidget* create() {

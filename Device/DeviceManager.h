@@ -18,25 +18,27 @@
 #include "DeviceBase.h"
 #include "Sensor.h"
 #include "pigpio.h"
+#include "DevicePluginManager.h"
 
 class DeviceManager
 {
 public:
 	static DeviceManager *GetInstance();
-	~DeviceManager();
-	void AddDevice(DeviceBase *device);
+	~DeviceManager();	
 	
-	std::vector<DeviceBase*> GetDeviceByType(eDeviceType deviceType);
-	DeviceBase* GetDeviceByName(std::string name);
-	std::vector<DeviceBase*> GetDeviceByBus(eDeviceBus deviceBus);
+	std::vector<std::shared_ptr<DeviceBase>> GetDeviceByType(eDeviceType deviceType);
+	std::shared_ptr<DeviceBase> GetDeviceByName(std::string name);
+	std::vector<std::shared_ptr<DeviceBase>> GetDeviceByBus(eDeviceBus deviceBus);
 	
 	std::vector<std::string> GetServerEndpoints();
-	void AddServerEndpoint(std::string server, uint port);
 	
-	std::vector<DeviceBase*> GetAllDevices();
+	std::vector<std::shared_ptr<DeviceBase>> GetAllDevices();
+	
+	void AddServerEndpoint(std::string server, uint port);
 	
 	std::thread *updateThread;
 	
+	bool AddDevice(std::string DeviceName);
 	
 private:
 	static DeviceManager *instance;
@@ -48,12 +50,12 @@ private:
 	Bosma::Scheduler *scheduler;
 	
 	std::vector<std::string> serverEndpoints;
-	std::map<eDeviceBus, std::vector<DeviceBase*>> deviceByBus;
-	std::map<eDeviceType, std::vector<DeviceBase*>> deviceByType;
-	std::map<std::string, DeviceBase*> deviceByName;
+	std::map<eDeviceBus, std::vector<std::shared_ptr<DeviceBase>>> deviceByBus;
+	std::map<eDeviceType, std::vector<std::shared_ptr<DeviceBase>>> deviceByType;
+	std::map<std::string, std::shared_ptr<DeviceBase>> deviceByName;
 	std::map<std::string, DeviceConfig> deviceConfigs;
-	std::vector<DeviceBase*> devices;
-	void scheduleSensor(Sensor *sensor);
+	std::vector<std::shared_ptr<DeviceBase>> devices;
+	void scheduleSensor(std::shared_ptr<Sensor> sensor);
 	void rescheduleSensors();
 	
 	bool storeConfig();
@@ -61,4 +63,5 @@ private:
 	bool shutdown = false;
 	bool init = false;
 	EndpointClient *endpointClient = NULL;
+	DevicePluginManager *pluginManager = NULL;
 };

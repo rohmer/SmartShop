@@ -28,6 +28,9 @@ public:
 
 	virtual void UpdateConfig(DeviceConfig newConfig);
 	
+	typedef DeviceBase* create_t();
+	typedef void destroy_t(DeviceBase*);
+	
 protected:
 	DeviceConfig config;
 	std::string name, desc;
@@ -36,3 +39,4 @@ protected:
 	Logger *log;
 	int pollingInterval;
 };
+

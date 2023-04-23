@@ -170,3 +170,15 @@ uint8_t PCA9685Device::ReadPrescale()
 {
 	return ReadByteData(PCA9685_PRESCALE);
 }
+
+// the class factories
+extern "C" DeviceBase* create() 
+{
+	PCA9685Device *obj = new PCA9685Device();
+	return ((DeviceBase *)obj);
+}
+
+extern "C" void destroy(PCA9685Device * p) 
+{
+	delete p;
+}

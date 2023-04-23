@@ -14,8 +14,9 @@ class MainWindow
 {
 public:
 	MainWindow(uint widgetWidth, uint widgetHeight);
-	
-private:
+	void AddEventWidget(std::shared_ptr<UIWidget> widget);
+
+  private:
 	lv_obj_t *windowObj;
 	lv_obj_t *appTitle;
 	static lv_obj_t *wifiStrIcon, *wifiNetworkLabel;
@@ -24,6 +25,7 @@ private:
 	
 	void updateWinTask();
 	void updateNodeWidgets();
+	void updateEventWidgets();
 	
 	static int wifiUpdateTimer, logUpdateTimer;
 	std::thread *updateTimer;
@@ -35,4 +37,5 @@ private:
 	uint widgetWidth, widgetHeight;
 	bool shutdown = false;
 	NodeWidgetManager *nodeWidgetManager;
+	std::vector<std::shared_ptr<UIWidget>> eventWidgets;
 };
