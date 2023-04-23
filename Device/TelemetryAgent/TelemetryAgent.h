@@ -7,7 +7,7 @@
 #include "../Sensor.h"
 #include "../DeviceBase.h"
 
-extern "C" DeviceBase *Factory();
+//extern "C" DeviceBase Factory();
 
 class TelemetryAgent : public DeviceBase, public Sensor
 {
