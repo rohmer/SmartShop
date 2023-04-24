@@ -64,7 +64,7 @@
     </ClCompile>
     <Link>
       <LibrarySearchDirectories>=/usr/lib/arm-linux-gnueabihf;=/usr/local/lib/arm-linux-gnueabihf;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>pthread;dl;httpserver;gnutls;atomic;nettle;ssl;nettle;gmp;unistring;hogweed;tasn1;p11-kit;idn2;ffi;vchiq_arm;vcos;bcm_host;SDL2;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>pthread;dl;httpserver;gnutls;atomic;nettle;ssl;nettle;gmp;unistring;hogweed;tasn1;p11-kit;idn2;ffi;vchiq_arm;vcos;bcm_host;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />

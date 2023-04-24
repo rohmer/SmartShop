@@ -112,7 +112,7 @@
     <ClInclude Include="DeviceEnums.h" />
     <ClInclude Include="DeviceManager.h" />
     <ClInclude Include="DevicePluginManager.h" />
-    <ClInclude Include="dlclass.hpp" />
+    <ClInclude Include="DeviceLoader.hpp" />
     <ClInclude Include="GPIODevice.h" />
     <ClInclude Include="GPIOPinDef.h" />
     <ClInclude Include="I2CDevice.h" />

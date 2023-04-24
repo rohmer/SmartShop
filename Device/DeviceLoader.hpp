@@ -6,11 +6,11 @@
 #include <iostream>
 
 template <class T>
-class DLClass {
+class DeviceLoader {
 
 public:
-    DLClass(std::string module_name);
-    ~DLClass();
+	DeviceLoader(std::string module_name);
+	~DeviceLoader();
 
     template <typename... Args>
     std::shared_ptr<T> make_obj(Args... args);
@@ -30,4 +30,4 @@ private:
     std::shared_ptr<shared_obj> shared;
 };
 
-#include "dlclass.cpp"
+#include "DeviceLoader.cpp"

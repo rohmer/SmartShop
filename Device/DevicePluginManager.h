@@ -5,7 +5,7 @@
 #include <string>
 
 #include "DeviceBase.h"
-#include "dlclass.hpp"
+#include "DeviceLoader.hpp"
 #include "../Logger/Logger.h"
 
 class DevicePluginManager
@@ -16,12 +16,12 @@ public:
 	
 	std::shared_ptr<DeviceBase> DeviceFactory(std::string name);
 
-	std::map<std::string, DLClass<DeviceBase> *> GetLoadedDevices();
+	std::map<std::string, DeviceLoader<DeviceBase> *> GetLoadedDevices();
 
 private:
 	static DevicePluginManager *instance;
 	DevicePluginManager();
 	
-	std::map<std::string, DLClass<DeviceBase>*> loadedDevices;
+	std::map<std::string, DeviceLoader<DeviceBase>*> loadedDevices;
 	Logger *log;
 };

@@ -62,7 +62,7 @@
     <ClInclude Include="I2CDevice.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="dlclass.hpp">
+    <ClInclude Include="DeviceLoader.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DevicePluginManager.h">

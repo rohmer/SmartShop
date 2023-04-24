@@ -33,7 +33,7 @@ void DevicePluginManager::LoadPlugins()
 				
 				try
 				{
-					auto dlDevice = new DLClass<DeviceBase>(p.string());
+					auto dlDevice = new DeviceLoader<DeviceBase>(p.string());
 					std::shared_ptr<DeviceBase> widget = dlDevice->make_obj();
 					if (widget != NULL)
 					{
@@ -62,7 +62,7 @@ std::shared_ptr<DeviceBase> DevicePluginManager::DeviceFactory(std::string Devic
 	return loadedDevices[DeviceName]->make_obj();	
 }
 
-std::map<std::string, DLClass<DeviceBase> *> DevicePluginManager::GetLoadedDevices()
+std::map<std::string, DeviceLoader<DeviceBase> *> DevicePluginManager::GetLoadedDevices()
 {
 	return loadedDevices;
 }

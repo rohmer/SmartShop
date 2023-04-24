@@ -1,18 +1,19 @@
-#include "dlclass.hpp"
+#include "DeviceLoader.hpp"
 
 template <class T>
-DLClass<T>::DLClass(std::string module_name) :
+	DeviceLoader<T>::DeviceLoader(std::string module_name)
+		:
     module(module_name){
     shared = std::make_shared<shared_obj>();
 }
 
 template <class T>
-DLClass<T>::~DLClass() {
+	DeviceLoader<T>::~DeviceLoader() {
     //close_module();
 }
 
 template <class T>
-void DLClass<T>::shared_obj::close_module() {
+	void DeviceLoader<T>::shared_obj::close_module() {
     if(dll_handle) {
         dlclose(dll_handle);
         dll_handle = NULL;
@@ -22,7 +23,7 @@ void DLClass<T>::shared_obj::close_module() {
 }
 
 template <class T>
-bool DLClass<T>::shared_obj::open_module(std::string module) {
+	bool DeviceLoader<T>::shared_obj::open_module(std::string module) {
     
     dll_handle = dlopen(module.c_str(), RTLD_LAZY);
 
@@ -54,7 +55,7 @@ bool DLClass<T>::shared_obj::open_module(std::string module) {
 }
 
 template <class T> template< typename... Args>
-std::shared_ptr<T> DLClass<T>::make_obj(Args... args) {
+	std::shared_ptr<T> DeviceLoader<T>::make_obj(Args... args) {
     if(!shared->create || !shared->destroy) {
         if(!shared->open_module(module)) {
             return std::shared_ptr<T>(NULL);
@@ -69,6 +70,6 @@ std::shared_ptr<T> DLClass<T>::make_obj(Args... args) {
 
 
 template <class T>
-DLClass<T>::shared_obj::~shared_obj() {
+	DeviceLoader<T>::shared_obj::~shared_obj() {
     close_module();
 }
