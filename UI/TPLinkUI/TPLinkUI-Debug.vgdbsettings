@@ -38,7 +38,12 @@
   <CustomBuild>
     <PreSyncActions />
     <PreBuildActions />
-    <PostBuildActions />
+    <PostBuildActions>
+      <CustomActionBase xsi:type="ExternalActionListReference">
+        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <RelativePath>C:\Users\RonOhmer\Documents\GitHub\SmartShop\Installer</RelativePath>
+      </CustomActionBase>
+    </PostBuildActions>
     <PreCleanActions />
     <PostCleanActions />
   </CustomBuild>

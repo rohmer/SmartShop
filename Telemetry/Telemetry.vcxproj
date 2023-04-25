@@ -117,6 +117,7 @@
   <ItemGroup>
     <None Include="Telemetry-Debug.vgdbsettings" />
     <None Include="Telemetry-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.vcxproj">

@@ -14,4 +14,112 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\marisa\agent.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\io\mapper.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\io\reader.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\io\writer.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\trie\louds-trie.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\trie\tail.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\grimoire\vector\bit-vector.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\keyset.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marisa\trie.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\marisa\grimoire\algorithm.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\algorithm\sort.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\intrin.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\io.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\io\mapper.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\io\reader.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\io\writer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\cache.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\config.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\entry.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\header.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\history.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\key.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\louds-trie.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\range.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\state.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\trie\tail.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector\bit-vector.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector\flat-vector.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector\pop-count.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector\rank-index.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marisa\grimoire\vector\vector.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="marisaTrie-Debug.vgdbsettings" />
+    <None Include="marisaTrie-Release.vgdbsettings" />
+    <None Include="version.json" />
+  </ItemGroup>
 </Project>

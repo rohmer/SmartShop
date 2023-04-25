@@ -27,6 +27,7 @@
   <ItemGroup>
     <None Include="LogEndpoint-Debug.vgdbsettings" />
     <None Include="LogEndpoint-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

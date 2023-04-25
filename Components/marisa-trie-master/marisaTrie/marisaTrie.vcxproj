@@ -60,6 +60,7 @@
   <ItemGroup>
     <None Include="marisaTrie-Debug.vgdbsettings" />
     <None Include="marisaTrie-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\marisa\agent.cc" />

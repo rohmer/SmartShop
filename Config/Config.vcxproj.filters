@@ -57,5 +57,6 @@
   <ItemGroup>
     <None Include="Config-Debug.vgdbsettings" />
     <None Include="Config-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
 </Project>

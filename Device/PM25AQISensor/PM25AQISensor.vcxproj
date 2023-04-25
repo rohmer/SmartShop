@@ -112,6 +112,7 @@
   <ItemGroup>
     <None Include="PM25AQISensor-Debug.vgdbsettings" />
     <None Include="PM25AQISensor-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DB\DB.vcxproj">

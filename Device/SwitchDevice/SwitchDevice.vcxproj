@@ -112,6 +112,7 @@
   <ItemGroup>
     <None Include="SwitchDevice-Debug.vgdbsettings" />
     <None Include="SwitchDevice-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DB\DB.vcxproj">

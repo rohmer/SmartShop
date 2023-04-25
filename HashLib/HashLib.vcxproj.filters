@@ -14,4 +14,64 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="crc32.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="digest.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="HashLib.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="keccak.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="sha1.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="sha256.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="sha3.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="crc32.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="hash.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashLib.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="hmac.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="keccak.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="sha1.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="sha256.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="sha3.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HashLib-Debug.vgdbsettings" />
+    <None Include="HashLib-Release.vgdbsettings" />
+    <None Include="version.json" />
+  </ItemGroup>
 </Project>

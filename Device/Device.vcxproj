@@ -121,6 +121,7 @@
   <ItemGroup>
     <None Include="Device-Debug.vgdbsettings" />
     <None Include="Device-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DB\DB.vcxproj">

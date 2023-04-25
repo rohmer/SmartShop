@@ -60,6 +60,7 @@
   <ItemGroup>
     <None Include="lvgl-Debug.vgdbsettings" />
     <None Include="lvgl-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

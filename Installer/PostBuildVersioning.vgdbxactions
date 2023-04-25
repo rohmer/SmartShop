@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ReusableCustomActionList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Actions>
+    <CustomActionBase xsi:type="CommandLineAction">
+      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+      <RemoteHost>
+        <HostName>BuildMachine</HostName>
+        <Transport>BuiltinShortcut</Transport>
+      </RemoteHost>
+      <Command>$(ActiveSourceDir)\bin\Release\net7.0\PostBuild.exe</Command>
+      <Arguments>-SourceDirectory $(ProjectDir) -DestinationDirectory $(TargetDir) -BuildArtifact $(TargetFileName)</Arguments>
+      <WorkingDirectory>$(BuildDir)</WorkingDirectory>
+      <BackgroundMode>false</BackgroundMode>
+    </CustomActionBase>
+  </Actions>
+</ReusableCustomActionList>

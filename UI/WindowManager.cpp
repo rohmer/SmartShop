@@ -49,14 +49,13 @@ void WindowManager::Init()
 	/*This function will be called periodically (by the library) to get the mouse position and state*/
 	indev_drv.read_cb = evdev_read;
 	lv_indev_drv_register(&indev_drv);
-	
-	runner = new std::thread([this]{tickThread(); });
-	
 	// Define the widget size
 	// We are going 5, 5 tall
-	widgetWidth = WIDTH / 5-10;
+	widgetWidth = WIDTH / 5 - 10;
 	widgetHeight = HEIGHT / 5 - 10;
 	mainWindow = new MainWindow(widgetWidth, widgetHeight);
+	runner = new std::thread([this]{tickThread(); });
+	
 	getActiveEventTypes();
 	log->LogI("WindowManager Initalized");
 }

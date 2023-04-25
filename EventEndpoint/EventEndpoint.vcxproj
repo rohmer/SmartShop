@@ -112,6 +112,7 @@
   <ItemGroup>
     <None Include="EventEndpoint-Debug.vgdbsettings" />
     <None Include="EventEndpoint-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DB\DB.vcxproj">

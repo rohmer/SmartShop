@@ -42,4 +42,7 @@
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="version.json" />
+  </ItemGroup>
 </Project>

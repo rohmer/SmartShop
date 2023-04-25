@@ -104,6 +104,7 @@
   <ItemGroup>
     <None Include="RESTServer-Debug.vgdbsettings" />
     <None Include="RESTServer-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DB\DB.vcxproj">

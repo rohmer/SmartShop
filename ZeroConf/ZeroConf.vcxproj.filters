@@ -66,6 +66,7 @@
   <ItemGroup>
     <None Include="ZeroConf-Debug.vgdbsettings" />
     <None Include="ZeroConf-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

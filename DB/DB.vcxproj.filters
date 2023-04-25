@@ -63,6 +63,7 @@
   <ItemGroup>
     <None Include="DB-Debug.vgdbsettings" />
     <None Include="DB-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

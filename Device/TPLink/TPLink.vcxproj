@@ -86,6 +86,7 @@
   <ItemGroup>
     <None Include="TPLink-Debug.vgdbsettings" />
     <None Include="TPLink-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Config\Config.vcxproj">

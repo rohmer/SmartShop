@@ -30,6 +30,7 @@
   <ItemGroup>
     <None Include="AHTX0Sensor-Debug.vgdbsettings" />
     <None Include="AHTX0Sensor-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

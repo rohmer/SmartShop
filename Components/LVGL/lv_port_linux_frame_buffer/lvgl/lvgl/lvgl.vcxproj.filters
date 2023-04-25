@@ -2027,6 +2027,7 @@
     </ClInclude>
     <None Include="lvgl-Debug.vgdbsettings" />
     <None Include="lvgl-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lv_conf.h">

@@ -30,6 +30,7 @@
   <ItemGroup>
     <None Include="MCP9808Sensor-Debug.vgdbsettings" />
     <None Include="MCP9808Sensor-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

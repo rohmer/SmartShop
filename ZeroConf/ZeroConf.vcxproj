@@ -114,6 +114,7 @@
     <ClInclude Include="ZeroConf.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="version.json" />
     <None Include="ZeroConf-Debug.vgdbsettings" />
     <None Include="ZeroConf-Release.vgdbsettings" />
   </ItemGroup>

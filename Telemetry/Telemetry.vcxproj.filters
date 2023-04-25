@@ -42,5 +42,6 @@
   <ItemGroup>
     <None Include="Telemetry-Debug.vgdbsettings" />
     <None Include="Telemetry-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
 </Project>

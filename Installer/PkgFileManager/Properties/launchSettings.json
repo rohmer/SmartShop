@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PkgFileManager": {
+      "commandName": "Project",
+      "commandLineArgs": "-PackageFile test.json -Add -File \\tmp\\out -FileType UI -Version 1.2.3"
+    }
+  }
+}

@@ -33,6 +33,7 @@
   <ItemGroup>
     <None Include="RaspUtils-Debug.vgdbsettings" />
     <None Include="RaspUtils-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

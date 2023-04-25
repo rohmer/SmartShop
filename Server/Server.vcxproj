@@ -99,6 +99,7 @@
     <None Include="PreLoad.cmake" />
     <None Include="Server-Debug.vgdbsettings" />
     <None Include="Server-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Init.h" />

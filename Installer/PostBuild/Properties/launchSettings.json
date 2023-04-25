@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PostBuild": {
+      "commandName": "Project",
+      "commandLineArgs": "-SourceDirectory C:\\Users\\RonOhmer\\Documents\\GitHub\\SmartShop\\Components\\LVGL\\lv_port_linux_frame_buffer\\lvgl\\lvgl -DestinationDirectory C:\\Users\\RonOhmer\\Documents\\GitHub\\SmartShop\\VisualGDB\\Debug -BuildArtifact lvgl.so"
+    }
+  }
+}

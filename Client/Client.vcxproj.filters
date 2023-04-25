@@ -48,5 +48,6 @@
   <ItemGroup>
     <None Include="Client-Debug.vgdbsettings" />
     <None Include="Client-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
 </Project>

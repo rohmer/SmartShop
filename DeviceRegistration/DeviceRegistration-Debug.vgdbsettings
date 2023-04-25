@@ -55,6 +55,7 @@
     <ProjectFile>DeviceRegistration.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
+      <EnvironmentSetupFiles />
     </RemoteBuildEnvironment>
     <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
@@ -63,7 +64,12 @@
   <CustomBuild>
     <PreSyncActions />
     <PreBuildActions />
-    <PostBuildActions />
+    <PostBuildActions>
+      <CustomActionBase xsi:type="ExternalActionListReference">
+        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <RelativePath>..\Installer\PostBuildVersioning.vgdbxactions</RelativePath>
+      </CustomActionBase>
+    </PostBuildActions>
     <PreCleanActions />
     <PostCleanActions />
   </CustomBuild>

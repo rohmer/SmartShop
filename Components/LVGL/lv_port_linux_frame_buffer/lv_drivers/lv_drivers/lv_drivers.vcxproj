@@ -61,6 +61,7 @@
     <None Include="..\toolchain.cmake" />
     <None Include="lv_drivers-Debug.vgdbsettings" />
     <None Include="lv_drivers-Release.vgdbsettings" />
+    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt" />
