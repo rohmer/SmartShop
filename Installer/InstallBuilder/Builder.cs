@@ -31,11 +31,13 @@ namespace InstallBuilderLib
                 if (ptemp == null)
                     return false;
                 pd = ptemp;
-            } catch (Exception)
+            } catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
-            string workingDir = Path.GetTempPath();
+            string workingDir = Path.GetTempPath()+Guid.NewGuid().ToString();
+            Directory.CreateDirectory(workingDir);
             foreach (FileDescriptor f in pd.PackageFiles)
             {
                 Console.WriteLine(string.Format("Generating hash for: {0}", f.SourceFile));
@@ -44,6 +46,7 @@ namespace InstallBuilderLib
                 try
                 {
                     File.Copy(f.SourceFile, dest);
+                    f.SourceFile = f.DestinationFolder + "/" + Path.GetFileName(f.SourceFile);
                 } catch (Exception e)
                 {
                     Console.WriteLine(
@@ -78,6 +81,7 @@ namespace InstallBuilderLib
             }
 
             compressDirectory(workingDir, packageFile, 9);
+            Directory.Delete(workingDir, true);
             return true;
         }
 

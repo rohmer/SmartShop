@@ -131,6 +131,7 @@
     <ClInclude Include="DBDeviceConfigItem.h" />
     <ClInclude Include="DBEventData.h" />
     <ClInclude Include="DBFloatData.h" />
+    <ClInclude Include="DBInstall.h" />
     <ClInclude Include="DBIntData.h" />
     <ClInclude Include="dbstat.h" />
     <ClInclude Include="DBStringData.h" />

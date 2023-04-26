@@ -20,8 +20,9 @@ public class Program
         try
         {
             parsed = Args.Parse<CLIArgs>(args);
-        } catch(Exception)
+        } catch(Exception e)
         {
+            Console.WriteLine(e.Message);
             Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<CLIArgs>());
             Environment.Exit(0);
         }
@@ -30,6 +31,11 @@ public class Program
         desc = parsed.Description;
         package = parsed.Package;
         
+        if(Path.GetExtension(package)!=".pdef")
+        {
+            package += ".pdef";
+            Console.WriteLine("Setting package name to: " + package);
+        }
         string tmpV = parsed.Version;
         if(!string.IsNullOrEmpty(tmpV))
         {

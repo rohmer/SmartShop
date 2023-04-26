@@ -7,7 +7,7 @@
         <HostName>BuildMachine</HostName>
         <Transport>BuiltinShortcut</Transport>
       </RemoteHost>
-      <Command>$(ActiveSourceDir)\bin\Release\net7.0\PostBuild.exe</Command>
+      <Command>$(SolutionDir)\Installer\PostBuild\bin\Release\net7.0\PostBuild.exe</Command>
       <Arguments>-SourceDirectory $(ProjectDir) -DestinationDirectory $(TargetDir) -BuildArtifact $(TargetFileName)</Arguments>
       <WorkingDirectory>$(BuildDir)</WorkingDirectory>
       <BackgroundMode>false</BackgroundMode>

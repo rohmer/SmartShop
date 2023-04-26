@@ -161,18 +161,6 @@
     <ProjectReference Include="..\HashLib\HashLib.vcxproj">
       <Project>{8b833f2f-1586-4a1d-ab65-947b473f61d1}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Installer\AddFileToPkg\AddFileToPkg.vcxproj">
-      <Project>{c50f957d-66a9-4d4e-9212-06037cdf227c}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Installer\CreatePkg\CreatePkg.vcxproj">
-      <Project>{76e7792e-92e3-4d53-9b67-6b57f90d560c}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Installer\GenInstall\GenInstall.vcxproj">
-      <Project>{b36b94d5-df68-417a-8d41-6c3ddf81b9c0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Installer\InstallLib\InstallLib.vcxproj">
-      <Project>{bcf8ca05-423d-4f70-a11a-311d09fdfe5c}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\LogEndpoint\LogEndpoint.vcxproj">
       <Project>{0b364821-3fb8-4f19-9d0b-68d7f384c65a}</Project>
     </ProjectReference>

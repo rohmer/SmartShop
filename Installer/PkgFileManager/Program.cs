@@ -30,9 +30,16 @@ public class Program
             ft = parsed.FileType;
 
             string tmpV = parsed.Version;
+            Console.WriteLine("Checking for Version file: " + file + ".json");
             if (File.Exists(file + ".json"))
             {
                 version = InstallBuilderLib.Version.FromFile(file + ".json");
+                Console.WriteLine(string.Format("Using Version file, version {0}", version.ToString()));
+
+            }
+            else
+            {
+                Console.WriteLine("Version file does not exist");
             }
 
             if (!string.IsNullOrEmpty(tmpV))
@@ -51,8 +58,9 @@ public class Program
             {
                 version = new InstallBuilderLib.Version(0, 0, 0);
             }
-        } catch (Exception)
+        } catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<CLIArgs>());
             Environment.Exit(0);
         }
@@ -97,11 +105,22 @@ public class Program
                 FileDescriptor fd = new FileDescriptor(file, output, ft, version);
 
                 bool exists = false;
+                string fn = string.Empty;
+                InstallBuilderLib.Version fv;
                 foreach (FileDescriptor f in package.PackageFiles)
                     if (f.DestinationFolder == output && f.SourceFile == fd.SourceFile)
+                    {
                         exists = true;
-                if(!exists)
+                        fn = f.SourceFile;
+                        f.FileVersion = version; ;
+                    }
+
+                if (!exists)
                     package.PackageFiles.Add(fd);
+                else
+                {
+                    Console.WriteLine(string.Format("File: {0} exists in package already, updating version to {1}", fn, version.ToString()));
+                }
                 package.ToFile(pd);
             }
 

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{a10aee0f-23ee-4da0-bff3-bd04c9fb1afc}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{39c6da50-29c7-4702-8c95-60f77a750072}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{61b30755-2501-46fd-a48b-27bccd1503a7}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DecompUtil.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDescriptor.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallLib.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageDescriptor.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Version.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DecompUtil.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDescriptor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallLib.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="PacakgeDescriptor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstallLib-Debug.vgdbsettings" />
+    <None Include="InstallLib-Release.vgdbsettings" />
+    <None Include="version.json" />
+  </ItemGroup>
+</Project>

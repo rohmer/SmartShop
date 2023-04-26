@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PackageBuilder": {
+      "commandName": "Project",
+      "commandLineArgs": "-P C:\\Users\\RonOhmer\\Documents\\GitHub\\SmartShop\\VisualGDB\\Debug\\ZeroConf.pdef -O \\tmp\\ZeroConf"
+    }
+  }
+}

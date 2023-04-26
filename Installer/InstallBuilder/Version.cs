@@ -57,5 +57,10 @@ namespace InstallBuilderLib
                 return false;
             }
         }
+
+        public string ToString()
+        {
+            return string.Format("{0}.{1}.{2}", Major, Minor, BuildNumber);
+        }
     }
 }

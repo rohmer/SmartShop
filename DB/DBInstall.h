@@ -6,7 +6,7 @@ class DBInstall
 {
 public:
 	int ID;
-	std::string softwareType;
+	std::string packageName, packageDescription, packageFile;
 	int major, minor, buildNum;
 };
 
