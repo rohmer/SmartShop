@@ -15,3 +15,5 @@
 
 // Disables the built in telemetry agent for the Server, define to turn off
 #undef DISABLE_TELEMETRY_AGENT
+
+#define INSTALLDIR "/usr/local/SmartShop"

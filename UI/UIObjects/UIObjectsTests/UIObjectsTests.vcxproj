@@ -58,6 +58,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{0b284af8-2b53-4fb3-bd2c-baa0eb66b7cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lv_drivers\lv_drivers.vcxproj">
+      <Project>{77a73884-2341-4d25-b2be-b12e2a1c5f08}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
       <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
     </ProjectReference>
@@ -106,6 +112,7 @@
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupport_c.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\OrderedTest.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\Linux\UtestPlatform.cpp" />
+    <ClCompile Include="WindowTests.cpp" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineArguments.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineTestRunner.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CppUTestConfig.h" />
@@ -155,6 +162,7 @@
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\OrderedTest.h" />
     <ClInclude Include="AdvKeyboardTests.h" />
     <ClInclude Include="InputFieldTests.h" />
+    <ClInclude Include="WindowTests.h" />
     <None Include="dict.trie">
       <DeploymentContent>true</DeploymentContent>
     </None>

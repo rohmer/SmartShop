@@ -21,19 +21,25 @@
     <ClCompile Include="DropListBox.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="NumericSlider.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="AdvKeyboard.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Dictionary.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="SpinBox.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinimizableWindow.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="NumericSlider.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollapsableWIndow.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdvKeyboard.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,6 +63,24 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="SpinBox.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileBrowser.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimizableWindow.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNode.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeView.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTools.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollapableWindow.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

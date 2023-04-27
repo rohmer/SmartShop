@@ -7,6 +7,7 @@
 #include "../../SensorEvent/SensorEvent.h"
 #include "../UIWidget/UIWidget.h"
 #include "sqlite_orm.h"
+#include "NodeWidgetMaximized.h"
 
 extern "C" UIWidget *Factory();
 
@@ -25,6 +26,8 @@ public:
 	void Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y) override;
 	void SetID(std::string id);
 	void Update() override;
+	std::string GetID();
+	void SetNodeWidgetMaximized(std::shared_ptr<NodeWidgetMaximized> obj);
 	
 private:
 	void createObjects(lv_obj_t *parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y);
@@ -44,4 +47,8 @@ private:
 	
 	uint width, height, verticalQuarters, horizontalQuarters;
 	bool maximized = false;
+	
+	std::shared_ptr<NodeWidgetMaximized> nodeWidgetMaximized = NULL;
+	
+	static void nodeButtonPressed(lv_event_t *e);
 };

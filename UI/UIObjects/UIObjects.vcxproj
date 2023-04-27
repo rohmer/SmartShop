@@ -63,18 +63,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvKeyboard.h" />
+    <ClInclude Include="CollapableWindow.h" />
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="FileBrowser.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="DropListBox.h" />
+    <ClInclude Include="MinimizableWindow.h" />
     <ClInclude Include="NumericSlider.h" />
+    <ClInclude Include="ObjectTools.h" />
     <ClInclude Include="SpinBox.h" />
+    <ClInclude Include="TreeNode.h" />
+    <ClInclude Include="TreeView.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdvKeyboard.cpp" />
+    <ClCompile Include="CollapsableWIndow.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="DropListBox.cpp" />
     <ClCompile Include="InputField.cpp" />
+    <ClCompile Include="MinimizableWindow.cpp" />
     <ClCompile Include="NumericSlider.cpp" />
     <ClCompile Include="SpinBox.cpp" />
     <ClCompile Include="Utils.cpp" />

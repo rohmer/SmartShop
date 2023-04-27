@@ -282,12 +282,18 @@
     <ClCompile Include="AdvKeyboardTests.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="WindowTests.cpp">
+      <Filter>Header files\Test Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputFieldTests.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="AdvKeyboardTests.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowTests.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

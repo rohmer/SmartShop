@@ -58,7 +58,272 @@ bool InstallLib::InstallPackage(std::string packageFile)
 		uninstall(workingDir, packageDescriptor, currentStage);
 		return false;
 	}
+	currentStage = eInstallStage::CHECKSUM;
 	
+	try
+	{
+		result = checkChecksums(workingDir, packageDescriptor);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error evaluating checksums in package, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	try
+	{
+		result = backupFiles(workingDir, packageDescriptor);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error backing up files in package, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	currentStage = eInstallStage::STOP;
+	try
+	{
+		result = stop(workingDir, packageDescriptor);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error stopping SmartShop, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	currentStage = eInstallStage::COPY;
+	try
+	{
+		result = copyFiles(workingDir, packageDescriptor);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error copying files in package, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	currentStage = eInstallStage::RESTART;
+	try
+	{
+		result = start(workingDir, packageDescriptor);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error starting server, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	currentStage = eInstallStage::STORE_TO_DB;
+	try
+	{
+		result = storeToDB(workingDir, packageDescriptor, packageFile);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error starting server, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;		
+	}
+	if (!result)
+	{
+		uninstall(workingDir, packageDescriptor, currentStage);
+		return false;
+	}
+	
+	currentStage = eInstallStage::CLEANUP;
+	try
+	{
+		result = storeToDB(workingDir, packageDescriptor, packageFile);
+	}
+	catch (const std::exception &e)
+	{
+		std::stringstream ss;
+		ss << "Error starting server, " << e.what();
+		installLog.push_back(sInstallLog(ss.str(), false));
+	}
+	if (!result)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool InstallLib::storeToDB(std::string workingDir, PackageDescriptor &package, std::string packageFile)
+{
+	DBInstall installRec;
+	installRec.buildNum = package.PackageVersion.BuildNumber;
+	installRec.installTime = std::time(NULL);
+	installRec.major = package.PackageVersion.Major;
+	installRec.minor = package.PackageVersion.Minor;
+	installRec.packageDescription = package.PackageDescription;
+	installRec.packageFile = packageFile;
+	installRec.packageName = package.PackageName;
+	installRec.ID = DB::GetInstance()->GetStorage()->insert(installRec);
+	
+	for (std::vector<FileDescriptor>::iterator it = package.PackageFiles.begin();
+		it != package.PackageFiles.end();
+		++it)
+	{
+		DBInstallFile fRec;
+		fRec.buildNum = it->FileVersion.BuildNumber;
+		fRec.checksum = it->MD5Hash;
+		
+		std::filesystem::path p = INSTALLDIR;
+		p /= it->DestinationFolder;
+		p /= it->SourceFile;
+		fRec.file = p.string();
+		fRec.installTime = installRec.installTime;
+		fRec.major = it->FileVersion.Major;
+		fRec.minor = it->FileVersion.Minor;
+		
+		// TODO: What am I gonna do about Software ID..
+		fRec.ID = DB::GetInstance()->GetStorage()->insert(fRec);
+	}
+	installLog.push_back(sInstallLog("Stored package to DB", true));
+	return true;
+}
+
+bool InstallLib::stop(std::string workingDir, PackageDescriptor &package)
+{
+	//TODO: When I actually figure out exactly how we will be managed
+	return true;
+}
+
+bool InstallLib::start(std::string workingDir, PackageDescriptor &package)
+{
+	//TODO: When I actually figure out exactly how we will be managed
+	return true;
+}
+
+bool InstallLib::copyFiles(std::string workingDir, PackageDescriptor &package)
+{
+	for (std::vector<FileDescriptor>::iterator it = package.PackageFiles.begin();
+		it != package.PackageFiles.end();
+		++it)
+	{
+		std::filesystem::path dest = INSTALLDIR; 
+	    dest /= it->DestinationFolder;
+		dest /= it->SourceFile;
+		std::filesystem::path source = workingDir;
+		source /= it->DestinationFolder;
+		source /= it->SourceFile;
+		
+		try
+		{
+			std::filesystem::copy_file(source.string(),
+				dest.string(),
+				std::filesystem::copy_options::skip_existing  |
+				std::filesystem::copy_options::copy_symlinks);
+			std::stringstream ss;
+			ss << "Copied file from: " << source.string() << " to dest: " << dest.string();
+			installLog.push_back(sInstallLog(ss.str(), true));
+		}
+		catch (const std::exception &e)
+		{
+			std::stringstream ss;
+			ss << "Failed to copy file from: " << source.string() << " to dest: " << dest.string() << ", error: "<<e.what();
+			installLog.push_back(sInstallLog(ss.str(), false));
+			return false;
+		}
+	}
+	return true;
+}
+
+bool InstallLib::backupFiles(std::string workingDir, PackageDescriptor &package)
+{
+	for (std::vector<FileDescriptor>::iterator it = package.PackageFiles.begin();
+		it != package.PackageFiles.end();
+		++it)
+	{
+		std::filesystem::path p = INSTALLDIR; 
+		p /= it->DestinationFolder;
+		p /= it->SourceFile;
+		
+		using namespace sqlite_orm;
+		std::vector<DBInstallFile> copies = DB::GetInstance()->GetStorage()->get_all<DBInstallFile>
+			(
+				where(c(&DBInstallFile::file) == p.string()),
+				order_by(&DBInstallFile::installTime).desc()
+			);
+		for (std::vector<DBInstallFile>::iterator fit = copies.begin();
+			fit != copies.end();
+			++fit)
+		{
+			if (std::filesystem::exists(fit->file))
+			{
+				std::stringstream filePath;
+				filePath << fit-> file << "." << fit->major << fit->minor << fit->buildNum;
+				if (std::filesystem::exists(filePath.str()))
+				{
+					std::stringstream ss;
+					ss << filePath.str() << " already exists, not backing up";
+					installLog.push_back(sInstallLog(ss.str(), true));
+				}
+				else
+				{
+					try
+					{
+						std::filesystem::copy(fit->file, filePath.str(),
+							std::filesystem::copy_options::skip_existing  |
+							std::filesystem::copy_options::copy_symlinks);
+						std::stringstream ss;
+						ss << filePath.str() << " backed up";
+						installLog.push_back(sInstallLog(ss.str(), true));
+					}
+					catch (const std::exception &e)
+					{
+						std::stringstream ss;
+						ss << "Error backing up: " << filePath.str() << ", error: " << e.what();
+						installLog.push_back(sInstallLog(ss.str(), false));
+						return false;
+					}
+				}
+			}
+		}
+	}
+	return true;
 }
 
 bool InstallLib::decompressPacakge(std::string package, std::string workingDir)
@@ -149,4 +414,9 @@ std::string InstallLib::randomStrGen(int length) {
 		result[i] = charset[rand() % charset.length()];
 
 	return result;
+}
+
+bool InstallLib::uninstall(std::string workingDir, PackageDescriptor package, eInstallStage currentStage)
+{ 
+	//DO everthing backwards :)
 }

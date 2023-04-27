@@ -10,6 +10,8 @@
 
 #include "../../../Logger/Logger.h"
 #include "../../../DB/DB.h"
+#include "../../../DB/DBInstall.h"
+#include "../../../Server/Settings.h"
 #include "DecompUtil.h"
 #include "PacakgeDescriptor.h"
 
@@ -23,8 +25,11 @@ public:
 		LOADPACKAGE = 2,
 		CHECKSUM = 3,
 		BACKUP = 4,
-		COPY = 5,
-		RESTART = 6
+		STOP = 5,
+		COPY = 6,
+		RESTART = 7,
+		STORE_TO_DB = 8,
+		CLEANUP = 0
 	};
 	
 	struct sInstallLog
@@ -45,11 +50,13 @@ public:
 	
 private:
 	static bool decompressPacakge(std::string packageFile, std::string workingDir);
-	void cleanupDecompress(std::string directory);
 	
 	static std::vector<sInstallLog> installLog;
 	static bool installInProgress;
 	static std::string randomStrGen(int length);
+	
+	static void cleanup(std::string packageFile, std::string workingDir);
+	static bool storeToDB(std::string workingDir, PackageDescriptor &package, std::string packageFile);
 	
 	static bool uninstall(std::string workingDir, PackageDescriptor package, eInstallStage currentStage);
 	
@@ -57,6 +64,16 @@ private:
 	
 	static bool checkChecksums(std::string workingDir, PackageDescriptor &package);
 	
+	static bool backupFiles(std::string workingDir, PackageDescriptor &package);
+	
+	static bool copyFiles(std::string workingDir, PackageDescriptor &package);
+	
+	static bool stop(std::string workingDir, PackageDescriptor &package);
+	
+	static bool start(std::string workingDir, PackageDescriptor &package);
+	
+	
 	static std::string getFileChecksum(std::string file);
+	
 	
 };

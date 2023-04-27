@@ -19,6 +19,11 @@ void NodeWidget::SetID(std::string id)
 	hostID = id;
 }
 
+std::string NodeWidget::GetID()
+{
+	return hostID;
+}
+
 void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y)
 {
 	if (isMaximized)
@@ -35,6 +40,8 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 		verticalQuarters = height / 4;
 		horizontalQuarters = width / 4;
 		baseObject = lv_btn_create(parent);
+		lv_obj_add_event_cb(baseObject, nodeButtonPressed, LV_EVENT_CLICKED, this);
+		
 		lv_obj_set_layout(baseObject, LV_LAYOUT_FLEX);
 		lv_obj_set_flex_flow(baseObject, LV_FLEX_FLOW_ROW);
 		lv_obj_set_size(baseObject, width, height);
@@ -127,6 +134,7 @@ void NodeWidget::createObjects(lv_obj_t *parent, bool isMaximized, uint16_t widt
 	std::stringstream cpuCt;
 	cpuCt << cpuCount << " CPUs";
 	lv_label_set_text(cpuCountLabel, cpuCt.str().c_str());
+	nodeWidgetMaximized = std::make_shared<NodeWidgetMaximized>(parent, hostID);
 }
 
 void NodeWidget::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16_t height, uint16_t x, uint16_t y)
@@ -139,7 +147,10 @@ void NodeWidget::Draw(lv_obj_t* parent, bool isMaximized, uint16_t width, uint16
 	if (!isMaximized)
 	{
 		drawIcon();
+		return;
 	}
+	
+	nodeWidgetMaximized->Update();
 }
 
 void NodeWidget::Update()
@@ -313,6 +324,12 @@ void NodeWidget::drawIcon()
 		lv_led_set_color(logLed, lv_palette_main(LV_PALETTE_RED));
 		break;
 	}
+}
+
+void NodeWidget::nodeButtonPressed(lv_event_t *e)
+{
+	NodeWidget* nodeWidget =(NodeWidget*)lv_event_get_user_data(e);
+
 }
 
 // the class factories

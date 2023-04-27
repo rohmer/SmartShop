@@ -47,7 +47,7 @@
     <Link>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>icuuc;z;cjson;archive;atomic;pthread;dl;sqlite3;lz;zstd;xml2;lz4;lzma;bz2;acl;nettle;icudata;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLibraryNames>crypto</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>

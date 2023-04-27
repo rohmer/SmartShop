@@ -6,6 +6,7 @@
 
 #include "CPUInfo.h"
 #include "DeviceBase.h"
+#include "DeviceManager.h"
 #include "../../Config/Config.h"
 
 

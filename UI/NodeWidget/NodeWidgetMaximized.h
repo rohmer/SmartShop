@@ -10,17 +10,23 @@
 
 class NodeWidgetMaximized
 {
+public:
 	NodeWidgetMaximized(lv_obj_t *parentWindow, std::string CPUID);
 	
 	void Update();
 	
 	~NodeWidgetMaximized();
+	void Close();
 	
 private:
 	std::string cpuID;
-	lv_obj_t *baseWindow = NULL;
+	lv_obj_t *baseWindow = NULL, *parentWindow;
 	lv_obj_t *drawSurface = NULL;
 	static bool isOpen;
 	
-	static void event_handler(lv_event_t *e);
+	lv_obj_t *topLeftPanel, *topCenterPanel, *topRightPanel, *topContainer;
+	lv_obj_t *middleRowLeft, *middleRowRight, *middleContainer;
+	lv_obj_t *bottomRow;		
+	static void event_handler(lv_event_t *e);	
+	void createObjects();
 };

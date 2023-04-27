@@ -280,4 +280,7 @@
       <Filter>VisualGDB settings</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ZeroConf.pkg" />
+  </ItemGroup>
 </Project>
