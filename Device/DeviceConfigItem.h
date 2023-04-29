@@ -20,18 +20,21 @@ public:
 	{
 	}
 	
-	DeviceConfigItem(std::string name, const char value[], bool readOnly = false)
+	DeviceConfigItem(std::string name, const char value[], std::vector<std::string> validValues, bool readOnly = false)
 		: name(name)
 		, readOnly(readOnly)
+		,legalValues(validValues)
 	{
 		std::stringstream ss;
 		ss << value;
 		SetValue(ss.str());		
 	}
 	
-	DeviceConfigItem(std::string name, int value, bool readOnly = false) 
+	DeviceConfigItem(std::string name, int value, int minValue=INT32_MIN, int maxValue=INT32_MAX, bool readOnly = false) 
 		: name(name)
 		, readOnly(readOnly)
+		, longMax(maxValue)
+		, longMin(minValue)
 	{
 		SetValue(value);
 	}
@@ -43,23 +46,28 @@ public:
 		SetValue(value);
 	}
 	
-	DeviceConfigItem(std::string name, float value, bool readOnly = false)
+	DeviceConfigItem(std::string name, float value, float minValue=std::numeric_limits<float>::min(), float maxValue=std::numeric_limits<float>::max(), bool readOnly = false)
 		: name(name)
 		, readOnly(readOnly)
 	{
 		SetValue(value);
 	}
 
-	DeviceConfigItem(std::string name, long value, bool readOnly = false)
+	DeviceConfigItem(std::string name, 
+		long value,
+		long minValue=std::numeric_limits<long>::min(),
+		long maxValue=std::numeric_limits<long>::max(),
+		bool readOnly = false)
 		: name(name)
 		, readOnly(readOnly)
 	{
 		SetValue(value);
 	}
 
-	DeviceConfigItem(std::string name, std::string value, bool readOnly = false)
+	DeviceConfigItem(std::string name, std::string value, std::vector<std::string> legalValues, bool readOnly = false)
 		: name(name)
 		, readOnly(readOnly)
+		, legalValues(legalValues)
 	{
 		SetValue(value);
 	}
@@ -77,6 +85,10 @@ public:
 
 	void SetValue(int val)
 	{
+		if (val > longMax)
+			val = longMax;
+		if (val < longMin)
+			val = longMin;
 		std::stringstream ss;
 		ss << val;
 		value = ss.str();
@@ -85,6 +97,10 @@ public:
 	
 	void SetValue(long val)
 	{
+		if (val > longMax)
+			val = longMax;
+		if (val < longMin)
+			val = longMin;
 		std::stringstream ss;
 		ss << val;
 		value = ss.str();
@@ -93,6 +109,11 @@ public:
 	
 	void SetValue(float val)
 	{
+		if (val < floatMin)
+			val = floatMin;
+		if (val > floatMax)
+			val = floatMax;
+		
 		std::stringstream ss;
 		ss << val;
 		value = ss.str();
@@ -101,8 +122,21 @@ public:
 	
 	void SetValue(std::string val)
 	{
-		value = val;
-		dataType = eConfigDataType::C_STR;
+		bool legal = false;
+		if (legalValues.size() > 0)
+		{
+			for (int i = 0; i < legalValues.size(); i++)
+				if (std::strcmp(legalValues[i].c_str(), val.c_str()) == 0)
+				{
+					legal = true;
+					break;
+				}
+		}
+		if (legal)
+		{
+			value = val;
+			dataType = eConfigDataType::C_STR;
+		 }
 	}
 	
 	void SetValue(bool val)
@@ -252,6 +286,9 @@ public:
 	}
 	
 private:
+	float floatMin, floatMax;
+	long longMin, longMax;
+	std::vector<std::string> legalValues;
 	std::string name;
 	bool readOnly;
 	std::string value;

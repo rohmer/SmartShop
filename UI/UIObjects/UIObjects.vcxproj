@@ -39,15 +39,15 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/marisa-trie-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/marisa-trie-master/include;=/usr/include/cjson;../../DB;../../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -71,6 +71,7 @@
     <ClInclude Include="MinimizableWindow.h" />
     <ClInclude Include="NumericSlider.h" />
     <ClInclude Include="ObjectTools.h" />
+    <ClInclude Include="PropertyPage.h" />
     <ClInclude Include="SpinBox.h" />
     <ClInclude Include="TreeNode.h" />
     <ClInclude Include="TreeView.h" />
@@ -85,6 +86,8 @@
     <ClCompile Include="MinimizableWindow.cpp" />
     <ClCompile Include="NumericSlider.cpp" />
     <ClCompile Include="SpinBox.cpp" />
+    <ClCompile Include="TreeNode.cpp" />
+    <ClCompile Include="TreeView.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>

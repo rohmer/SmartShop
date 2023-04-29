@@ -42,6 +42,12 @@
     <ClCompile Include="AdvKeyboard.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="TreeNode.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeView.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputField.h">
@@ -71,16 +77,19 @@
     <ClInclude Include="MinimizableWindow.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectTools.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollapableWindow.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
     <ClInclude Include="TreeNode.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="TreeView.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectTools.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="CollapableWindow.h">
+    <ClInclude Include="PropertyPage.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

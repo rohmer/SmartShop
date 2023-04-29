@@ -1,44 +1,55 @@
 #pragma once
-#include <any>
+
+#include <memory>
 #include <string>
 #include <vector>
-#include "lvgl.h"
 
-class TreeNode
+
+#include <lvgl.h>
+#include "TreeNode.h"
+
+class TreeView;
+
+struct TreeNode
 {
-public:
-    TreeNode(std::string name, TreeNode* parent, lv_obj_t* object, bool protect = false);
-    ~TreeNode();
-    bool operator==(const TreeNode& other);
-    TreeNode* DeepCopy();
-    lv_obj_t* GetLVObject();
-    unsigned int GetID();
-    std::string GetName();
-    unsigned int GetLevel();
-    bool IsSelected();
-    void SetNodeData(std::any nodeData);
-    std::any GetNodeData();
-    void SetExpanded(bool exp) { expanded = exp; }
+  public:
+	static std::shared_ptr<TreeNode> CreateTreeNode(lv_obj_t *treeViewCanvas,
+											 std::shared_ptr<TreeNode> parent,
+											 std::string labelText,
+											 bool locked = false,
+											 bool expanded = false,
+											 lv_obj_t *payload = NULL);
 
-private:
-    friend class TreeView;
-    void setID(unsigned int tnid);
-    void setPosition(int x, int y);
-    void addChild(TreeNode* childNode);
-    void addChildFront(TreeNode* childNode);
-    void removeChild(TreeNode* node);
-    lv_obj_t *object, *buttonObj, *buttonLabel, *labelObj, *clickObj;
+	~TreeNode();
 
-private:
-    TreeNode* parent;
-    std::vector<TreeNode *> children;
-    unsigned int id;
-    unsigned int level;
-    std::string name;
-    int x, y;
-    bool expanded = false;
-    bool selected = false;
-    bool protectedNode = false;
-    lv_style_t* objectStyle;
-    std::any nodeData;
+	void AddChild(std::shared_ptr<TreeNode> childNode);
+	bool DeleteChild(std::shared_ptr<TreeNode> childNode);
+
+	void SetVisibility(bool visible);
+	void SetExpanded(bool expanded);
+
+	void SetPosition(uint x, uint y);
+	
+	TreeNode(
+		lv_obj_t *treeViewCanvas,
+		std::shared_ptr<TreeNode> parent,
+		std::string labelText,
+		bool locked = false,
+		bool expanded = false,
+		lv_obj_t *payload = NULL);
+	
+  private:
+	void createObjects();
+	bool locked, expanded;
+	std::shared_ptr<TreeNode> parent;
+	std::vector<std::shared_ptr<TreeNode>> children;
+	std::string labelTxt;
+	lv_obj_t *payload, *label, *treeViewCanvas, *expandArrow = NULL;
+	bool isVisible;
+
+	friend class TreeView;
+	uint id = 0;
+
+	static void nodeClicked(lv_event_t *ev);
+	void triggerRedraw();
 };

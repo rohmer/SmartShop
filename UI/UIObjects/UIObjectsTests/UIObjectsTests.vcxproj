@@ -57,27 +57,10 @@
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
-      <Project>{0b284af8-2b53-4fb3-bd2c-baa0eb66b7cf}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lv_drivers\lv_drivers.vcxproj">
-      <Project>{77a73884-2341-4d25-b2be-b12e2a1c5f08}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
-      <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\UIObjects.vcxproj">
-      <Project>{89d59f12-892b-407a-90b2-92df952c0668}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
-    <ClCompile Include="AdvKeyboardTests.cpp" />
-    <ClCompile Include="UIObjectsTests.cpp" />
-    <ClCompile Include="InputFieldTests.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineArguments.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineTestRunner.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\JUnitTestOutput.cpp" />
@@ -112,7 +95,9 @@
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupport_c.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\OrderedTest.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\Linux\UtestPlatform.cpp" />
-    <ClCompile Include="WindowTests.cpp" />
+    <ClCompile Include="TestInitializer.cpp" />
+    <ClCompile Include="TreeViewTessts.cpp" />
+    <ClCompile Include="UIObjectTests.cpp" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineArguments.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CommandLineTestRunner.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTest\CppUTestConfig.h" />
@@ -160,13 +145,25 @@
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupportPlugin.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\MockSupport_c.h" />
     <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\include\CppUTestExt\OrderedTest.h" />
-    <ClInclude Include="AdvKeyboardTests.h" />
-    <ClInclude Include="InputFieldTests.h" />
-    <ClInclude Include="WindowTests.h" />
+    <ClInclude Include="TestInitializer.h" />
     <None Include="dict.trie">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="UIObjectsTests-Debug.vgdbsettings" />
     <None Include="UIObjectsTests-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lvgl\lvgl\lvgl.vcxproj">
+      <Project>{0b284af8-2b53-4fb3-bd2c-baa0eb66b7cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\LVGL\lv_port_linux_frame_buffer\lv_drivers\lv_drivers\lv_drivers.vcxproj">
+      <Project>{77a73884-2341-4d25-b2be-b12e2a1c5f08}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
+      <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UIObjects.vcxproj">
+      <Project>{89d59f12-892b-407a-90b2-92df952c0668}</Project>
+    </ProjectReference>
   </ItemGroup>
 </Project>

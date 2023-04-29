@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UIObjectsTests.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTest\CommandLineArguments.cpp">
       <Filter>Source files\Test Framework</Filter>
     </ClCompile>
@@ -276,30 +273,21 @@
     <None Include="UIObjectsTests-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <ClCompile Include="InputFieldTests.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="AdvKeyboardTests.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="WindowTests.cpp">
       <Filter>Header files\Test Framework</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="InputFieldTests.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="AdvKeyboardTests.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowTests.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
+    <ClCompile Include="TestInitializer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="dict.trie">
       <Filter>Resource files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestInitializer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,10 +9,6 @@
       <UniqueIdentifier>{ca59ab14-1905-4168-91df-c32f90ccc3e5}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource files">
-      <UniqueIdentifier>{cec0ddc6-8237-4f1b-a1f6-8e11af269904}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
-    </Filter>
     <Filter Include="Source files\Test Framework">
       <UniqueIdentifier>{a91fb568-f87b-4ce0-8d0d-97bc15d450f9}</UniqueIdentifier>
     </Filter>
@@ -21,6 +17,10 @@
     </Filter>
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{02722293-5085-4df6-b14f-9274fd8ba645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Resource files">
+      <UniqueIdentifier>{cec0ddc6-8237-4f1b-a1f6-8e11af269904}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>

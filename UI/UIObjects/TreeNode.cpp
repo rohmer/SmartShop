@@ -1,149 +1,150 @@
 #include "TreeNode.h"
 
-TreeNode::TreeNode(std::string name, TreeNode* parent, lv_obj_t* object, bool protect) :
-    object(object),
-    name(name),
-    expanded(false),
-    selected(false),
-    protectedNode(protect),
-    nodeData(nullptr)
+TreeNode::TreeNode(
+	lv_obj_t *treeViewCanvas,
+	std::shared_ptr<TreeNode> parent,
+	std::string labelText,
+	bool locked,
+	bool expanded,
+	lv_obj_t *payload) : treeViewCanvas(treeViewCanvas),
+						 parent(parent),
+						 labelTxt(labelText),
+						 locked(locked),
+						 expanded(expanded),
+						 payload(payload)
 {
+	if (parent!=NULL && parent.get()->expanded)
+		isVisible = true;
+	else
+		isVisible = false;
+	label = lv_label_create(treeViewCanvas);
+	lv_label_set_text(label,labelTxt.c_str());
+	if(payload!=NULL)
+		lv_obj_align_to(payload, label, LV_ALIGN_OUT_RIGHT_MID, 2,0);
 }
 
+std::shared_ptr<TreeNode> TreeNode::CreateTreeNode(lv_obj_t *treeViewCanvas,
+												   std::shared_ptr<TreeNode> parent,
+												   std::string labelText,
+												   bool locked,
+												   bool expanded,
+												   lv_obj_t *payload){
+	return std::make_shared<TreeNode>(treeViewCanvas,
+										 parent,
+										 labelText,
+										 locked,
+										 expanded,
+										 payload);
+}
 TreeNode::~TreeNode()
 {
-    if (object != nullptr)
-    {
-        lv_obj_del(object);
-    }
-    lv_obj_del(buttonObj);
-    lv_obj_del(labelObj);
-    lv_obj_del(clickObj);
-
-    for (std::vector<TreeNode*>::iterator it = children.begin();
-         it != children.end();
-         ++it)
-    {
-        if ((*it) != nullptr)
-            delete(*it);
-    }
+	if (payload != NULL)
+		lv_obj_del_async(payload);
+	if (label != NULL)
+		lv_obj_del_async(label);
 }
 
-void TreeNode::removeChild(TreeNode* node)
+void TreeNode::createObjects()
 {
-    int nodeIdx = -1;
-    for (int i = 0; i < children.size(); i++)
-    {
-        if (children[i] == node)
-        {
-            nodeIdx = i;
-            break;
-        }
-    }
-    if (nodeIdx != -1)
-        children.erase(children.begin() + nodeIdx);
+	label = lv_label_create(treeViewCanvas);
+	lv_label_set_text(label, labelTxt.c_str());
+	if (payload != NULL)
+		lv_obj_align_to(payload, label, LV_ALIGN_OUT_RIGHT_MID, 3, 0);
+
+	lv_obj_add_event_cb(label, nodeClicked, LV_EVENT_CLICKED, (void *)this);
 }
 
-TreeNode* TreeNode::DeepCopy()
+void TreeNode::SetVisibility(bool visibility)
 {
-    lv_obj_t* objCopy;
-    if (this->GetLVObject() == nullptr)
-    {
-        objCopy = nullptr;
-    }
-    else
-    {
-        objCopy = lv_obj_create(this->GetLVObject());
-		objCopy->parent = this->GetLVObject()->parent;
+	if (visibility)
+	{
+		lv_obj_add_flag(label, LV_OBJ_FLAG_HIDDEN);
+		lv_obj_add_flag(payload, LV_OBJ_FLAG_HIDDEN);
 	}
-
-    TreeNode* newNode = new TreeNode(name, parent, objCopy, protectedNode);
-
-    for (std::vector<TreeNode*>::iterator it = children.begin();
-         it != children.end();
-         ++it)
-    {
-        newNode->addChild((*it)->DeepCopy());
-    }
-    newNode->selected = false;
-    newNode->level = newNode->GetLevel();
-    return newNode;
+	else
+	{
+		lv_obj_clear_flag(label, LV_OBJ_FLAG_HIDDEN);
+		lv_obj_clear_flag(payload, LV_OBJ_FLAG_HIDDEN);
+	}
 }
 
-bool TreeNode::operator==(const TreeNode& other)
+void TreeNode::AddChild(std::shared_ptr<TreeNode> child)
 {
-    if (other.id == id && other.name == name)
-        return true;
-    return false;
+	if (children.size() == 0)
+	{
+		// We are adding a child, so we need to add the expand arrow
+		expandArrow = lv_label_create(treeViewCanvas);
+		lv_obj_align_to(expandArrow, label, LV_ALIGN_OUT_LEFT_MID, 3, 0);
+		lv_obj_add_event_cb(expandArrow, nodeClicked, LV_EVENT_CLICKED, (void *)this);
+	}
+	if (expanded)
+		lv_label_set_text(expandArrow, LV_SYMBOL_DOWN);
+	else
+		lv_label_set_text(expandArrow, LV_SYMBOL_RIGHT);
+	lv_obj_add_event_cb(expandArrow, nodeClicked, LV_EVENT_CLICKED, (void *)this);
+	children.push_back(child);
+	triggerRedraw();
 }
 
-void TreeNode::SetNodeData(std::any nodeData)
+bool TreeNode::DeleteChild(std::shared_ptr<TreeNode> child)
 {
-    this->nodeData = nodeData;
+	std::vector<std::shared_ptr<TreeNode>>::iterator p=children.end();
+	for (std::vector<std::shared_ptr<TreeNode>>::iterator it = children.begin();
+		 it != children.end();
+		 ++it)
+	{
+		if (child.get()->id == it->get()->id)
+			p = it;
+	}
+	if (p == children.end())
+		return false;
+	children.erase(p);
+	while(p->get())
+		p->reset();
+	if (children.size() == 0)
+	{
+		lv_obj_del_async(expandArrow);
+	}
+	triggerRedraw();
+	return true;
 }
 
-std::any TreeNode::GetNodeData()
+void TreeNode::SetExpanded(bool expanded)
 {
-    return this->nodeData;
+	if (expanded)
+	{
+		if (expandArrow != NULL)
+		{
+			lv_label_set_text(expandArrow, LV_SYMBOL_DOWN);
+		}	
+		for (std::vector<std::shared_ptr<TreeNode>>::iterator it = children.begin();
+			 it != children.end();
+			 ++it)
+		{
+			it->get()->SetVisibility(true);
+		}
+	}
+	else
+	{
+		if (expandArrow != NULL)
+			lv_label_set_text(expandArrow, LV_SYMBOL_RIGHT);
+	}
+	triggerRedraw();
 }
 
-bool TreeNode::IsSelected()
+void TreeNode::triggerRedraw()
 {
-    return selected;
+	lv_event_send(treeViewCanvas, LV_EVENT_READY, NULL);
 }
 
-void TreeNode::setID(unsigned int tnid)
+void TreeNode::SetPosition(uint x, uint y)
 {
-    id = tnid;
+	if (expandArrow != NULL)
+		lv_obj_set_pos(expandArrow, x, y);
+	else
+		lv_obj_set_pos(label, x, y);
 }
 
-void TreeNode::setPosition(int x, int y)
+void TreeNode::nodeClicked(lv_event_t *ev)
 {
-    this->x = x;
-    this->y = y;
-    if (clickObj != nullptr)
-        lv_obj_set_pos(clickObj, x, y);
-    if (buttonObj != nullptr)
-        lv_obj_set_pos(buttonObj, x + 4 + (level * 15), y);
-    if (labelObj != nullptr)
-        lv_obj_set_pos(labelObj, x + 30 + (level * 15), y);
-}
-
-lv_obj_t* TreeNode::GetLVObject()
-{
-    return object;
-}
-
-unsigned int TreeNode::GetID()
-{
-    return id;
-}
-
-std::string TreeNode::GetName()
-{
-    return name;
-}
-
-void TreeNode::addChildFront(TreeNode* childNode)
-{
-    childNode->parent = this;
-    children.insert(children.begin(), childNode);
-}
-
-void TreeNode::addChild(TreeNode* node)
-{
-    node->parent = this;
-    this->children.push_back(node);
-}
-
-unsigned int TreeNode::GetLevel()
-{
-    unsigned int i = 0;
-    auto np = this;
-    while (np->parent != nullptr)
-    {
-        i++;
-        np = np->parent;
-    }
-    return i;
 }
