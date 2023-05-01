@@ -253,8 +253,42 @@ bool DeviceConfig::ToDB()
 			item.Value = it->GetStringVal();
 			item.DeviceID = it->GetStringVal();
 			item.hostID = hostID;
-			item.ID = -1;
-			int v = DB::GetInstance()->GetStorage()->insert<DBDeviceConfigItem>(item);
+			switch (it->GetDataType())
+			{
+			case eConfigDataType::C_FLOAT:
+				{
+					std::stringstream ss;
+					ss << it->GetFloatMax();
+					item.Max = ss.str();
+					ss.str("");
+					ss << it->GetFloatMin();
+					item.Min = ss.str();					
+				}
+				break;
+			case eConfigDataType::C_LONG:
+				{
+					std::stringstream ss;
+					ss << it->GetLongMax();
+					item.Max = ss.str();
+					ss.str("");
+					ss << it->GetLongMin();
+					item.Min = ss.str();		
+				}
+			default:
+				break;
+			}
+			item.ID = DB::GetInstance()->GetStorage()->insert<DBDeviceConfigItem>(item);
+			if (it->GetDataType() == eConfigDataType::C_STR && it->GetLegalStringValues().size() > 0)
+			{
+				std::vector<std::string> values = it->GetLegalStringValues();
+				for (int i = 0; i < values.size(); i++)
+				{
+					DBStringLegalValues dbslv;
+					dbslv.StringDataID = item.ID;
+					dbslv.Value = values[i];
+					dbslv.ID = DB::GetInstance()->GetStorage()->insert<DBStringLegalValues>(dbslv);
+				}
+			}
 		}
 		return true;
 	}
@@ -295,13 +329,29 @@ std::vector<DeviceConfig> DeviceConfig::FromDB(std::string CPUID)
 			case eConfigDataType::C_FLOAT:
 				{
 					float val = std::atof(it->Value.c_str());
-					dci = DeviceConfigItem(it->Name, val, it->ReadOnly);
+					float max = std::atof(it->Max.c_str());
+					float min = std::atof(it->Min.c_str());
+					dci = DeviceConfigItem(it->Name, val, max, min, it->ReadOnly);
 					break;
 				}
 			case eConfigDataType::C_LONG:
 				{
 					long val = std::atol(it->Value.c_str());
-					dci = DeviceConfigItem(it->Name, val, it->ReadOnly);
+					long max = std::atof(it->Max.c_str());
+					long min = std::atof(it->Min.c_str());
+					dci = DeviceConfigItem(it->Name, val, max, min, it->ReadOnly);
+				}
+			case eConfigDataType::C_STR:
+				{
+					using namespace sqlite_orm;
+					std::vector<DBStringLegalValues> slv=DB::GetInstance()->GetStorage()->get_all<DBStringLegalValues>(where(c(&DBStringLegalValues::StringDataID) == it->ID));
+					std::vector<std::string> lval;
+					if (slv.size() > 0)
+					{
+						for (int i = 0; i < slv.size(); i++)
+							lval.push_back(slv[i].Value);
+					}
+					dci=DeviceConfigItem(it->Name, it->Value,lval,it->ReadOnly);	
 				}
 			}
 			deviceConfigs.push_back(dci);

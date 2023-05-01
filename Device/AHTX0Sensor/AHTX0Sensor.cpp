@@ -9,8 +9,8 @@ AHTX0Sensor::AHTX0Sensor(
 	I2CDevice(Name,Description,eDeviceType::SENSOR,I2CAddress,I2CBus, PollingInterval),
 	Sensor()
 {
-	config.AddConfigItem(DeviceConfigItem("I2C Bus", (int)I2CBus, true));
-	config.AddConfigItem(DeviceConfigItem("I2C Address", (int)I2CAddress, true));	
+	config.AddConfigItem(DeviceConfigItem("I2C Bus", (int)I2CBus, 0,2,true));
+	config.AddConfigItem(DeviceConfigItem("I2C Address", (int)I2CAddress, 0,254,true));	
 }
 
 bool AHTX0Sensor::init()

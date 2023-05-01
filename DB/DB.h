@@ -17,6 +17,7 @@
 #include "DBDeviceConfigItem.h"
 #include "DBInstall.h"
 #include "DBDevice.h"
+#include "DBStringLegalValues.h"
 #include "dbstat.h"
 #include "../Components/sqlite_orm-master/include/sqlite_orm/sqlite_orm.h"
 
@@ -63,7 +64,9 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("id",&DBIntData::ID, primary_key().autoincrement()),
 			make_column("eventID", &DBIntData::EventID),
 			make_column("name", &DBIntData::Name),
-			make_column("value", &DBIntData::Value)),
+			make_column("value", &DBIntData::Value),
+			make_column("max", &DBIntData::Max),
+			make_column("min", &DBIntData::Min)),
 		make_table("StringData",
 			make_column("id",&DBStringData::ID, primary_key().autoincrement()),
 			make_column("eventID", &DBStringData::EventID),
@@ -73,7 +76,9 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("id",&DBFloatData::ID, primary_key().autoincrement()),
 			make_column("eventID", &DBFloatData::EventID),
 			make_column("name", &DBFloatData::Name),
-			make_column("value", &DBFloatData::Value)),
+			make_column("value", &DBFloatData::Value),
+			make_column("min", &DBFloatData::Min),
+			make_column("max", &DBFloatData::Max)),
 		make_table("BinaryData",
 			make_column("id",&DBBinaryData::ID, primary_key().autoincrement()),
 			make_column("eventID", &DBBinaryData::EventID),
@@ -94,6 +99,8 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("dataType", &DBDeviceConfigItem::DataType),
 			make_column("deviceName", &DBDeviceConfigItem::Name),
 			make_column("value", &DBDeviceConfigItem::Value),
+			make_column("max", &DBDeviceConfigItem::Max),
+			make_column("min", &DBDeviceConfigItem::Min),
 			make_column("hostID", &DBDeviceConfigItem::hostID),
 			make_column("ro", &DBDeviceConfigItem::ReadOnly)),
 		make_table("Software",
@@ -121,7 +128,11 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("ipAddress", &DBDevice::IPAddress),
 			make_column("cpuCount", &DBDevice::CPUCount),
 			make_column("deviceType", &DBDevice::DeviceType),			
-			make_column("auth", &DBDevice::isAuth))	
+			make_column("auth", &DBDevice::isAuth)),
+		make_table("StringLegalValues",
+			make_column("id",&DBStringLegalValues::ID,primary_key()),
+			make_column("stringDataID", &DBStringLegalValues::StringDataID),
+			make_column("value", &DBStringLegalValues::Value))
 		);
 }
 	

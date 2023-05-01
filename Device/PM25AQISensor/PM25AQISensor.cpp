@@ -8,8 +8,8 @@ PM25AQISensor::PM25AQISensor(
 	: I2CDevice(Name, Description, eDeviceType::SENSOR, 0x12, i2cBus, PollingInterval)
 	, Sensor()
 {
-	config.AddConfigItem(DeviceConfigItem("I2CBus", (int)i2cBus, false));
-	config.AddConfigItem(DeviceConfigItem("I2CAddr", (int)0x12, false));
+	config.AddConfigItem(DeviceConfigItem("I2CBus", (int)i2cBus, 0, 2, false));
+	config.AddConfigItem(DeviceConfigItem("I2CAddr", (int)0x12, 0, 254, false));
 }
 
 std::vector<SensorEvent> PM25AQISensor::PollSensor()

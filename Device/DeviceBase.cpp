@@ -34,7 +34,7 @@ void DeviceBase::SetPollingInterval(int interval)
 			return;
 		}				
 	}
-	config.AddConfigItem(DeviceConfigItem("PollingInterval", interval, false));
+	config.AddConfigItem(DeviceConfigItem("PollingInterval", interval, 0, 100000, false));
 	config.Modified = true;
 }
 

@@ -7,5 +7,5 @@ public:
 	unsigned long ID;
 	unsigned long EventID;
 	std::string Name;
-	float Value;
+	float Value, Max, Min;
 };

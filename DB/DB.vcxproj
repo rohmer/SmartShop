@@ -135,6 +135,7 @@
     <ClInclude Include="DBIntData.h" />
     <ClInclude Include="dbstat.h" />
     <ClInclude Include="DBStringData.h" />
+    <ClInclude Include="DBStringLegalValues.h" />
     <ClInclude Include="DBSwitchData.h" />
     <ClInclude Include="DBVectorData.h" />
   </ItemGroup>

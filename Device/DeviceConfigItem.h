@@ -1,5 +1,6 @@
 #pragma once
 #include <cstring>
+#include <climits>
 #include <sstream>
 #include <string>
 #include "cJSON.h"
@@ -30,7 +31,27 @@ public:
 		SetValue(ss.str());		
 	}
 	
-	DeviceConfigItem(std::string name, int value, int minValue=INT32_MIN, int maxValue=INT32_MAX, bool readOnly = false) 
+	DeviceConfigItem(std::string name, const char value[], bool readOnly = false)
+		: name(name)
+		, readOnly(readOnly)
+	{
+		std::stringstream ss;
+		ss << value;
+		SetValue(ss.str());		
+	}
+	
+	DeviceConfigItem(std::string name, std::string value, bool readOnly = false)
+		: name(name)
+		, readOnly(readOnly)
+		, value(value)
+	{
+	}
+	
+	DeviceConfigItem(std::string name, 
+		int value, 
+		int minValue=std::numeric_limits<int>::min(), 
+		int maxValue=std::numeric_limits<int>::max(),
+		bool readOnly = false) 
 		: name(name)
 		, readOnly(readOnly)
 		, longMax(maxValue)
@@ -48,6 +69,8 @@ public:
 	
 	DeviceConfigItem(std::string name, float value, float minValue=std::numeric_limits<float>::min(), float maxValue=std::numeric_limits<float>::max(), bool readOnly = false)
 		: name(name)
+		, floatMin(minValue)
+		, floatMax(maxValue)
 		, readOnly(readOnly)
 	{
 		SetValue(value);
@@ -198,6 +221,43 @@ public:
 		return name;
 	}
 	
+	float GetFloatMax()
+	{
+		return floatMax;
+	}
+	void SetFloatMax(float v)
+	{
+		floatMax = v;
+	}
+	float GetFloatMin()
+	{
+		return floatMin;
+	}
+	void SetFloatMin(float v)
+	{
+		floatMin = v;
+	}
+	long GetLongMax()
+	{
+		return longMax;
+	}
+	void SetLongMax(long v)
+	{
+		longMax = v;
+	}
+	long GetLongMin()
+	{
+		return longMin;
+	}
+	void SetLongMin(long v)
+	{
+		longMin = v;
+	}
+	std::vector<std::string> GetLegalStringValues()
+	{
+		return legalValues;
+	}
+	
 	cJSON *ToJSON()
 	{
 		cJSON *obj = cJSON_CreateObject();
@@ -206,13 +266,47 @@ public:
 			cJSON_AddItemToObject(obj, "value", cJSON_CreateString(value.c_str()));
 		cJSON_AddItemToObject(obj, "ro", cJSON_CreateBool(readOnly));
 		cJSON_AddItemToObject(obj, "dataType", cJSON_CreateNumber(dataType));
-		if (dataType == eConfigDataType::C_ARRAY)
+		
+		switch (dataType)
 		{
-			cJSON *arr = cJSON_CreateArray();
-			for (int i = 0; i < arrayValues.size(); i++)
-				cJSON_AddItemToArray(arr, arrayValues[i].ToJSON());
-			cJSON_AddItemToObject(obj, "value", arr);
+		case eConfigDataType::C_ARRAY:
+			{
+				cJSON *arr = cJSON_CreateArray();
+				for (int i = 0; i < arrayValues.size(); i++)
+					cJSON_AddItemToArray(arr, arrayValues[i].ToJSON());
+				cJSON_AddItemToObject(obj, "value", arr);
+			}
+			break;
+		case eConfigDataType::C_BOOL:
+			break;
+		case eConfigDataType::C_FLOAT:
+			{
+				if (floatMax != std::numeric_limits<float>::max())
+					cJSON_AddItemToObject(obj, "max", cJSON_CreateNumber(floatMax));
+				if (floatMin != std::numeric_limits<float>::min())
+					cJSON_AddItemToObject(obj, "min", cJSON_CreateNumber(floatMin));
+			}
+			break;
+		case eConfigDataType::C_LONG:
+			{
+				if (longMax != std::numeric_limits<long>::max())
+					cJSON_AddItemToObject(obj, "max", cJSON_CreateNumber(longMax));
+				if (longMin != std::numeric_limits<long>::min())
+					cJSON_AddItemToObject(obj, "min", cJSON_CreateNumber(longMin));
+			}
+			break;
+		case eConfigDataType::C_STR:
+			{
+				if (legalValues.size() > 0)
+				{
+					cJSON *arr = cJSON_CreateArray();
+					for (int i = 0; i < legalValues.size(); i++)
+						cJSON_AddItemToArray(arr, cJSON_CreateString(legalValues[i].c_str()));
+					cJSON_AddItemToObject(obj, "legalValues", arr);
+				}
+			}
 		}
+		
 		
 		return obj;		
 	}
@@ -249,8 +343,18 @@ public:
 		case C_LONG:
 			{
 				long v = std::atol(value.c_str());
-				return DeviceConfigItem(name, v, ro);
+				long max = LONG_MAX, min = LONG_MIN;
+				if (cJSON_HasObjectItem(obj,"max"))
+				{
+					max = cJSON_GetObjectItem(obj, "max")->valueint;
+				}
+				if (cJSON_HasObjectItem(obj, "min"))
+				{
+					min = cJSON_GetObjectItem(obj, "min")->valueint;
+				}
+				return DeviceConfigItem(name, (long)v, min,max,ro);
 			}
+			break;
 		case C_BOOL:
 			{
 				bool v = false;
@@ -258,11 +362,22 @@ public:
 					v = true;
 				return DeviceConfigItem(name, v, ro);
 			}
+			break;
 		case C_FLOAT:
 			{
 				float v = std::atof(value.c_str());
-				return DeviceConfigItem(name, v, ro);
+				float max = std::numeric_limits<float>::max(), min = std::numeric_limits<float>::min();
+				if (cJSON_HasObjectItem(obj, "max"))
+				{
+					max = cJSON_GetObjectItem(obj, "max")->valuedouble;
+				}
+				if (cJSON_HasObjectItem(obj, "min"))
+				{
+					min = cJSON_GetObjectItem(obj, "min")->valuedouble;
+				}
+				return DeviceConfigItem(name, v, min, max, ro);
 			}
+			break;
 		case C_ARRAY:
 			{
 				if (cJSON_HasObjectItem(obj, "value"))
@@ -280,14 +395,30 @@ public:
 					}
 				}
 			}
-		default:
-			return DeviceConfigItem(name, value, ro);
+			break;
+		case C_STR:
+			{
+				if (cJSON_HasObjectItem(obj, "legalValues"))
+				{
+					cJSON *arr = cJSON_GetObjectItem(obj, "legalValues");
+					std::vector<std::string> lvalues;
+					if (cJSON_IsArray(arr))
+					{						
+						cJSON *itr;
+						cJSON_ArrayForEach(itr, arr)
+						{
+							lvalues.push_back(itr->valuestring);
+						}
+					}
+					return DeviceConfigItem(name, value, lvalues, ro);
+				}
+			}
 		}
 	}
 	
 private:
-	float floatMin, floatMax;
-	long longMin, longMax;
+	float floatMin=std::numeric_limits<float>::min(), floatMax=std::numeric_limits<float>::max();
+	long longMin=std::numeric_limits<long>::min(), longMax=std::numeric_limits<long>::max();
 	std::vector<std::string> legalValues;
 	std::string name;
 	bool readOnly;

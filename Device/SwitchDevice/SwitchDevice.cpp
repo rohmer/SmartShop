@@ -3,7 +3,7 @@
 SwitchDevice::SwitchDevice(std::string Name, std::string Description, uint TriggerPin)
 	: GPIODevice(Name, Description, eDeviceType::GENERIC, GPIOPinDef(TriggerPin, GPIOPinDef::PIN_INPUT))
 {
-	config.AddConfigItem(DeviceConfigItem("triggerPin", (int)TriggerPin, false));
+	config.AddConfigItem(DeviceConfigItem("triggerPin", (int)TriggerPin, 0,55,false));
 }
 
 SwitchDevice::SwitchDevice()

@@ -26,9 +26,9 @@ TEST(DeviceConfig, Create2)
 {
 	std::vector<DeviceConfigItem> items;
 	items.push_back(DeviceConfigItem("string", "string", false));
-	items.push_back(DeviceConfigItem("long", 123L, true));
+	items.push_back(DeviceConfigItem("long", 123, 0, 500, true));
 	items.push_back(DeviceConfigItem("bool", true, true));
-	items.push_back(DeviceConfigItem("float", 123.12F, true));
+	items.push_back(DeviceConfigItem("float", 123.12, 0,500,true));
 	DeviceConfig dc("Name", "Desc", eDeviceBus::I2C, eDeviceType::SENSOR,items);
 	STRCMP_EQUAL("Name", dc.GetName().c_str());
 	STRCMP_EQUAL("Desc", dc.GetDescription().c_str());
@@ -43,9 +43,9 @@ TEST(DeviceConfig, Serialize)
 {
 	std::vector<DeviceConfigItem> items;
 	items.push_back(DeviceConfigItem("string", "string", false));
-	items.push_back(DeviceConfigItem("long", 123L, true));
+	items.push_back(DeviceConfigItem("long", 123, 0, 500, true));
 	items.push_back(DeviceConfigItem("bool", true, true));
-	items.push_back(DeviceConfigItem("float", 123.12F, true));
+	items.push_back(DeviceConfigItem("float", 123.12,0,500, true));
 	DeviceConfig dc("Name", "Desc", eDeviceBus::I2C, eDeviceType::SENSOR, items);
 	cJSON *obj = dc.ToJSON();
 	std::string val = cJSON_Print(obj);
@@ -89,7 +89,7 @@ TEST(DeviceConfigItem, Create2)
 
 TEST(DeviceConfigItem, Create3)
 {
-	DeviceConfigItem item("long", 123L, true);
+	DeviceConfigItem item("long", 123, 0,500,true);
 	STRCMP_EQUAL("long", item.GetName().c_str());
 	CHECK(item.GetLongVal()==123L);
 	CHECK(item.IsReadOnly());
@@ -97,7 +97,7 @@ TEST(DeviceConfigItem, Create3)
 
 TEST(DeviceConfigItem, Create4)
 {
-	DeviceConfigItem item("float", 123.123F, true);
+	DeviceConfigItem item("float", 123.123,0,500, true);
 	STRCMP_EQUAL("float", item.GetName().c_str());
 	CHECK(item.GetFloatVal()==123.123F);
 	CHECK(item.IsReadOnly());
@@ -137,7 +137,7 @@ TEST(DeviceConfigItem, Deserialize2)
 
 TEST(DeviceConfigItem, Deserialize3)
 {
-	DeviceConfigItem strItem("float", 123.0F, false);
+	DeviceConfigItem strItem("float", 123.0,0,500, false);
 	cJSON *obj = strItem.ToJSON();	
 	CHECK(cJSON_HasObjectItem(obj, "name"));
 	CHECK(cJSON_HasObjectItem(obj, "value"));
@@ -152,7 +152,7 @@ TEST(DeviceConfigItem, Deserialize3)
 
 TEST(DeviceConfigItem, Deserialize4)
 {
-	DeviceConfigItem strItem("long", 123, false);
+	DeviceConfigItem strItem("long", 123,0,500, false);
 	cJSON *obj = strItem.ToJSON();	
 	CHECK(cJSON_HasObjectItem(obj, "name"));
 	CHECK(cJSON_HasObjectItem(obj, "value"));

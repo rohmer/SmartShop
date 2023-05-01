@@ -1,12 +1,11 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
-class DBStringData
+class DBStringLegalValues
 {
 public:
-	unsigned long ID;
-	unsigned long EventID;
-	std::string Name;
+	unsigned long ID, StringDataID;
 	std::string Value;
 };
