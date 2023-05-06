@@ -9,7 +9,7 @@
 #endif
 
 #ifndef DISP_BUF_SIZE
-#define DISP_BUF_SIZE	256*1024
+#define DISP_BUF_SIZE	512*1024
 #endif
 
 // NODE DISPLAY SETTING

@@ -1,149 +1,139 @@
 #include "TreeView.h"
 
-std::shared_ptr<TreeNode> TreeView::rootNode;
-std::vector<lv_obj_t *> TreeView::connectorLines;
-
-TreeView::TreeView(
-	std::string title,
-	uint x,
-	uint y,
-	uint width,
-	uint height,
-	eTreeViewConnector connectorType)
+TreeView::TreeView(lv_obj_t *parent, uint X, uint Y, uint Width, uint Height, std::string Label, TreeViewOptions Options)
+	: x(X),
+	  y(Y),
+	  width(Width),
+	  height(Height),
+	  options(Options)
 {
-	treeViewWindow=lv_win_create(lv_scr_act(),40);
-	lv_obj_set_x(treeViewWindow, x);
-	lv_obj_set_y(treeViewWindow, y);
-	lv_obj_set_width(treeViewWindow, width);
-	lv_obj_set_height(treeViewWindow, height);
-	lv_win_add_title(treeViewWindow, title.c_str());
-	deleteButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_TRASH,40);
-	moveDownButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_UP,40);
-	copyButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_COPY,40);
-	pasteButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_PASTE,40);
-	moveUpButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_UP,40);
-
-	lv_obj_add_event_cb(treeViewWindow, Redraw, LV_EVENT_READY, (void *)this);
-	x1=lv_obj_get_x(lv_win_get_content(treeViewWindow));
-	x2 = lv_obj_get_x2(lv_win_get_content(treeViewWindow));
-	y1 = lv_obj_get_y(lv_win_get_content(treeViewWindow));
-	y2 = lv_obj_get_y2(lv_win_get_content(treeViewWindow));
+	uint windowHeader = lv_font_default()->line_height + 2;
+	if (!options.GetWindowHeader() && Label.size() == 0)
+		windowHeader = 0;
+	treeViewWindow = lv_win_create(parent, windowHeader);
+	if (Label.size() > 0)
+		lv_win_add_title(treeViewWindow, Label.c_str());
+	lv_obj_set_pos(treeViewWindow, x, y);
+	lv_obj_set_size(treeViewWindow, width, height);
+	lv_obj_update_layout(treeViewWindow);
 }
 
-TreeView::TreeView(
-	std::shared_ptr<TreeNode> rootNode,
-	std::string title,
-	uint x,
-	uint y,
-	uint width,
-	uint height,
-	eTreeViewConnector connectorType)
+std::shared_ptr<TreeNode> TreeView::AddRootNode(std::string Label, lv_obj_t *DisplayObject)
 {
-	this->rootNode = rootNode;
-	this->rootNode.get()->parent = NULL;
-	lv_win_create(treeViewWindow, 40);
-	lv_obj_set_x(treeViewWindow, x);
-	lv_obj_set_y(treeViewWindow, y);
-	lv_obj_set_width(treeViewWindow, width);
-	lv_obj_set_height(treeViewWindow, height);
-	deleteButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_TRASH, 40);
-	moveDownButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_UP, 40);
-	copyButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_COPY, 40);
-	pasteButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_PASTE, 40);
-	moveUpButton = lv_win_add_btn(treeViewWindow, LV_SYMBOL_UP, 40);
-
-	lv_obj_add_event_cb(treeViewWindow, Redraw, LV_EVENT_READY, (void *)this);
-	x1 = lv_obj_get_x(lv_win_get_content(treeViewWindow));
-	x2 = lv_obj_get_x2(lv_win_get_content(treeViewWindow));
-	y1 = lv_obj_get_y(lv_win_get_content(treeViewWindow));
-	y2 = lv_obj_get_y2(lv_win_get_content(treeViewWindow));
-}
-
-void TreeView::Redraw(lv_event_t *e=NULL)
-{
-	TreeView *tv = (TreeView *)lv_event_get_user_data(e);
-	int x = 5, y = 5;
-	
-	// This may end up getting optimized to not redraw all of them
-	for (int i = 0; i < connectorLines.size(); i++)
-		if (connectorLines[i] != NULL)
-			lv_obj_del_async(connectorLines[i]);
-	connectorLines.clear();
-
-	drawNode(rootNode, y);
-}
-
-void TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y)
-{
-	int depth = 0;
-	std::shared_ptr<TreeNode> nodeTmp = node;
-	while (nodeTmp.get()->parent != NULL)
+	std::shared_ptr<TreeNode> node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
+	rootNodes.push_back(node);
+	if (options.DefaultToExpanded())
 	{
-		nodeTmp = nodeTmp.get()->parent;
-		depth++;
+		node->visable = true;
+		node->expanded = true;
+	}
+	redraw();
+	return node;
+}
+
+std::shared_ptr<TreeNode> TreeView::AddNode(std::string Label, lv_obj_t *DisplayObject, std::shared_ptr<TreeNode> parent)
+{
+	if (parent == NULL)
+		return AddRootNode(Label, DisplayObject);
+	std::shared_ptr<TreeNode> node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
+	parent->AddChild(node);
+	if (options.DefaultToExpanded())
+	{
+		node->visable = true;
+		node->expanded = true;
+	}
+	redraw();
+	return node;
+}
+
+void TreeView::setVisablity()
+{
+	for (int i = 0; i < rootNodes.size(); i++)
+		rootNodes[i]->SetVisability(true);
+}
+
+void TreeView::redraw()
+{
+	if (rootNodes.size() == 0)
+	{
+		lv_obj_clean(lv_win_get_content(treeViewWindow));
+		return;
+	}
+	setVisablity();
+	uint y = 5;
+
+	for (int i = 0; i < rootNodes.size(); i++)
+	{
+		y = drawNode(rootNodes[i], y, 1);
 	}
 }
 
-bool TreeView::AddRootNode(std::shared_ptr<TreeNode> node)
-{
-	if (rootNode != NULL)
-		return false;
-	node.get()->parent = NULL;
-	rootNode = node;
-	Redraw();
-	return true;
-}
 
-std::vector<std::shared_ptr<TreeNode>> TreeView::GetAllNodes(std::shared_ptr<TreeNode> node)
+uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
 {
-	std::vector < std::shared_ptr<TreeNode>> ret;
-	if (node == NULL)
+	if (node->height == 0)
 	{
-		ret.push_back(node);
-		node = rootNode;
-	}
-
-	if (node.get()->children.size() > 0)
-	{
-		for (std::vector<std::shared_ptr<TreeNode>>::iterator it = node.get()->children.begin();
-			 it != node.get()->children.end();
-			 ++it)
+		node->height = lv_font_default()->line_height + 2;
+		if (node->displayObject != NULL)
 		{
-			std::vector<std::shared_ptr<TreeNode>> childNodes = GetAllNodes(*it);
-			ret.insert(ret.begin(), childNodes.begin(), childNodes.end());
+			if (lv_obj_get_height(node->displayObject) > height)
+				node->height = lv_obj_get_height(node->displayObject);
 		}
 	}
-	return ret;
-}
-
-bool TreeView::AddNodeToNode(std::shared_ptr<TreeNode> nodeTarget, std::shared_ptr<TreeNode> newNode)
-{
-	std::vector<std::shared_ptr<TreeNode>> nodes = GetAllNodes();
-	for (std::vector<std::shared_ptr<TreeNode>>::iterator it = nodes.begin();
-		 it != nodes.end(); ++it)
+	if (node->visable)
 	{
-		if (it->get()->id == nodeTarget.get()->id)
+		lv_obj_set_pos(node->labelObject, depth * options.GetSetbackSize() + 5 + lv_font_default()->line_height, y);
+		y += node->height;
+		node->depth = depth;
+		
+		if (lineAnchor == NULL)
+			lineAnchor = drawAnchor(lv_win_get_content(treeViewWindow), node);
+		else
+			drawAnchor(lineAnchor, node);
+		if (node->labelObject != NULL)
+			lv_obj_clear_flag(node->labelObject, LV_OBJ_FLAG_HIDDEN);
+		if (node->displayObject != NULL)
+			lv_obj_clear_flag(node->displayObject, LV_OBJ_FLAG_HIDDEN);
+		if (node->anchorObject != NULL)
 		{
-			nCtr++;
-			newNode.get()->id = nCtr;
-			nodeTarget->AddChild(newNode);
-			Redraw();
-			return true;
+			lv_obj_clear_flag(node->anchorObject, LV_OBJ_FLAG_HIDDEN);
+			lv_obj_clear_flag(node->anchorObject, LV_OBJ_FLAG_CLICKABLE);
 		}
+		for (int i = 0; i < node->children.size(); i++)
+			if (node->children[i]->visable)
+			{
+				y = drawNode(node->children[i], y, depth + 1);
+			}
 	}
-	return false;
+	else
+	{
+		if (node->anchorObject != NULL)
+		{
+			lv_obj_add_flag(lineAnchor, LV_OBJ_FLAG_HIDDEN);
+		}
+		if (node->labelObject != NULL)
+			lv_obj_add_flag(node->labelObject, LV_OBJ_FLAG_HIDDEN);
+		if (node->displayObject != NULL)
+			lv_obj_add_flag(node->displayObject, LV_OBJ_FLAG_HIDDEN);
+	}
+
+	return y;
 }
 
-bool TreeView::DeleteNode(std::shared_ptr<TreeNode> nodeTarget)
+lv_obj_t* TreeView::drawAnchor(lv_obj_t* parent, std::shared_ptr<TreeNode> node)
 {
-	std::vector<std::shared_ptr<TreeNode>> children = nodeTarget.get()->children;
-	for (std::vector<std::shared_ptr<TreeNode>>::iterator it = children.begin(); it != children.end(); ++it)
-	{
-		nodeTarget.reset();
-		;
-		Redraw();
-		return true;
-	}
-	Redraw();
-	return false;
+	if (node->children.size() == 0)
+		return NULL;
+	if(node->anchorObject==NULL)
+		node->anchorObject = lv_img_create(parent);
+	if (node->expanded)
+		lv_img_set_src(node->anchorObject, LV_SYMBOL_PLUS);
+	else
+		lv_img_set_src(node->anchorObject,LV_SYMBOL_MINUS);
+
+	lv_obj_set_style_img_recolor(node->anchorObject, options.GetAnchorColor(),0);
+	lv_img_set_size_mode(node->anchorObject, LV_IMG_SIZE_MODE_REAL);
+	lv_obj_align_to(node->anchorObject, node->labelObject, LV_ALIGN_OUT_LEFT_MID,0,0);
+	return node->anchorObject;
 }
+

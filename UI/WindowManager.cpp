@@ -2,7 +2,7 @@
 
 lv_disp_draw_buf_t WindowManager::draw_buf_dsc;
 lv_color_t WindowManager::buf[DISP_BUF_SIZE];
-lv_color_t WindowManager::buf2[DISP_BUF_SIZE];
+//lv_color_t WindowManager::buf2[DISP_BUF_SIZE];
 lv_disp_drv_t WindowManager::disp_drv;
 lv_disp_draw_buf_t WindowManager::disp_buf;
 lv_indev_drv_t WindowManager::indev_drv;
@@ -29,6 +29,9 @@ WindowManager *WindowManager::GetInstance()
 
 void WindowManager::Init()
 {
+	if (initalized)
+		return;
+	initalized = true;
 	initalizePlugins();
 
 	lv_init();

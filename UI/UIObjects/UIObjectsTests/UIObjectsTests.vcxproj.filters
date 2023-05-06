@@ -273,10 +273,13 @@
     <None Include="UIObjectsTests-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <ClCompile Include="WindowTests.cpp">
-      <Filter>Header files\Test Framework</Filter>
-    </ClCompile>
     <ClCompile Include="TestInitializer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeViewTessts.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObjectTests.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,55 +1,45 @@
 #pragma once
 
 #include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 
 
 #include <lvgl.h>
 #include "TreeNode.h"
+#include "TreeViewOptions.h"
 
 class TreeView;
 
-struct TreeNode
+struct TreeNode 
+	: public std::enable_shared_from_this <TreeNode>
 {
   public:
-	static std::shared_ptr<TreeNode> CreateTreeNode(lv_obj_t *treeViewCanvas,
-											 std::shared_ptr<TreeNode> parent,
-											 std::string labelText,
-											 bool locked = false,
-											 bool expanded = false,
-											 lv_obj_t *payload = NULL);
+	TreeNode(lv_obj_t *parent, std::string Label, lv_obj_t *displayObject);
+	static std::shared_ptr<TreeNode> CreateNode(lv_obj_t *parent, std::string Label, lv_obj_t *displayObject);
+	std::vector<std::shared_ptr<TreeNode>> GetChildren();
+	void AddChild(std::shared_ptr<TreeNode> child);
 
-	~TreeNode();
+	void SetVisability();
+	void SetVisability(bool visable);
 
-	void AddChild(std::shared_ptr<TreeNode> childNode);
-	bool DeleteChild(std::shared_ptr<TreeNode> childNode);
-
-	void SetVisibility(bool visible);
-	void SetExpanded(bool expanded);
-
-	void SetPosition(uint x, uint y);
+	void SetLabel(std::string expandChar, TreeViewOptions options);
 	
-	TreeNode(
-		lv_obj_t *treeViewCanvas,
-		std::shared_ptr<TreeNode> parent,
-		std::string labelText,
-		bool locked = false,
-		bool expanded = false,
-		lv_obj_t *payload = NULL);
-	
+
   private:
-	void createObjects();
-	bool locked, expanded;
-	std::shared_ptr<TreeNode> parent;
-	std::vector<std::shared_ptr<TreeNode>> children;
-	std::string labelTxt;
-	lv_obj_t *payload, *label, *treeViewCanvas, *expandArrow = NULL;
-	bool isVisible;
-
 	friend class TreeView;
-	uint id = 0;
 
-	static void nodeClicked(lv_event_t *ev);
-	void triggerRedraw();
+	std::shared_ptr<TreeNode> parentNode;
+	std::string label;
+	lv_obj_t *parent;
+	lv_obj_t *displayObject = NULL;
+	lv_obj_t *labelObject = NULL;
+	lv_obj_t *anchorObject = NULL;
+	std::vector<std::shared_ptr<TreeNode>> children;
+	uint height = 0;
+	bool expanded = false;
+	bool visable = false;
+	uint depth;
+	lv_point_t connectorPoint;
 };

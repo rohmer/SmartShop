@@ -2,6 +2,7 @@
 
 #include <dlfcn.h>
 #include <filesystem>
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>

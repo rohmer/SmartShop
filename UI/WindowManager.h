@@ -35,7 +35,7 @@ private:
 	static WindowManager *instance;
 	static lv_disp_draw_buf_t draw_buf_dsc;
 	static lv_disp_drv_t disp_drv; 
-	static lv_color_t buf[], buf2[];
+	static lv_color_t buf[];
 	static lv_disp_draw_buf_t disp_buf;
 	static lv_indev_drv_t indev_drv;
 	
@@ -44,6 +44,7 @@ private:
 	
 	Logger *log;
 	bool shutdown = false;
+	bool initalized = false;
 	std::thread *runner, *managerThread;
 	
 	void tickThread();

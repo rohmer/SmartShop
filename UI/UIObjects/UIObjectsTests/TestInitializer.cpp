@@ -21,6 +21,10 @@ TestInitializer::TestInitializer()
 
 void TestInitializer::InitializeInstance()
 {	
+	if (init)
+		return;
+	init = true;
+	std::cout << "Initalizing UI\n";
 	lv_init();
 	fbdev_init();
 	

@@ -1,54 +1,40 @@
 #pragma once
 
+#include <iostream>
 #include <string>
+#include <thread>
 #include <vector>
 
 #include <lvgl.h>
 #include "TreeNode.h"
-
-#define TABSIZE 8;
+#include "TreeViewOptions.h"
+#include "lv_sline.h"
 
 class TreeView
 {
   public:
-	enum eTreeViewConnector
-	{
-		SOLIDLINE,
-		DASHEDLINE,
-		NONE
-	};
-
 	TreeView(
-		std::string title,
-		uint x,
-		uint y,
-		uint width,
-		uint height, 
-		eTreeViewConnector connectorType=eTreeViewConnector::SOLIDLINE);
+		lv_obj_t *parent,
+		uint X,
+		uint Y,
+		uint Width,
+		uint Height,
+		std::string Label,
+		TreeViewOptions Options=TreeViewOptions());
 
-	TreeView(
-		std::shared_ptr<TreeNode> rootNode,
-		std::string title,
-		uint x,
-		uint y,
-		uint width,
-		uint height,
-		eTreeViewConnector connectorType = eTreeViewConnector::SOLIDLINE);
-	
-	static void Redraw(lv_event_t *e);
-	bool AddRootNode(std::shared_ptr<TreeNode> node);
-	bool AddNodeToNode(std::shared_ptr<TreeNode> nodeTarget, std::shared_ptr<TreeNode> newNode);
-	bool DeleteNode(std::shared_ptr<TreeNode> node);
-	std::vector<std::shared_ptr<TreeNode>> GetAllNodes(std::shared_ptr<TreeNode> node = NULL);
+	std::shared_ptr<TreeNode> AddRootNode(std::string Label, lv_obj_t *DisplayObject=NULL);
+	std::shared_ptr<TreeNode> AddNode(std::string Label, lv_obj_t *DisplayObject, std::shared_ptr<TreeNode> parent);
 
   private:
+	TreeViewOptions options;
+	uint x, y, width, height;
 	lv_obj_t *treeViewWindow;
-	lv_obj_t *deleteButton,*moveDownButton,*copyButton,*pasteButton,*moveUpButton;
-	uint x1, y1, x2, y2;
-	static std::shared_ptr<TreeNode> rootNode;
-	eTreeViewConnector connectorType;
+	std::vector<std::shared_ptr<TreeNode>> rootNodes;
 
-	static std::vector<lv_obj_t *> connectorLines;
-	uint nCtr = 1;
-	static void drawNode(std::shared_ptr<TreeNode> node, uint y);
+	lv_obj_t *lineAnchor = NULL;
+	void redraw();
+	uint drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth);
+	void setVisablity();
+	lv_obj_t* drawAnchor(lv_obj_t *parent, std::shared_ptr<TreeNode> node);
+
 };

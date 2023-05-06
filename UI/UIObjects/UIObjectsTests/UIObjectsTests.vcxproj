@@ -39,15 +39,15 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../../../Components/marisa-trie-master/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../../../Components/marisa-trie-master/include;=/usr/include/cjson;=/usr/include/nettle;../../../Components/libwpa/wpa_cli_oper;../../../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../../../Components/oatpp-master/src;../../../Components/sqlite_orm-master/include/sqlite_orm;../../../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>lvgl;lv_drivers;pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>lvgl;lv_drivers;pthread;dl;atomic;cjson;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -161,6 +161,27 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\Components\marisa-trie-master\marisaTrie\marisaTrie.vcxproj">
       <Project>{d304c571-0ae0-40a5-b010-1d9384421dfb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\DB\DB.vcxproj">
+      <Project>{c79bce09-e45d-4e47-867d-bbf1825d506c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Device\Device.vcxproj">
+      <Project>{2aff492e-7f85-44d9-a0cc-414c90d2cc69}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Logger\Logger.vcxproj">
+      <Project>{5486b3bd-f307-49a2-bd24-3dd845b83eff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\RaspUtils\RaspUtils.vcxproj">
+      <Project>{20ded119-980d-4e0e-8e87-339bebac35e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NodeWidget\NodeWidget.vcxproj">
+      <Project>{3d2b641d-932d-4d6c-b892-0f28b33b3703}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UI.vcxproj">
+      <Project>{efb7f748-eef2-449b-b678-6455e8c8d991}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UIWidget\UIWidget.vcxproj">
+      <Project>{4da90025-d2cf-4f3e-8731-1eacbf8374c6}</Project>
     </ProjectReference>
     <ProjectReference Include="..\UIObjects.vcxproj">
       <Project>{89d59f12-892b-407a-90b2-92df952c0668}</Project>
