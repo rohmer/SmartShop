@@ -22,19 +22,22 @@ class TreeView
 		std::string Label,
 		TreeViewOptions Options=TreeViewOptions());
 
-	std::shared_ptr<TreeNode> AddRootNode(std::string Label, lv_obj_t *DisplayObject=NULL);
-	std::shared_ptr<TreeNode> AddNode(std::string Label, lv_obj_t *DisplayObject, std::shared_ptr<TreeNode> parent);
+	~TreeView();
+	
+	TreeNode* AddRootNode(std::string Label, lv_obj_t *DisplayObject=NULL);
+	TreeNode* AddNode(std::string Label, lv_obj_t *DisplayObject, TreeNode* parent);
 
   private:
 	TreeViewOptions options;
 	uint x, y, width, height;
 	lv_obj_t *treeViewWindow;
-	std::vector<std::shared_ptr<TreeNode>> rootNodes;
+	static std::vector<TreeNode*> rootNodes;
 
 	lv_obj_t *lineAnchor = NULL;
-	void redraw();
-	uint drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth);
+	void redraw(bool full=false);
+	uint drawNode(TreeNode* node, uint y, uint depth);
 	void setVisablity();
-	lv_obj_t* drawAnchor(lv_obj_t *parent, std::shared_ptr<TreeNode> node);
-
+	void drawAnchor(lv_obj_t *parent, TreeNode* node);
+	void createTouchTarget(TreeNode* node);
+	static void touchEventCB(lv_event_t *e);
 };

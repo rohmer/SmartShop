@@ -44,6 +44,7 @@ void TestInitializer::InitializeInstance()
 	indev_drv.read_cb = evdev_read;
 	lv_indev_drv_register(&indev_drv);
 	runner = new std::thread([this]{tickThread(); });
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 void TestInitializer::tickThread()
@@ -51,8 +52,8 @@ void TestInitializer::tickThread()
 	while (!done)
 	{
 		lv_timer_handler();
-		lv_tick_inc(5);
+		lv_tick_inc(1);
 		lv_task_handler();
-		usleep(5000);
+		usleep(1000);
 	}
 }

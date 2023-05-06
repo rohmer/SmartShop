@@ -453,11 +453,11 @@
 
 #  define EVDEV_CALIBRATE         1               /*Scale and offset the touchscreen coordinates by using maximum and minimum values for each axis*/
 
-#  if EVDEV_CALIBRATE
-#    define EVDEV_HOR_MIN   25 //3800                    /*If EVDEV_XXX_MIN > EVDEV_XXX_MAX the XXX axis is automatically inverted*/
+#  if EVDEV_CALIBRATE   
+#    define EVDEV_HOR_MIN   128//3800                    /*If EVDEV_XXX_MIN > EVDEV_XXX_MAX the XXX axis is automatically inverted*/
 #    define EVDEV_HOR_MAX   16383 // 200
 #    define EVDEV_VER_MIN   45 //200
-#    define EVDEV_VER_MAX   9592 // 3800
+#    define EVDEV_VER_MAX   9326 // 3800
 #  endif  /*EVDEV_CALIBRATE*/
 #endif  /*USE_EVDEV*/
 

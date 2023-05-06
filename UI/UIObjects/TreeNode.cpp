@@ -9,21 +9,33 @@ TreeNode::TreeNode(lv_obj_t *parent, std::string Label, lv_obj_t *DisplayObject)
 	lv_label_set_text(labelObject, Label.c_str());
 	if (displayObject != NULL)
 		lv_obj_align_to(displayObject, labelObject, LV_ALIGN_OUT_RIGHT_MID, 2, 0);
+#ifdef DEBUG
+	std::cout << label << " : TreeNode\n";
+#endif
 }
 
-std::shared_ptr<TreeNode> TreeNode::CreateNode(lv_obj_t *parent, std::string Label, lv_obj_t *DisplayObject)
+TreeNode::~TreeNode()
 {
-	return std::make_shared<TreeNode>(TreeNode(parent, Label, DisplayObject));
+	for (int i = 0; i < children.size(); i++)
+		delete (children[i]);
+#ifdef DEBUG
+	std::cout << label << " : ~TreeNode\n";
+	#endif
 }
 
-std::vector<std::shared_ptr<TreeNode>> TreeNode::GetChildren()
+TreeNode* TreeNode::CreateNode(lv_obj_t *parent, std::string Label, lv_obj_t *DisplayObject)
+{
+	return (new TreeNode(parent, Label, DisplayObject));
+}
+
+std::vector<TreeNode*> TreeNode::GetChildren()
 {
 	return children;
 }
 
-void TreeNode::AddChild(std::shared_ptr<TreeNode> child)
+void TreeNode::AddChild(TreeNode* child)
 {
-	child->parentNode = shared_from_this();
+	child->parentNode = this;
 	children.push_back(child);
 }
 
@@ -63,8 +75,11 @@ void TreeNode::SetVisability()
 			lv_obj_clear_flag(labelObject, LV_OBJ_FLAG_HIDDEN);
 			lv_obj_add_flag(labelObject, LV_OBJ_FLAG_CLICKABLE);
 		}
-		if(expanded)
+		if (expanded)
 			for (int i = 0; i < children.size(); i++)
 				children[i]->SetVisability(true);
+		else
+			for (int i = 0; i < children.size(); i++)
+				children[i]->SetVisability(false);
 	}
 }

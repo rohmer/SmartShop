@@ -308,7 +308,7 @@ void * lv_mem_buf_get(uint32_t size)
     for(uint8_t i = 0; i < LV_MEM_BUF_MAX_NUM; i++) {
         if(LV_GC_ROOT(lv_mem_buf[i]).used == 0) {
             /*if this fails you probably need to increase your LV_MEM_SIZE/heap size*/
-            void * buf = lv_mem_realloc(LV_GC_ROOT(lv_mem_buf[i]).p, size);
+            void * buf = lv_mem_realloc(LV_GC_ROOT(lv_mem_buf[i]).p, size);            
             LV_ASSERT_MSG(buf != NULL, "Out of memory, can't allocate a new buffer (increase your LV_MEM_SIZE/heap size)");
             if(buf == NULL) return NULL;
 

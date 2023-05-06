@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -17,26 +18,32 @@ struct TreeNode
 {
   public:
 	TreeNode(lv_obj_t *parent, std::string Label, lv_obj_t *displayObject);
-	static std::shared_ptr<TreeNode> CreateNode(lv_obj_t *parent, std::string Label, lv_obj_t *displayObject);
-	std::vector<std::shared_ptr<TreeNode>> GetChildren();
-	void AddChild(std::shared_ptr<TreeNode> child);
+	~TreeNode();
+	static TreeNode* CreateNode(lv_obj_t *parent, std::string Label, lv_obj_t *displayObject);
+	std::vector<TreeNode*> GetChildren();
+	void AddChild(TreeNode* child);
 
 	void SetVisability();
 	void SetVisability(bool visable);
 
 	void SetLabel(std::string expandChar, TreeViewOptions options);
-	
-
+		
   private:
 	friend class TreeView;
+	struct sTouchEventCB
+	{
+		TreeView *treeView;
+		TreeNode *node;
+	};
+	sTouchEventCB *touchEventData = NULL;
 
-	std::shared_ptr<TreeNode> parentNode;
+	TreeNode* parentNode;
 	std::string label;
 	lv_obj_t *parent;
 	lv_obj_t *displayObject = NULL;
 	lv_obj_t *labelObject = NULL;
 	lv_obj_t *anchorObject = NULL;
-	std::vector<std::shared_ptr<TreeNode>> children;
+	std::vector<TreeNode*> children;	
 	uint height = 0;
 	bool expanded = false;
 	bool visable = false;

@@ -1,3 +1,4 @@
+#pragma once
 /**
  * @file lv_conf.h
  * Configuration file for v9.0.0-dev

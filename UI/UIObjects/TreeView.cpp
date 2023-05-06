@@ -1,5 +1,7 @@
 #include "TreeView.h"
 
+std::vector<TreeNode*> TreeView::rootNodes;
+
 TreeView::TreeView(lv_obj_t *parent, uint X, uint Y, uint Width, uint Height, std::string Label, TreeViewOptions Options)
 	: x(X),
 	  y(Y),
@@ -18,9 +20,17 @@ TreeView::TreeView(lv_obj_t *parent, uint X, uint Y, uint Width, uint Height, st
 	lv_obj_update_layout(treeViewWindow);
 }
 
-std::shared_ptr<TreeNode> TreeView::AddRootNode(std::string Label, lv_obj_t *DisplayObject)
+TreeView::~TreeView()
 {
-	std::shared_ptr<TreeNode> node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
+	for (int i = 0; i < rootNodes.size(); i++)
+		if (rootNodes[i] != NULL)
+			delete (rootNodes[i]);
+	rootNodes.clear();
+}
+
+TreeNode* TreeView::AddRootNode(std::string Label, lv_obj_t *DisplayObject)
+{
+	TreeNode* node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
 	rootNodes.push_back(node);
 	if (options.DefaultToExpanded())
 	{
@@ -31,11 +41,11 @@ std::shared_ptr<TreeNode> TreeView::AddRootNode(std::string Label, lv_obj_t *Dis
 	return node;
 }
 
-std::shared_ptr<TreeNode> TreeView::AddNode(std::string Label, lv_obj_t *DisplayObject, std::shared_ptr<TreeNode> parent)
+TreeNode* TreeView::AddNode(std::string Label, lv_obj_t *DisplayObject, TreeNode* parent)
 {
 	if (parent == NULL)
 		return AddRootNode(Label, DisplayObject);
-	std::shared_ptr<TreeNode> node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
+	TreeNode* node = TreeNode::CreateNode(lv_win_get_content(treeViewWindow), Label, DisplayObject);
 	parent->AddChild(node);
 	if (options.DefaultToExpanded())
 	{
@@ -48,18 +58,15 @@ std::shared_ptr<TreeNode> TreeView::AddNode(std::string Label, lv_obj_t *Display
 
 void TreeView::setVisablity()
 {
-	for (int i = 0; i < rootNodes.size(); i++)
-		rootNodes[i]->SetVisability(true);
+	
 }
 
-void TreeView::redraw()
+void TreeView::redraw(bool full)
 {
-	if (rootNodes.size() == 0)
+	if (rootNodes.size() == 0 || full)
 	{
-		lv_obj_clean(lv_win_get_content(treeViewWindow));
-		return;
-	}
-	setVisablity();
+		lv_obj_clean(lv_win_get_content(treeViewWindow));		
+	}	
 	uint y = 5;
 
 	for (int i = 0; i < rootNodes.size(); i++)
@@ -69,7 +76,7 @@ void TreeView::redraw()
 }
 
 
-uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
+uint TreeView::drawNode(TreeNode* node, uint y, uint depth)
 {
 	if (node->height == 0)
 	{
@@ -78,8 +85,13 @@ uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
 		{
 			if (lv_obj_get_height(node->displayObject) > height)
 				node->height = lv_obj_get_height(node->displayObject);
+			lv_obj_align_to(node->displayObject, node->labelObject, LV_ALIGN_OUT_RIGHT_MID, 3, 0);
 		}
 	}
+	if (node->parentNode==NULL || (node->parentNode != NULL && node->parentNode->expanded))
+		node->visable = true;
+	else
+		node->visable = false;
 	if (node->visable)
 	{
 		lv_obj_set_pos(node->labelObject, depth * options.GetSetbackSize() + 5 + lv_font_default()->line_height, y);
@@ -87,9 +99,10 @@ uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
 		node->depth = depth;
 		
 		if (lineAnchor == NULL)
-			lineAnchor = drawAnchor(lv_win_get_content(treeViewWindow), node);
+			drawAnchor(lv_win_get_content(treeViewWindow), node);
 		else
 			drawAnchor(lineAnchor, node);
+		createTouchTarget(node);
 		if (node->labelObject != NULL)
 			lv_obj_clear_flag(node->labelObject, LV_OBJ_FLAG_HIDDEN);
 		if (node->displayObject != NULL)
@@ -97,12 +110,11 @@ uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
 		if (node->anchorObject != NULL)
 		{
 			lv_obj_clear_flag(node->anchorObject, LV_OBJ_FLAG_HIDDEN);
-			lv_obj_clear_flag(node->anchorObject, LV_OBJ_FLAG_CLICKABLE);
 		}
 		for (int i = 0; i < node->children.size(); i++)
 			if (node->children[i]->visable)
 			{
-				y = drawNode(node->children[i], y, depth + 1);
+				y = drawNode(node->children[i], y, depth + 1);				
 			}
 	}
 	else
@@ -114,18 +126,26 @@ uint TreeView::drawNode(std::shared_ptr<TreeNode> node, uint y, uint depth)
 		if (node->labelObject != NULL)
 			lv_obj_add_flag(node->labelObject, LV_OBJ_FLAG_HIDDEN);
 		if (node->displayObject != NULL)
-			lv_obj_add_flag(node->displayObject, LV_OBJ_FLAG_HIDDEN);
+			lv_obj_add_flag(node->displayObject, LV_OBJ_FLAG_HIDDEN);		
 	}
 
 	return y;
 }
 
-lv_obj_t* TreeView::drawAnchor(lv_obj_t* parent, std::shared_ptr<TreeNode> node)
+void TreeView::drawAnchor(lv_obj_t* parent, TreeNode* node)
 {
-	if (node->children.size() == 0)
-		return NULL;
-	if(node->anchorObject==NULL)
+	if (node->children.size() == 0 || node->anchorObject!=NULL)
+		return;
+	if (node->anchorObject == NULL)
 		node->anchorObject = lv_img_create(parent);
+
+	if (lineAnchor == NULL)
+	{
+		lineAnchor = node->anchorObject;
+		#ifdef DEBUG
+		std::cout << node->label << ": Line Anchor\n";
+		#endif
+	}
 	if (node->expanded)
 		lv_img_set_src(node->anchorObject, LV_SYMBOL_PLUS);
 	else
@@ -133,7 +153,38 @@ lv_obj_t* TreeView::drawAnchor(lv_obj_t* parent, std::shared_ptr<TreeNode> node)
 
 	lv_obj_set_style_img_recolor(node->anchorObject, options.GetAnchorColor(),0);
 	lv_img_set_size_mode(node->anchorObject, LV_IMG_SIZE_MODE_REAL);
-	lv_obj_align_to(node->anchorObject, node->labelObject, LV_ALIGN_OUT_LEFT_MID,0,0);
-	return node->anchorObject;
+	lv_obj_align_to(node->anchorObject, node->labelObject, LV_ALIGN_OUT_LEFT_MID,-2,0);	
 }
 
+void TreeView::createTouchTarget(TreeNode *node)
+{
+	if (node->children.size() == 0 || node->labelObject == NULL || node->anchorObject == NULL)
+		return;
+	if (node->touchEventData == NULL)
+	{
+#ifdef DEBUG
+		std::cout << node->label << " : touchEventData\n";
+#endif
+		node->touchEventData = new TreeNode::sTouchEventCB();
+	}
+	node->touchEventData->node = node;
+	node->touchEventData->treeView = this;
+	lv_obj_add_event_cb(node->anchorObject, touchEventCB, LV_EVENT_CLICKED, (void *)node->touchEventData);
+	lv_obj_add_event_cb(node->labelObject, touchEventCB, LV_EVENT_CLICKED, (void *)node->touchEventData);
+	lv_obj_add_flag(node->anchorObject, LV_OBJ_FLAG_CLICKABLE);
+	lv_obj_add_flag(node->labelObject, LV_OBJ_FLAG_CLICKABLE);
+}
+
+	void TreeView::touchEventCB(lv_event_t *evt)
+	{
+		TreeNode::sTouchEventCB *data = (TreeNode::sTouchEventCB *)lv_event_get_user_data(evt);
+
+#ifdef DEBUG
+		std::cout << "Node: " << data->node->label << " touched\n";
+#endif
+
+		TreeView *tv = data->treeView;
+		TreeNode *tn = data->node;
+		tn->expanded = !tn->expanded;
+		tv->redraw();
+}
