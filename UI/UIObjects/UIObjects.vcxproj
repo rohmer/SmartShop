@@ -39,7 +39,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/marisa-trie-master/include;=/usr/include/cjson;../../DB;../../RaspUtils;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../Components/marisa-trie-master/include;=/usr/include/cjson;../../DB;../../RaspUtils;../../Components/oatpp-master/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvKeyboard.h" />
+    <ClInclude Include="AdvSlider.h" />
+    <ClInclude Include="Area.h" />
     <ClInclude Include="CollapableWindow.h" />
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="FileBrowser.h" />
@@ -70,8 +72,8 @@
     <ClInclude Include="DropListBox.h" />
     <ClInclude Include="lv_sline.h" />
     <ClInclude Include="MinimizableWindow.h" />
-    <ClInclude Include="NumericSlider.h" />
     <ClInclude Include="ObjectTools.h" />
+    <ClInclude Include="PropertyDrawer.h" />
     <ClInclude Include="PropertyPage.h" />
     <ClInclude Include="SpinBox.h" />
     <ClInclude Include="TreeNode.h" />
@@ -81,13 +83,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdvKeyboard.cpp" />
+    <ClCompile Include="AdvSlider.cpp" />
+    <ClCompile Include="Area.cpp" />
     <ClCompile Include="CollapsableWIndow.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="DropListBox.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="lv_sline.c" />
     <ClCompile Include="MinimizableWindow.cpp" />
-    <ClCompile Include="NumericSlider.cpp" />
+    <ClCompile Include="PropertyDrawer.cpp" />
     <ClCompile Include="SpinBox.cpp" />
     <ClCompile Include="TreeNode.cpp" />
     <ClCompile Include="TreeView.cpp" />

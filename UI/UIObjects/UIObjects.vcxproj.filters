@@ -13,15 +13,18 @@
       <UniqueIdentifier>{041c8fc3-67eb-4a0d-bf90-b8c12494ed9c}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Header files\Utilities">
+      <UniqueIdentifier>{cc5d3be5-3811-4a90-b199-20488c5f5509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Utils">
+      <UniqueIdentifier>{fd474ceb-f319-4db6-96a3-74cda4525059}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputField.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="DropListBox.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Dictionary.cpp">
@@ -31,9 +34,6 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="MinimizableWindow.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="NumericSlider.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="CollapsableWIndow.cpp">
@@ -51,18 +51,24 @@
     <ClCompile Include="lv_sline.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyDrawer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdvSlider.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Area.cpp">
+      <Filter>Source files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputField.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DropListBox.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="NumericSlider.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="AdvKeyboard.h">
@@ -100,6 +106,18 @@
     </ClInclude>
     <ClInclude Include="lv_sline.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyDrawer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdvSlider.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Header files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

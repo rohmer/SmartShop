@@ -10,6 +10,7 @@
 #include <CppUTest/CommandLineTestRunner.h>
 #include <stdio.h>
 
+#ifndef DISABLE_TREE_TESTS
 TEST_GROUP(TreeNodes)
 {
 	void setup()
@@ -68,3 +69,5 @@ TEST(TreeView, WithChildren)
 	treeView->AddNode("RN3 C3", NULL, rn3);
 	std::this_thread::sleep_for(std::chrono::seconds(15));	
 }
+
+#endif

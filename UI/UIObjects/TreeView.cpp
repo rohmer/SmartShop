@@ -175,16 +175,16 @@ void TreeView::createTouchTarget(TreeNode *node)
 	lv_obj_add_flag(node->labelObject, LV_OBJ_FLAG_CLICKABLE);
 }
 
-	void TreeView::touchEventCB(lv_event_t *evt)
-	{
-		TreeNode::sTouchEventCB *data = (TreeNode::sTouchEventCB *)lv_event_get_user_data(evt);
+void TreeView::touchEventCB(lv_event_t *evt)
+{
+	TreeNode::sTouchEventCB *data = (TreeNode::sTouchEventCB *)lv_event_get_user_data(evt);
 
 #ifdef DEBUG
-		std::cout << "Node: " << data->node->label << " touched\n";
+	std::cout << "Node: " << data->node->label << " touched\n";
 #endif
 
-		TreeView *tv = data->treeView;
-		TreeNode *tn = data->node;
-		tn->expanded = !tn->expanded;
-		tv->redraw();
+	TreeView *tv = data->treeView;
+	TreeNode *tn = data->node;
+	tn->expanded = !tn->expanded;
+	tv->redraw();
 }

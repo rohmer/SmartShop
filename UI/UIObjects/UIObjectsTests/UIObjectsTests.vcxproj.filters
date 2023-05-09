@@ -282,6 +282,9 @@
     <ClCompile Include="UIObjectTests.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="InputFieldTests.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="dict.trie">

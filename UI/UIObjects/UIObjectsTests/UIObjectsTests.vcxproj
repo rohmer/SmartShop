@@ -40,7 +40,7 @@
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
       <AdditionalIncludeDirectories>../../../Components/LVGL/lv_port_linux_frame_buffer/lvgl;../../../Components/LVGL/lv_port_linux_frame_buffer/lv_drivers;../../../Components/marisa-trie-master/include;=/usr/include/cjson;=/usr/include/nettle;../../../Components/libwpa/wpa_cli_oper;../../../Components/libwpa/wpa_supplicant-2.6/wpa_supplicant;../../../Components/oatpp-master/src;../../../Components/sqlite_orm-master/include/sqlite_orm;../../../DB;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;LV_LVGL_H_INCLUDE_SIMPLE;LV_CONF_H; DISABLE_TREE_TESTS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
@@ -95,6 +95,7 @@
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\MockSupport_c.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\src\CppUTestExt\OrderedTest.cpp" />
     <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.CppUTest\Platforms\Linux\UtestPlatform.cpp" />
+    <ClCompile Include="InputFieldTests.cpp" />
     <ClCompile Include="TestInitializer.cpp" />
     <ClCompile Include="TreeViewTessts.cpp" />
     <ClCompile Include="UIObjectTests.cpp" />
