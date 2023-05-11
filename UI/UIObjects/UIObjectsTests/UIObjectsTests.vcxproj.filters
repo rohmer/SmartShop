@@ -285,6 +285,9 @@
     <ClCompile Include="InputFieldTests.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="SliderObjTests.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="dict.trie">

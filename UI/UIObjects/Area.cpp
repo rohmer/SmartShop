@@ -20,3 +20,15 @@ bool Area::OnScreen(lv_area_t area, lv_point_t topLeft)
 		return false;
 	return true;
 }
+
+lv_area_t Area::CombineArea(lv_area_t a1, lv_area_t a2)
+{
+	lv_coord_t x1, y1, x2, y2;
+	x1 = std::min(a1.x1, a2.x1);
+	y1 = std::min(a1.y1, a2.y1);
+	x2 = std::max(a1.x2, a2.x2);
+	y2 = std::max(a1.y2, a2.y2);
+
+	lv_area_t ret = {x1, y1, x2, y2};
+	return ret;
+}

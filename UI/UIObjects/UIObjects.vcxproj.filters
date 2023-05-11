@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="InputField.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="DropListBox.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
     <ClCompile Include="PropertyDrawer.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="AdvSlider.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Source files\Utils</Filter>
     </ClCompile>
@@ -65,9 +59,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputField.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="DropListBox.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -118,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="Area.h">
       <Filter>Header files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="InputField.h">
+      <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
