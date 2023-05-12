@@ -69,12 +69,10 @@
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="FileBrowser.h" />
     <ClInclude Include="DropListBox.h" />
-    <ClInclude Include="lv_sline.h" />
     <ClInclude Include="MinimizableWindow.h" />
     <ClInclude Include="ObjectTools.h" />
     <ClInclude Include="PropertyDrawer.h" />
     <ClInclude Include="PropertyPage.h" />
-    <ClInclude Include="SpinBox.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="TreeNode.h" />
     <ClInclude Include="TreeView.h" />
@@ -87,10 +85,8 @@
     <ClCompile Include="CollapsableWIndow.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="DropListBox.cpp" />
-    <ClCompile Include="lv_sline.c" />
     <ClCompile Include="MinimizableWindow.cpp" />
     <ClCompile Include="PropertyDrawer.cpp" />
-    <ClCompile Include="SpinBox.cpp" />
     <ClCompile Include="TreeNode.cpp" />
     <ClCompile Include="TreeView.cpp" />
     <ClCompile Include="Utils.cpp" />

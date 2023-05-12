@@ -27,9 +27,6 @@
     <ClCompile Include="Dictionary.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="SpinBox.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="MinimizableWindow.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -43,9 +40,6 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="TreeView.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="lv_sline.c">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="PropertyDrawer.cpp">
@@ -66,9 +60,6 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Dictionary.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpinBox.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="FileBrowser.h">
@@ -95,9 +86,6 @@
     <ClInclude Include="TreeViewOptions.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="lv_sline.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="PropertyDrawer.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -107,11 +95,11 @@
     <ClInclude Include="Utils.h">
       <Filter>Header files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Area.h">
-      <Filter>Header files\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="InputField.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Header files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

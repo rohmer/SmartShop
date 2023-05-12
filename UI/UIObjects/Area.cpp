@@ -32,3 +32,12 @@ lv_area_t Area::CombineArea(lv_area_t a1, lv_area_t a2)
 	lv_area_t ret = {x1, y1, x2, y2};
 	return ret;
 }
+
+lv_point_t Area::Midpoint(lv_area_t area)
+{
+	lv_point_t mp;
+	
+	mp.x = (area.x2 - area.x1) / 2;
+	mp.y = (area.y2 - area.y1) / 2;
+	return mp;
+}

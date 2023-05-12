@@ -6,9 +6,9 @@
 #include <vector>
 
 #include <lvgl.h>
+#include "Area.h"
 #include "TreeNode.h"
 #include "TreeViewOptions.h"
-#include "lv_sline.h"
 
 class TreeView
 {
@@ -32,7 +32,6 @@ class TreeView
 	uint x, y, width, height;
 	lv_obj_t *treeViewWindow;
 	static std::vector<TreeNode*> rootNodes;
-
 	lv_obj_t *lineAnchor = NULL;
 	void redraw(bool full=false);
 	uint drawNode(TreeNode* node, uint y, uint depth);

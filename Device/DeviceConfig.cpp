@@ -331,15 +331,17 @@ std::vector<DeviceConfig> DeviceConfig::FromDB(std::string CPUID)
 					float val = std::atof(it->Value.c_str());
 					float max = std::atof(it->Max.c_str());
 					float min = std::atof(it->Min.c_str());
-					dci = DeviceConfigItem(it->Name, val, max, min, it->ReadOnly);
+					float step = std::atof(it->Step.c_str());
+					dci = DeviceConfigItem(it->Name, val, max, min,step, it->ReadOnly);
 					break;
 				}
 			case eConfigDataType::C_LONG:
 				{
 					long val = std::atol(it->Value.c_str());
-					long max = std::atof(it->Max.c_str());
-					long min = std::atof(it->Min.c_str());
-					dci = DeviceConfigItem(it->Name, val, max, min, it->ReadOnly);
+					long max = std::atol(it->Max.c_str());
+					long min = std::atol(it->Min.c_str());
+					long step = std::atol(it->Step.c_str());
+					dci = DeviceConfigItem(it->Name, val, max, min, step, it->ReadOnly);
 				}
 			case eConfigDataType::C_STR:
 				{

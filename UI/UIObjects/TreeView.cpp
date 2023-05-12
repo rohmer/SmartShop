@@ -132,28 +132,35 @@ uint TreeView::drawNode(TreeNode* node, uint y, uint depth)
 	return y;
 }
 
-void TreeView::drawAnchor(lv_obj_t* parent, TreeNode* node)
+void TreeView::drawAnchor(lv_obj_t *parent, TreeNode *node)
 {
-	if (node->children.size() == 0 || node->anchorObject!=NULL)
-		return;
 	if (node->anchorObject == NULL)
 		node->anchorObject = lv_img_create(parent);
 
 	if (lineAnchor == NULL)
 	{
 		lineAnchor = node->anchorObject;
-		#ifdef DEBUG
+#ifdef DEBUG
 		std::cout << node->label << ": Line Anchor\n";
-		#endif
+#endif
 	}
-	if (node->expanded)
-		lv_img_set_src(node->anchorObject, LV_SYMBOL_PLUS);
+	if (node->GetChildren().size() > 0)
+	{
+		if (node->expanded)
+			lv_img_set_src(node->anchorObject, LV_SYMBOL_RIGHT);
+		else
+			lv_img_set_src(node->anchorObject, LV_SYMBOL_DOWN);
+	}
 	else
-		lv_img_set_src(node->anchorObject,LV_SYMBOL_MINUS);
+	{
+		lv_img_set_src(node->anchorObject, LV_SYMBOL_MINUS);
+	}
 
-	lv_obj_set_style_img_recolor(node->anchorObject, options.GetAnchorColor(),0);
+	lv_obj_set_style_img_recolor(node->anchorObject, options.GetAnchorColor(), 0);
 	lv_img_set_size_mode(node->anchorObject, LV_IMG_SIZE_MODE_REAL);
-	lv_obj_align_to(node->anchorObject, node->labelObject, LV_ALIGN_OUT_LEFT_MID,-2,0);	
+	lv_obj_align_to(node->anchorObject, node->labelObject, LV_ALIGN_OUT_LEFT_MID, -3, 0);
+
+	
 }
 
 void TreeView::createTouchTarget(TreeNode *node)

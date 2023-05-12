@@ -26,5 +26,11 @@ TEST(AdvSliderTests, CreateSliderLongEditable)
  	std::this_thread::sleep_for(std::chrono::seconds(30));
 }
 
-
+TEST(AdvSliderTests, CrateSliderFloatEditable)
+{
+	float value = 22.0;
+	AdvSlider<float> *slider = new AdvSlider<float>(lv_scr_act(), 200, 20, &value, 0.5, 77.2, AdvSlider<float>::RIGHT_MID_VALUE_POS, true);
+	slider->SetPos(100, 100);
+	std::this_thread::sleep_for(std::chrono::seconds(30));
+}
 #endif

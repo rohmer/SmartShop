@@ -32,7 +32,7 @@ class AdvSlider
 	 * @param minValue - The minimum value 
 	 * @param maxValue - The maximum value
 	 * @param valueIsEditable - If try an @see InputField() will be created for the object, otherwise a label will
-	 * @param stepSize - By default, the steps will be the width of the slider/3, each step will be that much of the object
+	 * @param stepSize - By default, the steps will be the width of the slider/2, each step will be that much of the object
 	 *					 If step size is set, each step will be that big.  Note, if you set it too small, the slider will have issues
 	 *					 computing
 	 **/
@@ -44,12 +44,14 @@ class AdvSlider
 			  T maxValue,
 			  eValuePos valuePostion = RIGHT_MID_VALUE_POS,
 			  bool valueIsEditable = true,
-			  T stepSize = 0) : value(value),
-								minValue(minValue),
-								maxValue(maxValue),
-								valuePos(valuePostion),
-								valueIsEditable(valueIsEditable),
-								stepSize(stepSize)
+			  T stepSize = 0,
+			  uint16_t numSteps = 0) : value(value),
+									   minValue(minValue),
+									   maxValue(maxValue),
+									   valuePos(valuePostion),
+									   valueIsEditable(valueIsEditable),
+									   stepSize(stepSize),
+									   numSteps(numSteps)
 	{
 		if (!std::is_arithmetic<T>())
 		{
@@ -61,8 +63,22 @@ class AdvSlider
 
 	~AdvSlider<T>()
 	{
+		if (inputField != NULL)
+			delete (inputField);
+		if (sliderObj != NULL)
+			lv_del_obj(sliderObj);
 	}
 
+	void SetDecimalPrecision(uint8_t value)
+	{
+		decimalPlaces = value;
+	}
+
+	uint8_t GetDecimalPrecision()
+	{
+		return decimalPlaces;
+	}
+	
 	void SetPos(lv_coord_t x, lv_coord_t y)
 	{
 		if (sliderObj == NULL)
@@ -164,20 +180,51 @@ class AdvSlider
 
 	void SetValue(T newValue)
 	{
-		this->value = &newValue;
-		recomputeSlider();
+		if (std::is_integral<T>::value)
+		{
+
+			// We can just set the value and move on
+			if (sliderObj != NULL)
+			{
+				lv_obj_remove_event_cb(sliderObj, slider_position_changed_event_cb);
+				lv_slider_set_value(sliderObj, newValue, LV_ANIM_ON);
+				lv_obj_add_event_cb(sliderObj, slider_position_changed_event_cb, LV_EVENT_VALUE_CHANGED,this);
+			}
+			if (inputField != NULL)
+			{
+				lv_obj_remove_event_cb(inputField->GetObject(), value_changed_event_cb);				
+				inputField->SetValue(newValue);
+				lv_obj_add_event_cb(inputField->GetObject(), value_changed_event_cb, LV_EVENT_VALUE_CHANGED, this);
+			}
+			value = &newValue;
+			return;
+		}
+
+		// Float is a little harder, the slider only stores where we are between min and max based on numSteps and stepValue
 		if (inputField != NULL)
 		{
-			inputField->SetValue(value);
+			lv_obj_remove_event_cb(inputField->GetObject(), value_changed_event_cb);
+			T n = std::pow(10.0f, decimalPlaces);
+			T v = newValue * stepSize;
+			v = std::round(v * n) / n;
+			inputField->SetValue(v);
+			lv_obj_add_event_cb(inputField->GetObject(), value_changed_event_cb, LV_EVENT_VALUE_CHANGED, this);
 		}
-		else if(valueLabel!=NULL)
-		{
-			std::stringstream ss;
-			ss << value;
-			lv_label_set_text(valueLabel, ss.str().c_str());
-		}
-	}
 
+		if (sliderObj != NULL)
+		{
+			lv_obj_remove_event_cb(sliderObj, slider_position_changed_event_cb);
+			lv_slider_set_value(sliderObj, newValue, LV_ANIM_ON);
+			lv_obj_add_event_cb(sliderObj, slider_position_changed_event_cb, LV_EVENT_VALUE_CHANGED, this);
+		}
+		value = &newValue;
+	}
+	
+	T GetValue()
+	{
+		return *value;
+	}
+	
 	void SetExtents(T minValue, T maxValue)
 	{
 		if (minValue <= maxValue)
@@ -232,6 +279,23 @@ class AdvSlider
 		return ret;
 	}
 
+	lv_coord_t GetWidth()
+	{
+		lv_area_t size = GetSize();
+		return size.x2 - size.x1;
+	}
+
+	lv_coord_t GetHeight()
+	{
+		lv_area_t size = GetSize();
+		return size.y2 - size.y1;
+	}
+
+	lv_obj_t *GetSlider()
+	{
+		return sliderObj;
+	}
+
   private:
 	void createObjects(lv_obj_t *parent,lv_coord_t width, lv_coord_t height)
 	{
@@ -239,7 +303,6 @@ class AdvSlider
 			lv_obj_del(sliderObj);
 		sliderObj = lv_slider_create(parent);
 		lv_obj_set_size(sliderObj, width / 5 * 4, height);
-		lv_slider_set_range(sliderObj, minValue, maxValue);
 		if (valuePos == AdvSlider::NO_VALUE_POS)
 			return;
 		if (valueIsEditable)
@@ -299,7 +362,36 @@ class AdvSlider
 				break;
 			}
 		}
-		recomputeSlider();
+		if (numSteps == 0 && stepSize == 0)
+		{
+			// Both are set to 0, which is the default.  We will set the numSteps to the slider width/2
+			numSteps = lv_obj_get_width(sliderObj) / 2;
+			stepSize = (maxValue - minValue) / numSteps;
+		}
+		if (numSteps == 0 && stepSize != 0)
+		{
+			numSteps = (maxValue - minValue) / stepSize;
+		}
+		if (numSteps != 0)
+		{
+			stepSize = (maxValue - minValue) / numSteps;
+		}
+		if (std::is_floating_point<T>::value)
+		{
+			// The slider only accepts int32_t, so we need to convert that to a float.
+			// We do this by computing the value by steps and step value
+			// The range is 0->numSteps
+
+			lv_slider_set_range(sliderObj, 0, numSteps);
+		}
+		else		// Its an integral values, so we can use the slider's functionality
+		{
+			lv_slider_set_range(sliderObj, minValue, maxValue);
+			
+		}
+
+		SetValue(*value);
+
 		lv_obj_add_event_cb(sliderObj, slider_position_changed_event_cb, LV_EVENT_VALUE_CHANGED, (void *)this);
 	}
 
@@ -329,24 +421,7 @@ class AdvSlider
 	void
 	recomputeSlider()
 	{
-		if (stepSize == 0 && numSteps == 0)
-		{
-			lv_slider_set_value(sliderObj, *value, LV_ANIM_ON);
-			return;
-		}
-		if (numSteps != 0)
-		{			
-			stepSize = (maxValue - minValue) / numSteps;
-		}
-		else
-		{
-			if (stepSize != 0)
-				numSteps = (maxValue - minValue) / stepSize;
-		}
-		T v = round((maxValue / minValue) / stepSize);
-		// Recompute the value based on the closest step
-		value = &v;
-		lv_slider_set_value(sliderObj, *value, LV_ANIM_ON);				// This will kick off the event_cb that will get the proper postion if we are stepping
+		SetValue(value);
 	}
 
 	uint getValueSize()
@@ -359,8 +434,10 @@ class AdvSlider
 
 	static void value_changed_event_cb(lv_event_t *e)
 	{
+		lv_obj_t *obj = lv_event_get_target(e);
 		AdvSlider<T> *aso = (AdvSlider<T> *)lv_event_get_user_data(e);
-
+		if (aso->sliderChanged)
+			return;
 		// Avoid an endless loop
 		if (aso->valueChanged)
 		{
@@ -368,26 +445,29 @@ class AdvSlider
 			return;
 		}
 		aso->valueChanged = true;
+		if (std::is_integral<T>::value)
+		{
+			aso->SetValue(aso->inputField->GetLongValue());
+		}
+		else
+		{
+			double v = aso->inputField->GetDoubleValue();
+			aso->SetValue(v);
+		}
 	}
 	
 	static void slider_position_changed_event_cb(lv_event_t *e)
 	{
 		AdvSlider<T> *aso = (AdvSlider<T> *)lv_event_get_user_data(e);
 		lv_obj_t *obj = lv_event_get_target(e);
-		aso->SetValue(lv_slider_get_value(obj));
-		// Avoid an endless loop
 		if (aso->sliderChanged)
 		{
 			aso->sliderChanged = false;
 			return;
 		}
 		aso->sliderChanged = true;
-		if (aso->numSteps > 0 && aso->stepSize > 0)
-		{
-			aso->recomputeSlider();
-		}
-		
-		return;
+		uint32_t v = lv_slider_get_value(obj);
+		aso->SetValue(v);
 	}
 
 	T *value;
@@ -396,7 +476,8 @@ class AdvSlider
 	T stepSize;
 	eValuePos valuePos;
 	uint numSteps=0;
-	
+
+	uint8_t decimalPlaces = 2;
 	bool valueIsEditable;
 	lv_obj_t *labelObj = NULL, *sliderObj = NULL, *valueLabel=NULL;
 	InputField<T> *inputField = NULL;

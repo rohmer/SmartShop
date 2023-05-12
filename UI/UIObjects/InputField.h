@@ -89,7 +89,8 @@ class InputField
 	{
 		if (labelObj == NULL)
 			return 0;
-		return lv_obj_get_width(labelObj);
+		lv_area_t area = GetArea();
+		return area.x2 - area.x1;
 	}
 
 	void SetHeight(lv_coord_t height)
@@ -103,7 +104,8 @@ class InputField
 	{
 		if (labelObj == NULL)
 			return 0;
-		return lv_obj_get_height(labelObj);
+		lv_area_t area = GetArea();
+		return area.y2 - area.y1;
 	}
 	
 	void SetLabel(std::string label, lv_align_t alignment=LV_ALIGN_OUT_RIGHT_MID, uint xOff=0, uint yOff=0)

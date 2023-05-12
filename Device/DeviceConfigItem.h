@@ -67,10 +67,17 @@ public:
 		SetValue(value);
 	}
 	
-	DeviceConfigItem(std::string name, float value, float minValue=std::numeric_limits<float>::min(), float maxValue=std::numeric_limits<float>::max(), bool readOnly = false)
+	DeviceConfigItem(
+		std::string name, 
+		float value, 
+		float minValue=std::numeric_limits<float>::min(), 
+		float maxValue=std::numeric_limits<float>::max(), 
+		float stepValue=0,
+		bool readOnly = false)
 		: name(name)
 		, floatMin(minValue)
 		, floatMax(maxValue)
+		, floatStep(stepValue)
 		, readOnly(readOnly)
 	{
 		SetValue(value);
@@ -80,9 +87,13 @@ public:
 		long value,
 		long minValue=std::numeric_limits<long>::min(),
 		long maxValue=std::numeric_limits<long>::max(),
+		long stepValue=0,
 		bool readOnly = false)
 		: name(name)
 		, readOnly(readOnly)
+		, longMin(minValue)
+		, longMax(maxValue)
+		, longStep(stepValue)
 	{
 		SetValue(value);
 	}
@@ -237,6 +248,14 @@ public:
 	{
 		floatMin = v;
 	}
+	float GetFloatStep()
+	{
+		return floatStep;
+	}
+	void SetFloatStep(float v)
+	{
+		floatStep = v;
+	}
 	long GetLongMax()
 	{
 		return longMax;
@@ -253,6 +272,15 @@ public:
 	{
 		longMin = v;
 	}
+	long GetLongStep()
+	{
+		return longStep;
+	}
+	void SetLongStep(long v)
+	{
+		longStep = v;
+	}
+	
 	std::vector<std::string> GetLegalStringValues()
 	{
 		return legalValues;
@@ -285,6 +313,8 @@ public:
 					cJSON_AddItemToObject(obj, "max", cJSON_CreateNumber(floatMax));
 				if (floatMin != std::numeric_limits<float>::min())
 					cJSON_AddItemToObject(obj, "min", cJSON_CreateNumber(floatMin));
+				if (floatStep != 0)
+					cJSON_AddItemToObject(obj, "step", cJSON_CreateNumber(floatStep));
 			}
 			break;
 		case eConfigDataType::C_LONG:
@@ -293,6 +323,8 @@ public:
 					cJSON_AddItemToObject(obj, "max", cJSON_CreateNumber(longMax));
 				if (longMin != std::numeric_limits<long>::min())
 					cJSON_AddItemToObject(obj, "min", cJSON_CreateNumber(longMin));
+				if (longStep != 0)
+					cJSON_AddItemToObject(obj, "step", cJSON_CreateNumber(longStep));
 			}
 			break;
 		case eConfigDataType::C_STR:
@@ -344,6 +376,7 @@ public:
 			{
 				long v = std::atol(value.c_str());
 				long max = LONG_MAX, min = LONG_MIN;
+				long longStep = 0;
 				if (cJSON_HasObjectItem(obj,"max"))
 				{
 					max = cJSON_GetObjectItem(obj, "max")->valueint;
@@ -352,7 +385,11 @@ public:
 				{
 					min = cJSON_GetObjectItem(obj, "min")->valueint;
 				}
-				return DeviceConfigItem(name, (long)v, min,max,ro);
+				if (cJSON_HasObjectItem(obj, "step"))
+				{
+					longStep = cJSON_GetObjectItem(obj, "step")->valueint;
+				}
+				return DeviceConfigItem(name, (long)v, min,max,longStep,ro);
 			}
 			break;
 		case C_BOOL:
@@ -367,6 +404,7 @@ public:
 			{
 				float v = std::atof(value.c_str());
 				float max = std::numeric_limits<float>::max(), min = std::numeric_limits<float>::min();
+				float floatStep = 0;
 				if (cJSON_HasObjectItem(obj, "max"))
 				{
 					max = cJSON_GetObjectItem(obj, "max")->valuedouble;
@@ -375,7 +413,11 @@ public:
 				{
 					min = cJSON_GetObjectItem(obj, "min")->valuedouble;
 				}
-				return DeviceConfigItem(name, v, min, max, ro);
+				if (cJSON_HasObjectItem(obj, "step"))
+				{
+					floatStep = cJSON_GetObjectItem(obj, "step")->valuedouble;
+				}
+				return DeviceConfigItem(name, v, min, max, floatStep, ro);
 			}
 			break;
 		case C_ARRAY:
@@ -418,7 +460,9 @@ public:
 	
 private:
 	float floatMin=std::numeric_limits<float>::min(), floatMax=std::numeric_limits<float>::max();
+	float floatStep = 0;
 	long longMin=std::numeric_limits<long>::min(), longMax=std::numeric_limits<long>::max();
+	long longStep = 0;
 	std::vector<std::string> legalValues;
 	std::string name;
 	bool readOnly;

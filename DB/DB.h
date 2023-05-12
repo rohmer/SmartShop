@@ -101,6 +101,7 @@ inline auto initCoreStorage(const std::string &path)
 			make_column("value", &DBDeviceConfigItem::Value),
 			make_column("max", &DBDeviceConfigItem::Max),
 			make_column("min", &DBDeviceConfigItem::Min),
+			make_column("step", &DBDeviceConfigItem::Step),
 			make_column("hostID", &DBDeviceConfigItem::hostID),
 			make_column("ro", &DBDeviceConfigItem::ReadOnly)),
 		make_table("Software",
