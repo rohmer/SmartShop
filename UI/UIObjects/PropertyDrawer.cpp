@@ -197,6 +197,10 @@ void PropertyDrawer::slider_value_change_cb(lv_event_t *evt)
 		break;
 	case C_LONG:
 		// Need to process this
+		pd->dci.SetValue(pd->sliderL->GetValue());
+		break;
+	case C_FLOAT:
+		pd->dci.SetValue(pd->sliderL->GetValue());
 		break;
 	}
 }

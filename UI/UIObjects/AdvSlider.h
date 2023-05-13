@@ -66,7 +66,7 @@ class AdvSlider
 		if (inputField != NULL)
 			delete (inputField);
 		if (sliderObj != NULL)
-			lv_del_obj(sliderObj);
+			lv_obj_del(sliderObj);
 	}
 
 	void SetDecimalPrecision(uint8_t value)
